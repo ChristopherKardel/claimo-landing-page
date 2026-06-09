@@ -8,10 +8,13 @@ const featureCards = [
   ['Redeem Gems', 'Use collected Gems later for planned cash rewards and payouts.'],
 ];
 
+const baseUrl = import.meta.env.BASE_URL;
+const assetUrl = (path: string) => `${baseUrl}${path}`;
+
 const screenshots = [
-  { label: 'Games', src: '/screen1.png' },
-  { label: 'Redeem', src: '/screen2.png' },
-  { label: 'Profile', src: '/screen3.png' },
+  { label: 'Games', src: assetUrl('screen1.png') },
+  { label: 'Redeem', src: assetUrl('screen2.png') },
+  { label: 'Profile', src: assetUrl('screen3.png') },
 ];
 
 const faqs = [
@@ -22,7 +25,7 @@ const faqs = [
   ['How can partners contact us?', 'Partners can contact Claimo Studio by email for offerwall and survey integrations.'],
 ];
 
-function PhoneMockup({ label, src = '/screen1.png' }: { label?: string; src?: string }) {
+function PhoneMockup({ label, src = assetUrl('screen1.png') }: { label?: string; src?: string }) {
   return (
     <div className="phone-frame">
       {label && <span>{label}</span>}
@@ -32,7 +35,7 @@ function PhoneMockup({ label, src = '/screen1.png' }: { label?: string; src?: st
 }
 
 function GemDecoration({ variant = 'filled', className = '' }: { variant?: 'filled' | 'outlined'; className?: string }) {
-  const src = variant === 'outlined' ? '/gems-outlined.png' : '/gems.png';
+  const src = variant === 'outlined' ? assetUrl('gems-outlined.png') : assetUrl('gems.png');
 
   return <img className={`gem-decoration ${className}`} src={src} alt="" aria-hidden="true" />;
 }
@@ -176,8 +179,8 @@ function App() {
           <span>Rewards made simple</span>
         </div>
         <div className="legal-links">
-          <a href="/impressum.html">Legal Notice</a>
-          <a href="/datenschutz.html">Privacy Policy</a>
+          <a href={`${baseUrl}impressum.html`}>Legal Notice</a>
+          <a href={`${baseUrl}datenschutz.html`}>Privacy Policy</a>
         </div>
         <p>© 2026 Claimo Studio. All rights reserved.</p>
       </footer>
