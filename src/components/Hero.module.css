@@ -1,0 +1,231 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: 132px 0 84px;
+  overflow: hidden;
+}
+
+/* ─── Background ───────────────────────────────────────────────────────────── */
+.bg { position: absolute; inset: 0; pointer-events: none; }
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(6px);
+  animation: orb-drift ease-in-out infinite;
+}
+.orb1 {
+  width: 720px; height: 720px;
+  top: -240px; right: -200px;
+  background: radial-gradient(circle, rgba(0, 235, 196, 0.16), transparent 62%);
+  animation-duration: 15s;
+}
+.orb2 {
+  width: 560px; height: 560px;
+  bottom: -220px; left: -180px;
+  background: radial-gradient(circle, rgba(91, 167, 255, 0.11), transparent 64%);
+  animation-duration: 19s; animation-delay: -7s;
+}
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 20%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 45%, #000 20%, transparent 72%);
+}
+
+/* ─── Floating gems ───────────────────────────────────────────────────────── */
+.gems { position: absolute; inset: 0; pointer-events: none; }
+.gem {
+  position: absolute;
+  filter: drop-shadow(0 8px 18px rgba(0, 235, 196, 0.35));
+  animation: gem-float ease-in-out infinite;
+}
+.gemA { width: 54px; left: 6%;  top: 30%; --rot: -14deg; animation-duration: 6s; }
+.gemB { width: 38px; left: 46%; top: 16%; --rot: 20deg;  opacity: 0.6; animation-duration: 7.2s; animation-delay: -2s; }
+.gemC { width: 30px; right: 40%; bottom: 16%; --rot: 8deg; opacity: 0.45; animation-duration: 8s; animation-delay: -4s; }
+
+/* ─── Layout ──────────────────────────────────────────────────────────────── */
+.inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+.copy { max-width: 600px; }
+.copy > * { animation: rise-in 0.85s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.copy > *:nth-child(1) { animation-delay: 0.05s; }
+.copy > *:nth-child(2) { animation-delay: 0.16s; }
+.copy > *:nth-child(3) { animation-delay: 0.28s; }
+.copy > *:nth-child(4) { animation-delay: 0.4s; }
+.copy > *:nth-child(5) { animation-delay: 0.5s; }
+.copy > *:nth-child(6) { animation-delay: 0.6s; }
+
+.lead {
+  margin-top: 22px;
+  max-width: 500px;
+  font-size: 1.12rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 32px;
+}
+
+.store {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 10px 18px 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.store:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 235, 196, 0.4);
+  box-shadow: 0 0 24px -6px var(--glow-soft);
+}
+.storeIcon { color: var(--primary); display: flex; }
+.storeIcon svg { width: 24px; height: 24px; }
+.storeText { display: flex; flex-direction: column; line-height: 1.2; }
+.storeText small { font-size: 0.7rem; color: var(--text-dim); }
+.storeText strong { font-size: 0.98rem; }
+
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 26px;
+  font-size: 0.86rem;
+  color: var(--text-dim);
+}
+.trust li { display: inline-flex; align-items: center; gap: 8px; }
+.dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 8px var(--primary);
+  animation: dot-pulse 2.6s ease-in-out infinite;
+}
+
+/* ─── Phone visual ────────────────────────────────────────────────────────── */
+.visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 540px;
+  animation: rise-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+}
+.ringOuter {
+  width: 430px; height: 430px;
+  border-color: rgba(0, 235, 196, 0.12);
+  animation: spin-cw 38s linear infinite;
+}
+.ringInner {
+  width: 330px; height: 330px;
+  border-color: rgba(91, 167, 255, 0.1);
+  animation: spin-ccw 26s linear infinite;
+}
+.phoneGlow {
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 235, 196, 0.22), transparent 66%);
+  filter: blur(34px);
+  animation: glow-pulse 5s ease-in-out infinite;
+}
+.phone {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 300px);
+  height: auto;
+  border-radius: 38px;
+  filter: drop-shadow(0 36px 60px rgba(0, 0, 0, 0.6));
+  animation: float-y 7s ease-in-out infinite;
+}
+
+/* Floating UI accent cards */
+.float {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: 15px;
+  background: rgba(13, 16, 30, 0.78);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.8);
+  animation: float-y 6s ease-in-out infinite;
+}
+.float strong { display: block; font-size: 0.9rem; color: var(--text); }
+.float small { display: block; font-size: 0.72rem; color: var(--text-dim); }
+.floatReward {
+  top: 14%; left: -4%;
+  animation-delay: -1.5s;
+}
+.floatReward .floatBadge {
+  display: grid;
+  place-items: center;
+  min-width: 42px; height: 30px;
+  padding: 0 8px;
+  border-radius: 9px;
+  background: var(--grad-brand);
+  color: var(--text-ink);
+  font-weight: 700;
+  font-size: 0.86rem;
+}
+.floatBalance {
+  bottom: 13%; right: -6%;
+  animation-delay: -3.5s;
+}
+
+/* ─── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 880px) {
+  .hero { min-height: auto; padding: 116px 0 64px; }
+  .inner { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+  .copy { max-width: 620px; margin-inline: auto; }
+  .copy .lead { margin-inline: auto; }
+  .actions, .trust { justify-content: center; }
+  .visual { min-height: 480px; margin-top: 22px; }
+  .gemA, .gemB, .gemC { display: none; }
+}
+
+@media (max-width: 560px) {
+  .actions { flex-direction: column; }
+  .actions .btn { width: 100%; }
+  .store { width: 100%; justify-content: center; }
+  .visual { min-height: 440px; }
+  .phone { width: min(70%, 250px); }
+  .ringOuter { width: 330px; height: 330px; }
+  .ringInner { width: 256px; height: 256px; }
+  .floatReward { left: -2%; }
+  .floatBalance { right: -2%; }
+  .float { padding: 9px 12px; }
+  .float strong { font-size: 0.82rem; }
+}
+
+@media (max-width: 380px) {
+  .floatReward, .floatBalance { display: none; }
+}

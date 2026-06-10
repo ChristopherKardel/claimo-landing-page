@@ -1,0 +1,63 @@
+.section {
+  padding: 30px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.label {
+  margin-bottom: 18px;
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.track { overflow: hidden; }
+.group { display: flex; justify-content: center; }
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 52px;
+}
+/* On desktop the duplicate row is redundant. */
+.row[aria-hidden='true'] { display: none; }
+
+.brand {
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  color: var(--text-soft);
+  opacity: 0.65;
+  transition: color 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+  cursor: default;
+}
+.brand:hover {
+  color: var(--text);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* Continuous scroll on narrow screens where wrapping looks cramped. */
+@media (max-width: 720px) {
+  .track {
+    mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  }
+  .group {
+    width: max-content;
+    justify-content: flex-start;
+    animation: marquee 20s linear infinite;
+  }
+  .row {
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 38px;
+    padding-right: 38px;
+  }
+  .row[aria-hidden='true'] { display: flex; }
+  .brand { opacity: 0.8; }
+}
