@@ -1,8 +1,14 @@
+import { assets } from '../lib/assets';
 import styles from './Payouts.module.css';
 
-// Rendered as clean text wordmarks (not trademarked logo images) — matches the
-// redemption options shown inside the app's "Rewards" screen.
-const BRANDS = ['PayPal', 'Amazon', 'Visa', 'Google Play', 'Steam', 'Apple'];
+type Brand = { label: string; logo: string };
+
+const BRANDS: Brand[] = [
+  { label: 'PayPal',      logo: assets.brands.paypal },
+  { label: 'Amazon',      logo: assets.brands.amazon },
+  { label: 'Google Play', logo: assets.brands.googlePlay },
+  { label: 'Steam',       logo: assets.brands.steam },
+];
 
 export function Payouts() {
   return (
@@ -14,9 +20,13 @@ export function Payouts() {
           <div className={styles.group}>
             {[0, 1].map((set) => (
               <ul key={set} className={styles.row} aria-hidden={set === 1}>
-                {BRANDS.map((b) => (
-                  <li key={b} className={styles.brand}>{b}</li>
+                {BRANDS.map(({ label, logo }) => (
+                  <li key={label} className={styles.brand}>
+                    <img src={logo} alt="" className={styles.brandLogo} aria-hidden="true" />
+                    {label}
+                  </li>
                 ))}
+                <li className={styles.more}>+ more planned</li>
               </ul>
             ))}
           </div>

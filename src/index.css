@@ -82,17 +82,9 @@ body {
   overflow-x: hidden;
 }
 
-/* Ambient page glow — subtle, fixed, behind everything. */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(60% 50% at 78% -5%, rgba(0, 235, 196, 0.10), transparent 60%),
-    radial-gradient(55% 45% at 8% 8%, rgba(91, 167, 255, 0.07), transparent 60%);
-}
+/* The ambient page glow now lives in the <Background> component, which
+   layers brand gradients, drifting aurora blobs and a constellation
+   starfield behind all content. */
 
 a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; }
@@ -109,10 +101,11 @@ h1, h2, h3, h4 {
   font-weight: 700;
   color: var(--text);
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.06;
+  text-wrap: balance;
 }
-h1 { font-size: clamp(2.7rem, 6.4vw, 5rem); letter-spacing: -0.035em; }
-h2 { font-size: clamp(2rem, 4.4vw, 3.1rem); }
+h1 { font-size: clamp(2.55rem, 5.4vw, 4.2rem); letter-spacing: -0.035em; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.85rem); }
 h3 { font-size: 1.2rem; letter-spacing: -0.01em; }
 p  { margin: 0; color: var(--text-soft); }
 
@@ -122,6 +115,9 @@ p  { margin: 0; color: var(--text-soft); }
   margin-inline: auto;
 }
 .section { padding: clamp(72px, 11vw, 132px) 0; }
+
+/* Anchored sections scroll clear of the fixed nav. */
+[id] { scroll-margin-top: 84px; }
 
 .section-head {
   max-width: 680px;
@@ -160,12 +156,10 @@ p  { margin: 0; color: var(--text-soft); }
 /* ─── Gradient text ───────────────────────────────────────────────────────── */
 .gradient-text {
   background: var(--grad-brand);
-  background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: text-shimmer 6s linear infinite;
 }
 
 /* ─── Buttons ─────────────────────────────────────────────────────────────── */
@@ -176,9 +170,9 @@ p  { margin: 0; color: var(--text-soft); }
   justify-content: center;
   gap: 9px;
   min-height: 50px;
-  padding: 0 26px;
+  padding: 0 28px;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: 100px;
   font-weight: 700;
   font-size: 0.97rem;
   white-space: nowrap;
@@ -222,7 +216,7 @@ p  { margin: 0; color: var(--text-soft); }
   border-color: rgba(0, 235, 196, 0.4);
 }
 
-.btn-lg { min-height: 56px; padding: 0 32px; font-size: 1.02rem; }
+.btn-lg { min-height: 56px; padding: 0 34px; font-size: 1.02rem; }
 
 /* ─── Glass card base (composed by section modules) ───────────────────────── */
 .card {
@@ -248,16 +242,13 @@ p  { margin: 0; color: var(--text-soft); }
 }
 
 /* ─── Keyframes ───────────────────────────────────────────────────────────── */
-@keyframes text-shimmer {
-  to { background-position: 220% center; }
-}
 @keyframes float-y {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-16px); }
 }
 @keyframes gem-float {
-  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  50%      { transform: translateY(-14px) rotate(var(--rot, 0deg)); }
+  0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)) scale(1); }
+  50%      { transform: translateY(-16px) rotate(var(--rot, 0deg)) scale(1.06); }
 }
 @keyframes orb-drift {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -270,10 +261,6 @@ p  { margin: 0; color: var(--text-soft); }
 }
 @keyframes spin-cw  { to { transform: rotate(360deg); } }
 @keyframes spin-ccw { to { transform: rotate(-360deg); } }
-@keyframes dot-pulse {
-  0%, 100% { transform: scale(1);   opacity: 1; }
-  50%      { transform: scale(1.7); opacity: 0.4; }
-}
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }

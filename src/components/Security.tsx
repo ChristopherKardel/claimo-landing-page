@@ -29,8 +29,8 @@ const POINTS: Array<{ Icon: ComponentType<IconProps>; title: string; text: strin
 
 const STATS: Array<{ value: number; suffix?: string; label: string }> = [
   { value: 100, suffix: '%', label: 'Free for users' },
-  { value: 3, suffix: '+', label: 'Reward types' },
   { value: 0, suffix: '€', label: 'To get started' },
+  { value: 2026, label: 'Planned launch' },
 ];
 
 function Stat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {

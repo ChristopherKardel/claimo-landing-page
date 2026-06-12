@@ -51,14 +51,23 @@
 }
 .actions {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 13px;
   margin-top: 32px;
 }
+.email {
+  margin-top: 20px;
+  font-size: 0.92rem;
+  color: var(--text-dim);
+}
+.email a { color: var(--primary); }
+.email a:hover { text-decoration: underline; }
 .note {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  margin-top: 22px;
+  margin-top: 14px;
   font-size: 0.86rem;
   color: var(--text-dim);
 }

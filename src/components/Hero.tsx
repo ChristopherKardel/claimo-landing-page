@@ -1,5 +1,5 @@
 import { assets } from '../lib/assets';
-import { Android, ArrowRight } from './Icons';
+import { ArrowRight } from './Icons';
 import styles from './Hero.module.css';
 
 export function Hero() {
@@ -16,15 +16,14 @@ export function Hero() {
       <div className={styles.gems} aria-hidden="true">
         <img src={assets.gem} className={`${styles.gem} ${styles.gemA}`} alt="" />
         <img src={assets.gemOutlined} className={`${styles.gem} ${styles.gemB}`} alt="" />
-        <img src={assets.gem} className={`${styles.gem} ${styles.gemC}`} alt="" />
       </div>
 
       <div className={`shell ${styles.inner}`}>
         <div className={styles.copy}>
           <p className="eyebrow">Rewards app · In active development</p>
           <h1>
-            Your spare time,<br />
-            <span className="gradient-text">now pays you back.</span>
+            Turn spare time<br />
+            into <span className="gradient-text">real rewards.</span>
           </h1>
           <p className={styles.lead}>
             Claimo turns the games, offers and surveys you already enjoy into Gems —
@@ -39,19 +38,20 @@ export function Hero() {
             <a href="#how" className="btn btn-ghost btn-lg">See how it works</a>
           </div>
 
-          <a href="#cta" className={styles.store}>
-            <span className={styles.storeIcon}><Android /></span>
-            <span className={styles.storeText}>
-              <small>Coming soon to</small>
-              <strong>Google Play</strong>
-            </span>
-          </a>
-
-          <ul className={styles.trust}>
-            <li><span className={styles.dot} /> Free forever for users</li>
-            <li><span className={styles.dot} /> No purchase required</li>
-            <li><span className={styles.dot} /> Secure sign-in</li>
-          </ul>
+          <div className={styles.meta}>
+            <a href="#cta" className={styles.store}>
+              <img src={assets.brands.googlePlay} alt="Google Play" className={styles.storeImg} width={28} height={28} />
+              <span className={styles.storeText}>
+                <small>Coming soon to</small>
+                <strong>Google Play</strong>
+              </span>
+            </a>
+            <ul className={styles.trust}>
+              <li><span className={styles.dot} /> Free for users</li>
+              <li><span className={styles.dot} /> No purchase required</li>
+              <li><span className={styles.dot} /> Secure sign-in</li>
+            </ul>
+          </div>
         </div>
 
         <div className={styles.visual}>
@@ -63,6 +63,7 @@ export function Hero() {
             className={styles.phone}
             src={assets.screens.games}
             width={300}
+            fetchPriority="high"
             alt="The Claimo app showing games you can play to earn Gems"
           />
 

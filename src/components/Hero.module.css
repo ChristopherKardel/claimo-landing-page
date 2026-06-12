@@ -42,12 +42,15 @@
 .gems { position: absolute; inset: 0; pointer-events: none; }
 .gem {
   position: absolute;
-  filter: drop-shadow(0 8px 18px rgba(0, 235, 196, 0.35));
-  animation: gem-float ease-in-out infinite;
+  animation: gem-float ease-in-out infinite, gem-glow ease-in-out 3.5s infinite;
 }
-.gemA { width: 54px; left: 6%;  top: 30%; --rot: -14deg; animation-duration: 6s; }
-.gemB { width: 38px; left: 46%; top: 16%; --rot: 20deg;  opacity: 0.6; animation-duration: 7.2s; animation-delay: -2s; }
-.gemC { width: 30px; right: 40%; bottom: 16%; --rot: 8deg; opacity: 0.45; animation-duration: 8s; animation-delay: -4s; }
+.gemA { width: 46px; left: 7%;  top: 26%; --rot: -14deg; opacity: 0.8; animation-duration: 7s, 4.2s; }
+.gemB { width: 32px; left: 47%; top: 15%; --rot: 20deg;  opacity: 0.5; animation-duration: 8.2s, 5.1s; animation-delay: -2s, -1.3s; }
+
+@keyframes gem-glow {
+  0%, 100% { filter: drop-shadow(0 8px 18px rgba(0, 235, 196, 0.3)); }
+  50%       { filter: drop-shadow(0 10px 26px rgba(0, 235, 196, 0.55)); }
+}
 
 /* ─── Layout ──────────────────────────────────────────────────────────────── */
 .inner {
@@ -83,14 +86,22 @@
   margin-top: 32px;
 }
 
+/* Store badge + trust items share one row so the column stays compact. */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 26px;
+  margin-top: 26px;
+}
+
 .store {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  margin-top: 22px;
-  padding: 10px 18px 10px 14px;
+  padding: 9px 18px 9px 13px;
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 100px;
   background: var(--surface);
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -99,8 +110,7 @@
   border-color: rgba(0, 235, 196, 0.4);
   box-shadow: 0 0 24px -6px var(--glow-soft);
 }
-.storeIcon { color: var(--primary); display: flex; }
-.storeIcon svg { width: 24px; height: 24px; }
+.storeImg { width: 28px; height: 28px; object-fit: contain; flex-shrink: 0; }
 .storeText { display: flex; flex-direction: column; line-height: 1.2; }
 .storeText small { font-size: 0.7rem; color: var(--text-dim); }
 .storeText strong { font-size: 0.98rem; }
@@ -108,18 +118,16 @@
 .trust {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px 22px;
-  margin-top: 26px;
+  gap: 10px 20px;
   font-size: 0.86rem;
   color: var(--text-dim);
 }
 .trust li { display: inline-flex; align-items: center; gap: 8px; }
 .dot {
-  width: 7px; height: 7px;
+  width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--primary);
   box-shadow: 0 0 8px var(--primary);
-  animation: dot-pulse 2.6s ease-in-out infinite;
 }
 
 /* ─── Phone visual ────────────────────────────────────────────────────────── */
@@ -182,7 +190,7 @@
 .float strong { display: block; font-size: 0.9rem; color: var(--text); }
 .float small { display: block; font-size: 0.72rem; color: var(--text-dim); }
 .floatReward {
-  top: 14%; left: -4%;
+  top: 13%; left: -9%;
   animation-delay: -1.5s;
 }
 .floatReward .floatBadge {
@@ -207,9 +215,9 @@
   .inner { grid-template-columns: 1fr; gap: 12px; text-align: center; }
   .copy { max-width: 620px; margin-inline: auto; }
   .copy .lead { margin-inline: auto; }
-  .actions, .trust { justify-content: center; }
+  .actions, .meta, .trust { justify-content: center; }
   .visual { min-height: 480px; margin-top: 22px; }
-  .gemA, .gemB, .gemC { display: none; }
+  .gemA, .gemB { display: none; }
 }
 
 @media (max-width: 560px) {

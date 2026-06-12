@@ -1,12 +1,12 @@
 import { Reveal } from './Reveal';
 import { assets } from '../lib/assets';
-import { Gem, Wallet } from './Icons';
+import { Gem, Gift, Wallet } from './Icons';
 import styles from './Rewards.module.css';
 
 const REWARD_TYPES = [
-  { label: 'PayPal cash', desc: 'Withdraw real money straight to your account', tag: 'Cash', accent: 'green' },
-  { label: 'Gift cards', desc: 'Amazon, Google Play, Steam and more', tag: 'Vouchers', accent: 'gold' },
-  { label: 'In-app perks', desc: 'Bonus Gems, streak boosts and multipliers', tag: 'Bonus', accent: 'teal' },
+  { Icon: Wallet, label: 'PayPal cash', desc: 'Withdraw real money straight to your account', tag: 'Cash', accent: 'green' },
+  { Icon: Gift, label: 'Gift cards', desc: 'Amazon, Google Play, Steam and more', tag: 'Vouchers', accent: 'gold' },
+  { Icon: Gem, label: 'In-app perks', desc: 'Bonus Gems, streak boosts and multipliers', tag: 'Bonus', accent: 'teal' },
 ] as const;
 
 export function Rewards() {
@@ -23,9 +23,9 @@ export function Rewards() {
           </p>
 
           <ul className={styles.list}>
-            {REWARD_TYPES.map(({ label, desc, tag, accent }) => (
+            {REWARD_TYPES.map(({ Icon, label, desc, tag, accent }) => (
               <li key={label} className={`${styles.item} ${styles[accent]}`}>
-                <span className={styles.itemIcon}><Wallet /></span>
+                <span className={styles.itemIcon}><Icon /></span>
                 <span className={styles.itemBody}>
                   <strong>{label}</strong>
                   <small>{desc}</small>

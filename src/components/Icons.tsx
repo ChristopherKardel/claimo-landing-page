@@ -64,6 +64,16 @@ export function Wallet({ className }: IconProps) {
   );
 }
 
+export function Gift({ className }: IconProps) {
+  return (
+    <svg className={className} {...base}>
+      <rect x="3" y="8" width="18" height="4" rx="1" />
+      <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7M12 8v13" />
+      <path d="M12 8c-4 0-5.5-1.2-5.5-2.9C6.5 3.9 7.6 3 8.9 3 11 3 12 5.5 12 8ZM12 8c4 0 5.5-1.2 5.5-2.9C17.5 3.9 16.4 3 15.1 3 13 3 12 5.5 12 8Z" />
+    </svg>
+  );
+}
+
 export function Flame({ className }: IconProps) {
   return (
     <svg className={className} {...base}>

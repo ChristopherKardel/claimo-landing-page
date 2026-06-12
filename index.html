@@ -8,20 +8,23 @@
       name="description"
       content="Claimo is a rewards app in development. Earn Gems for games, offers and surveys, then redeem them for PayPal cash, gift cards and more. Free to use, built for Android."
     />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/gems.png" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
+    <link rel="apple-touch-icon" href="%BASE_URL%gems.png" />
+    <!-- The hero phone screenshot is the LCP element — fetch it early. -->
+    <link rel="preload" as="image" href="%BASE_URL%screen1.png" />
 
     <!-- Social sharing -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Claimo — Your spare time, now pays you back" />
+    <meta property="og:site_name" content="Claimo" />
+    <meta property="og:title" content="Claimo — Turn spare time into real rewards" />
     <meta
       property="og:description"
       content="Earn Gems for games, offers and surveys and redeem them for real rewards. Free to use, built for Android."
     />
-    <meta property="og:image" content="/screen1.png" />
+    <meta property="og:image" content="%BASE_URL%screen1.png" />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <title>Claimo — Rewards made simple</title>
+    <title>Claimo — Turn spare time into real rewards</title>
   </head>
   <body>
     <div id="root"></div>

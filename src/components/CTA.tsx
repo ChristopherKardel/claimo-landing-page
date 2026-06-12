@@ -20,10 +20,23 @@ export function CTA() {
             </p>
 
             <div className={styles.actions}>
-              <a className="btn btn-primary btn-lg" href={`mailto:${CONTACT_EMAIL}`}>
-                {CONTACT_EMAIL} <ArrowRight />
+              <a
+                className="btn btn-primary btn-lg"
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Claimo early access')}`}
+              >
+                Get notified at launch <ArrowRight />
+              </a>
+              <a
+                className="btn btn-ghost btn-lg"
+                href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Claimo partnership')}`}
+              >
+                Partner with us
               </a>
             </div>
+
+            <p className={styles.email}>
+              Or write to us directly: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </p>
 
             <p className={styles.note}>
               <Android /> Coming soon to Google Play · No spam, just a launch heads-up

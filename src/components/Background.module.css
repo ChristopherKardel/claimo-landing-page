@@ -1,0 +1,87 @@
+/* ============================================================================
+   Background — ambient page atmosphere
+   A fixed, behind-everything layer inspired by the Claimo Admin panel:
+   radial brand glows, three drifting aurora blobs and an animated
+   constellation starfield (rendered to canvas in Background.tsx).
+   ========================================================================== */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  /* Layered brand glows over the deep navy base. */
+  background:
+    radial-gradient(1100px 620px at 8% -12%, rgba(0, 235, 196, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 104% 6%, rgba(91, 167, 255, 0.11), transparent 56%),
+    radial-gradient(1000px 720px at 50% 118%, rgba(98, 229, 115, 0.10), transparent 56%),
+    linear-gradient(160deg, #05060d 0%, #07080f 52%, #05060d 100%);
+}
+
+/* ─── Constellation starfield ─────────────────────────────────────────────── */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ─── Aurora blobs ────────────────────────────────────────────────────────── */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  width: 46rem;
+  height: 46rem;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.blobA {
+  top: -18rem;
+  left: -12rem;
+  background: radial-gradient(circle, rgba(0, 235, 196, 0.5), transparent 62%);
+  animation: aurora-drift-a 26s ease-in-out infinite;
+}
+
+.blobB {
+  top: 30%;
+  right: -16rem;
+  background: radial-gradient(circle, rgba(91, 167, 255, 0.42), transparent 62%);
+  animation: aurora-drift-b 32s ease-in-out infinite;
+}
+
+.blobC {
+  bottom: -22rem;
+  left: 24%;
+  background: radial-gradient(circle, rgba(98, 229, 115, 0.4), transparent 64%);
+  animation: aurora-drift-c 38s ease-in-out infinite;
+}
+
+@keyframes aurora-drift-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(8rem, 6rem, 0) scale(1.18); }
+}
+
+@keyframes aurora-drift-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  50%      { transform: translate3d(-9rem, 4rem, 0) scale(0.85); }
+}
+
+@keyframes aurora-drift-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.95); }
+  50%      { transform: translate3d(6rem, -7rem, 0) scale(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none; }
+}
