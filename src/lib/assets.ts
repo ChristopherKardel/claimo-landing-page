@@ -1,5 +1,5 @@
-// Centralised asset paths. Vite injects BASE_URL so the same code works on
-// the local dev server ("/") and on the GitHub Pages sub-path.
+// Centralised asset paths. Vite injects BASE_URL so the same code works locally
+// and on the configured GitHub Pages custom domain.
 const base = import.meta.env.BASE_URL;
 
 export const assetUrl = (path: string) => `${base}${path.replace(/^\//, '')}`;
