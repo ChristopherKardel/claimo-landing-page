@@ -14,6 +14,7 @@ const copy = {
       install: 'Installieren',
     },
     hero: {
+      tagline: 'Spielen · Sammeln · Einlösen',
       line1: 'Spiele kostenlose',
       line2: 'Spiele. Erledige',
       line3: 'Aufgaben.',
@@ -22,7 +23,10 @@ const copy = {
       copy1: 'Spiele kostenlos, sammle Punkte und löse sie gegen Geld,',
       copy2: 'Gutscheine und weitere Belohnungen ein.',
       store: 'Coming Soon on Google Play',
-      learn: 'Learn More',
+      soon: 'Demnächst bei',
+      learn: 'So funktionierts',
+      chipEarned: 'Gems verdient',
+      chipReady: 'Bereit zum Einlösen',
     },
     how: {
       title: 'Wie es funktioniert',
@@ -148,6 +152,7 @@ const copy = {
       install: 'Install',
     },
     hero: {
+      tagline: 'Play · Collect · Redeem',
       line1: 'Play Free',
       line2: 'Games. Complete',
       line3: 'Offers.',
@@ -156,7 +161,10 @@ const copy = {
       copy1: 'Play for free, collect points and redeem them for cash,',
       copy2: 'gift cards and more rewards.',
       store: 'Coming Soon on Google Play',
-      learn: 'Learn More',
+      soon: 'Coming soon on',
+      learn: 'How it works',
+      chipEarned: 'Gems earned',
+      chipReady: 'Ready to redeem',
     },
     how: {
       title: 'How it works',
@@ -329,17 +337,6 @@ export default function App() {
 
   return (
     <>
-      <div className="falling-gems" aria-hidden="true">
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-      </div>
-
       <header className="simple-nav" ref={navRef}>
         <a className="simple-nav__brand" href="/">
           <span>Claim</span>
@@ -427,27 +424,74 @@ export default function App() {
         </div>
       </header>
 
-      <main className="hero">
-        <h1>
-          <span>{t.hero.line1}</span>
-          <span>{t.hero.line2}</span>
-          <span className="hero__line-gap">
-            {t.hero.line3 && <>{t.hero.line3} </>}<span className="hero__accent">{t.hero.earn}</span>
-          </span>
-          <span className="hero__accent">{t.hero.line4}</span>
-        </h1>
-        <p>
-          <span>{t.hero.copy1}</span>
-          <span>{t.hero.copy2}</span>
-        </p>
-        <div className="hero__actions">
-          <span className="hero__playstore" aria-disabled="true">
-            {t.hero.store}
-            <img src="/google-play.png" alt="" />
-          </span>
-          <a className="hero__learn" href="#how">
-            {t.hero.learn}
-          </a>
+      <main className="hero" id="top">
+        <div className="hero__bg" aria-hidden="true">
+          <span className="hero__orb hero__orb--one" />
+          <span className="hero__orb hero__orb--two" />
+          <span className="hero__grid" />
+        </div>
+
+        <div className="hero__inner">
+          <div className="hero__copy">
+            <span className="hero__tagline">{t.hero.tagline}</span>
+            <h1>
+              <span>{t.hero.line1}</span>
+              <span>{t.hero.line2}</span>
+              <span className="hero__line-gap">
+                {t.hero.line3 && <>{t.hero.line3} </>}<span className="hero__accent">{t.hero.earn}</span>
+              </span>
+              <span className="hero__accent">{t.hero.line4}</span>
+            </h1>
+            <p>
+              <span>{t.hero.copy1}</span>
+              <span>{t.hero.copy2}</span>
+            </p>
+            <div className="hero__actions">
+              <a className="hero__store" href="#install" aria-label={t.hero.store}>
+                <img src="/google-play.png" alt="" />
+                <span className="hero__store-text">
+                  <small>{t.hero.soon}</small>
+                  <strong>Google Play</strong>
+                </span>
+              </a>
+              <a className="hero__learn" href="#how">
+                {t.hero.learn}
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <div className="hero__visual" aria-hidden="true">
+            <span className="hero__glow" />
+            <span className="hero__ring hero__ring--outer" />
+            <span className="hero__ring hero__ring--inner" />
+
+            <img className="hero__phone" src="/screen1.png" alt="" fetchPriority="high" width={300} />
+
+            <div className="hero__chip hero__chip--reward">
+              <span className="hero__chip-badge">+120</span>
+              <div>
+                <strong>120 Gems</strong>
+                <small>{t.hero.chipEarned}</small>
+              </div>
+            </div>
+
+            <div className="hero__chip hero__chip--balance">
+              <img src="/gems.png" alt="" />
+              <div>
+                <strong>335 Gems</strong>
+                <small>{t.hero.chipReady}</small>
+              </div>
+            </div>
+
+            <div className="hero__gems">
+              <img src="/gems.png" className="hero__gem hero__gem--1" alt="" />
+              <img src="/gems.png" className="hero__gem hero__gem--2" alt="" />
+              <img src="/gems.png" className="hero__gem hero__gem--3" alt="" />
+              <img src="/gems.png" className="hero__gem hero__gem--4" alt="" />
+              <img src="/gems.png" className="hero__gem hero__gem--5" alt="" />
+            </div>
+          </div>
         </div>
       </main>
 
