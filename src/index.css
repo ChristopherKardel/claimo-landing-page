@@ -527,7 +527,7 @@ body {
   height: auto;
   border-radius: 40px;
   filter: drop-shadow(0 40px 70px rgba(0, 0, 0, 0.6));
-  animation: float-y 7s ease-in-out infinite;
+  /* Phone stays still — rings, glow, gems and chips keep moving around it. */
 }
 
 .hero__chip {
@@ -949,65 +949,183 @@ body {
   line-height: 1.7;
 }
 
-.reward-cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px 28px;
-  margin-top: 34px;
-}
-
-.reward-card {
-  display: flex;
+.rewards-eyebrow {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  min-height: 34px;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 243, 162, 0.32);
+  background: rgba(0, 243, 162, 0.08);
+  color: #00F3A2;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
+.rewards-eyebrow img { width: 16px; height: 15px; object-fit: contain; }
 
-.reward-card__logo {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: #ffffff;
-  flex: 0 0 auto;
+.rewards-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
 }
-
-.reward-card__logo img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.reward-card span {
-  color: #ffffff;
-  font-size: 1rem;
+.rewards-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #cdd4e6;
+  font-size: 0.86rem;
   font-weight: 700;
 }
+.rewards-tags span::before {
+  content: '';
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #00F3A2;
+  box-shadow: 0 0 10px #00F3A2;
+}
 
-.rewards-mockup-card {
+/* ─── Gift-card tiles ─────────────────────────────────────────────────────── */
+.giftcard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.giftcard {
   position: relative;
-  min-height: 500px;
+  isolation: isolate;
+  aspect-ratio: 1.58 / 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s;
+}
+/* diagonal plastic gloss */
+.giftcard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 26%, transparent 46%, transparent 100%);
+}
+/* moving sheen — sweeps across on hover */
+.giftcard::after {
+  content: '';
+  position: absolute;
+  top: -60%; left: -30%;
+  width: 60%; height: 220%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: rotate(18deg) translateX(-160px);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.giftcard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -22px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.giftcard:hover::after {
+  opacity: 0.9;
+  animation: giftcard-sheen 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes giftcard-sheen {
+  from { transform: rotate(18deg) translateX(-160px); }
+  to   { transform: rotate(18deg) translateX(360px); }
+}
+
+.giftcard__logo {
+  position: relative;
+  z-index: 3;
   display: grid;
   place-items: center;
-  padding: 40px 34px;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at 50% 24%, rgba(0, 243, 162, 0.16), transparent 54%),
-    linear-gradient(180deg, #1f2547 0%, #161b34 100%);
-  box-shadow: 0 30px 72px -26px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  overflow: hidden;
+  width: 46px; height: 46px;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+}
+.giftcard__logo img { width: 28px; height: 28px; object-fit: contain; }
+
+.giftcard__foot {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+}
+.giftcard__meta strong {
+  display: block;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.04rem;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+.giftcard__meta small {
+  display: block;
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.giftcard__redeem {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.giftcard__redeem img { width: 13px; height: 12px; object-fit: contain; }
+
+/* faint brand watermark — desaturated + lifted so each logo keeps its detail
+   (pure-white tinting flattened them into bare shapes; this reads as the real logo). */
+.giftcard__mark {
+  position: absolute;
+  right: -14px; bottom: -18px;
+  z-index: 0;
+  width: 120px; height: 120px;
+  object-fit: contain;
+  opacity: 0.10;
+  filter: grayscale(1) brightness(3);
+  pointer-events: none;
 }
 
-.rewards-screenshot {
-  position: relative;
-  z-index: 1;
-  width: min(290px, 74%);
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 32px 60px rgba(0, 0, 0, 0.5));
-}
+.giftcard--paypal      { background: linear-gradient(135deg, #009cde, #012169); }
+.giftcard--amazon      { background: linear-gradient(135deg, #ff9900, #1a1f29); }
+.giftcard--steam       { background: linear-gradient(135deg, #3a6a8f, #16202c); }
+.giftcard--gplay       { background: linear-gradient(135deg, #00d6a4, #3d7bff); }
+.giftcard--nintendo    { background: linear-gradient(135deg, #e60012, #7a0009); }
+.giftcard--playstation { background: linear-gradient(135deg, #0a8bff, #002a87); }
+
+/* Per-card watermark tweaks — the default grayscale filter doesn't carry on these:
+   Nintendo/PlayStation get a plain white tint (their mid-tone cards swallow the
+   grayed-out default) at the same subtle level as the rest; Google Play stays its
+   own colour because a light mark whitens away on its bright card. */
+.giftcard--gplay .giftcard__mark       { filter: none; opacity: 0.22; }
+.giftcard--playstation .giftcard__mark { filter: brightness(0) invert(1); opacity: 0.12; }
+.giftcard--nintendo .giftcard__mark    { filter: brightness(0) invert(1); opacity: 0.12; }
+.giftcard--xbox        { background: linear-gradient(135deg, #1aa11a, #0a4a0a); }
+.giftcard--apple       { background: linear-gradient(135deg, #5a5a5e, #1a1a1c); }
 
 .rewards-phone {
   position: relative;
@@ -1091,8 +1209,7 @@ body {
 }
 
 /* Shared ambience for the games / rewards showcase cards. */
-.games-mockup-card::before,
-.rewards-mockup-card::before {
+.games-mockup-card::before {
   content: '';
   position: absolute;
   width: 380px;
@@ -1102,8 +1219,7 @@ body {
   pointer-events: none;
 }
 
-.games-mockup-card::after,
-.rewards-mockup-card::after {
+.games-mockup-card::after {
   content: '';
   position: absolute;
   top: 30px;
@@ -1117,15 +1233,6 @@ body {
   pointer-events: none;
   --rot: -14deg;
   animation: gem-float 7s ease-in-out infinite;
-}
-
-.rewards-mockup-card::after {
-  top: auto;
-  right: auto;
-  bottom: 30px;
-  left: 32px;
-  --rot: 16deg;
-  animation-delay: -2.5s;
 }
 
 .games-copy h2 {
@@ -2099,13 +2206,16 @@ body {
     font-size: 2.15rem;
   }
 
-  .reward-cards {
-    grid-template-columns: 1fr;
+  .giftcard-grid {
+    gap: 14px;
   }
 
-  .rewards-mockup-card {
-    min-height: 440px;
+  .giftcard {
+    padding: 14px;
+    border-radius: 16px;
   }
+
+  .giftcard__meta strong { font-size: 0.96rem; }
 
   .hero p,
   .app-preview__copy p:not(.mini-badge),
