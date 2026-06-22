@@ -134,16 +134,14 @@ body {
 
 .simple-nav__brand {
   display: inline-flex;
-  align-items: baseline;
-  font-family: 'Lexend', var(--font);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1;
+  align-items: center;
 }
 
-.simple-nav__brand-accent {
-  color: #00F3A2;
+.simple-nav__logo {
+  display: block;
+  width: auto;
+  height: 38px;
+  object-fit: contain;
 }
 
 .simple-nav__links {

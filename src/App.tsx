@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
+import logo from '../assets/logo.png';
 
 const copy = {
   de: {
@@ -342,8 +343,7 @@ export default function App() {
 
       <header className="simple-nav" ref={navRef}>
         <a className="simple-nav__brand" href="/">
-          <span>Claim</span>
-          <span className="simple-nav__brand-accent">o</span>
+          <img className="simple-nav__logo" src={logo} alt="Claimo" />
         </a>
 
         <button
@@ -583,8 +583,7 @@ export default function App() {
         <div className="shell site-footer__inner">
           <div className="site-footer__brand">
             <a className="simple-nav__brand" href="/">
-              <span>Claim</span>
-              <span className="simple-nav__brand-accent">o</span>
+              <img className="simple-nav__logo" src={logo} alt="Claimo" />
             </a>
             <p>{t.footer.slogan}</p>
             <a className="site-footer__email" href="mailto:contact@claimo-app.com">
