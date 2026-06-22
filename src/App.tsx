@@ -58,7 +58,7 @@ const copy = {
     },
     games: {
       title: 'Viele Spiele. Gute Aufgaben. Faire Gems.',
-      text: 'Claimo wird eine große Auswahl an Spielen und Angeboten bündeln, damit du immer neue Aufgaben findest. Die Aufgaben sollen klar verständlich sein und fair mit Gems belohnt werden.',
+      text: 'Claimo bündelt eine große Auswahl an Spielen und Angeboten, damit du immer neue Aufgaben findest. Die Aufgaben sind klar verständlich und werden fair mit Gems belohnt.',
       points: [
         {
           title: 'Große Spieleauswahl',
@@ -75,8 +75,11 @@ const copy = {
       ],
     },
     rewards: {
+      eyebrow: 'Belohnungen',
       title: 'Deine Belohnungen warten auf dich',
-      text: 'Wähle deine Lieblingsbelohnung und tausche deine verdienten Gems einfach ein.',
+      text: 'Wähle deine Lieblingsmarke und tausche deine verdienten Gems gegen echte Gift Cards und Guthaben ein.',
+      redeem: 'einlösen',
+      tags: ['Sofort einlösbar', 'Schnelle Auszahlung', 'PayPal & Gutscheine'],
     },
     app: {
       label: 'Screenshots',
@@ -96,19 +99,19 @@ const copy = {
         },
         {
           q: 'Ist Claimo kostenlos?',
-          a: 'Ja, Claimo ist kostenlos geplant. Es gibt keine garantierten Einnahmen und keine unrealistischen Versprechen.',
+          a: 'Ja, Claimo ist kostenlos. Es gibt keine garantierten Einnahmen und keine unrealistischen Versprechen.',
         },
         {
           q: 'Wie kann ich Belohnungen verdienen?',
           a: 'Du erledigst Aktivitäten wie Spiele testen, Angebote abschließen oder Umfragen beantworten und sammelst dafür Gems.',
         },
         {
-          q: 'Welche Belohnungen sind geplant?',
-          a: 'Geplant sind unter anderem PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox und Apple Gift Cards.',
+          q: 'Welche Belohnungen gibt es?',
+          a: 'Verfügbar sind unter anderem PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox und Apple Gift Cards.',
         },
         {
-          q: 'Wann erscheint Claimo?',
-          a: 'Claimo befindet sich aktuell in Entwicklung. Der Google-Play-Launch ist geplant, aber noch nicht veröffentlicht.',
+          q: 'Wo bekomme ich Claimo?',
+          a: 'Claimo ist kostenlos im Google Play Store verfügbar. Lade die App herunter und leg direkt los.',
         },
         {
           q: 'Wie können Partner Kontakt aufnehmen?',
@@ -192,7 +195,7 @@ const copy = {
     },
     games: {
       title: 'Many games. Great tasks. Fair Gems.',
-      text: 'Claimo will bring together a large selection of games and offers so you can always find new tasks. Tasks should be easy to understand and fairly rewarded with Gems.',
+      text: 'Claimo brings together a large selection of games and offers so you can always find new tasks. Tasks are easy to understand and fairly rewarded with Gems.',
       points: [
         {
           title: 'Large game selection',
@@ -209,8 +212,11 @@ const copy = {
       ],
     },
     rewards: {
+      eyebrow: 'Rewards',
       title: 'Your rewards are waiting',
-      text: 'Choose your favorite reward and easily redeem your earned Gems.',
+      text: 'Choose your favorite brand and exchange your earned Gems for real gift cards and store credit.',
+      redeem: 'redeem',
+      tags: ['Instantly redeemable', 'Fast payouts', 'PayPal & gift cards'],
     },
     app: {
       label: 'Screenshots',
@@ -230,19 +236,19 @@ const copy = {
         },
         {
           q: 'Is Claimo free?',
-          a: 'Yes, Claimo is planned to be free. There are no guaranteed earnings and no unrealistic promises.',
+          a: 'Yes, Claimo is free. There are no guaranteed earnings and no unrealistic promises.',
         },
         {
           q: 'How can I earn rewards?',
           a: 'You complete activities such as testing games, finishing offers or answering surveys and collect Gems for them.',
         },
         {
-          q: 'Which rewards are planned?',
-          a: 'Planned rewards include PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox and Apple Gift Cards.',
+          q: 'Which rewards are available?',
+          a: 'Available rewards include PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox and Apple Gift Cards.',
         },
         {
-          q: 'When will Claimo launch?',
-          a: 'Claimo is currently in development. A Google Play launch is planned, but it has not been released yet.',
+          q: 'Where do I get Claimo?',
+          a: 'Claimo is free to download on the Google Play Store. Get the app and start right away.',
         },
         {
           q: 'How can partners get in touch?',
@@ -274,8 +280,16 @@ const copy = {
 
 type Language = keyof typeof copy;
 
-const rewardLabels = ['PayPal', 'Amazon', 'Steam', 'Google Play', 'Nintendo eShop', 'PlayStation Store', 'Xbox Gift Card', 'Apple Gift Card'];
-const rewardLogos = ['/paypal.png', '/amazon.png', '/steam_logo.png', '/google-play-logo.png', '/nintendo.png', '/playstation.png', '/xbox.png', '/apple.png'];
+const rewards: Array<{ name: string; logo: string; brand: string; sub: Record<Language, string> }> = [
+  { name: 'PayPal', logo: '/paypal.png', brand: 'paypal', sub: { de: 'Echtes Geld', en: 'Real cash' } },
+  { name: 'Amazon', logo: '/amazon.png', brand: 'amazon', sub: { de: 'Gift Card', en: 'Gift card' } },
+  { name: 'Steam', logo: '/steam_logo.png', brand: 'steam', sub: { de: 'Guthaben', en: 'Wallet' } },
+  { name: 'Google Play', logo: '/google-play-logo.png', brand: 'gplay', sub: { de: 'Guthaben', en: 'Credit' } },
+  { name: 'Nintendo eShop', logo: '/nintendo.png', brand: 'nintendo', sub: { de: 'Gift Card', en: 'Gift card' } },
+  { name: 'PlayStation', logo: '/playstation.png', brand: 'playstation', sub: { de: 'Store-Guthaben', en: 'Store credit' } },
+  { name: 'Xbox', logo: '/xbox.png', brand: 'xbox', sub: { de: 'Gift Card', en: 'Gift card' } },
+  { name: 'Apple', logo: '/apple.png', brand: 'apple', sub: { de: 'Gift Card', en: 'Gift card' } },
+];
 const languages: Array<{ code: Language; label: string }> = [
   { code: 'de', label: 'Deutsch' },
   { code: 'en', label: 'English' },
@@ -516,21 +530,29 @@ export default function App() {
 
       <section id="rewards" className="rewards-section shell" aria-labelledby="rewards-title">
         <div className="rewards-copy">
+          <span className="rewards-eyebrow">{t.rewards.eyebrow}</span>
           <h2 id="rewards-title">{t.rewards.title}</h2>
           <p>{t.rewards.text}</p>
 
-          <div className="reward-cards">
-            {rewardLabels.map((label, index) => (
-              <article className="reward-card" key={label}>
-                <span className="reward-card__logo"><img src={rewardLogos[index]} alt="" /></span>
-                <span>{label}</span>
-              </article>
-            ))}
+          <div className="rewards-tags">
+            {t.rewards.tags.map((tag) => <span key={tag}>{tag}</span>)}
           </div>
         </div>
 
-        <div className="rewards-mockup-card" aria-hidden="true">
-          <img className="rewards-screenshot" src="/screen2.png" alt="" />
+        <div className="giftcard-grid">
+          {rewards.map((reward) => (
+            <article className={`giftcard giftcard--${reward.brand}`} key={reward.name}>
+              <span className="giftcard__logo"><img src={reward.logo} alt="" /></span>
+              <div className="giftcard__foot">
+                <span className="giftcard__meta">
+                  <strong>{reward.name}</strong>
+                  <small>{reward.sub[language]}</small>
+                </span>
+                <span className="giftcard__redeem"><img src="/gems.png" alt="" />{t.rewards.redeem}</span>
+              </div>
+              <img className="giftcard__mark" src={reward.logo} alt="" aria-hidden="true" />
+            </article>
+          ))}
         </div>
       </section>
 
