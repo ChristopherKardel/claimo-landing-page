@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-3 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-1, .cls-4 {
+        opacity: .2;
+      }
+
+      .cls-5 {
+        isolation: isolate;
+      }
+
+      .cls-6 {
+        fill: #10b8a9;
+      }
+
+      .cls-2 {
+        opacity: .1;
+      }
+
+      .cls-4, .cls-7 {
+        fill: #fff;
+        mix-blend-mode: screen;
+      }
+
+      .cls-3 {
+        opacity: .3;
+      }
+
+      .cls-7 {
+        opacity: .4;
+      }
+    </style>
+  </defs>
+  <g class="cls-5">
+    <g id="Layer_1" data-name="Layer 1">
+      <path class="cls-6" d="M30.13,109.61L12.61,55.69c-.78-2.39,.07-5.02,2.11-6.5L60.59,15.87c2.04-1.48,4.79-1.48,6.83,0l45.87,33.32c2.04,1.48,2.89,4.1,2.11,6.5l-17.52,53.92c-.78,2.39-3.01,4.01-5.53,4.01H35.65c-2.52,0-4.75-1.62-5.53-4.01Z"/>
+      <polygon class="cls-1" points="93.52 109.43 34.48 109.43 48.14 90.62 79.86 90.62 93.52 109.43"/>
+      <polygon class="cls-3" points="48.14 90.62 34.48 109.43 16.24 53.28 38.34 60.46 48.14 90.62"/>
+      <polygon class="cls-2" points="64 18.57 64 41.82 38.34 60.46 16.24 53.28 64 18.57"/>
+      <polygon class="cls-6" points="111.76 53.28 89.66 60.46 64 41.82 64 18.57 111.76 53.28"/>
+      <polygon class="cls-4" points="111.76 53.28 93.52 109.43 79.86 90.62 89.66 60.46 111.76 53.28"/>
+      <polygon class="cls-7" points="89.66 60.46 79.86 90.62 48.14 90.62 38.34 60.46 64 41.82 89.66 60.46"/>
+    </g>
+  </g>
+</svg>

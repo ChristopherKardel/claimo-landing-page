@@ -12,10 +12,11 @@ import steamImg from '../../assets/steam_logo.png';
 import playIconImg from '../../assets/play-icon.png';
 import shopIconImg from '../../assets/shop-icon.png';
 import tasksIconImg from '../../assets/tasks-icon.png';
+import gemImg from '../../assets/gem.svg';
 
 export const assets = {
-  gem: assetUrl('gems.png'),
-  gemOutlined: assetUrl('gems-outlined.png'),
+  gem: gemImg,
+  gemOutlined: gemImg,
   screens: {
     games: assetUrl('screen1.png'),
     rewards: assetUrl('screen2.png'),

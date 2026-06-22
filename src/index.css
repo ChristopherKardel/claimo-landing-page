@@ -108,7 +108,7 @@ body {
 
 .falling-gems img {
   position: absolute;
-  width: clamp(36px, min(2.8vw, 5vh), 108px);
+  width: clamp(44px, min(3.4vw, 6vh), 132px);
   opacity: 1;
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.24));
 }
@@ -960,8 +960,8 @@ body {
 }
 
 .giftcard__redeem img {
-  width: 13px;
-  height: 12px;
+  width: 15px;
+  height: 14px;
   object-fit: contain;
 }
 
@@ -1089,9 +1089,9 @@ body {
   top: 30px;
   right: 32px;
   z-index: 2;
-  width: 46px;
-  height: 46px;
-  background: url('/gems.png') center / contain no-repeat;
+  width: 54px;
+  height: 54px;
+  background: url('../assets/gem.svg') center / contain no-repeat;
   filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
   opacity: 0.92;
   pointer-events: none;
@@ -1980,7 +1980,7 @@ body {
 
 @media (max-width: 640px) {
   .falling-gems img {
-    width: 36px;
+    width: 44px;
   }
 
   .hero {
@@ -2457,7 +2457,7 @@ p  { margin: 0; color: var(--text-soft); }
     font-size: 0.56rem;
   }
 
-  .giftcard__redeem img { width: 10px; height: 10px; }
+  .giftcard__redeem img { width: 12px; height: 12px; }
 
   .giftcard__mark {
     right: -8px;

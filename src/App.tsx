@@ -1,4 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
+import gem from '../assets/gem.svg';
 import logo from '../assets/logo.png';
 
 const copy = {
@@ -345,14 +346,14 @@ export default function App() {
   return (
     <>
       <div className="falling-gems" aria-hidden="true">
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
-        <img src="/gems.png" alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
+        <img src={gem} alt="" />
       </div>
 
       <header className="simple-nav" ref={navRef}>
@@ -548,7 +549,7 @@ export default function App() {
                   <strong>{reward.name}</strong>
                   <small>{reward.sub[language]}</small>
                 </span>
-                <span className="giftcard__redeem"><img src="/gems.png" alt="" />{t.rewards.redeem}</span>
+                <span className="giftcard__redeem"><img src={gem} alt="" />{t.rewards.redeem}</span>
               </div>
               <img className="giftcard__mark" src={reward.logo} alt="" aria-hidden="true" />
             </article>
