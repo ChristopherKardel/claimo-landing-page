@@ -142,7 +142,7 @@ body {
 .simple-nav__logo {
   display: block;
   width: auto;
-  height: 38px;
+  height: 37px;
   object-fit: contain;
 }
 
@@ -1790,7 +1790,7 @@ body {
   }
 
   .simple-nav__logo {
-    height: clamp(46px, min(2.4vw, 4.4vh), 96px);
+    height: clamp(45px, min(2.3vw, 4.2vh), 93px);
   }
 
   .simple-nav__links {
