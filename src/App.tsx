@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import gem from '../assets/gem.svg';
-import logo from '../assets/logo.png';
+import logo from '../assets/website-logo.png';
 
 const copy = {
   de: {
