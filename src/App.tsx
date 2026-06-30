@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import gem from '../assets/gem.svg';
-import logo from '../assets/website-logo.png';
+import logo from '../assets/logo.png';
 
 const copy = {
   de: {
@@ -443,27 +443,68 @@ export default function App() {
       </header>
 
       <main className="hero">
-        <h1>
-          <span>{t.hero.line1}</span>
-          <span>{t.hero.line2}</span>
-          <span className="hero__line-gap">
-            {t.hero.line3 && <>{t.hero.line3} </>}<span className="hero__accent">{t.hero.earn}</span>
-          </span>
-          <span className="hero__accent">{t.hero.line4}</span>
-        </h1>
-        <p>
-          <span>{t.hero.copy1}</span>
-          <span>{t.hero.copy2}</span>
-        </p>
-        <div className="hero__actions">
-          <span className="hero__playstore" aria-disabled="true">
-            {t.hero.store}
-            <img src="/google-play.png" alt="" />
-          </span>
-          <a className="hero__learn" href="#how">
-            {t.hero.learn}
-          </a>
-        </div>
+        <section className="hero__shell" aria-label="Claimo Rewards">
+          <div className="hero__copy">
+            <h1>
+              <span>{t.hero.line1}</span>
+              <span>{t.hero.line2}</span>
+              <span>
+                {t.hero.line3 && <>{t.hero.line3} </>}<span className="hero__accent">{t.hero.earn}</span>
+              </span>
+              <span className="hero__accent">{t.hero.line4}</span>
+            </h1>
+            <p>
+              <span>{t.hero.copy1}</span>
+              <span>{t.hero.copy2}</span>
+            </p>
+            <div className="hero__actions">
+              <span className="hero__playstore" aria-disabled="true">
+                <img src="/google-play.png" alt="" />
+                {t.hero.store}
+              </span>
+              <a className="hero__learn" href="#how">
+                {t.hero.learn}
+              </a>
+            </div>
+            <div className="hero__stats" aria-label={language === 'de' ? 'Claimo Vorteile' : 'Claimo benefits'}>
+              <span><b>10+</b>{language === 'de' ? 'Einloesemoeglichkeiten' : 'Redemption options'}</span>
+              <span><b>3</b>{language === 'de' ? 'Wege zu Gems' : 'Ways to earn'}</span>
+              <span><b>100%</b>{language === 'de' ? 'kostenlos' : 'free'}</span>
+            </div>
+          </div>
+
+          <div className="hero__visual">
+            <div className="hero__glow hero__glow--one" />
+            <div className="hero__glow hero__glow--two" />
+            <figure className="hero__phone">
+              <img src="/screen1.png" alt="" aria-hidden="true" />
+            </figure>
+            <a className="giftcard giftcard--paypal hero__reward-card hero__reward-card--paypal" href="#rewards">
+              <span className="giftcard__logo"><img src="/paypal.png" alt="" aria-hidden="true" /></span>
+              <span className="giftcard__foot">
+                <span className="giftcard__meta">
+                  <strong>PayPal</strong>
+                  <small>Cash</small>
+                </span>
+              </span>
+              <img className="giftcard__mark" src="/paypal.png" alt="" aria-hidden="true" />
+            </a>
+            <a className="giftcard giftcard--amazon hero__reward-card hero__reward-card--amazon" href="#rewards">
+              <span className="giftcard__logo"><img src="/amazon.png" alt="" aria-hidden="true" /></span>
+              <span className="giftcard__foot">
+                <span className="giftcard__meta">
+                  <strong>Amazon</strong>
+                  <small>Gift Card</small>
+                </span>
+              </span>
+              <img className="giftcard__mark" src="/amazon.png" alt="" aria-hidden="true" />
+            </a>
+            <div className="hero__gem-burst">
+              <img src={gem} alt="" />
+              <b>+750</b>
+            </div>
+          </div>
+        </section>
       </main>
 
       <section id="learn-more" className="how-section shell" aria-labelledby="how">
