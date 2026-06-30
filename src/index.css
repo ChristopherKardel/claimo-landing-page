@@ -607,8 +607,8 @@ body {
 }
 
 .hero__gem-burst {
-  left: 42px;
-  bottom: 152px;
+  left: 64px;
+  bottom: 205px;
   display: inline-flex;
   align-items: center;
   gap: 9px;
