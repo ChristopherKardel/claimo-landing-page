@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Claimo · Hero & Giftcards – Vorher / Nachher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700;800&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #141729;
+    --bg-soft: #090b16;
+    --panel: #1C203F;
+    --surface: rgba(255,255,255,0.045);
+    --border: rgba(255,255,255,0.09);
+    --border-strong: rgba(255,255,255,0.16);
+    --teal: #00F3A2;
+    --green: #62e573;
+    --blue: #5ba7ff;
+    --text: #ffffff;
+    --text-soft: #aab2c8;
+    --text-dim: #757d99;
+    --font: 'Raleway', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    --display: 'Lexend', var(--font);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: radial-gradient(1200px 700px at 50% -10%, #1d2247 0%, var(--bg) 55%);
+    color: var(--text);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 0 100px;
+  }
+  .wrap { width: min(1220px, calc(100% - 48px)); margin-inline: auto; }
+  a { color: inherit; }
+
+  .doc-head { text-align: center; margin-bottom: 8px; }
+  .doc-head h1 { font-family: var(--display); font-size: 1.6rem; letter-spacing: -0.01em; }
+  .doc-head p { color: var(--text-dim); font-size: 0.92rem; margin-top: 8px; }
+
+  .legend { display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:18px 0 4px; font-size:0.82rem; color:var(--text-soft); }
+  .legend b { color: var(--teal); }
+
+  .label {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin: 64px 0 20px;
+    font-size: 0.78rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .label .tag { padding: 5px 12px; border-radius: 999px; font-size: 0.72rem; }
+  .label.before { color: #ff8f8f; }
+  .label.before .tag { background: rgba(255,90,90,0.12); border:1px solid rgba(255,90,90,0.4); color:#ff8f8f; }
+  .label.after { color: var(--teal); }
+  .label.after .tag { background: rgba(0,243,162,0.12); border:1px solid rgba(0,243,162,0.4); color:var(--teal); }
+  .label .note { font-weight:600; letter-spacing:0; text-transform:none; font-size:0.82rem; color:var(--text-dim); }
+
+  /* stage that mimics the live dark page */
+  .stage {
+    position: relative;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background:
+      radial-gradient(620px 340px at 82% 10%, rgba(0,235,196,0.10), transparent 60%),
+      radial-gradient(560px 360px at 8% 90%, rgba(91,167,255,0.08), transparent 62%),
+      linear-gradient(180deg, #141729, #0f1222);
+    overflow: hidden;
+  }
+  .stage-pad { padding: 40px clamp(20px,4vw,56px); }
+
+  /* ───────── BEFORE hero (current live: centered text only) ───────── */
+  .b-hero { text-align:center; display:grid; justify-items:center; gap:22px; padding: 48px 16px; }
+  .b-hero h2 {
+    font-family: var(--font); font-weight: 700; line-height: 1.08;
+    font-size: clamp(2rem, 4vw, 3.4rem); color:#fff; max-width: 16ch;
+  }
+  .b-hero h2 .acc { color: var(--teal); }
+  .b-hero p { color:#fff; max-width: 52ch; font-size: 1.02rem; line-height:1.6; opacity:.92; }
+  .b-hero .store { display:inline-flex; align-items:center; gap:10px; font-weight:700; font-size:0.92rem; }
+  .b-hero .store img { width:18px; height:18px; }
+  .b-hero .learn { text-decoration: underline; text-underline-offset:5px; font-weight:700; }
+  .b-flaw { margin-top: 14px; font-size:0.8rem; color:#ff9a9a; }
+
+  /* ───────── AFTER hero · Variant A — split with phone ───────── */
+  .heroA { position:relative; display:grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px,4vw,64px); align-items:center; min-height: 520px; }
+  .heroA .copy { max-width: 600px; }
+  .eyebrow {
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 13px; border-radius:999px; margin-bottom:20px;
+    background: rgba(0,243,162,0.10); border:1px solid rgba(0,243,162,0.32);
+    color: var(--teal); font-size:0.74rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .eyebrow .dot { width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal); }
+  .heroA h2 {
+    font-family: var(--display); font-weight: 800; line-height: 1.05; letter-spacing:-0.01em;
+    font-size: clamp(2.3rem, 3.6vw, 4rem); color:#fff;
+  }
+  .heroA h2 .acc { background: linear-gradient(100deg, var(--teal), var(--green)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .heroA .lead { margin-top: 20px; max-width: 46ch; color: var(--text-soft); font-size:1.08rem; line-height:1.7; }
+  .cta-row { display:flex; flex-wrap:wrap; gap:13px; margin-top:30px; }
+  .btn { display:inline-flex; align-items:center; gap:10px; height:52px; padding:0 22px; border-radius:14px; font-weight:700; font-size:0.98rem; cursor:pointer; text-decoration:none; transition: transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: linear-gradient(100deg, var(--teal), var(--green)); color:#04110d; box-shadow: 0 14px 34px -12px rgba(0,235,196,0.6); }
+  .btn-primary small { display:block; font-size:0.62rem; font-weight:800; opacity:.7; line-height:1; margin-bottom:2px; text-transform:uppercase; letter-spacing:.05em; }
+  .btn-primary strong { display:block; font-size:0.96rem; line-height:1; }
+  .btn-primary img { width:22px; height:22px; }
+  .btn-ghost { background: rgba(255,255,255,0.04); border:1px solid var(--border-strong); color:#fff; }
+  .trust { display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:26px; font-size:0.86rem; color:var(--text-dim); }
+  .trust li { list-style:none; display:inline-flex; align-items:center; gap:8px; }
+  .trust .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal); }
+
+  .visual { position:relative; display:flex; align-items:center; justify-content:center; min-height: 460px; }
+  .ring { position:absolute; border-radius:50%; border:1px solid; }
+  .ring.outer { width:380px; height:380px; border-color: rgba(0,235,196,0.16); }
+  .ring.inner { width:290px; height:290px; border-color: rgba(91,167,255,0.14); }
+  .glow { position:absolute; width:280px; height:280px; border-radius:50%; background: radial-gradient(circle, rgba(0,235,196,0.28), transparent 66%); filter: blur(36px); }
+  .phone { position:relative; z-index:2; width: 248px; border-radius:34px; box-shadow: 0 36px 60px rgba(0,0,0,0.6); }
+  .float { position:absolute; z-index:3; display:flex; align-items:center; gap:11px; padding:12px 15px; border:1px solid var(--border-strong); border-radius:15px; background: rgba(13,16,30,0.82); backdrop-filter: blur(14px); box-shadow: 0 18px 40px -16px rgba(0,0,0,0.8); }
+  .float strong { display:block; font-size:0.88rem; }
+  .float small { display:block; font-size:0.7rem; color:var(--text-dim); }
+  .float.reward { top: 16%; left: -4%; }
+  .float.reward .badge { display:grid; place-items:center; min-width:42px; height:30px; padding:0 8px; border-radius:9px; background:linear-gradient(100deg,var(--teal),var(--green)); color:#04110d; font-weight:800; font-size:0.85rem; }
+  .float.balance { bottom: 14%; right: -6%; }
+  .float.balance img { width:22px; height:20px; }
+
+  /* ───────── AFTER hero · Variant B — centered + device strip ───────── */
+  .heroB { position:relative; text-align:center; display:grid; justify-items:center; gap:0; padding-top: 8px; }
+  .heroB h2 { font-family: var(--display); font-weight:800; line-height:1.06; letter-spacing:-0.01em; font-size: clamp(2.3rem, 4.4vw, 4.2rem); max-width: 18ch; }
+  .heroB h2 .acc { background: linear-gradient(100deg, var(--teal), var(--green)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .heroB .lead { margin-top: 20px; max-width: 56ch; color: var(--text-soft); font-size:1.1rem; line-height:1.65; }
+  .heroB .cta-row { justify-content:center; }
+  .heroB .device-strip { display:flex; align-items:flex-end; justify-content:center; gap: 18px; margin-top: 44px; }
+  .heroB .device-strip img { border-radius: 26px; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7); border:1px solid rgba(255,255,255,0.06); }
+  .heroB .device-strip .mid { width: 220px; z-index:2; }
+  .heroB .device-strip .side { width: 168px; opacity: .82; z-index:1; }
+
+  /* ───────── Giftcards ───────── */
+  .gc-wrap { position:relative; }
+  .gc-grid { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:18px; }
+  .gc-grid.capped { max-width: 520px; }            /* AFTER: fixed comfortable size */
+  .giftcard { position:relative; aspect-ratio: 1.58/1; display:flex; flex-direction:column; justify-content:space-between; padding:16px; border-radius:18px; overflow:hidden; box-shadow: 0 18px 40px -20px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.22); }
+  .giftcard .logo { width:46px; height:46px; border-radius:13px; background:#fff; display:grid; place-items:center; box-shadow:0 8px 18px rgba(0,0,0,0.28); font-weight:800; color:#111; font-size:0.8rem; }
+  .giftcard .foot { display:flex; align-items:flex-end; justify-content:space-between; gap:10px; }
+  .giftcard .foot strong { display:block; font-size:1rem; }
+  .giftcard .foot small { display:block; font-size:0.7rem; opacity:.82; }
+  .giftcard .redeem { display:inline-flex; align-items:center; gap:5px; padding:5px 9px; border-radius:999px; background:rgba(0,0,0,0.28); font-size:0.68rem; font-weight:700; }
+  .gc--paypal { background: linear-gradient(135deg,#009cde,#012169); }
+  .gc--amazon { background: linear-gradient(135deg,#ff9900,#1a1f29); }
+  .gc--steam  { background: linear-gradient(135deg,#3a6a8f,#16202c); }
+  .gc--gplay  { background: linear-gradient(135deg,#00d6a4,#3d7bff); }
+
+  .measure { position:absolute; top:-12px; right:0; font-size:0.72rem; color:var(--text-dim); }
+  .measure.bad { color:#ff9a9a; }
+  .measure.good { color:var(--teal); }
+
+  .screen-note { display:inline-block; margin-bottom:16px; padding:6px 12px; border-radius:8px; font-size:0.78rem; font-weight:700; background:rgba(255,255,255,0.05); border:1px solid var(--border); color:var(--text-soft); }
+
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap:24px; align-items:start; }
+  @media (max-width: 900px) {
+    .heroA { grid-template-columns: 1fr; text-align:center; }
+    .heroA .copy { margin-inline:auto; } .heroA .lead{margin-inline:auto;} .cta-row,.trust{justify-content:center;}
+    .two { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="doc-head">
+      <h1>Hero &amp; Giftcards — Vorher / Nachher</h1>
+      <p>Mockup zur Abstimmung, bevor ich es im echten Code umsetze. Bilder = echte App-Screens aus <code>/public</code>.</p>
+    </div>
+    <div class="legend">
+      <span><b>Ziel 1:</b> neues, hochwertigeres Hero</span>
+      <span><b>Ziel 2:</b> Giftcards auf allen PCs gleich groß</span>
+    </div>
+
+    <!-- ════════════════ HERO ════════════════ -->
+
+    <div class="label before"><span class="tag">Vorher</span> Aktuelles Hero <span class="note">— nur zentrierter Text, kein Visual, „Learn More“ als nackter Link</span></div>
+    <div class="stage stage-pad">
+      <div class="b-hero">
+        <h2>Spiele kostenlose Spiele. Erledige Aufgaben.<br><span class="acc">Verdiene Belohnungen.</span></h2>
+        <p>Spiele kostenlos, sammle Punkte und löse sie gegen Geld, Gutscheine und weitere Belohnungen ein.</p>
+        <div style="display:flex; gap:26px; align-items:center; flex-wrap:wrap; justify-content:center;">
+          <span class="store">Coming Soon on Google Play <img src="../public/google-play.png" alt=""></span>
+          <span class="learn">Learn More</span>
+        </div>
+        <div class="b-flaw">⚠︎ Wirkt leer · kein Produkt-Visual · Mischung DE/EN · CTA ist kein echter Button</div>
+      </div>
+    </div>
+
+    <div class="label after"><span class="tag">Nachher · A</span> Split-Hero mit Phone &amp; Live-Cards <span class="note">— empfohlen</span></div>
+    <div class="stage stage-pad">
+      <div class="heroA">
+        <div class="copy">
+          <span class="eyebrow"><span class="dot"></span> Rewards-App · In Entwicklung</span>
+          <h2>Spiele. Sammle Gems.<br><span class="acc">Echte Belohnungen.</span></h2>
+          <p class="lead">Claimo verwandelt Spiele, Angebote und Umfragen in Gems — und du löst sie gegen PayPal-Geld, Gutscheine und mehr ein. Kostenlos, für Android.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#"><img src="../public/google-play.png" alt=""><span><small>Coming soon</small><strong>Google Play</strong></span></a>
+            <a class="btn btn-ghost" href="#">So funktioniert's</a>
+          </div>
+          <ul class="trust">
+            <li><span class="dot"></span> Kostenlos</li>
+            <li><span class="dot"></span> Kein Kauf nötig</li>
+            <li><span class="dot"></span> Sichere Anmeldung</li>
+          </ul>
+        </div>
+        <div class="visual">
+          <span class="ring outer"></span>
+          <span class="ring inner"></span>
+          <span class="glow"></span>
+          <img class="phone" src="../public/screen1.png" alt="Claimo App">
+          <div class="float reward"><span class="badge">+120</span><div><strong>Belohnung erhalten</strong><small>Tagesaufgabe fertig</small></div></div>
+          <div class="float balance"><img src="../public/gems.png" alt=""><div><strong>335 Gems</strong><small>Bereit zum Einlösen</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label after"><span class="tag">Nachher · B</span> Zentriert mit Geräte-Reihe <span class="note">— bleibt mittig wie jetzt, aber mit Produkt-Visual</span></div>
+    <div class="stage stage-pad">
+      <div class="heroB">
+        <span class="eyebrow"><span class="dot"></span> Rewards-App · In Entwicklung</span>
+        <h2>Spiele. Sammle Gems.<br><span class="acc">Verdiene echte Belohnungen.</span></h2>
+        <p class="lead">Spiele kostenlos, erledige Aufgaben und tausche deine Gems gegen Geld, Gutscheine und mehr.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#"><img src="../public/google-play.png" alt=""><span><small>Coming soon</small><strong>Google Play</strong></span></a>
+          <a class="btn btn-ghost" href="#">So funktioniert's</a>
+        </div>
+        <div class="device-strip">
+          <img class="side" src="../public/screen2.png" alt="">
+          <img class="mid" src="../public/screen1.png" alt="">
+          <img class="side" src="../public/screen3.png" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════ GIFTCARDS ════════════════ -->
+
+    <div class="label before"><span class="tag">Vorher</span> Giftcards skalieren mit dem Monitor</div>
+    <div class="two">
+      <div class="stage stage-pad">
+        <span class="screen-note">Laptop / 1080p — sieht ok aus</span>
+        <div class="gc-wrap">
+          <span class="measure">Karte ≈ 250 px</span>
+          <div class="gc-grid">
+            <div class="giftcard gc--paypal"><div class="logo">Pay</div><div class="foot"><div><strong>PayPal</strong><small>Echtes Geld</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--amazon"><div class="logo">am</div><div class="foot"><div><strong>Amazon</strong><small>Gift Card</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--steam"><div class="logo">St</div><div class="foot"><div><strong>Steam</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--gplay"><div class="logo">▶</div><div class="foot"><div><strong>Google Play</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="stage stage-pad">
+        <span class="screen-note" style="color:#ff9a9a;border-color:rgba(255,90,90,0.4)">Dein 1440p-Monitor — viel zu groß</span>
+        <div class="gc-wrap">
+          <span class="measure bad">Karte ≈ 450 px ⚠︎</span>
+          <div class="gc-grid" style="gap:24px;">
+            <div class="giftcard gc--paypal" style="padding:24px;border-radius:24px;"><div class="logo" style="width:64px;height:64px;border-radius:18px;font-size:1.1rem;">Pay</div><div class="foot"><div><strong style="font-size:1.4rem;">PayPal</strong><small style="font-size:0.95rem;">Echtes Geld</small></div><span class="redeem" style="font-size:0.9rem;padding:8px 14px;">◆ einlösen</span></div></div>
+            <div class="giftcard gc--amazon" style="padding:24px;border-radius:24px;"><div class="logo" style="width:64px;height:64px;border-radius:18px;font-size:1.1rem;">am</div><div class="foot"><div><strong style="font-size:1.4rem;">Amazon</strong><small style="font-size:0.95rem;">Gift Card</small></div><span class="redeem" style="font-size:0.9rem;padding:8px 14px;">◆ einlösen</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label after"><span class="tag">Nachher</span> Feste, komfortable Größe — identisch auf jedem PC</div>
+    <div class="two">
+      <div class="stage stage-pad">
+        <span class="screen-note" style="color:var(--teal);border-color:rgba(0,243,162,0.4)">Laptop / 1080p</span>
+        <div class="gc-wrap">
+          <span class="measure good">Karte ≈ 250 px ✓</span>
+          <div class="gc-grid capped">
+            <div class="giftcard gc--paypal"><div class="logo">Pay</div><div class="foot"><div><strong>PayPal</strong><small>Echtes Geld</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--amazon"><div class="logo">am</div><div class="foot"><div><strong>Amazon</strong><small>Gift Card</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--steam"><div class="logo">St</div><div class="foot"><div><strong>Steam</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--gplay"><div class="logo">▶</div><div class="foot"><div><strong>Google Play</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="stage stage-pad">
+        <span class="screen-note" style="color:var(--teal);border-color:rgba(0,243,162,0.4)">Dein 1440p-Monitor</span>
+        <div class="gc-wrap">
+          <span class="measure good">Karte ≈ 250 px ✓ (gleich!)</span>
+          <div class="gc-grid capped">
+            <div class="giftcard gc--paypal"><div class="logo">Pay</div><div class="foot"><div><strong>PayPal</strong><small>Echtes Geld</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--amazon"><div class="logo">am</div><div class="foot"><div><strong>Amazon</strong><small>Gift Card</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--steam"><div class="logo">St</div><div class="foot"><div><strong>Steam</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+            <div class="giftcard gc--gplay"><div class="logo">▶</div><div class="foot"><div><strong>Google Play</strong><small>Guthaben</small></div><span class="redeem">◆ einlösen</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Claimo · Vorteile – Variante A · Icon-Stile</title>
+<style>
+  :root{
+    --bg:#141729; --panel:#1C203F;
+    --border:rgba(255,255,255,0.09); --border-strong:rgba(255,255,255,0.16);
+    --teal:#00F3A2; --text:#fff; --text-soft:#aab2c8; --text-dim:#757d99;
+    --font:'Raleway',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(1200px 600px at 50% -10%, #1d2247 0%, var(--bg) 55%);
+    color:var(--text); font-family:var(--font); -webkit-font-smoothing:antialiased;
+    padding:56px 0 90px;
+  }
+  .wrap{width:min(1160px,calc(100% - 48px));margin-inline:auto}
+  .doc-head{text-align:center;margin-bottom:8px}
+  .doc-head h1{font-size:1.5rem;letter-spacing:-0.01em}
+  .doc-head p{color:var(--text-dim);font-size:0.9rem;margin-top:6px}
+
+  .variant-label{display:inline-flex;align-items:center;gap:10px;margin:60px 0 6px;
+    font-size:0.78rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal)}
+  .variant-label .num{display:grid;place-items:center;height:26px;padding:0 9px;border-radius:8px;
+    background:rgba(0,243,162,0.12);border:1px solid rgba(0,243,162,0.35);color:var(--teal);font-size:0.74rem}
+  .variant-note{color:var(--text-dim);font-size:0.85rem;font-weight:600;margin:0 0 22px}
+
+  .panel{background:var(--panel);border-radius:22px;padding:40px}
+  .sec-head span{display:inline-flex;margin-bottom:12px;color:var(--teal);
+    font-size:0.82rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase}
+  .sec-head h2{font-size:2.05rem;line-height:1.08;letter-spacing:-0.01em}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+  .card{
+    background:linear-gradient(180deg,rgba(255,255,255,0.055),rgba(255,255,255,0.02));
+    border:1px solid var(--border);border-radius:18px;padding:22px 20px 24px;
+  }
+  .card h3{font-size:1.0rem;font-weight:800;letter-spacing:-0.01em}
+  .card p{color:var(--text-soft);font-size:0.85rem;line-height:1.45;margin-top:7px}
+  .card-center{text-align:center}
+  .card-center .iconwrap{display:flex;justify-content:center;margin-bottom:18px}
+
+  .badge{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;margin-bottom:16px}
+  .badge svg{display:block}
+  .badge-soft{background:rgba(255,255,255,0.05);border:1px solid var(--border-strong);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,0.06)}
+
+  /* per-grid icon sizing */
+  #gridA1 .badge svg{width:34px;height:34px}
+  #gridA2 .badge{width:56px;height:56px}
+  #gridA2 .badge svg{width:28px;height:28px}
+  #gridA3 .badge{width:56px;height:56px}
+  #gridA3 .badge svg{width:30px;height:30px}
+  .iconwrap svg{width:46px;height:46px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="doc-head">
+    <h1>„Vorteile" · Variante A — vier Icon-Stile</h1>
+    <p>Gleiches Karten-Raster wie A, vier verschiedene Icon-Looks zum Vergleich · Icons neu gezeichnet</p>
+  </div>
+
+  <div class="variant-label"><span class="num">A1</span> Duotone — flächig &amp; freundlich</div>
+  <div class="variant-note">Zweifarbige Icons (gefüllte Silhouette + klare Linien) auf neutralem Tile. Weich, modern, app-typisch.</div>
+  <div class="panel">
+    <div class="sec-head"><span>Vorteile</span><h2>Warum Claimo?</h2></div>
+    <div class="grid" id="gridA1"></div>
+  </div>
+
+  <div class="variant-label"><span class="num">A2</span> Gradient-Badges — kräftig &amp; bunt</div>
+  <div class="variant-note">Weißes Icon auf vollfarbigem Verlaufs-Badge mit farbigem Glow. Auffällig, „Store"-Feeling.</div>
+  <div class="panel">
+    <div class="sec-head"><span>Vorteile</span><h2>Warum Claimo?</h2></div>
+    <div class="grid" id="gridA2"></div>
+  </div>
+
+  <div class="variant-label"><span class="num">A3</span> Monoline — fein &amp; edel</div>
+  <div class="variant-note">Saubere Linien-Icons mit Verlauf auf zart getöntem Badge in der jeweiligen Icon-Farbe. Dezent, hochwertig.</div>
+  <div class="panel">
+    <div class="sec-head"><span>Vorteile</span><h2>Warum Claimo?</h2></div>
+    <div class="grid" id="gridA3"></div>
+  </div>
+
+  <div class="variant-label"><span class="num">A4</span> Floating Glow — minimal &amp; groß</div>
+  <div class="variant-note">Kein Badge: großes Icon mit weichem Farb-Glow, zentriert. Luftig und premium.</div>
+  <div class="panel">
+    <div class="sec-head"><span>Vorteile</span><h2>Warum Claimo?</h2></div>
+    <div class="grid" id="gridA4"></div>
+  </div>
+</div>
+
+<script>
+let uid=0;
+function grad(id,c1,c2){
+  return '<defs><linearGradient id="'+id+'" x1="0" y1="0" x2="1" y2="1">'+
+    '<stop offset="0" stop-color="'+c1+'"/><stop offset="1" stop-color="'+c2+'"/></linearGradient></defs>';
+}
+
+/* ---- monoline geometry: p = paint (stroke inherited from <svg>, p used for filled accents) ---- */
+const mono = {
+  app:(p)=>'<rect x="10" y="4" width="12" height="24" rx="3.2"/>'+
+           '<line x1="13.5" y1="24.5" x2="18.5" y2="24.5"/>'+
+           '<path d="M16 9.2l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" fill="'+p+'" stroke="none"/>',
+  easy:(p)=>'<path d="M13 13.5V8a2.2 2.2 0 0 1 4.4 0v5"/>'+
+            '<path d="M17.4 12.6a1.8 1.8 0 0 1 3.5.5v.9"/>'+
+            '<path d="M20.9 13a1.8 1.8 0 0 1 3.4.6v4.4a6.5 6.5 0 0 1-6.5 6.5h-1.4a6.5 6.5 0 0 1-4.9-2.2l-3-3.5a1.9 1.9 0 0 1 2.9-2.5l1.4 1.3"/>'+
+            '<path d="M11.4 8.2a3.3 3.3 0 0 1 5-2.9"/>',
+  fair:(p)=>'<line x1="16" y1="8" x2="16" y2="25"/>'+
+            '<line x1="11" y1="25.5" x2="21" y2="25.5"/>'+
+            '<line x1="6" y1="9" x2="26" y2="9"/>'+
+            '<circle cx="16" cy="9" r="1.3" fill="'+p+'" stroke="none"/>'+
+            '<line x1="8" y1="9" x2="5.5" y2="14"/><line x1="8" y1="9" x2="10.5" y2="14"/>'+
+            '<path d="M5 14a3 2.3 0 0 0 6 0"/>'+
+            '<line x1="24" y1="9" x2="21.5" y2="14"/><line x1="24" y1="9" x2="26.5" y2="14"/>'+
+            '<path d="M21 14a3 2.3 0 0 0 6 0"/>',
+  secure:(p)=>'<path d="M16 4l9 3.5v6c0 6-3.9 10.5-9 12.5-5.1-2-9-6.5-9-12.5v-6z"/>'+
+              '<path d="M12 15.5l2.8 2.8L20 13"/>',
+  games:(p)=>'<path d="M11 11h10a6 6 0 0 1 6 6.2c-.2 3-1.6 4.8-3.6 4.8-1.7 0-2.4-1.4-4.4-1.4h-4c-2 0-2.7 1.4-4.4 1.4-2 0-3.4-1.8-3.6-4.8A6 6 0 0 1 11 11z"/>'+
+             '<line x1="11" y1="16.5" x2="15" y2="16.5"/><line x1="13" y1="14.5" x2="13" y2="18.5"/>'+
+             '<circle cx="20.5" cy="15.5" r="1.1" fill="'+p+'" stroke="none"/>'+
+             '<circle cx="23" cy="18" r="1.1" fill="'+p+'" stroke="none"/>',
+  payout:(p)=>'<circle cx="16" cy="16" r="11"/>'+
+              '<path d="M17 9.5l-5 7.5h4l-1 5.5 5-7.5h-4z" fill="'+p+'" stroke="none"/>',
+  progress:(p)=>'<line x1="6" y1="25.5" x2="26" y2="25.5" stroke-opacity="0.45"/>'+
+                '<polyline points="6,22 12,15.5 16,18.5 25.5,8.5"/>'+
+                '<path d="M21 8.5h4.5V13"/>',
+  updates:(p)=>'<path d="M7 16a9 9 0 0 1 15.2-6.5"/>'+
+               '<path d="M22.5 5v5h-5"/>'+
+               '<path d="M25 16a9 9 0 0 1-15.2 6.5"/>'+
+               '<path d="M9.5 27v-5h5"/>',
+};
+
+/* ---- duotone backdrops (faint filled shapes) ---- */
+const duoBack = {
+  app:(p)=>'<rect x="10" y="4" width="12" height="24" rx="3.2" fill="'+p+'" fill-opacity="0.2" stroke="none"/>',
+  easy:(p)=>'<circle cx="16" cy="17" r="9.5" fill="'+p+'" fill-opacity="0.14" stroke="none"/>',
+  fair:(p)=>'<circle cx="16" cy="16" r="11" fill="'+p+'" fill-opacity="0.13" stroke="none"/>',
+  secure:(p)=>'<path d="M16 4l9 3.5v6c0 6-3.9 10.5-9 12.5-5.1-2-9-6.5-9-12.5v-6z" fill="'+p+'" fill-opacity="0.2" stroke="none"/>',
+  games:(p)=>'<path d="M11 11h10a6 6 0 0 1 6 6.2c-.2 3-1.6 4.8-3.6 4.8-1.7 0-2.4-1.4-4.4-1.4h-4c-2 0-2.7 1.4-4.4 1.4-2 0-3.4-1.8-3.6-4.8A6 6 0 0 1 11 11z" fill="'+p+'" fill-opacity="0.18" stroke="none"/>',
+  payout:(p)=>'<circle cx="16" cy="16" r="11" fill="'+p+'" fill-opacity="0.16" stroke="none"/>',
+  progress:(p)=>'<path d="M6 22 12 15.5 16 18.5 25.5 8.5 25.5 25.5 6 25.5z" fill="'+p+'" fill-opacity="0.13" stroke="none"/>',
+  updates:(p)=>'<circle cx="16" cy="16" r="10.5" fill="'+p+'" fill-opacity="0.13" stroke="none"/>',
+};
+
+function iconMono(c1,c2,white,key){
+  const id='ig'+(uid++); const p = white ? '#fff' : 'url(#'+id+')';
+  return '<svg viewBox="0 0 32 32" fill="none" stroke="'+p+'" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'+
+    grad(id,c1,c2)+mono[key](p)+'</svg>';
+}
+function iconDuo(c1,c2,key){
+  const id='ig'+(uid++); const p='url(#'+id+')';
+  return '<svg viewBox="0 0 32 32" fill="none" stroke="'+p+'" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">'+
+    grad(id,c1,c2)+duoBack[key](p)+mono[key](p)+'</svg>';
+}
+
+const data=[
+  {key:'app',     title:'Moderne App',              desc:'Klares, schnelles Design auf aktuellem Stand.', c1:'#00F3A2',c2:'#62e573'},
+  {key:'easy',    title:'Einfache Bedienung',       desc:'Intuitiv aufgebaut – loslegen ohne Einarbeitung.', c1:'#5ba7ff',c2:'#00F3A2'},
+  {key:'fair',    title:'Faire Belohnungen',        desc:'Transparente Gems für jede erledigte Aufgabe.', c1:'#f6c45d',c2:'#ffd27a'},
+  {key:'secure',  title:'Sichere Anmeldung',        desc:'Dein Konto bleibt jederzeit geschützt.', c1:'#00F3A2',c2:'#5ba7ff'},
+  {key:'games',   title:'Neue Spiele & Angebote',   desc:'Ständig frische Games und Aufgaben.', c1:'#62e573',c2:'#00F3A2'},
+  {key:'payout',  title:'Schnelle Auszahlungen',    desc:'Gems zügig in echte Rewards umwandeln.', c1:'#f6c45d',c2:'#00F3A2'},
+  {key:'progress',title:'Transparenter Fortschritt',desc:'Immer im Blick, wie nah die Belohnung ist.', c1:'#5ba7ff',c2:'#62e573'},
+  {key:'updates', title:'Regelmäßige Updates',      desc:'Stetige Verbesserungen und neue Features.', c1:'#00F3A2',c2:'#2bf5a5'},
+];
+
+const card = (badge,d)=>'<div class="card">'+badge+'<h3>'+d.title+'</h3><p>'+d.desc+'</p></div>';
+
+document.getElementById('gridA1').innerHTML = data.map(d=>
+  card('<div class="badge badge-soft">'+iconDuo(d.c1,d.c2,d.key)+'</div>', d)).join('');
+
+document.getElementById('gridA2').innerHTML = data.map(d=>
+  card('<div class="badge" style="background:linear-gradient(135deg,'+d.c1+','+d.c2+');box-shadow:0 12px 24px -10px '+d.c1+'aa, inset 0 1px 0 rgba(255,255,255,0.3)">'+iconMono(d.c1,d.c2,true,d.key)+'</div>', d)).join('');
+
+document.getElementById('gridA3').innerHTML = data.map(d=>
+  card('<div class="badge" style="background:'+d.c1+'1a;border:1px solid '+d.c1+'40">'+iconMono(d.c1,d.c2,false,d.key)+'</div>', d)).join('');
+
+document.getElementById('gridA4').innerHTML = data.map(d=>
+  '<div class="card card-center"><div class="iconwrap" style="filter:drop-shadow(0 6px 16px '+d.c1+'66)">'+
+  iconMono(d.c1,d.c2,false,d.key)+'</div><h3>'+d.title+'</h3><p>'+d.desc+'</p></div>').join('');
+</script>
+</body>
+</html>

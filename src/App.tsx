@@ -1,6 +1,10 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gem from '../assets/gem.svg';
 import logo from '../assets/website-logo.png';
+import { Gamepad, Gem as GemIcon, Gift, Bolt, Shield, Trophy, Eye } from './components/Icons';
+
+const howIcons = [Gamepad, GemIcon, Gift];
+const benefitIcons = [Gamepad, GemIcon, Bolt, Shield, Trophy, Eye];
 
 const copy = {
   de: {
@@ -16,45 +20,52 @@ const copy = {
       install: 'Installieren',
     },
     hero: {
-      line1: 'Spiele kostenlose',
-      line2: 'Spiele. Erledige',
-      line3: 'Aufgaben.',
-      earn: 'Verdiene',
-      line4: 'Belohnungen.',
-      copy1: 'Spiele kostenlos, sammle Punkte und löse sie gegen Geld,',
-      copy2: 'Gutscheine und weitere Belohnungen ein.',
-      store: 'Coming Soon on Google Play',
-      learn: 'Learn More',
+      eyebrow: 'Rewards-App · In Entwicklung',
+      line1: 'Spiele. Sammle Gems.',
+      line2: 'Echte Belohnungen.',
+      lead: 'Claimo verwandelt Spiele, Angebote und Umfragen in Gems — die du gegen PayPal-Geld, Gutscheine und mehr einlöst. Kostenlos, für Android.',
+      storeSmall: 'Coming soon',
+      store: 'Google Play',
+      learn: "So funktioniert's",
+      trust: ['Kostenlos', 'Kein Kauf nötig', 'Sichere Anmeldung'],
+      cardRewardTitle: 'Belohnung erhalten',
+      cardRewardSub: 'Tagesaufgabe fertig',
+      cardBalanceTitle: '335 Gems',
+      cardBalanceSub: 'Bereit zum Einlösen',
     },
     how: {
-      title: 'Wie es funktioniert',
+      eyebrow: "So funktioniert's",
+      title: 'In drei Schritten zu echten Belohnungen',
+      intro: 'Spielen, Gems sammeln, einlösen — so einfach verwandelst du Freizeit in echte Rewards.',
       steps: [
         {
-          title: 'Spiele spielen & Aufgaben erledigen',
+          title: 'Spielen & Aufgaben erledigen',
           text: 'Entdecke neue Spiele, teste Apps, beantworte Umfragen und schließe einfache Angebote ab.',
+          tag: 'Gems verdienen',
         },
         {
           title: 'Gems sammeln',
-          text: 'Verdiene Gems für jede abgeschlossene Aktivität und behalte deinen Fortschritt jederzeit im Blick.',
+          text: 'Verdiene Gems für jede Aktivität und behalte deinen Fortschritt jederzeit im Blick.',
+          tag: 'Fortschritt wächst',
         },
         {
           title: 'Belohnungen einlösen',
-          text: 'Tausche deine gesammelten Gems gegen Geld, Gutscheine und weitere Belohnungen ein.',
+          text: 'Tausche deine Gems gegen PayPal-Geld, Gutscheine und weitere Belohnungen ein.',
+          tag: 'Auszahlung',
         },
       ],
     },
     benefits: {
       label: 'Vorteile',
       title: 'Warum Claimo?',
+      intro: 'Eine faire, moderne Rewards-App — gebaut für echten Mehrwert statt leerer Versprechen.',
       items: [
-        'Moderne App',
-        'Einfache Bedienung',
-        'Faire Belohnungen',
-        'Sichere Anmeldung',
-        'Neue Spiele und Angebote',
-        'Schnelle Auszahlungen',
-        'Transparenter Fortschritt',
-        'Regelmäßige Updates',
+        { title: 'Modern & einfach', text: 'Klares, schnelles Design für Android — sofort verständlich, ohne Schnickschnack.' },
+        { title: 'Faire Belohnungen', text: 'Transparente Gems für jede Aufgabe — keine versteckten Regeln, keine leeren Versprechen.' },
+        { title: 'Schnelle Auszahlungen', text: 'Löse deine Gems zügig gegen PayPal-Geld und beliebte Gutscheine ein.' },
+        { title: 'Sichere Anmeldung', text: 'Geschützter Login und sorgsamer Umgang mit deinen Daten.' },
+        { title: 'Neue Spiele & Angebote', text: 'Ständig frische Games, Apps und Umfragen — dir geht der Nachschub nie aus.' },
+        { title: 'Transparenter Fortschritt', text: 'Sieh jederzeit, welche Aufgaben offen sind und welche Belohnung näher rückt.' },
       ],
     },
     games: {
@@ -153,45 +164,52 @@ const copy = {
       install: 'Install',
     },
     hero: {
-      line1: 'Play Free',
-      line2: 'Games. Complete',
-      line3: 'Offers.',
-      earn: 'Earn',
-      line4: 'Real Rewards.',
-      copy1: 'Play for free, collect points and redeem them for cash,',
-      copy2: 'gift cards and more rewards.',
-      store: 'Coming Soon on Google Play',
-      learn: 'Learn More',
+      eyebrow: 'Rewards app · In development',
+      line1: 'Play. Collect Gems.',
+      line2: 'Real rewards.',
+      lead: 'Claimo turns the games, offers and surveys you enjoy into Gems — then lets you cash them out for PayPal money, gift cards and more. Free to use, built for Android.',
+      storeSmall: 'Coming soon',
+      store: 'Google Play',
+      learn: 'See how it works',
+      trust: ['Free for users', 'No purchase required', 'Secure sign-in'],
+      cardRewardTitle: 'Reward earned',
+      cardRewardSub: 'Daily task complete',
+      cardBalanceTitle: '335 Gems',
+      cardBalanceSub: 'Ready to redeem',
     },
     how: {
-      title: 'How it works',
+      eyebrow: 'How it works',
+      title: 'Three steps to real rewards',
+      intro: 'Play, collect Gems, redeem — that’s how you turn spare time into real rewards.',
       steps: [
         {
-          title: 'Play games & complete tasks',
+          title: 'Play & complete tasks',
           text: 'Discover new games, test apps, answer surveys and complete simple offers.',
+          tag: 'Earn Gems',
         },
         {
           title: 'Collect Gems',
-          text: 'Earn Gems for every completed activity and keep track of your progress at any time.',
+          text: 'Earn Gems for every activity and keep track of your progress at any time.',
+          tag: 'Progress grows',
         },
         {
           title: 'Redeem rewards',
-          text: 'Exchange your collected Gems for cash, gift cards and more rewards.',
+          text: 'Exchange your Gems for PayPal money, gift cards and more rewards.',
+          tag: 'Payout',
         },
       ],
     },
     benefits: {
       label: 'Benefits',
       title: 'Why Claimo?',
+      intro: 'A fair, modern rewards app — built for real value, not empty promises.',
       items: [
-        'Modern app',
-        'Easy to use',
-        'Fair rewards',
-        'Secure sign-in',
-        'New games and offers',
-        'Fast payouts',
-        'Transparent progress',
-        'Regular updates',
+        { title: 'Modern & simple', text: 'Clean, fast design for Android — instantly clear, no clutter.' },
+        { title: 'Fair rewards', text: 'Transparent Gems for every task — no hidden rules, no empty promises.' },
+        { title: 'Fast payouts', text: 'Redeem your Gems quickly for PayPal money and popular gift cards.' },
+        { title: 'Secure sign-in', text: 'Protected login and careful handling of your data.' },
+        { title: 'New games & offers', text: 'Constantly fresh games, apps and surveys — you’ll never run out.' },
+        { title: 'Transparent progress', text: 'See at any time which tasks are open and which reward is getting closer.' },
       ],
     },
     games: {
@@ -443,67 +461,105 @@ export default function App() {
       </header>
 
       <main className="hero">
-        <h1>
-          <span>{t.hero.line1}</span>
-          <span>{t.hero.line2}</span>
-          <span className="hero__line-gap">
-            {t.hero.line3 && <>{t.hero.line3} </>}<span className="hero__accent">{t.hero.earn}</span>
-          </span>
-          <span className="hero__accent">{t.hero.line4}</span>
-        </h1>
-        <p>
-          <span>{t.hero.copy1}</span>
-          <span>{t.hero.copy2}</span>
-        </p>
-        <div className="hero__actions">
-          <span className="hero__playstore" aria-disabled="true">
-            {t.hero.store}
-            <img src="/google-play.png" alt="" />
-          </span>
-          <a className="hero__learn" href="#how">
-            {t.hero.learn}
-          </a>
+        <div className="shell hero__inner">
+          <div className="hero__copy">
+            <span className="hero__eyebrow">
+              <span className="hero__eyebrow-dot" aria-hidden="true" />
+              {t.hero.eyebrow}
+            </span>
+            <h1>
+              <span>{t.hero.line1}</span>
+              <span className="hero__accent">{t.hero.line2}</span>
+            </h1>
+            <p className="hero__lead">{t.hero.lead}</p>
+            <div className="hero__actions">
+              <a className="hero__store" href="#install">
+                <img src="/google-play.png" alt="" />
+                <span className="hero__store-text">
+                  <small>{t.hero.storeSmall}</small>
+                  <strong>{t.hero.store}</strong>
+                </span>
+              </a>
+              <a className="hero__learn" href="#how">
+                {t.hero.learn}
+              </a>
+            </div>
+            <ul className="hero__trust">
+              {t.hero.trust.map((item) => (
+                <li key={item}>
+                  <span className="hero__trust-dot" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="hero__visual" aria-hidden="true">
+            <span className="hero__ring hero__ring--outer" />
+            <span className="hero__ring hero__ring--inner" />
+            <span className="hero__glow" />
+            <img className="hero__phone" src="/screen1.png" alt="" />
+
+            <div className="hero__float hero__float--reward">
+              <span className="hero__float-badge">+120</span>
+              <div>
+                <strong>{t.hero.cardRewardTitle}</strong>
+                <small>{t.hero.cardRewardSub}</small>
+              </div>
+            </div>
+
+            <div className="hero__float hero__float--balance">
+              <img src={gem} alt="" />
+              <div>
+                <strong>{t.hero.cardBalanceTitle}</strong>
+                <small>{t.hero.cardBalanceSub}</small>
+              </div>
+            </div>
+          </div>
         </div>
       </main>
 
       <section id="learn-more" className="how-section shell" aria-labelledby="how">
-        <h2 id="how">{t.how.title}</h2>
-        <div className="how-steps">
-          {t.how.steps.map((step, index) => (
-            <Fragment key={step.title}>
-              <article className="how-card" key={step.title}>
-                <span className="how-card__icon">
-                  {index === 0 && <img src="/play-icon.png" alt="" />}
-                  {index === 1 && (
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                      <path d="M6.5 3.5h11L22 9l-10 12L2 9l4.5-5.5Z" />
-                      <path d="M2 9h20M8.5 9 12 21l3.5-12M8.5 9l3.5-5.5L15.5 9" />
-                    </svg>
-                  )}
-                  {index === 2 && <img src="/shop-icon.png" alt="" />}
-                </span>
+        <div className="how-head">
+          <span className="how-eyebrow">{t.how.eyebrow}</span>
+          <h2 id="how">{t.how.title}</h2>
+          <p className="how-intro">{t.how.intro}</p>
+        </div>
+
+        <ol className="how-steps">
+          {t.how.steps.map((step, index) => {
+            const Icon = howIcons[index];
+            return (
+              <li className="how-card" key={step.title}>
+                <span className="how-card__num">{String(index + 1).padStart(2, '0')}</span>
+                <span className="how-card__icon" aria-hidden="true"><Icon /></span>
                 <h3>{step.title}</h3>
                 <p>{step.text}</p>
-              </article>
-
-              {index < 2 && (
-                <div className={`how-arrow-slot how-arrow-slot--${index === 0 ? 'one' : 'two'}`} aria-hidden="true">
-                  <img src="/arrows.png" alt="" />
-                </div>
-              )}
-            </Fragment>
-          ))}
-        </div>
+                <span className="how-card__tag"><GemIcon className="how-card__tag-gem" />{step.tag}</span>
+              </li>
+            );
+          })}
+        </ol>
       </section>
 
       <section id="features" className="benefits-section" aria-labelledby="features-title">
-        <div className="benefits-tab">
-          <div className="benefits-tab__header">
-            <span>{t.benefits.label}</span>
+        <div className="benefits-inner shell">
+          <div className="benefits-head">
+            <span className="benefits-eyebrow">{t.benefits.label}</span>
             <h2 id="features-title">{t.benefits.title}</h2>
+            <p className="benefits-intro">{t.benefits.intro}</p>
           </div>
-          <ul className="benefits-list">
-            {t.benefits.items.map((item) => <li key={item}>{item}</li>)}
+          <ul className="benefits-grid">
+            {t.benefits.items.map((item, index) => {
+              const Icon = benefitIcons[index];
+              return (
+                <li className="benefit-card" key={item.title}>
+                  <span className="benefit-card__icon" aria-hidden="true"><Icon /></span>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
