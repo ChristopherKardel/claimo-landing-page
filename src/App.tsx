@@ -448,6 +448,10 @@ function HowItWorks({ t, language }: { t: Translation; language: Language }) {
     const observers: IntersectionObserver[] = [];
     let scrollRAF = 0;
     let ticking = false;
+    let lockProgress = 0;
+    let touchStartY = 0;
+    let touchActive = false;
+    let lastTrackCenter = Number.POSITIVE_INFINITY;
 
     // meter takes a 0..1 fraction
     const setMeter = (f: number) => {
@@ -660,17 +664,27 @@ function HowItWorks({ t, language }: { t: Translation; language: Language }) {
     const fired = milestones.map(() => false);
     let primed = false;
 
-    // Spine fill + comet follow raw scroll (smooth path); balance/meter use the
-    // surge curve above. Both are pure functions of scroll → nothing flickers.
-    function updateProgress() {
-      ticking = false;
+    const snapTrackToCenter = () => {
       if (!track) return;
-      const rect = track.getBoundingClientRect();
-      const anchor = window.innerHeight * 0.82;
-      // path (spine + comet) tracks raw scroll so the comet still threads the dots
-      const progress = Math.min(1, Math.max(0, (anchor - rect.top) / rect.height));
-      // the gem balance fills over a longer scroll distance → less sensitive
-      const fillProgress = Math.min(1, Math.max(0, (anchor - rect.top) / (rect.height * FILL_SPREAD)));
+      const trackRect = track.getBoundingClientRect();
+      const trackCenter = trackRect.top + trackRect.height / 2;
+      window.scrollBy({ top: trackCenter - window.innerHeight / 2, left: 0, behavior: 'auto' });
+    };
+
+    const shouldPinAtTrackCenter = (deltaY = 0) => {
+      const rect = root.getBoundingClientRect();
+      const center = window.innerHeight / 2;
+      const trackRect = track?.getBoundingClientRect();
+      if (!trackRect) return rect.top < center * 0.75 && rect.bottom > center * 1.25;
+      const trackCenter = trackRect.top + trackRect.height / 2;
+      const nextTrackCenter = trackCenter - deltaY;
+      const crossedCenter = deltaY > 0 && trackCenter >= center && nextTrackCenter <= center;
+      const alreadyCentered = Math.abs(trackCenter - center) < 18;
+      return (crossedCenter || alreadyCentered) && rect.top < center && rect.bottom > center;
+    };
+
+    function applyProgress(progress: number) {
+      const fillProgress = Math.min(1, Math.max(0, progress));
       const gems = gemsForProgress(fillProgress);
       if (balEl) balEl.textContent = fmt(gems);
       setMeter(gems / MAX_GEMS);
@@ -695,6 +709,100 @@ function HowItWorks({ t, language }: { t: Translation; language: Language }) {
         });
       }
     }
+
+    // Spine fill + comet follow scroll normally, then lock to wheel/touch once
+    // the whole block is centered so the gem can finish visibly.
+    function updateProgress() {
+      ticking = false;
+      if (!track) return;
+      if (touchActive || root.classList.contains('is-pinning')) {
+        applyProgress(lockProgress);
+        return;
+      }
+      const rect = track.getBoundingClientRect();
+      const trackCenter = rect.top + rect.height / 2;
+      const viewportCenter = window.innerHeight / 2;
+      if (lockProgress < 1 && lastTrackCenter >= viewportCenter && trackCenter <= viewportCenter) {
+        root.classList.add('is-pinning');
+        snapTrackToCenter();
+        applyProgress(lockProgress);
+        lastTrackCenter = viewportCenter;
+        return;
+      }
+      if (trackCenter > viewportCenter + 260) {
+        lockProgress = 0;
+      }
+      lastTrackCenter = trackCenter;
+      const anchor = window.innerHeight * 0.82;
+      const progress = Math.min(1, Math.max(0, (anchor - rect.top) / rect.height));
+      const fillProgress = Math.min(1, Math.max(0, (anchor - rect.top) / (rect.height * FILL_SPREAD)));
+      lockProgress = Math.max(lockProgress, fillProgress);
+      applyProgress(fillProgress);
+      if (fill) fill.style.transform = `scaleY(${progress})`;
+      if (comet) {
+        comet.style.top = `${progress * 100}%`;
+        comet.style.opacity = progress > 0.01 && progress < 0.99 ? '1' : '0';
+      }
+    }
+
+    const advanceLockedProgress = (delta: number) => {
+      if (lockProgress >= 1 && delta > 0) {
+        root.classList.remove('is-pinning');
+        return false;
+      }
+      if (delta < 0 && lockProgress <= 0) {
+        root.classList.remove('is-pinning');
+        return false;
+      }
+      root.classList.add('is-pinning');
+      lockProgress = Math.min(1, Math.max(0, lockProgress + delta / 1500));
+      applyProgress(lockProgress);
+      if (lockProgress >= 1 && delta > 0) {
+        window.setTimeout(() => root.classList.remove('is-pinning'), 120);
+      }
+      return true;
+    };
+
+    const onWheel = (event: WheelEvent) => {
+      if (reduce) return;
+      if (!root.classList.contains('is-pinning') && shouldPinAtTrackCenter(event.deltaY)) {
+        event.preventDefault();
+        root.classList.add('is-pinning');
+        snapTrackToCenter();
+      } else if (!root.classList.contains('is-pinning')) {
+        return;
+      }
+      if ((event.deltaY > 0 && lockProgress >= 1) || (event.deltaY < 0 && lockProgress <= 0)) return;
+      event.preventDefault();
+      advanceLockedProgress(event.deltaY);
+    };
+
+    const onTouchStart = (event: TouchEvent) => {
+      touchStartY = event.touches[0]?.clientY ?? 0;
+    };
+
+    const onTouchMove = (event: TouchEvent) => {
+      if (reduce) return;
+      const y = event.touches[0]?.clientY ?? touchStartY;
+      const delta = touchStartY - y;
+      if (!root.classList.contains('is-pinning') && shouldPinAtTrackCenter(delta)) {
+        event.preventDefault();
+        root.classList.add('is-pinning');
+        snapTrackToCenter();
+      } else if (!root.classList.contains('is-pinning')) {
+        touchStartY = y;
+        return;
+      }
+      if ((delta > 0 && lockProgress >= 1) || (delta < 0 && lockProgress <= 0)) return;
+      event.preventDefault();
+      touchActive = true;
+      advanceLockedProgress(delta * 1.8);
+      touchStartY = y;
+      window.clearTimeout((onTouchMove as unknown as { timeout?: number }).timeout);
+      (onTouchMove as unknown as { timeout?: number }).timeout = window.setTimeout(() => {
+        touchActive = false;
+      }, 140);
+    };
     const onScroll = () => {
       if (!ticking) {
         scrollRAF = requestAnimationFrame(updateProgress);
@@ -710,6 +818,9 @@ function HowItWorks({ t, language }: { t: Translation; language: Language }) {
     window.addEventListener('resize', onResize);
     if (!reduce) {
       window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('wheel', onWheel, { passive: false });
+      window.addEventListener('touchstart', onTouchStart, { passive: true });
+      window.addEventListener('touchmove', onTouchMove, { passive: false });
       updateProgress();
     } else {
       // reduced motion: show the completed, filled end state
@@ -724,11 +835,14 @@ function HowItWorks({ t, language }: { t: Translation; language: Language }) {
       cancelAnimationFrame(scrollRAF);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('touchstart', onTouchStart);
+      window.removeEventListener('touchmove', onTouchMove);
     };
   }, [language, t]);
 
   return (
-    <section id="learn-more" className="how2" aria-labelledby="how" ref={rootRef}>
+    <section id="learn-more" className="how2 how2--pinned" aria-labelledby="how" ref={rootRef}>
       <div className="how2-gemfield" aria-hidden="true">
         {Array.from({ length: 6 }).map((_, i) => (
           <img className="g" src={gem} alt="" key={i} />

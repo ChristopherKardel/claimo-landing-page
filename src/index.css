@@ -3076,3 +3076,453 @@ p  { margin: 0; color: var(--text-soft); }
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ─── Modern bold pass: calmer, flatter, less glow-heavy ─────────────────── */
+:root {
+  --bg:            #101322;
+  --bg-soft:       #0b0d18;
+  --bg-raised:     #15192b;
+  --surface:       #181d31;
+  --surface-2:     #20263d;
+  --border:        rgba(255, 255, 255, 0.11);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --primary:       #00d99a;
+  --primary-2:     #11b981;
+  --cash:          #22c55e;
+  --blue:          #3b82f6;
+  --gold:          #f59e0b;
+  --glow-primary: rgba(0, 217, 154, 0.12);
+  --glow-soft:    rgba(0, 217, 154, 0.06);
+  --text:          #f7f8fc;
+  --text-soft:     #c6ccdb;
+  --text-dim:      #8992a8;
+  --text-ink:      #06130f;
+  --radius:        14px;
+  --radius-sm:     10px;
+  --grad-brand:    var(--primary);
+  --grad-cool:     var(--blue);
+}
+
+body,
+.flow,
+.rewards2,
+.legal-page {
+  background-color: var(--bg);
+  background-image: none;
+  background-attachment: scroll;
+}
+
+.flow {
+  background: var(--bg);
+}
+
+.simple-nav {
+  background: #151a2e;
+  border-bottom: 1px solid var(--border);
+}
+
+.simple-nav__links {
+  text-shadow: none;
+}
+
+.simple-nav__install,
+.btn-primary,
+.app2-tab.is-on,
+.faq2-contact__btn,
+.partner2-card__btn,
+.how2-dot,
+.how2-task.is-done .how2-check {
+  background: var(--primary);
+  color: var(--text-ink);
+  box-shadow: none;
+}
+
+.simple-nav__install:hover,
+.btn-primary:hover,
+.faq2-contact__btn:hover,
+.partner2-card__btn:hover {
+  background: #11c98f;
+  box-shadow: none;
+}
+
+.flow-glow,
+.hero__glow,
+.hero-bridge,
+.app2-glow,
+.app2-deck::before,
+.games2-glow,
+.site-footer__glow,
+.how2-gemfield,
+.how2-fx,
+.how2-comet,
+.partner2-panel::before {
+  display: none !important;
+}
+
+.hero::before,
+.app2-stagegrid {
+  opacity: 0.36;
+}
+
+.falling-gems,
+.hero__float,
+.games2-float {
+  opacity: 0.48;
+}
+
+.hero h1 {
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+.hero__accent,
+.how2-head h2 .shine,
+.gradient-text {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: var(--primary);
+  animation: none;
+}
+
+.hero__store,
+.hero__learn,
+.benefits2-feat,
+.benefits2-card,
+.app2-stage,
+.app2-chip,
+.how2-balance,
+.how2-row,
+.rewards-phone,
+.games2-phone,
+.games2-feed,
+.games2-frow,
+.faq2-contact,
+.faq2-item,
+.partner2-inner,
+.partner2-card,
+.card,
+.site-footer__store {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.benefits2-feat,
+.how2-balance,
+.partner2-inner {
+  background: var(--surface-2);
+}
+
+.benefits2-card::before,
+.faq2-item.is-open::before {
+  background: var(--primary);
+}
+
+.benefits2-card:hover,
+.how2-row:hover,
+.faq2-item:hover,
+.faq2-item.is-open,
+.giftcard:hover,
+.site-footer__store:hover {
+  border-color: rgba(0, 217, 154, 0.34);
+  box-shadow: none;
+}
+
+.benefits2-feat__meter i,
+.how2-meter-fill,
+.how2-fill {
+  background: var(--primary);
+  box-shadow: none;
+}
+
+.benefits2-feat__amount .gem,
+.how2-balance-num .gem,
+.how2-fly,
+.how2-comet .gem,
+.phone-gem,
+.falling-gems img,
+.hero__phone,
+.app2-phone,
+.games2-phone,
+.rewards-phone,
+.giftcard__mark {
+  filter: none;
+}
+
+.app2-phone.is-left,
+.app2-phone.is-right {
+  filter: brightness(0.62) saturate(0.8);
+}
+
+.app2-phone.is-center .app2-phone__scr,
+.app2-phone__scr,
+.app2-chip--gem,
+.app2-chip--paypal,
+.app2-chip--amazon,
+.app2-chip__ic,
+.giftcard,
+.giftcard__logo {
+  box-shadow: none;
+}
+
+.app2-phone__scr::after,
+.giftcard::before,
+.giftcard::after,
+.games2-tile::after,
+.games2-frow__ic::after,
+.how2-meter-fill::after,
+.rewards2-tags span::before,
+.how2-dot::before {
+  display: none;
+}
+
+.app2-chip--gem .app2-chip__ic {
+  background: #083f35;
+  box-shadow: none;
+}
+
+.rewards2-tags span,
+.faq2-contact__ic,
+.faq2-ix,
+.faq2-item.is-open .faq2-tog,
+.benefits2-card__ic,
+.partner2-hi__ic,
+.partner2-card__ic,
+.games2-pt__chk,
+.app2-chip__val {
+  background: rgba(0, 217, 154, 0.12);
+  border-color: rgba(0, 217, 154, 0.28);
+  color: var(--primary);
+  box-shadow: none;
+}
+
+.faq2-item.is-open .faq2-ix {
+  background: var(--primary);
+  color: var(--text-ink);
+}
+
+.rewards-phone,
+.games2-phone {
+  background: #1a2036;
+}
+
+.rewards-phone__screen {
+  background: #101522;
+}
+
+.giftcard {
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.giftcard--paypal { background: #006fbf; }
+.giftcard--amazon { background: #f59e0b; }
+.giftcard--steam { background: #26384f; }
+.giftcard--gplay { background: #128c7e; }
+.giftcard--nintendo { background: #e60012; }
+.giftcard--playstation { background: #075fc9; }
+.giftcard--xbox { background: #15803d; }
+.giftcard--apple { background: #3f4652; }
+
+.tile-violet { background: #6d5dfc; }
+.tile-teal { background: #0f9f8f; }
+.tile-pink { background: #db2777; }
+.tile-orange { background: #f97316; }
+.tile-blue { background: #2563eb; }
+.tile-green { background: #16a34a; }
+
+.hero__gem-burst,
+.games2-badge {
+  background: #151a2e;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.partner2-panel {
+  padding: 1px;
+  border: 1px solid var(--border-strong);
+  background: transparent;
+}
+
+.site-footer {
+  background: #151a2e;
+}
+
+.site-footer::before {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Targeted restore pass from review notes ────────────────────────────── */
+.hero {
+  padding-inline: clamp(22px, 5vw, 72px);
+}
+
+.hero h1 {
+  max-width: min(680px, 100%);
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 1;
+}
+
+.hero-bridge {
+  display: block !important;
+}
+
+.hero-bridge__line {
+  background: linear-gradient(90deg, transparent, rgba(0, 235, 196, 0.55), transparent);
+  box-shadow: 0 0 18px rgba(0, 235, 196, 0.5);
+}
+
+.hero__learn {
+  border-color: transparent;
+  background: transparent;
+}
+
+.hero__learn:hover {
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.games2-title .c1 {
+  color: #00F3A2;
+}
+
+.games2-title .c3 {
+  color: #f6c45d;
+}
+
+.games2-phone {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.games2-phone img {
+  border-radius: 26px;
+}
+
+.giftcard {
+  box-shadow: 0 18px 40px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.giftcard::before,
+.giftcard::after {
+  display: block;
+}
+
+.giftcard:hover {
+  box-shadow: 0 30px 60px -22px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.giftcard:hover::after {
+  opacity: 0.9;
+  animation: giftcard-sheen 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.giftcard--paypal { background: linear-gradient(135deg, #009cde, #012169); }
+.giftcard--amazon { background: linear-gradient(135deg, #ff9900, #1a1f29); }
+.giftcard--steam { background: linear-gradient(135deg, #3a6a8f, #16202c); }
+.giftcard--gplay { background: linear-gradient(135deg, #00d6a4, #3d7bff); }
+.giftcard--nintendo { background: linear-gradient(135deg, #e60012, #7a0009); }
+.giftcard--playstation { background: linear-gradient(135deg, #0a8bff, #002a87); }
+.giftcard--xbox { background: linear-gradient(135deg, #1aa11a, #0a4a0a); }
+.giftcard--apple { background: linear-gradient(135deg, #5a5a5e, #1a1a1c); }
+
+@media (max-width: 980px) {
+  .hero h1 {
+    max-width: 720px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-inline: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(38px, 12vw, 52px);
+  }
+}
+
+/* ─── Pinned "Aufgabe bis Auszahlung" scroll moment ─────────────────────── */
+.how2--pinned {
+  min-height: auto;
+  padding: clamp(64px, 8vh, 104px) 0 120px;
+  overflow: hidden;
+}
+
+.how2--pinned > .shell {
+  position: relative;
+  min-height: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.how2--pinned .how2-head {
+  margin-bottom: clamp(18px, 3vh, 34px);
+}
+
+.how2--pinned .how2-grid {
+  align-items: center;
+  gap: clamp(34px, 5vw, 56px);
+}
+
+.how2--pinned .how2-balance {
+  position: relative;
+  top: auto;
+}
+
+.how2--pinned .how2-row {
+  margin-bottom: 14px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.how2--pinned.is-pinning .how2-track {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.how2--pinned.is-pinning > .shell {
+  transform: translateZ(0);
+}
+
+.how2--pinned.is-pinning {
+  scroll-snap-align: center;
+}
+
+.how2--pinned .how2-tasklist {
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.how2--pinned .how2-task {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@media (max-width: 900px) {
+  .how2--pinned {
+    min-height: auto;
+  }
+
+  .how2--pinned > .shell {
+    min-height: auto;
+    padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .how2--pinned {
+    min-height: auto;
+    padding: clamp(64px, 8vh, 104px) 0 120px;
+  }
+
+  .how2--pinned > .shell {
+    position: static;
+    min-height: auto;
+  }
+}
