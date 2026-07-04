@@ -2995,6 +2995,9 @@ p  { margin: 0; color: var(--text-soft); }
 }
 .legal-content a { color: #00F3A2; }
 .legal-content a:hover { text-decoration: underline; }
+.legal-content ul { margin: 12px 0 0; padding-left: 1.5em; list-style: disc; color: #ffffff; }
+.legal-content li { line-height: 1.75; margin: 4px 0; }
+.legal-content li::marker { color: rgba(0, 243, 162, 0.75); }
 .legal-date { margin-top: 26px; color: #ffffff; font-size: 0.92rem; }
 
 @media (max-width: 520px) {

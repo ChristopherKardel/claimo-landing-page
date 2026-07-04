@@ -153,7 +153,7 @@ const copy = {
         },
         {
           q: 'Wo bekomme ich Claimo?',
-          a: 'Claimo ist kostenlos im Google Play Store verfügbar. Lade die App herunter und leg direkt los.',
+          a: 'Claimo ist aktuell noch in Entwicklung und noch nicht im Google Play Store verfügbar. Wir bereiten den Launch vor.',
         },
         {
           q: 'Wie können Partner Kontakt aufnehmen?',
@@ -337,7 +337,7 @@ const copy = {
         },
         {
           q: 'Where do I get Claimo?',
-          a: 'Claimo is free to download on the Google Play Store. Get the app and start right away.',
+          a: 'Claimo is currently still in development and not yet available on the Google Play Store. We are preparing the launch.',
         },
         {
           q: 'How can partners get in touch?',
