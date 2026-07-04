@@ -115,9 +115,25 @@ const copy = {
       alt1: 'Claimo App Startscreen',
       alt2: 'Claimo App Aufgabenübersicht',
       alt3: 'Claimo App Rewards Ansicht',
+      tabs: ['Spielen', 'Shoppen', 'Profil'],
+      captions: [
+        'Spiele, Angebote und tägliche Aufgaben, die Gems bringen.',
+        'Gems gegen PayPal-Guthaben und Gutscheine einlösen.',
+        'Level, XP und deine tägliche Reward-Streak im Blick.',
+      ],
+      chips: [
+        { kind: 'gem', label: 'Daily Task', sub: 'Spielzeit', val: '+120' },
+        { kind: 'paypal', label: 'PayPal', sub: 'ab 5.000', val: '5 €' },
+        { kind: 'amazon', label: 'Amazon', sub: 'Gutschein', val: '5 €' },
+      ],
     },
     faq: {
+      eyebrow: 'FAQ',
       title: 'Häufig gestellte Fragen',
+      lead: 'Kurz und ehrlich beantwortet. Findest du deine Frage nicht, sind wir nur eine Mail entfernt.',
+      contactTitle: 'Noch Fragen offen?',
+      contactText: 'Schreib uns – wir melden uns schnell zurück.',
+      contactCta: 'Kontakt aufnehmen',
       items: [
         {
           q: 'Was ist Claimo?',
@@ -146,22 +162,31 @@ const copy = {
       ],
     },
     contact: {
+      eyebrow: 'Partnerschaft',
       title: 'Mit Claimo zusammenarbeiten',
       text: 'Claimo ist eine moderne Rewards-App, die sich aktuell in Entwicklung befindet. Wir bauen eine klare und nutzerfreundliche Plattform für Spiele, Angebote und Umfragen. Wir sind offen für die Zusammenarbeit mit Offerwall- und Survey-Partnern vor unserem offiziellen Google-Play-Launch.',
+      highlights: [
+        { title: 'Pre-Launch-Zugang', text: 'Werde Partner noch vor dem offiziellen Google-Play-Launch.' },
+        { title: 'Offerwall & Surveys', text: 'Wir integrieren Offerwall- und Survey-Partner sauber in die App.' },
+        { title: 'Faire, klare UX', text: 'Eine aufgeräumte Plattform, die Nutzer transparent vergütet.' },
+      ],
+      cardTitle: 'Sag Hallo',
       cta: 'Kontakt aufnehmen',
     },
     footer: {
-      slogan: 'Rewards made simple.',
+      blurb: 'Rewards made simple. Spiele, sammle Gems und lös sie gegen echtes Geld & Gutscheine ein.',
       discover: 'Entdecken',
       features: 'Features',
       rewards: 'Rewards',
       faq: 'FAQ',
-      contact: 'Contact',
-      legal: 'Rechtliches',
-      privacy: 'Datenschutz',
-      imprint: 'Impressum',
-      storeSmall: 'Coming soon on',
+      how: 'So funktionierts',
+      getApp: 'Hol dir Claimo',
+      storeSmall: 'Bald verfügbar auf',
       install: 'Installieren',
+      imprint: 'Impressum',
+      privacy: 'Datenschutz',
+      terms: 'Nutzungsbedingungen',
+      contact: 'Kontakt',
       copyright: '© 2026 Claimo Studio. All rights reserved.',
     },
   },
@@ -274,9 +299,25 @@ const copy = {
       alt1: 'Claimo app home screen',
       alt2: 'Claimo app task overview',
       alt3: 'Claimo app rewards view',
+      tabs: ['Play', 'Redeem', 'Profile'],
+      captions: [
+        'Games, offers and daily tasks that earn Gems.',
+        'Cash out Gems for PayPal money and gift cards.',
+        'Track levels, XP and your daily reward streak.',
+      ],
+      chips: [
+        { kind: 'gem', label: 'Daily task', sub: 'Play time', val: '+120' },
+        { kind: 'paypal', label: 'PayPal', sub: 'from 5,000', val: '€5' },
+        { kind: 'amazon', label: 'Amazon', sub: 'Gift card', val: '€5' },
+      ],
     },
     faq: {
+      eyebrow: 'FAQ',
       title: 'Frequently asked questions',
+      lead: 'Answered honestly and to the point. Can’t find your question? We’re just an email away.',
+      contactTitle: 'Still have questions?',
+      contactText: 'Drop us a line — we’ll get back to you quickly.',
+      contactCta: 'Get in touch',
       items: [
         {
           q: 'What is Claimo?',
@@ -305,22 +346,31 @@ const copy = {
       ],
     },
     contact: {
+      eyebrow: 'Partnership',
       title: 'Partner with Claimo',
       text: 'Claimo is a modern rewards app currently in development. We are building a clear and user-friendly platform for games, offers and surveys. We are open to working with offerwall and survey partners before our official Google Play launch.',
+      highlights: [
+        { title: 'Pre-launch access', text: 'Become a partner before the official Google Play launch.' },
+        { title: 'Offerwall & surveys', text: 'We integrate offerwall and survey partners cleanly into the app.' },
+        { title: 'Fair, clean UX', text: 'A tidy platform that rewards users transparently.' },
+      ],
+      cardTitle: 'Say hello',
       cta: 'Contact us',
     },
     footer: {
-      slogan: 'Rewards made simple.',
+      blurb: 'Rewards made simple. Play, collect Gems and redeem them for real cash & gift cards.',
       discover: 'Explore',
       features: 'Features',
       rewards: 'Rewards',
       faq: 'FAQ',
-      contact: 'Contact',
-      legal: 'Legal',
-      privacy: 'Privacy',
-      imprint: 'Imprint',
+      how: 'How it works',
+      getApp: 'Get Claimo',
       storeSmall: 'Coming soon on',
       install: 'Install',
+      imprint: 'Legal notice',
+      privacy: 'Privacy',
+      terms: 'Terms of Use',
+      contact: 'Contact',
       copyright: '© 2026 Claimo Studio. All rights reserved.',
     },
   },
@@ -788,7 +838,6 @@ function Rewards({ t, language }: { t: Translation; language: Language }) {
 
   const r = t.rewards;
   const deckBrands = [rewards[1], rewards[4], rewards[0], rewards[5], rewards[3]];
-  const loop = [...rewards, ...rewards];
 
   const card = (reward: (typeof rewards)[number], key: string) => (
     <article className={`giftcard giftcard--${reward.brand}`} key={key}>
@@ -822,11 +871,6 @@ function Rewards({ t, language }: { t: Translation; language: Language }) {
         <div className="rewards2-deck rv" style={{ transitionDelay: '120ms' }} aria-hidden="true">
           {deckBrands.map((b, i) => card(b, `deck-${i}`))}
         </div>
-      </div>
-
-      <div className="rewards2-carousel" aria-hidden="true">
-        <div className="rewards2-row">{loop.map((b, i) => card(b, `r1-${i}`))}</div>
-        <div className="rewards2-row rewards2-row--rev">{[...loop].reverse().map((b, i) => card(b, `r2-${i}`))}</div>
       </div>
     </section>
   );
@@ -996,6 +1040,270 @@ function Games({ t, language }: { t: Translation; language: Language }) {
               ))}
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Screenshots — an interactive 3D coverflow. The centre phone rotates through
+// Play · Redeem · Profile (auto-advancing, pausing on hover/focus), flanked by
+// two floating reward cards. A glint sweeps the centre phone each time it
+// settles, and a teal glow bleeds up into the rewards section above for a
+// seamless transition.
+function AppShowcase({ t }: { t: Translation }) {
+  const rootRef = useRef<HTMLElement | null>(null);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const a = t.app;
+  const screens = ['/screen1.png', '/screen2.png', '/screen3.png'];
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries, obs) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add('is-in');
+            obs.disconnect();
+          }
+        }),
+      { threshold: 0.2 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  // auto-advance the centre screen; re-armed on each change so a manual pick
+  // still gets a full dwell before the rotation resumes.
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = window.setInterval(() => setActive((i) => (i + 1) % screens.length), 3800);
+    return () => window.clearInterval(id);
+  }, [paused, active, screens.length]);
+
+  const slotClass = (i: number) =>
+    i === active ? 'app2-phone is-center' : i === (active + 1) % 3 ? 'app2-phone is-right' : 'app2-phone is-left';
+
+  return (
+    <section id="app-preview" className="app2" aria-labelledby="app2-title" ref={rootRef}>
+      <span className="app2-glow" aria-hidden="true" />
+      <div className="shell">
+        <div className="app2-head">
+          <span className="app2-eyebrow rv">{a.label}</span>
+          <h2 id="app2-title" className="rv" style={{ transitionDelay: '70ms' }}>{a.title}</h2>
+          <p className="rv" style={{ transitionDelay: '140ms' }}>{a.text}</p>
+        </div>
+
+        <div
+          className="app2-stage rv"
+          style={{ transitionDelay: '120ms' }}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocusCapture={() => setPaused(true)}
+          onBlurCapture={() => setPaused(false)}
+        >
+          <span className="app2-stagegrid" aria-hidden="true" />
+
+          <div className="app2-deck">
+            {screens.map((src, i) => (
+              <div className={slotClass(i)} key={src} aria-hidden="true" onClick={() => setActive(i)}>
+                <span className="app2-phone__scr"><img src={src} alt="" /></span>
+              </div>
+            ))}
+
+            <div className="app2-orbit" aria-hidden="true">
+              {a.chips.map((c, i) => (
+                <span className={`app2-chip app2-chip--${i + 1} app2-chip--${c.kind}`} key={c.label}>
+                  <span className="app2-chip__ic">
+                    <img src={c.kind === 'gem' ? gem : `/${c.kind}.png`} alt="" />
+                  </span>
+                  <span className="app2-chip__meta">
+                    <strong>{c.label}</strong>
+                    <small>{c.sub}</small>
+                  </span>
+                  <span className="app2-chip__val">
+                    {c.kind === 'gem' && <img src={gem} alt="" />}
+                    {c.val}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="app2-controls">
+            <div className="app2-tabs" role="tablist" aria-label={a.galleryLabel}>
+              {a.tabs.map((label, i) => (
+                <button
+                  type="button"
+                  role="tab"
+                  aria-selected={i === active}
+                  className={`app2-tab${i === active ? ' is-on' : ''}`}
+                  key={label}
+                  onClick={() => setActive(i)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <p className="app2-cap" key={active}>{a.captions[active]}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// FAQ — a two-column layout: a sticky intro column with a contact card beside a
+// premium single-open accordion (numbered gems, chevron toggle, smooth
+// grid-rows expand). Only one question is open at a time.
+function FaqSection({ t }: { t: Translation }) {
+  const rootRef = useRef<HTMLElement | null>(null);
+  const [open, setOpen] = useState(0);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries, obs) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add('is-in');
+            obs.disconnect();
+          }
+        }),
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const f = t.faq;
+  const lastIndex = f.items.length - 1;
+
+  return (
+    <section id="faq" className="faq2" aria-labelledby="faq-title" ref={rootRef}>
+      <div className="shell faq2-grid">
+        <aside className="faq2-aside">
+          <span className="faq2-eyebrow rv"><img className="gem" src={gem} alt="" />{f.eyebrow}</span>
+          <h2 id="faq-title" className="rv" style={{ transitionDelay: '70ms' }}>{f.title}</h2>
+          <p className="faq2-lead rv" style={{ transitionDelay: '130ms' }}>{f.lead}</p>
+          <div className="faq2-contact rv" style={{ transitionDelay: '190ms' }}>
+            <b><span className="faq2-contact__ic"><img className="gem" src={gem} alt="" /></span>{f.contactTitle}</b>
+            <p>{f.contactText}</p>
+            <a className="faq2-contact__btn" href="mailto:contact@claimo-app.com">
+              {f.contactCta}
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            </a>
+          </div>
+        </aside>
+
+        <div className="faq2-list">
+          {f.items.map((item, index) => {
+            const isOpen = open === index;
+            return (
+              <div className={`faq2-item${isOpen ? ' is-open' : ''}`} key={item.q}>
+                <button
+                  type="button"
+                  id={`faq-q-${index}`}
+                  className="faq2-q"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-a-${index}`}
+                  onClick={() => setOpen(isOpen ? -1 : index)}
+                >
+                  <span className="faq2-ix">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="faq2-qt">{item.q}</span>
+                  <span className="faq2-tog" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+                  </span>
+                </button>
+                <div className="faq2-ans" id={`faq-a-${index}`} role="region" aria-labelledby={`faq-q-${index}`}>
+                  <div className="faq2-ans__in">
+                    <p>
+                      {item.a}
+                      {index === lastIndex && <> <a href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>.</>}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Icons for the partner highlights (clock · layers · shield-check).
+const partnerHiIcons = [
+  <><circle cx="12" cy="12" r="9" /><path d="M12 8v4l3 2" /></>,
+  <><path d="M12 3l9 5-9 5-9-5 9-5z" /><path d="M3 12l9 5 9-5M3 17l9 5 9-5" /></>,
+  <><path d="M12 3l7 4v5c0 4-3 7-7 8-4-1-7-4-7-8V7z" /><path d="M9 12l2 2 4-4" /></>,
+];
+
+// Partner CTA — a framed panel with a slowly rotating teal glow border: on the
+// left the pitch plus three highlights, on the right a compact contact card.
+function PartnerSection({ t }: { t: Translation }) {
+  const rootRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries, obs) =>
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            el.classList.add('is-in');
+            obs.disconnect();
+          }
+        }),
+      { threshold: 0.2 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  const c = t.contact;
+
+  return (
+    <section id="contact" className="partner2" aria-labelledby="partner-title" ref={rootRef}>
+      <div className="shell">
+        <div className="partner2-panel rv">
+          <div className="partner2-inner">
+            <div className="partner2-grid">
+              <div className="partner2-copy">
+                <span className="partner2-eyebrow"><img className="gem" src={gem} alt="" />{c.eyebrow}</span>
+                <h2 id="partner-title">{c.title}</h2>
+                <p>{c.text}</p>
+                <ul className="partner2-hi">
+                  {c.highlights.map((h, i) => (
+                    <li key={h.title}>
+                      <span className="partner2-hi__ic">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">{partnerHiIcons[i]}</svg>
+                      </span>
+                      <div>
+                        <b>{h.title}</b>
+                        <small>{h.text}</small>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <aside className="partner2-card">
+                <span className="partner2-card__ic"><img className="gem" src={gem} alt="" /></span>
+                <b>{c.cardTitle}</b>
+                <a className="partner2-card__mail" href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>
+                <a className="partner2-card__btn" href="mailto:contact@claimo-app.com">
+                  {c.cta}
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                </a>
+              </aside>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1192,26 +1500,28 @@ export default function App() {
             <figure className="hero__phone">
               <img src="/screen1.png" alt="" aria-hidden="true" />
             </figure>
-            <a className="giftcard giftcard--paypal hero__reward-card hero__reward-card--paypal" href="#rewards">
-              <span className="giftcard__logo"><img src="/paypal.png" alt="" aria-hidden="true" /></span>
-              <span className="giftcard__foot">
-                <span className="giftcard__meta">
-                  <strong>PayPal</strong>
-                  <small>Cash</small>
+            <div className="hero__float hero__float--paypal">
+              <a className="giftcard giftcard--paypal hero__reward-card hero__reward-card--paypal" href="#rewards">
+                <span className="giftcard__logo"><img src="/paypal.png" alt="" aria-hidden="true" /></span>
+                <span className="giftcard__foot">
+                  <span className="giftcard__meta">
+                    <strong>PayPal</strong>
+                  </span>
                 </span>
-              </span>
-              <img className="giftcard__mark" src="/paypal.png" alt="" aria-hidden="true" />
-            </a>
-            <a className="giftcard giftcard--amazon hero__reward-card hero__reward-card--amazon" href="#rewards">
-              <span className="giftcard__logo"><img src="/amazon.png" alt="" aria-hidden="true" /></span>
-              <span className="giftcard__foot">
-                <span className="giftcard__meta">
-                  <strong>Amazon</strong>
-                  <small>Gift Card</small>
+                <img className="giftcard__mark" src="/paypal.png" alt="" aria-hidden="true" />
+              </a>
+            </div>
+            <div className="hero__float hero__float--amazon">
+              <a className="giftcard giftcard--amazon hero__reward-card hero__reward-card--amazon" href="#rewards">
+                <span className="giftcard__logo"><img src="/amazon.png" alt="" aria-hidden="true" /></span>
+                <span className="giftcard__foot">
+                  <span className="giftcard__meta">
+                    <strong>Amazon</strong>
+                  </span>
                 </span>
-              </span>
-              <img className="giftcard__mark" src="/amazon.png" alt="" aria-hidden="true" />
-            </a>
+                <img className="giftcard__mark" src="/amazon.png" alt="" aria-hidden="true" />
+              </a>
+            </div>
             <div className="hero__gem-burst">
               <img src={gem} alt="" />
               <b>+750</b>
@@ -1229,90 +1539,55 @@ export default function App() {
 
       <Rewards t={t} language={language} />
 
-      <section id="app-preview" className="app-look-section shell" aria-labelledby="app-look-title">
-        <div className="app-look-copy">
-          <span>{t.app.label}</span>
-          <h2 id="app-look-title">{t.app.title}</h2>
-          <p>{t.app.text}</p>
-        </div>
+      <AppShowcase t={t} />
 
-        <div className="app-look-gallery" aria-label={t.app.galleryLabel}>
-          <figure className="app-look-phone app-look-phone--main">
-            <img src="/screen1.png" alt={t.app.alt1} />
-          </figure>
-          <figure className="app-look-phone app-look-phone--screen app-look-phone--one">
-            <img src="/screen2.png" alt={t.app.alt2} />
-          </figure>
-          <figure className="app-look-phone app-look-phone--screen app-look-phone--two">
-            <img src="/screen3.png" alt={t.app.alt3} />
-          </figure>
-        </div>
-      </section>
+      <FaqSection t={t} />
 
-      <section id="faq" className="faq-section shell" aria-labelledby="faq-title">
-        <h2 id="faq-title">{t.faq.title}</h2>
-        <div className="faq-items">
-          {t.faq.items.map((item, index) => (
-            <details className="faq-item" key={item.q}>
-              <summary>{item.q}</summary>
-              <div className="faq-item__answer">
-                <p>
-                  {item.a}
-                  {index === t.faq.items.length - 1 && <> <a href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>.</>}
-                </p>
-              </div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="partner-cta shell" aria-labelledby="partner-title">
-        <div>
-          <h2 id="partner-title">{t.contact.title}</h2>
-          <p>{t.contact.text}</p>
-        </div>
-        <a href="mailto:contact@claimo-app.com">{t.contact.cta}</a>
-      </section>
+      <PartnerSection t={t} />
 
       <footer className="site-footer">
-        <div className="shell site-footer__inner">
-          <div className="site-footer__brand">
-            <a className="simple-nav__brand" href="/">
-              <img className="simple-nav__logo" src={logo} alt="Claimo" />
-            </a>
-            <p>{t.footer.slogan}</p>
-            <a className="site-footer__email" href="mailto:contact@claimo-app.com">
-              contact@claimo-app.com
-            </a>
-          </div>
-          <nav aria-label="Footer navigation">
-            <strong>{t.footer.discover}</strong>
-            <a href="#features">{t.footer.features}</a>
-            <a href="#rewards">{t.footer.rewards}</a>
-            <a href="#faq">{t.footer.faq}</a>
-            <a href="#contact">{t.footer.contact}</a>
-          </nav>
-          <nav aria-label="Legal navigation">
-            <strong>{t.footer.legal}</strong>
-            <a href="/datenschutz.html">{t.footer.privacy}</a>
-            <a href="/impressum.html">{t.footer.imprint}</a>
-          </nav>
-          <div className="footer-actions">
-            <span className="footer-actions__spacer" aria-hidden="true" />
-            <div className="footer-actions__buttons">
-              <a className="footer-playstore" href="#install">
+        <span className="site-footer__glow" aria-hidden="true" />
+        <div className="shell">
+          <div className="site-footer__main">
+            <div className="site-footer__brand">
+              <a className="simple-nav__brand" href="/">
+                <img className="simple-nav__logo" src={logo} alt="Claimo" />
+              </a>
+              <p>{t.footer.blurb}</p>
+              <a className="site-footer__email" href="mailto:contact@claimo-app.com">
+                contact@claimo-app.com
+              </a>
+            </div>
+
+            <nav className="site-footer__col" aria-label="Footer navigation">
+              <strong>{t.footer.discover}</strong>
+              <a href="#features">{t.footer.features}</a>
+              <a href="#rewards">{t.footer.rewards}</a>
+              <a href="#faq">{t.footer.faq}</a>
+              <a href="#how">{t.footer.how}</a>
+            </nav>
+
+            <div className="site-footer__col site-footer__get">
+              <strong>{t.footer.getApp}</strong>
+              <a className="footer-store" href="#install">
                 <img src="/google-play.png" alt="" />
                 <span>
                   <small>{t.footer.storeSmall}</small>
-                  Google Play
+                  <b>Google Play</b>
                 </span>
-              </a>
-              <a className="simple-nav__install" href="#install">
-                {t.footer.install}
               </a>
             </div>
           </div>
-          <small className="site-footer__copyright">{t.footer.copyright}</small>
+
+          <div className="site-footer__bar">
+            <small className="site-footer__copyright">{t.footer.copyright}</small>
+            <nav className="site-footer__legal" aria-label="Legal navigation">
+              <a href="/impressum.html">{t.footer.imprint}</a>
+              <a href="/datenschutz.html">{t.footer.privacy}</a>
+              <a href="/nutzungsbedingungen.html">{t.footer.terms}</a>
+              <a href="#contact">{t.footer.contact}</a>
+            </nav>
+          </div>
         </div>
       </footer>
     </>
