@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import gem from '../assets/gem.svg';
 import logo from '../assets/logo.png';
 import playIcon from '../assets/play-icon.png';
@@ -19,14 +19,14 @@ const copy = {
       install: 'Installieren',
     },
     hero: {
-      line1: 'Spiele kostenlose Spiele.',
-      line2: 'Erledige Aufgaben.',
-      line3: 'Verdiene Belohnungen.',
-      copy1: 'Spiele kostenlos, sammle Punkte und löse sie gegen Geld,',
-      copy2: 'Gutscheine und weitere Belohnungen ein.',
-      storeSmall: 'Bald verfügbar auf',
+      line1: 'Kostenlos spielen.',
+      line2: 'Aufgaben abschließen.',
+      line3: 'Echte Belohnungen verdienen.',
+      copy1: 'Sammle Punkte beim Spielen und bei Aufgaben – ',
+      copy2: 'und löse sie gegen PayPal-Cash, Gutscheine und weitere Belohnungen ein.',
+      storeSmall: 'Demnächst bei',
       store: 'Google Play',
-      learn: 'So funktionierts',
+      learn: 'So funktioniert’s',
     },
     how: {
       eyebrow: 'Dein Weg zu Rewards',
@@ -105,7 +105,7 @@ const copy = {
       title: 'Deine Belohnungen warten auf dich',
       text: 'Wähle deine Lieblingsmarke und tausche deine verdienten Gems gegen echte Gift Cards und Guthaben ein.',
       redeem: 'einlösen',
-      tags: ['Sofort einlösbar', 'Schnelle Auszahlung', 'PayPal & Gutscheine'],
+      tags: ['Niedrige Auszahlungsgrenze', 'Schnelle Auszahlung', 'Cash und Gutscheine'],
     },
     app: {
       label: 'Screenshots',
@@ -117,9 +117,9 @@ const copy = {
       alt3: 'Claimo App Rewards Ansicht',
       tabs: ['Spielen', 'Shoppen', 'Profil'],
       captions: [
-        'Spiele, Angebote und tägliche Aufgaben, die Gems bringen.',
-        'Gems gegen PayPal-Guthaben und Gutscheine einlösen.',
-        'Level, XP und deine tägliche Reward-Streak im Blick.',
+        'Spiele, Angebote und Aufgaben, die Gems bringen.',
+        'Gems gegen Cash und Gutscheine einlösen.',
+        'Level, XP und deine Reward-Streak im Blick.',
       ],
       chips: [
         { kind: 'gem', label: 'Daily Task', sub: 'Spielzeit', val: '+120' },
@@ -188,6 +188,8 @@ const copy = {
       terms: 'Nutzungsbedingungen',
       contact: 'Kontakt',
       copyright: '© 2026 Claimo Studio. All rights reserved.',
+      trademark:
+        'Alle genannten Marken, Logos und Produktnamen (z. B. PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox, Apple) sind Eigentum ihrer jeweiligen Inhaber. Ihre Darstellung dient nur der Veranschaulichung möglicher Belohnungen und bedeutet keine Partnerschaft mit oder Empfehlung durch die genannten Unternehmen.',
     },
   },
   en: {
@@ -203,11 +205,11 @@ const copy = {
       install: 'Install',
     },
     hero: {
-      line1: 'Play free games.',
+      line1: 'Play for free.',
       line2: 'Complete offers.',
       line3: 'Earn real rewards.',
-      copy1: 'Play for free, collect points and redeem them for cash,',
-      copy2: 'gift cards and more rewards.',
+      copy1: 'Collect points by playing games and completing offers — ',
+      copy2: 'then redeem them for PayPal cash, gift cards and more.',
       storeSmall: 'Coming soon on',
       store: 'Google Play',
       learn: 'See how it works',
@@ -289,7 +291,7 @@ const copy = {
       title: 'Your rewards are waiting',
       text: 'Choose your favorite brand and exchange your earned Gems for real gift cards and store credit.',
       redeem: 'redeem',
-      tags: ['Instantly redeemable', 'Fast payouts', 'PayPal & gift cards'],
+      tags: ['Low payout threshold', 'Fast payouts', 'Cash & gift cards'],
     },
     app: {
       label: 'Screenshots',
@@ -301,9 +303,9 @@ const copy = {
       alt3: 'Claimo app rewards view',
       tabs: ['Play', 'Redeem', 'Profile'],
       captions: [
-        'Games, offers and daily tasks that earn Gems.',
-        'Cash out Gems for PayPal money and gift cards.',
-        'Track levels, XP and your daily reward streak.',
+        'Games, offers and tasks that earn Gems.',
+        'Turn Gems into cash and gift cards.',
+        'Track levels, XP and your reward streak.',
       ],
       chips: [
         { kind: 'gem', label: 'Daily task', sub: 'Play time', val: '+120' },
@@ -372,6 +374,8 @@ const copy = {
       terms: 'Terms of Use',
       contact: 'Contact',
       copyright: '© 2026 Claimo Studio. All rights reserved.',
+      trademark:
+        'All trademarks, logos and product names mentioned (e.g. PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox, Apple) are the property of their respective owners. Their display is for illustration of possible rewards only and implies no partnership with or endorsement by these companies.',
     },
   },
 } as const;
@@ -1316,7 +1320,20 @@ export default function App() {
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [languageMenuSuppressed, setLanguageMenuSuppressed] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
+  const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
+  const indicatorRef = useRef<HTMLSpanElement | null>(null);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [hoverIndex, setHoverIndex] = useState<number | null>(null);
   const t = copy[language];
+  const navLinks = [
+    { href: '#how', label: t.nav.how },
+    { href: '#features', label: t.nav.benefits },
+    { href: '#app-preview', label: t.nav.app },
+    { href: '#faq', label: t.nav.faq },
+    { href: '#contact', label: t.nav.contact },
+  ];
+  const indicatedIndex = hoverIndex !== null ? hoverIndex : activeIndex;
   const closeMobileNav = () => setMobileNavOpen(false);
   const selectLanguage = (nextLanguage: Language) => {
     setLanguage(nextLanguage);
@@ -1351,6 +1368,58 @@ export default function App() {
     return () => document.removeEventListener('pointerdown', closeOnOutsidePointer);
   }, [mobileNavOpen]);
 
+  // Frost-Zustand + aktiver Abschnitt (Scroll-Spy) für die klebende Navbar.
+  useEffect(() => {
+    const sectionIds = ['how', 'features', 'app-preview', 'faq', 'contact'];
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      setScrolled(window.scrollY > 8);
+      const line = (navRef.current?.offsetHeight ?? 90) + 24;
+      let current = -1;
+      for (let i = 0; i < sectionIds.length; i += 1) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.getBoundingClientRect().top <= line) current = i;
+      }
+      setActiveIndex(current);
+    };
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(measure);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    measure();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  // Gleitenden Indikator unter den aktiven/gehoverten Link schieben.
+  useLayoutEffect(() => {
+    const indicator = indicatorRef.current;
+    if (!indicator) return;
+    const target = indicatedIndex >= 0 ? linkRefs.current[indicatedIndex] : null;
+    if (!target) {
+      indicator.style.opacity = '0';
+      return;
+    }
+    indicator.style.opacity = '1';
+    indicator.style.width = `${target.offsetWidth}px`;
+    indicator.style.transform = `translateX(${target.offsetLeft}px)`;
+  }, [indicatedIndex, language]);
+
+  useEffect(() => {
+    const reposition = () => {
+      const indicator = indicatorRef.current;
+      const target = indicatedIndex >= 0 ? linkRefs.current[indicatedIndex] : null;
+      if (!indicator || !target) return;
+      indicator.style.width = `${target.offsetWidth}px`;
+      indicator.style.transform = `translateX(${target.offsetLeft}px)`;
+    };
+    window.addEventListener('resize', reposition);
+    return () => window.removeEventListener('resize', reposition);
+  }, [indicatedIndex]);
+
   return (
     <>
       <div className="falling-gems" aria-hidden="true">
@@ -1364,7 +1433,7 @@ export default function App() {
         <img src={gem} alt="" />
       </div>
 
-      <header className="simple-nav" ref={navRef}>
+      <header className={`simple-nav${scrolled ? ' simple-nav--scrolled' : ''}`} ref={navRef}>
         <a className="simple-nav__brand" href="/">
           <img className="simple-nav__logo" src={logo} alt="Claimo" />
         </a>
@@ -1387,11 +1456,23 @@ export default function App() {
           className={`simple-nav__links${mobileNavOpen ? ' simple-nav__links--open' : ''}`}
           aria-label="Main navigation"
         >
-          <a href="#how" onClick={closeMobileNav}>{t.nav.how}</a>
-          <a href="#features" onClick={closeMobileNav}>{t.nav.benefits}</a>
-          <a href="#app-preview" onClick={closeMobileNav}>{t.nav.app}</a>
-          <a href="#faq" onClick={closeMobileNav}>{t.nav.faq}</a>
-          <a href="#contact" onClick={closeMobileNav}>{t.nav.contact}</a>
+          <span className="simple-nav__indicator" ref={indicatorRef} aria-hidden="true" />
+          {navLinks.map((item, index) => (
+            <a
+              key={item.href}
+              href={item.href}
+              ref={(el) => {
+                linkRefs.current[index] = el;
+              }}
+              className={index === indicatedIndex ? 'simple-nav__link--on' : undefined}
+              aria-current={index === activeIndex ? 'true' : undefined}
+              onClick={closeMobileNav}
+              onMouseEnter={() => setHoverIndex(index)}
+              onMouseLeave={() => setHoverIndex(null)}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <a className="simple-nav__install simple-nav__install--desktop" href="#install">
@@ -1489,8 +1570,8 @@ export default function App() {
             </div>
             <div className="hero__stats" aria-label={language === 'de' ? 'Claimo Vorteile' : 'Claimo benefits'}>
               <div><b>10+</b><small>{language === 'de' ? 'Einlösemöglichkeiten' : 'Redemption options'}</small></div>
-              <div><b>3</b><small>{language === 'de' ? 'Wege zu Gems' : 'Ways to earn'}</small></div>
-              <div><b>100%</b><small>{language === 'de' ? 'Kostenlos' : 'Free to use'}</small></div>
+              <div><b>{language === 'de' ? 'ab 5 €' : 'from €5'}</b><small>{language === 'de' ? 'Auszahlung' : 'Payout'}</small></div>
+              <div><b>PayPal</b><small>{language === 'de' ? '& Cash' : '& cash'}</small></div>
             </div>
           </div>
 
@@ -1585,9 +1666,11 @@ export default function App() {
               <a href="/impressum.html">{t.footer.imprint}</a>
               <a href="/datenschutz.html">{t.footer.privacy}</a>
               <a href="/nutzungsbedingungen.html">{t.footer.terms}</a>
-              <a href="#contact">{t.footer.contact}</a>
+              <a href="mailto:contact@claimo-app.com">{t.footer.contact}</a>
             </nav>
           </div>
+
+          <p className="site-footer__trademark">{t.footer.trademark}</p>
         </div>
       </footer>
     </>

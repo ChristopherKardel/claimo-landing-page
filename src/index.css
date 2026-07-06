@@ -123,15 +123,64 @@ body {
 .falling-gems img:nth-child(8) { top: 78vh; left: 56%; transform: rotate(-18deg); }
 
 .simple-nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 30;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 28px;
   width: 100%;
-  padding: 20px max(48px, calc((100vw - 1120px) / 2 + 16px)) 20px max(16px, calc((100vw - 1120px) / 2 - 12px));
-  background: #1C203F;
+  padding: 18px max(48px, calc((100vw - 1120px) / 2 + 16px)) 18px max(16px, calc((100vw - 1120px) / 2 - 12px));
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* Feine Teal-Haarlinie, die beim Scrollen erscheint. */
+.simple-nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+/* Beim Scrollen: milchiges Frost-Glas legt sich unter die Leiste. */
+.simple-nav--scrolled {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background: rgba(11, 13, 24, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 14px 40px -20px rgba(0, 0, 0, 0.9);
+}
+
+.simple-nav--scrolled::after {
+  opacity: 0.7;
+}
+
+/* Anker-Sprünge landen nicht hinter der klebenden Leiste. */
+#how,
+#features,
+#app-preview,
+#faq,
+#contact {
+  scroll-margin-top: calc(var(--nav-height) + 8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .simple-nav,
+  .simple-nav::after,
+  .simple-nav__indicator,
+  .simple-nav__links a {
+    transition: none;
+  }
 }
 
 .simple-nav__brand {
@@ -147,22 +196,55 @@ body {
 }
 
 .simple-nav__links {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 34px;
-  margin-left: auto;
+  gap: 2px;
+  margin: 0 auto;
+  padding: 5px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
   color: #ffffff;
-  font-size: 0.98rem;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .simple-nav__links a {
-  transition: color 0.2s ease;
+  position: relative;
+  z-index: 2;
+  padding: 0.55em 0.95em;
+  border-radius: 10px;
+  color: var(--text-soft);
+  white-space: nowrap;
+  transition: color 0.25s ease;
 }
 
 .simple-nav__links a:hover {
   color: var(--text);
+}
+
+/* Text auf dem gleitenden Indikator (aktiv oder gehovert). */
+.simple-nav__links a.simple-nav__link--on {
+  color: var(--text-ink);
+}
+
+/* Der gleitende Highlight-Balken hinter den Links. */
+.simple-nav__indicator {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  border-radius: 10px;
+  background: var(--grad-brand);
+  box-shadow: 0 6px 18px -4px rgba(0, 235, 196, 0.6);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0.9, 0.3, 1.2),
+    width 0.4s cubic-bezier(0.4, 0.9, 0.3, 1.2),
+    opacity 0.25s ease;
 }
 
 .simple-nav__toggle {
@@ -223,8 +305,8 @@ body {
 
 .simple-nav__install:hover {
   transform: translateY(-1px);
-  background: #00d890;
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.24);
+  background: #25f5b3;
+  box-shadow: 0 0 24px -2px var(--glow-primary), 0 8px 20px -6px rgba(0, 0, 0, 0.4);
 }
 
 .simple-nav__install--mobile {
@@ -338,7 +420,7 @@ body {
   isolation: isolate;
   overflow: hidden;
   background: linear-gradient(180deg,
-    #1c203f 0%,
+    var(--bg) 0%,
     #14182e 16%,
     #101326 26%,
     #101326 92%,
@@ -1070,7 +1152,8 @@ body {
 .app2-tab { padding: 10px 22px; border: 0; border-radius: 100px; background: none; color: var(--soft); font-family: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: color 0.25s ease, background 0.25s ease; }
 .app2-tab:hover { color: #fff; }
 .app2-tab.is-on { color: var(--text-ink); background: var(--grad-brand); box-shadow: 0 10px 24px -12px var(--glow-primary); }
-.app2-cap { max-width: 440px; margin: 18px auto 0; min-height: 1.6em; color: var(--soft); font-size: 1rem; animation: rise-in 0.5s ease both; }
+/* Zwei Zeilen fest reservieren, damit ein Umbruch die Stage-Höhe nicht springen lässt. */
+.app2-cap { max-width: 440px; margin: 18px auto 0; min-height: 3.2em; color: var(--soft); font-size: 1rem; animation: rise-in 0.5s ease both; }
 
 /* reveal */
 .app2 .rv { opacity: 0; transform: translateY(22px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
@@ -2325,10 +2408,18 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 14px 24px;
-  padding: 22px 0 30px;
+  padding: 22px 0 16px;
   border-top: 1px solid var(--border);
 }
 .site-footer__copyright { color: var(--text-dim); font-size: 0.82rem; }
+.site-footer__trademark {
+  margin: 0;
+  padding-bottom: 30px;
+  max-width: 820px;
+  color: var(--text-dim);
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
 .site-footer__legal { display: flex; flex-wrap: wrap; align-items: center; }
 .site-footer__legal a {
   position: relative;
@@ -2388,8 +2479,8 @@ body {
   }
 
   .simple-nav__links {
-    gap: clamp(34px, 1.8vw, 72px);
-    font-size: clamp(1rem, min(1.05vw, 1.9vh), 2.1rem);
+    gap: clamp(2px, 0.2vw, 8px);
+    font-size: clamp(1rem, min(0.95vw, 1.7vh), 1.7rem);
   }
 
   .simple-nav__install,
@@ -2435,14 +2526,24 @@ body {
     display: grid;
     width: 100%;
     gap: 4px;
-    margin-left: 0;
+    margin: 0;
     padding: 10px 20px 18px;
-    background: #1C203F;
+    border: 0;
+    border-radius: 0;
+    background: rgba(11, 13, 24, 0.94);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
     font-size: 0.98rem;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-12px);
     transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+
+  /* Der gleitende Indikator ergibt im Mobil-Dropdown keinen Sinn. */
+  .simple-nav__indicator {
+    display: none;
   }
 
   .simple-nav__links--open {
@@ -2451,12 +2552,14 @@ body {
     transform: translateY(0);
   }
 
-  .simple-nav__links a {
+  .simple-nav__links a,
+  .simple-nav__links a.simple-nav__link--on {
     display: flex;
     align-items: center;
     min-height: 44px;
     padding: 0 12px;
     border-radius: 8px;
+    color: #ffffff;
   }
 
   .simple-nav__links a:hover {
@@ -2930,7 +3033,8 @@ p  { margin: 0; color: var(--text-soft); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 12px 16px;
   width: min(900px, 100%);
   margin-inline: auto;
   padding: 0 0 46px;
@@ -2946,7 +3050,7 @@ p  { margin: 0; color: var(--text-soft); }
   letter-spacing: 0;
 }
 .legal-nav .brand b { color: #00F3A2; font-weight: 700; }
-.legal-nav-links { display: flex; gap: 22px; font-size: 0.92rem; color: #ffffff; }
+.legal-nav-links { display: flex; flex-wrap: wrap; gap: 12px 22px; font-size: 0.92rem; color: #ffffff; }
 .legal-nav-links a { transition: color 0.2s ease; }
 .legal-nav-links a:hover { color: #00F3A2; }
 .legal-nav .btn {
