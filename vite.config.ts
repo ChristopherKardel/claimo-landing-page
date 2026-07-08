@@ -27,6 +27,11 @@ export default defineConfig({
         impressum: resolve(__dirname, 'impressum.html'),
         datenschutz: resolve(__dirname, 'datenschutz.html'),
         nutzungsbedingungen: resolve(__dirname, 'nutzungsbedingungen.html'),
+        // App legal pages — separate placeholders, kept apart from the website texts.
+        appImpressum: resolve(__dirname, 'app/impressum.html'),
+        appDatenschutz: resolve(__dirname, 'app/datenschutz.html'),
+        appNutzungsbedingungen: resolve(__dirname, 'app/nutzungsbedingungen.html'),
+        appWiderrufsbelehrung: resolve(__dirname, 'app/widerrufsbelehrung.html'),
       },
     },
   },

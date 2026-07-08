@@ -16,7 +16,7 @@ export function CTA() {
             <h2>Be first to start<br />earning with Claimo</h2>
             <p className={styles.lead}>
               Claimo launches on Android soon. Reach out to get notified at launch — or to
-              explore offerwall, survey and publisher partnerships with Claimo Studio.
+              explore offerwall, survey and publisher partnerships with claimo.
             </p>
 
             <div className={styles.actions}>

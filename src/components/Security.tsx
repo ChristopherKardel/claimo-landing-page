@@ -23,7 +23,7 @@ const POINTS: Array<{ Icon: ComponentType<IconProps>; title: string; text: strin
   {
     Icon: Shield,
     title: 'GDPR compliant',
-    text: 'Built and operated in Germany by Claimo Studio under EU data-protection rules.',
+    text: 'Built and operated in Germany by claimo under EU data-protection rules.',
   },
 ];
 
@@ -53,7 +53,7 @@ export function Security() {
           <p className="eyebrow">Trust & security</p>
           <h2>Built to be safe, fair and transparent</h2>
           <p className={styles.lead}>
-            Claimo is a real product from a registered German studio — not an anonymous
+            Claimo is a real product from a registered German business — not an anonymous
             cash-grab. Security and honesty are baked in from the start.
           </p>
           <div className={styles.stats}>

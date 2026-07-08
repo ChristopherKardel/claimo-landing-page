@@ -13,17 +13,36 @@
     <link rel="stylesheet" href="/src/index.css" />
   </head>
   <body>
-    <main class="legal-page">
-      <nav class="legal-nav">
-        <a class="brand" href="./">Claim<b>o</b></a>
-        <div class="legal-nav-links">
-          <a href="./">Startseite</a>
-          <a href="./impressum.html">Impressum</a>
-          <a href="./datenschutz.html">Datenschutz</a>
-        </div>
-        <a class="btn btn-primary" href="mailto:contact@claimo-app.com">Kontakt</a>
+    <header class="legal-nav">
+      <a class="legal-nav__brand" href="./" aria-label="Claimo Startseite">
+        <img class="legal-nav__logo" src="/logo.png" alt="Claimo" />
+      </a>
+
+      <nav id="legal-navigation" class="legal-nav__links" aria-label="Rechtliche Seiten">
+        <span class="legal-nav__indicator" aria-hidden="true"></span>
+        <a href="./">Startseite</a>
+        <a href="./impressum.html">Impressum</a>
+        <a href="./datenschutz.html">Datenschutz</a>
+        <a href="./nutzungsbedingungen.html" aria-current="page">Nutzungsbedingungen</a>
       </nav>
 
+      <div class="legal-nav__switch" role="group" aria-label="Rechtstexte für Website oder App">
+        <a class="legal-nav__switch-opt is-active" href="./nutzungsbedingungen.html" aria-current="true">Website</a>
+        <a class="legal-nav__switch-opt" href="./app/nutzungsbedingungen.html">App</a>
+      </div>
+
+      <button
+        class="legal-nav__toggle"
+        type="button"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        aria-controls="legal-navigation"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main class="legal-page">
       <article class="legal-content">
         <p class="eyebrow">Legal</p>
         <h1>Nutzungsbedingungen für die Website claimo-app.com</h1>
@@ -390,5 +409,6 @@
         </section>
       </article>
     </main>
+    <script type="module" src="/src/legal-nav.js"></script>
   </body>
 </html>

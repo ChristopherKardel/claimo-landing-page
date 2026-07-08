@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactElement } from 'react';
 import gem from '../assets/gem.svg';
 import logo from '../assets/logo.png';
 import playIcon from '../assets/play-icon.png';
@@ -9,7 +9,7 @@ const copy = {
   de: {
     menuOpen: 'Menü öffnen',
     menuClose: 'Menü schließen',
-    switchLanguage: 'Sprache auf Englisch wechseln',
+    switchLanguage: 'Sprache wählen',
     nav: {
       benefits: 'Vorteile',
       app: 'App-Einblick',
@@ -187,7 +187,7 @@ const copy = {
       privacy: 'Datenschutz',
       terms: 'Nutzungsbedingungen',
       contact: 'Kontakt',
-      copyright: '© 2026 Claimo Studio. All rights reserved.',
+      copyright: '2026 claimo.',
       trademark:
         'Alle genannten Marken, Logos und Produktnamen (z. B. PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox, Apple) sind Eigentum ihrer jeweiligen Inhaber. Ihre Darstellung dient nur der Veranschaulichung möglicher Belohnungen und bedeutet keine Partnerschaft mit oder Empfehlung durch die genannten Unternehmen.',
     },
@@ -195,7 +195,7 @@ const copy = {
   en: {
     menuOpen: 'Open menu',
     menuClose: 'Close menu',
-    switchLanguage: 'Switch language to German',
+    switchLanguage: 'Choose language',
     nav: {
       benefits: 'Benefits',
       app: 'App preview',
@@ -373,7 +373,7 @@ const copy = {
       privacy: 'Privacy',
       terms: 'Terms of Use',
       contact: 'Contact',
-      copyright: '© 2026 Claimo Studio. All rights reserved.',
+      copyright: '2026 claimo.',
       trademark:
         'All trademarks, logos and product names mentioned (e.g. PayPal, Amazon, Steam, Google Play, Nintendo eShop, PlayStation, Xbox, Apple) are the property of their respective owners. Their display is for illustration of possible rewards only and implies no partnership with or endorsement by these companies.',
     },
@@ -393,16 +393,67 @@ const rewards: Array<{ name: string; logo: string; brand: string; sub: Record<La
   { name: 'Xbox', logo: '/xbox.png', brand: 'xbox', sub: { de: 'Gift Card', en: 'Gift card' } },
   { name: 'Apple', logo: '/apple.png', brand: 'apple', sub: { de: 'Gift Card', en: 'Gift card' } },
 ];
-const languages: Array<{ code: Language; label: string }> = [
-  { code: 'de', label: 'Deutsch' },
-  { code: 'en', label: 'English' },
+// UI-auswählbare Sprachen. Nur `de` und `en` sind wirklich übersetzt; jede andere
+// Option zeigt englischen Inhalt (via `content`), bis sie übersetzt wird.
+type UiLang = 'de' | 'en' | 'fr' | 'es' | 'it' | 'pt' | 'nl' | 'pl';
+
+const languages: Array<{ code: UiLang; label: string; content: Language; translated: boolean }> = [
+  { code: 'de', label: 'Deutsch', content: 'de', translated: true },
+  { code: 'en', label: 'English', content: 'en', translated: true },
+  { code: 'fr', label: 'Français', content: 'en', translated: false },
+  { code: 'es', label: 'Español', content: 'en', translated: false },
+  { code: 'it', label: 'Italiano', content: 'en', translated: false },
+  { code: 'pt', label: 'Português', content: 'en', translated: false },
+  { code: 'nl', label: 'Nederlands', content: 'en', translated: false },
+  { code: 'pl', label: 'Polski', content: 'en', translated: false },
 ];
 
-const getLanguageFromPath = (): Language => {
-  if (typeof window === 'undefined') return 'de';
-  const firstPathPart = window.location.pathname.split('/').filter(Boolean)[0];
-  return firstPathPart === 'en' ? 'en' : 'de';
+const uiLangCodes = languages.map((l) => l.code);
+const isUiLang = (value: string | null | undefined): value is UiLang =>
+  !!value && (uiLangCodes as string[]).includes(value);
+const contentFor = (code: UiLang): Language => languages.find((l) => l.code === code)?.content ?? 'en';
+
+// Erkennungsreihenfolge: gespeicherte Wahl → Sprache in URL → Browser-Sprache → English.
+// Vollständig synchron (keine IP-Abfrage, keine externe Anfrage) — DSGVO-freundlich, kein Flackern.
+const detectUiLang = (): UiLang => {
+  if (typeof window === 'undefined') return 'en';
+  const stored = window.localStorage.getItem('claimo-lang');
+  if (isUiLang(stored)) return stored;
+  const seg = window.location.pathname.split('/').filter(Boolean)[0];
+  if (isUiLang(seg)) return seg;
+  const preferred = window.navigator.languages ?? [window.navigator.language];
+  for (const entry of preferred) {
+    const primary = entry?.toLowerCase().split('-')[0];
+    if (isUiLang(primary)) return primary;
+  }
+  return 'en';
 };
+
+const uiLangFromPath = (): UiLang | null => {
+  if (typeof window === 'undefined') return null;
+  const seg = window.location.pathname.split('/').filter(Boolean)[0];
+  return isUiLang(seg) ? seg : null;
+};
+
+// Inline-SVG-Flaggen — Flag-Emojis werden auf Windows nicht gerendert, also zeichnen wir sie.
+const flagPaths: Record<UiLang, ReactElement> = {
+  de: <><rect width="20" height="14" fill="#000" /><rect y="4.667" width="20" height="4.667" fill="#DD0000" /><rect y="9.333" width="20" height="4.667" fill="#FFCE00" /></>,
+  en: <><rect width="20" height="14" fill="#012169" /><path d="M0 0 20 14M20 0 0 14" stroke="#fff" strokeWidth="2.8" /><path d="M0 0 20 14M20 0 0 14" stroke="#C8102E" strokeWidth="1.1" /><path d="M10 0V14M0 7H20" stroke="#fff" strokeWidth="4" /><path d="M10 0V14M0 7H20" stroke="#C8102E" strokeWidth="2.1" /></>,
+  fr: <><rect width="20" height="14" fill="#fff" /><rect width="6.667" height="14" fill="#0055A4" /><rect x="13.333" width="6.667" height="14" fill="#EF4135" /></>,
+  es: <><rect width="20" height="14" fill="#AA151B" /><rect y="3.5" width="20" height="7" fill="#F1BF00" /></>,
+  it: <><rect width="20" height="14" fill="#fff" /><rect width="6.667" height="14" fill="#009246" /><rect x="13.333" width="6.667" height="14" fill="#CE2B37" /></>,
+  pt: <><rect width="20" height="14" fill="#DA291C" /><rect width="8" height="14" fill="#046A38" /><circle cx="8" cy="7" r="2.3" fill="#FFE900" stroke="#8f6b00" strokeWidth="0.5" /></>,
+  nl: <><rect width="20" height="14" fill="#fff" /><rect width="20" height="4.667" fill="#AE1C28" /><rect y="9.333" width="20" height="4.667" fill="#21468B" /></>,
+  pl: <><rect width="20" height="14" fill="#fff" /><rect y="7" width="20" height="7" fill="#DC143C" /></>,
+};
+
+function Flag({ code }: { code: UiLang }) {
+  return (
+    <span className="lang-flag" aria-hidden="true">
+      <svg viewBox="0 0 20 14">{flagPaths[code]}</svg>
+    </span>
+  );
+}
 
 // Task icons reuse the app's own asset glyphs (game · survey · offer),
 // tinted to the brand teal via a CSS mask.
@@ -1316,16 +1367,18 @@ function PartnerSection({ t }: { t: Translation }) {
 
 export default function App() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [language, setLanguage] = useState<Language>(getLanguageFromPath);
+  const [uiLang, setUiLang] = useState<UiLang>(detectUiLang);
   const [languageMenuOpen, setLanguageMenuOpen] = useState(false);
   const [languageMenuSuppressed, setLanguageMenuSuppressed] = useState(false);
   const navRef = useRef<HTMLElement | null>(null);
+  const languageMenuRef = useRef<HTMLDivElement | null>(null);
   const linkRefs = useRef<Array<HTMLAnchorElement | null>>([]);
   const indicatorRef = useRef<HTMLSpanElement | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
   const [hoverIndex, setHoverIndex] = useState<number | null>(null);
-  const t = copy[language];
+  const contentLocale: Language = contentFor(uiLang);
+  const t = copy[contentLocale];
   const navLinks = [
     { href: '#how', label: t.nav.how },
     { href: '#features', label: t.nav.benefits },
@@ -1335,24 +1388,30 @@ export default function App() {
   ];
   const indicatedIndex = hoverIndex !== null ? hoverIndex : activeIndex;
   const closeMobileNav = () => setMobileNavOpen(false);
-  const selectLanguage = (nextLanguage: Language) => {
-    setLanguage(nextLanguage);
+  const selectLanguage = (nextLang: UiLang) => {
+    setUiLang(nextLang);
+    window.localStorage.setItem('claimo-lang', nextLang);
     setLanguageMenuOpen(false);
     setLanguageMenuSuppressed(true);
     closeMobileNav();
-    if (window.location.pathname !== `/${nextLanguage}`) {
-      window.history.pushState(null, '', `/${nextLanguage}`);
+    // URL zeigt immer auf eine echte Seite (/de oder /en) — kein 404 bei Fallback-Sprachen.
+    const nextPath = `/${contentFor(nextLang)}`;
+    if (window.location.pathname !== nextPath) {
+      window.history.pushState(null, '', nextPath);
     }
   };
 
   useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
+    document.documentElement.lang = uiLang;
+  }, [uiLang]);
 
   useEffect(() => {
-    const syncLanguageFromPath = () => setLanguage(getLanguageFromPath());
-    window.addEventListener('popstate', syncLanguageFromPath);
-    return () => window.removeEventListener('popstate', syncLanguageFromPath);
+    const syncFromPath = () => {
+      const fromPath = uiLangFromPath();
+      if (fromPath) setUiLang(fromPath);
+    };
+    window.addEventListener('popstate', syncFromPath);
+    return () => window.removeEventListener('popstate', syncFromPath);
   }, []);
 
   useEffect(() => {
@@ -1367,6 +1426,22 @@ export default function App() {
     document.addEventListener('pointerdown', closeOnOutsidePointer);
     return () => document.removeEventListener('pointerdown', closeOnOutsidePointer);
   }, [mobileNavOpen]);
+
+  // Sprachmenü schließt sich beim Klick/Tap außerhalb (zuverlässig auch auf Touch,
+  // wo mouseLeave nicht feuert) — ein Klick auf den Button selbst schließt es NICHT.
+  useEffect(() => {
+    if (!languageMenuOpen) return;
+
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!languageMenuRef.current?.contains(event.target as Node)) {
+        setLanguageMenuOpen(false);
+        setLanguageMenuSuppressed(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', closeOnOutsidePointer);
+    return () => document.removeEventListener('pointerdown', closeOnOutsidePointer);
+  }, [languageMenuOpen]);
 
   // Frost-Zustand + aktiver Abschnitt (Scroll-Spy) für die klebende Navbar.
   useEffect(() => {
@@ -1406,7 +1481,7 @@ export default function App() {
     indicator.style.opacity = '1';
     indicator.style.width = `${target.offsetWidth}px`;
     indicator.style.transform = `translateX(${target.offsetLeft}px)`;
-  }, [indicatedIndex, language]);
+  }, [indicatedIndex, contentLocale]);
 
   useEffect(() => {
     const reposition = () => {
@@ -1479,6 +1554,7 @@ export default function App() {
           {t.nav.install}
         </a>
         <div
+          ref={languageMenuRef}
           className={`simple-nav__language-menu${languageMenuOpen ? ' simple-nav__language-menu--open' : ''}`}
           onMouseEnter={() => {
             if (!languageMenuSuppressed) setLanguageMenuOpen(true);
@@ -1505,26 +1581,29 @@ export default function App() {
             aria-expanded={languageMenuOpen}
             onClick={() => {
               setLanguageMenuSuppressed(false);
-              setLanguageMenuOpen((open) => !open);
+              setLanguageMenuOpen(true);
             }}
           >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <circle cx="12" cy="12" r="9" />
-              <path d="M3 12h18M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21M12 3C9.8 5.4 8.7 8.4 8.7 12s1.1 6.6 3.3 9" />
+            <Flag code={uiLang} />
+            <span>{uiLang.toUpperCase()}</span>
+            <svg className="simple-nav__language-caret" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
             </svg>
-            <span>{language.toUpperCase()}</span>
           </button>
           <div className="simple-nav__language-dropdown" role="menu">
             {languages.map((item) => (
               <button
-                className={item.code === language ? 'simple-nav__language-option simple-nav__language-option--active' : 'simple-nav__language-option'}
+                className={item.code === uiLang ? 'simple-nav__language-option simple-nav__language-option--active' : 'simple-nav__language-option'}
                 type="button"
                 role="menuitem"
                 key={item.code}
                 onClick={() => selectLanguage(item.code)}
               >
-                <span>{item.label}</span>
-                <b>{item.code.toUpperCase()}</b>
+                <Flag code={item.code} />
+                <span className="simple-nav__language-name">{item.label}</span>
+                {item.translated
+                  ? <b>{item.code.toUpperCase()}</b>
+                  : <span className="simple-nav__language-soon">{contentLocale === 'de' ? 'bald' : 'soon'}</span>}
               </button>
             ))}
           </div>
@@ -1562,16 +1641,16 @@ export default function App() {
                 </span>
               </span>
               <a className="hero__learn" href="#how">
-                {t.hero.learn}
+                <span className="hero__learn-label">{t.hero.learn}</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14M13 6l6 6-6 6" />
                 </svg>
               </a>
             </div>
-            <div className="hero__stats" aria-label={language === 'de' ? 'Claimo Vorteile' : 'Claimo benefits'}>
-              <div><b>10+</b><small>{language === 'de' ? 'Einlösemöglichkeiten' : 'Redemption options'}</small></div>
-              <div><b>{language === 'de' ? 'ab 5 €' : 'from €5'}</b><small>{language === 'de' ? 'Auszahlung' : 'Payout'}</small></div>
-              <div><b>PayPal</b><small>{language === 'de' ? '& Cash' : '& cash'}</small></div>
+            <div className="hero__stats" aria-label={contentLocale === 'de' ? 'Claimo Vorteile' : 'Claimo benefits'}>
+              <div><b>EU</b><small>{contentLocale === 'de' ? 'Datenschutz' : 'Data protection'}</small></div>
+              <div><b>{contentLocale === 'de' ? 'ab 5 €' : 'from €5'}</b><small>{contentLocale === 'de' ? 'Auszahlung' : 'Payout'}</small></div>
+              <div><b>Cash</b><small>{contentLocale === 'de' ? '& Gutscheine' : '& gift cards'}</small></div>
             </div>
           </div>
 
@@ -1611,14 +1690,14 @@ export default function App() {
         </section>
       </main>
 
-      <HowItWorks t={t} language={language} />
+      <HowItWorks t={t} language={contentLocale} />
 
       <Benefits t={t} />
 
-      <Games t={t} language={language} />
+      <Games t={t} language={contentLocale} />
       </div>
 
-      <Rewards t={t} language={language} />
+      <Rewards t={t} language={contentLocale} />
 
       <AppShowcase t={t} />
 
