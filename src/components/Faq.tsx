@@ -26,7 +26,7 @@ const FAQS = [
   },
   {
     q: 'How is my data handled?',
-    a: 'This site uses no analytics or advertising trackers and loads fonts and images locally. Claimo Studio is based in Germany and operates under EU (GDPR) data-protection rules.',
+    a: 'This site uses no analytics or advertising trackers and loads fonts and images locally. claimo is based in Germany and operates under EU (GDPR) data-protection rules.',
   },
 ];
 

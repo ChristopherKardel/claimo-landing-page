@@ -202,9 +202,6 @@ body {
   gap: 2px;
   margin: 0 auto;
   padding: 5px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--border);
   color: #ffffff;
   font-size: 0.92rem;
   font-weight: 600;
@@ -349,14 +346,33 @@ body {
   background: rgba(255, 255, 255, 0.08);
 }
 
-.simple-nav__language svg {
-  width: 17px;
-  height: 17px;
+/* Nur das Chevron des Sprach-Buttons – NICHT die Flaggen-SVGs treffen. */
+.simple-nav__language-caret {
+  width: 12px;
+  height: 12px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.8;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.5;
+}
+
+/* Inline-SVG-Flagge (gezeichnet, da Emoji-Flaggen auf Windows fehlen). */
+.lang-flag {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 22px;
+  height: 15px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14), 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.lang-flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .simple-nav__language b {
@@ -370,7 +386,9 @@ body {
   right: 0;
   display: grid;
   gap: 4px;
-  min-width: 154px;
+  min-width: 208px;
+  max-height: min(70vh, 420px);
+  overflow-y: auto;
   padding: 8px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
@@ -391,8 +409,8 @@ body {
 .simple-nav__language-option {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 14px;
+  justify-content: flex-start;
+  gap: 11px;
   min-height: 38px;
   padding: 0 10px;
   border: 0;
@@ -404,6 +422,10 @@ body {
   text-align: left;
 }
 
+.simple-nav__language-name {
+  flex: 1;
+}
+
 .simple-nav__language-option:hover,
 .simple-nav__language-option--active {
   background: rgba(255, 255, 255, 0.07);
@@ -412,6 +434,18 @@ body {
 .simple-nav__language-option b {
   color: #00F3A2;
   font-size: 0.78rem;
+}
+
+/* Hinweis, dass eine Sprache noch nicht übersetzt ist (Inhalt erscheint englisch). */
+.simple-nav__language-soon {
+  color: var(--text-dim);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 7px;
 }
 
 /* ── continuous background flow: one glow field behind hero → games ────────── */
@@ -649,18 +683,29 @@ body {
   color: #ffffff;
 }
 
+/* Text-Link (kein Button-Rahmen) mit exakt der Hover-Animation der Footer-Rechtslinks. */
 .hero__learn {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  min-height: 56px;
-  padding: 0 24px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  gap: 8px;
+  color: var(--text-soft);
   font-weight: 700;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: color 0.22s ease;
+}
+
+.hero__learn-label {
+  position: relative;
+}
+
+.hero__learn-label::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1.5px;
+  background: var(--grad-brand);
+  transition: right 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero__learn svg {
@@ -671,17 +716,14 @@ body {
   stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 0.2s ease;
 }
 
 .hero__learn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 243, 162, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
 }
 
-.hero__learn:hover svg {
-  transform: translateX(3px);
+.hero__learn:hover .hero__learn-label::after {
+  right: 0;
 }
 
 .hero__stats {
@@ -813,6 +855,13 @@ body {
   bottom: -10px;
   width: 86px;
   height: 86px;
+}
+
+/* Feste Karten (nur Desktop) → feste, ausgewogene Logogröße statt der fluiden Deck-Skala. */
+.hero__reward-card .giftcard__logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
 }
 
 .hero__reward-card--paypal { transform: rotate(-5deg); }
@@ -1559,6 +1608,7 @@ body {
 .giftcard {
   position: relative;
   isolation: isolate;
+  container-type: inline-size;
   aspect-ratio: 1.72 / 1;
   display: flex;
   flex-direction: column;
@@ -1615,16 +1665,17 @@ body {
   display: grid;
   place-items: center;
   flex: none;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
+  width: clamp(36px, 3vw, 46px);
+  height: clamp(36px, 3vw, 46px);
+  border-radius: clamp(10px, 0.9vw, 14px);
   background: #ffffff;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
+/* Logo als Anteil des (bildschirmabhängig skalierenden) Containers → stets proportional. */
 .giftcard__logo img {
-  width: 26px;
-  height: 26px;
+  width: 60%;
+  height: 60%;
   object-fit: contain;
 }
 
@@ -1679,8 +1730,9 @@ body {
   right: -12px;
   bottom: -16px;
   z-index: 0;
-  width: 100px;
-  height: 100px;
+  /* Relativ zur Kartenbreite (Container-Query) → immer gleicher Anteil, egal ob Mobile oder Desktop. */
+  width: 40cqw;
+  height: 40cqw;
   object-fit: contain;
   opacity: 0.1;
   filter: grayscale(1) brightness(3);
@@ -1700,11 +1752,11 @@ body {
 .giftcard--playstation .giftcard__mark { filter: brightness(0) invert(1); opacity: 0.12; }
 .giftcard--nintendo .giftcard__mark { filter: brightness(0) invert(1); opacity: 0.15; }
 
-/* icon-only logos read smaller in the chip — size them up to match the rest */
-.giftcard--gplay .giftcard__logo img { width: 28px; height: 28px; }
-.giftcard--nintendo .giftcard__logo img { width: 30px; height: 30px; }
-.giftcard--playstation .giftcard__logo img { width: 31px; height: 31px; }
-.giftcard--xbox .giftcard__logo img { width: 29px; height: 29px; }
+/* icon-only logos read smaller in the chip — size them up (relative to container) to match the rest */
+.giftcard--gplay .giftcard__logo img { width: 66%; height: 66%; }
+.giftcard--nintendo .giftcard__logo img { width: 70%; height: 70%; }
+.giftcard--playstation .giftcard__logo img { width: 72%; height: 72%; }
+.giftcard--xbox .giftcard__logo img { width: 68%; height: 68%; }
 
 .rewards-phone {
   position: relative;
@@ -3024,44 +3076,196 @@ p  { margin: 0; color: var(--text-soft); }
 /* ═══ Legal pages (impressum.html / datenschutz.html) ═════════════════════════
    Plain static HTML — these styles use stable, non-module class names. */
 .legal-page {
-  min-height: 100vh;
-  padding: 40px 22px 80px;
-  background: linear-gradient(180deg, var(--bg) 0%, #16192E 100%);
+  min-height: 70vh;
+  padding: 28px 22px 96px;
   color: #ffffff;
 }
+
+/* ── Legal navbar — mirrors the landing .simple-nav ─────────────────────────── */
 .legal-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px 16px;
-  width: min(900px, 100%);
-  margin-inline: auto;
-  padding: 0 0 46px;
+  gap: 24px;
+  width: 100%;
+  padding: 16px max(20px, calc((100% - 1160px) / 2));
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease,
+    border-color 0.4s ease, backdrop-filter 0.4s ease;
 }
-.legal-nav .brand {
+/* Feine Teal-Haarlinie, die beim Scrollen erscheint. */
+.legal-nav::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+/* Beim Scrollen legt sich milchiges Frost-Glas unter die Leiste. */
+.legal-nav--scrolled {
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background: rgba(11, 13, 24, 0.72);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 14px 40px -20px rgba(0, 0, 0, 0.9);
+}
+.legal-nav--scrolled::after { opacity: 0.7; }
+
+.legal-nav__brand { display: inline-flex; align-items: center; flex-shrink: 0; }
+.legal-nav__logo { display: block; width: auto; height: 46px; object-fit: contain; }
+
+/* Zentrierte Pill-Navigation mit gleitendem Indikator. */
+.legal-nav__links {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0 auto;
+  padding: 5px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.legal-nav__links a {
+  position: relative;
+  z-index: 2;
+  padding: 0.55em 0.95em;
+  border-radius: 10px;
+  color: var(--text-soft);
+  white-space: nowrap;
+  transition: color 0.25s ease;
+}
+.legal-nav__links a:hover { color: var(--text); }
+.legal-nav__links a.legal-nav__link--on { color: var(--text-ink); }
+
+.legal-nav__indicator {
+  position: absolute;
+  z-index: 1;
+  top: 5px;
+  bottom: 5px;
+  left: 0;
+  width: 0;
+  border-radius: 10px;
+  background: var(--grad-brand);
+  box-shadow: 0 6px 18px -4px rgba(0, 235, 196, 0.6);
+  opacity: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.4, 0.9, 0.3, 1.2),
+    width 0.4s cubic-bezier(0.4, 0.9, 0.3, 1.2),
+    opacity 0.25s ease;
+}
+
+/* Website ⇄ App Umschalter (segmentierte Pille). */
+.legal-nav__switch {
   display: inline-flex;
   align-items: center;
-  gap: 0;
-  font-family: 'Lexend', var(--font);
-  font-size: 1.32rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 0;
+  gap: 2px;
+  flex-shrink: 0;
+  padding: 4px;
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
 }
-.legal-nav .brand b { color: #00F3A2; font-weight: 700; }
-.legal-nav-links { display: flex; flex-wrap: wrap; gap: 12px 22px; font-size: 0.92rem; color: #ffffff; }
-.legal-nav-links a { transition: color 0.2s ease; }
-.legal-nav-links a:hover { color: #00F3A2; }
-.legal-nav .btn {
-  min-height: auto;
+.legal-nav__switch-opt {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.42em 0.9em;
+  border-radius: 100px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-soft);
+  transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.legal-nav__switch-opt:hover { color: var(--text); }
+.legal-nav__switch-opt.is-active {
+  color: var(--text-ink);
+  background: var(--grad-brand);
+  box-shadow: 0 6px 18px -6px rgba(0, 235, 196, 0.6);
+}
+
+/* Hamburger (nur mobil sichtbar). */
+.legal-nav__toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
   padding: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: #ffffff;
-  box-shadow: none;
-  font-size: 0.92rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.legal-nav__toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--text);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+}
+.legal-nav__toggle--open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.legal-nav__toggle--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.legal-nav__toggle--open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 980px) {
+  .legal-nav {
+    gap: 12px;
+    padding-inline: 20px;
+  }
+  .legal-nav__toggle { display: inline-flex; }
+  .legal-nav__switch { margin-left: auto; }
+  .legal-nav__switch-opt { padding: 0.4em 0.72em; font-size: 0.8rem; }
+
+  .legal-nav__links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 10px 20px 18px;
+    background: rgba(11, 13, 24, 0.94);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-12px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .legal-nav__links--open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .legal-nav__indicator { display: none; }
+  .legal-nav__links a,
+  .legal-nav__links a.legal-nav__link--on {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 12px;
+    border-radius: 8px;
+    color: #ffffff;
+  }
+  .legal-nav__links a:hover { background: rgba(255, 255, 255, 0.06); }
+  .legal-nav__links a[aria-current="page"] {
+    background: rgba(0, 235, 196, 0.12);
+    color: var(--primary);
+  }
 }
 
 .legal-content {
@@ -3104,6 +3308,19 @@ p  { margin: 0; color: var(--text-soft); }
 .legal-content li::marker { color: rgba(0, 243, 162, 0.75); }
 .legal-date { margin-top: 26px; color: #ffffff; font-size: 0.92rem; }
 
+/* Placeholder note for legal pages whose content is not written yet (e.g. the app texts). */
+.legal-note {
+  margin-top: 28px;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 1px dashed rgba(0, 243, 162, 0.4);
+  border-radius: 16px;
+  background: rgba(0, 243, 162, 0.05);
+}
+.legal-note p { color: rgba(255, 255, 255, 0.82); margin: 0; }
+
 @media (max-width: 520px) {
   .giftcard-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3119,17 +3336,6 @@ p  { margin: 0; color: var(--text-soft); }
 
   .giftcard:hover {
     transform: translateY(-3px);
-  }
-
-  .giftcard__logo {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
-  }
-
-  .giftcard__logo img {
-    width: 21px;
-    height: 21px;
   }
 
   .giftcard__foot {
@@ -3163,14 +3369,7 @@ p  { margin: 0; color: var(--text-soft); }
   .giftcard__mark {
     right: -8px;
     bottom: -10px;
-    width: 72px;
-    height: 72px;
   }
-
-  .giftcard--gplay .giftcard__logo img,
-  .giftcard--nintendo .giftcard__logo img,
-  .giftcard--playstation .giftcard__logo img,
-  .giftcard--xbox .giftcard__logo img { width: 24px; height: 24px; }
 }
 
 /* ─── Reduced motion ──────────────────────────────────────────────────────── */

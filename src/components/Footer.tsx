@@ -38,7 +38,7 @@ export function Footer() {
       </div>
 
       <div className={`shell ${styles.bottom}`}>
-        <p>© {new Date().getFullYear()} Claimo Studio. All rights reserved.</p>
+        <p>{new Date().getFullYear()} claimo.</p>
         <p>Made in Germany · Built for Android</p>
       </div>
     </footer>
