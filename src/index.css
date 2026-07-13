@@ -1106,7 +1106,15 @@ body {
 /* Keep every screenshot crisp. The flanking screens are dimmed for depth, but
    deliberately not blurred: animating blur on transformed images makes Chrome
    re-rasterize them at a soft resolution, especially on 1080p displays. */
-.app2-phone.is-center { transform: translateX(0) translateZ(90px) rotateY(0) scale(1); z-index: 5; opacity: 1; filter: none; }
+.app2-phone.is-center {
+  /* No 3D transform on the readable screenshot. Chrome otherwise keeps the
+     image in a compositor texture whose raster resolution can be too low at
+     100% browser zoom; zooming then triggers a sharper re-rasterization. */
+  transform: none;
+  z-index: 5;
+  opacity: 1;
+  filter: none;
+}
 .app2-phone.is-left { transform: translateX(-252px) translateZ(-120px) rotateY(38deg) scale(0.8); z-index: 3; opacity: 0.5; filter: brightness(0.55) saturate(0.85); }
 .app2-phone.is-right { transform: translateX(252px) translateZ(-120px) rotateY(-38deg) scale(0.8); z-index: 3; opacity: 0.5; filter: brightness(0.55) saturate(0.85); }
 .app2-phone.is-center .app2-phone__scr { box-shadow: 0 46px 90px -26px rgba(0, 0, 0, 0.88), 0 0 0 1px rgba(0, 235, 196, 0.24), 0 0 72px -12px rgba(0, 235, 196, 0.5); }
