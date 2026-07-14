@@ -2791,7 +2791,31 @@ body {
 
   .app2-phone {
     width: 186px;
-    height: 388px;
+    height: auto;
+    aspect-ratio: 1210 / 2517;
+  }
+
+  /* The screenshots already contain their complete device frame. Keep the
+     exact source ratio on mobile and do not crop that frame with a second CSS
+     radius. */
+  .app2-phone__scr {
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .app2-phone__scr img {
+    object-fit: contain;
+    filter: drop-shadow(0 26px 28px rgba(0, 0, 0, 0.58));
+  }
+
+  .app2-phone.is-center .app2-phone__scr {
+    box-shadow: none;
+  }
+
+  .app2-phone__scr::after {
+    display: none;
   }
 
   .app2-phone.is-left {
