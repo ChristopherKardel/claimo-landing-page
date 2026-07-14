@@ -77,6 +77,7 @@ const copy = {
       titleParts: ['Viele Spiele.', 'Gute Aufgaben.', 'Faire Gems.'],
       text: 'Claimo bündelt eine große Auswahl an Spielen und Angeboten, damit du immer neue Aufgaben findest. Die Aufgaben sind klar verständlich und werden fair mit Gems belohnt.',
       feedLabel: 'Gerade erledigt',
+      feedNote: 'Beispielhafte Darstellung – keine Live-Aktivität.',
       feed: [
         { title: 'Spiel installiert', sub: 'Puzzle Quest', gain: 1000, color: 'violet' },
         { title: 'Umfrage beantwortet', sub: '2 Minuten', gain: 750, color: 'blue' },
@@ -263,6 +264,7 @@ const copy = {
       titleParts: ['Many games.', 'Great tasks.', 'Fair Gems.'],
       text: 'Claimo brings together a large selection of games and offers so you can always find new tasks. Tasks are easy to understand and fairly rewarded with Gems.',
       feedLabel: 'Just completed',
+      feedNote: 'Illustrative example – not live activity.',
       feed: [
         { title: 'Game installed', sub: 'Puzzle Quest', gain: 1000, color: 'violet' },
         { title: 'Survey answered', sub: '2 minutes', gain: 750, color: 'blue' },
@@ -1063,6 +1065,7 @@ function Games({ t, language }: { t: Translation; language: Language }) {
           <aside className="games2-side">
             <div className="games2-feed rv" style={{ transitionDelay: '160ms' }}>
               <div className="games2-feed__label"><span className="games2-feed__dot" />{g.feedLabel}</div>
+              <p className="games2-feed__note">{g.feedNote}</p>
               <div className="games2-feed__mask">
                 <div className="games2-feed__list">
                   {feedLoop.map((f, i) => (
