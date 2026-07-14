@@ -47,7 +47,7 @@
       <article class="legal-content">
         <p class="eyebrow">Rechtliches · App</p>
         <h1>Datenschutz der Claimo-App</h1>
-        <p><strong>Version 1.0 – Stand: 8. Juli 2026</strong></p>
+        <p><strong>Version 1.1 – Stand: 14. Juli 2026</strong></p>
 
         <section>
           <h2>1. Verantwortlicher</h2>
@@ -93,7 +93,8 @@
               IP-Signale zur Betrugsprävention,
             </li>
             <li>
-              Einstellungen wie Push-Benachrichtigungen, E-Mail-Updates und personalisierte Angebote,
+              Einstellungen wie die gewählte App-Sprache, Push-Benachrichtigungen, E-Mail-Updates und
+              personalisierte Angebote,
             </li>
             <li>Push-Token und Push-Zustellprotokolle, wenn Benachrichtigungen aktiviert sind,</li>
             <li>Werbe- und Consentdaten im Zusammenhang mit Google AdMob,</li>
@@ -398,12 +399,20 @@
           <h2>12. Einstellungen, Einwilligungen und lokale Speicherung</h2>
           <p>Die App speichert Einstellungen zu:</p>
           <ul>
+            <li>der gewählten App-Sprache,</li>
             <li>Push-Benachrichtigungen,</li>
             <li>E-Mail-Updates,</li>
             <li>personalisierten Angeboten bzw. personalisiertem Tracking.</li>
           </ul>
+          <p>
+            Vor der Anmeldung liest die App ausschließlich lokal die vom Betriebssystem bereitgestellte
+            Sprache und Region aus, um eine der unterstützten App-Sprachen vorzuschlagen. Hierfür nutzen
+            wir weder die IP-Adresse noch GPS-Standortdaten oder einen externen Geolocation-Dienst. Die
+            ausgelesene Geräte-Sprache und -Region werden nicht an uns oder Dritte übermittelt.
+          </p>
           <p>Lokal auf deinem Gerät können insbesondere gespeichert werden:</p>
           <ul>
+            <li>die ausgewählte App-Sprache in AsyncStorage,</li>
             <li>Supabase-Sessiondaten und Auth-Token in AsyncStorage,</li>
             <li>Expo Push Token in AsyncStorage,</li>
             <li>zufällige installationsbezogene Gerätekennung in Expo SecureStore,</li>
@@ -413,6 +422,11 @@
               abgeschlossen wurde.
             </li>
           </ul>
+          <p>
+            Nach der Registrierung wird die ausgewählte App-Sprache zusätzlich als Kontoeinstellung bei
+            Supabase gespeichert. Bei späteren Anmeldungen kann die dort gespeicherte Sprache geladen
+            werden. Die lokal ausgelesene Geräte-Sprache und -Region werden dabei nicht übernommen.
+          </p>
           <p>
             Expo SecureStore speichert Daten verschlüsselt im jeweiligen Plattformspeicher. Auf iOS
             können SecureStore-Daten abhängig vom Systemverhalten auch nach einer Deinstallation erhalten
