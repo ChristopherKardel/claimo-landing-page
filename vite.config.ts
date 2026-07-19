@@ -5,7 +5,10 @@ import react from '@vitejs/plugin-react';
 
 const languagePagesPlugin = () => ({
   name: 'claimo-language-pages',
-  closeBundle() {
+  // writeBundle läuft nur nach einer erfolgreich geschriebenen Ausgabe.
+  // closeBundle wurde auch nach einem vorherigen Rollup-Fehler ausgeführt und
+  // hat diesen mit einem irreführenden ENOENT für dist/index.html verdeckt.
+  writeBundle() {
     const outputDirectory = resolve(__dirname, 'dist');
     const rootPage = resolve(outputDirectory, 'index.html');
 

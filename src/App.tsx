@@ -4,8 +4,6 @@ import logo from '../assets/logo.png';
 import playIcon from '../assets/play-icon.png';
 import tasksIcon from '../assets/tasks-icon.png';
 import shopIcon from '../assets/shop-icon.png';
-import appGameIcon from '../../Rewards-App/assets/play-icon.png';
-import appAdIcon from '../../Rewards-App/assets/watch-ad.png';
 
 const copy = {
   de: {
@@ -1005,7 +1003,9 @@ type GameActivityIcon = 'game' | 'survey' | 'offer' | 'level' | 'video' | 'bonus
 
 function GameActivityIcon({ kind }: { kind: GameActivityIcon }) {
   if (kind === 'game') {
-    return <img className="games2-activity-image" src={appGameIcon} alt="" />;
+    // Identische Datei wie das Spiele-Icon der App, lokal im Website-Repo
+    // gehalten, damit der isolierte GitHub-Actions-Checkout bauen kann.
+    return <img className="games2-activity-image" src={playIcon} alt="" />;
   }
 
   if (kind === 'survey') {
@@ -1036,7 +1036,13 @@ function GameActivityIcon({ kind }: { kind: GameActivityIcon }) {
   }
 
   if (kind === 'video') {
-    return <img className="games2-activity-image" src={appAdIcon} alt="" />;
+    // Clapperboard + Play-Dreieck entsprechend dem Werbe-Icon der App.
+    return (
+      <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 9h16v11H4zM4 9V6h16v3M6 6l2 3M11 6l2 3M16 6l2 3" />
+        <path d="m10 12 5 3-5 3v-6Z" />
+      </svg>
+    );
   }
 
   return (
