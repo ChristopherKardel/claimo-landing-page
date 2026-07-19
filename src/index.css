@@ -1843,8 +1843,10 @@ body {
 .games2-phone img { display: block; width: 100%; filter: drop-shadow(0 44px 36px rgba(0, 0, 0, 0.46)); }
 
 .games2-float { position: absolute; z-index: 2; width: 78px; animation: games2-floaty 6s ease-in-out infinite; }
-.games2-tile { display: block; width: 100%; aspect-ratio: 1; position: relative; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); }
+.games2-tile { display: grid; place-items: center; width: 100%; aspect-ratio: 1; position: relative; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255, 255, 255, 0.12); box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4); }
 .games2-tile::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 120% at 22% 12%, rgba(255, 255, 255, 0.3), transparent 55%); }
+.games2-activity-icon { position: relative; z-index: 1; width: 46%; height: 46%; fill: none; stroke: rgba(255, 255, 255, 0.96); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2)); }
+.games2-activity-image { position: relative; z-index: 1; width: 48%; height: 48%; object-fit: contain; filter: brightness(0) invert(1) drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2)); }
 .games2-float--a { top: 4%; left: 0; animation-delay: 0s; }
 .games2-float--b { top: 0; right: 8%; width: 66px; animation-delay: -1.4s; }
 .games2-float--c { top: 40%; right: -2%; width: 88px; animation-delay: -0.7s; }
@@ -1876,8 +1878,10 @@ body {
 @keyframes games2-feedscroll { to { transform: translateY(-50%); } }
 
 .games2-frow { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: 10px; padding: 12px 14px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(165deg, rgba(28, 32, 63, 0.9), rgba(22, 28, 52, 0.9)); }
-.games2-frow__ic { position: relative; overflow: hidden; width: 38px; height: 38px; border-radius: 11px; flex: none; border: 1px solid rgba(255, 255, 255, 0.12); }
+.games2-frow__ic { position: relative; overflow: hidden; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; flex: none; border: 1px solid rgba(255, 255, 255, 0.12); }
 .games2-frow__ic::after { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 120% at 22% 12%, rgba(255, 255, 255, 0.3), transparent 55%); }
+.games2-frow__ic .games2-activity-icon { width: 21px; height: 21px; }
+.games2-frow__ic .games2-activity-image { width: 21px; height: 21px; }
 .games2-frow__body h4 { color: #fff; font-size: 0.92rem; }
 .games2-frow__body small { color: var(--dim); font-size: 0.8rem; }
 .games2-frow__earn { display: inline-flex; align-items: center; gap: 5px; color: var(--cash); font-weight: 800; white-space: nowrap; }

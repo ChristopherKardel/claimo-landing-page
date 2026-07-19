@@ -4,6 +4,8 @@ import logo from '../assets/logo.png';
 import playIcon from '../assets/play-icon.png';
 import tasksIcon from '../assets/tasks-icon.png';
 import shopIcon from '../assets/shop-icon.png';
+import appGameIcon from '../../Rewards-App/assets/play-icon.png';
+import appAdIcon from '../../Rewards-App/assets/watch-ad.png';
 
 const copy = {
   de: {
@@ -999,13 +1001,72 @@ function Benefits({ t }: { t: Translation }) {
   );
 }
 
-const gameFloatTiles: Array<{ pos: string; color: string; gain?: number }> = [
-  { pos: 'a', color: 'violet', gain: 250 },
-  { pos: 'b', color: 'orange' },
-  { pos: 'c', color: 'blue', gain: 500 },
-  { pos: 'd', color: 'pink' },
-  { pos: 'e', color: 'green', gain: 750 },
-  { pos: 'f', color: 'teal' },
+type GameActivityIcon = 'game' | 'survey' | 'offer' | 'level' | 'video' | 'bonus';
+
+function GameActivityIcon({ kind }: { kind: GameActivityIcon }) {
+  if (kind === 'game') {
+    return <img className="games2-activity-image" src={appGameIcon} alt="" />;
+  }
+
+  if (kind === 'survey') {
+    return (
+      <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M9 5h6M9 3h6v4H9zM7 5H5v16h14V5h-2" />
+        <path d="m8 13 2 2 5-5M8 18h8" />
+      </svg>
+    );
+  }
+
+  if (kind === 'offer') {
+    return (
+      <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 4h7l9 9-7 7-9-9V4Z" />
+        <path d="M8 8h.01" />
+      </svg>
+    );
+  }
+
+  if (kind === 'level') {
+    return (
+      <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M8 4h8v3c0 4-1.8 7-4 7s-4-3-4-7V4Z" />
+        <path d="M8 6H5v2a4 4 0 0 0 4 4M16 6h3v2a4 4 0 0 1-4 4M12 14v4M8 21h8M9 18h6" />
+      </svg>
+    );
+  }
+
+  if (kind === 'video') {
+    return <img className="games2-activity-image" src={appAdIcon} alt="" />;
+  }
+
+  return (
+    <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 9h16v11H4zM3 6h18v3H3zM12 6v14M7.5 6C5 6 5 2.5 7.5 3c2 .4 4.5 3 4.5 3M16.5 6c2.5 0 2.5-3.5 0-3-2 .4-4.5 3-4.5 3" />
+    </svg>
+  );
+}
+
+const gameFloatTiles: Array<{
+  pos: string;
+  color: string;
+  icon: GameActivityIcon;
+  gain?: number;
+}> = [
+  { pos: 'a', color: 'violet', icon: 'game', gain: 250 },
+  { pos: 'b', color: 'orange', icon: 'offer' },
+  { pos: 'c', color: 'blue', icon: 'survey', gain: 500 },
+  { pos: 'd', color: 'pink', icon: 'bonus' },
+  { pos: 'e', color: 'green', icon: 'level', gain: 750 },
+  { pos: 'f', color: 'teal', icon: 'video' },
+];
+
+const feedActivityIcons: GameActivityIcon[] = [
+  'game',
+  'survey',
+  'offer',
+  'level',
+  'video',
+  'bonus',
 ];
 
 function Games({ t, language }: { t: Translation; language: Language }) {
@@ -1052,7 +1113,9 @@ function Games({ t, language }: { t: Translation; language: Language }) {
             </figure>
             {gameFloatTiles.map((tile) => (
               <div className={`games2-float games2-float--${tile.pos}`} key={tile.pos} aria-hidden="true">
-                <span className={`games2-tile tile-${tile.color}`} />
+                <span className={`games2-tile tile-${tile.color}`}>
+                  <GameActivityIcon kind={tile.icon} />
+                </span>
                 {tile.gain != null && (
                   <span className="games2-badge">
                     <img className="gem" src={gem} alt="" />+{tile.gain}
@@ -1070,7 +1133,9 @@ function Games({ t, language }: { t: Translation; language: Language }) {
                 <div className="games2-feed__list">
                   {feedLoop.map((f, i) => (
                     <div className="games2-frow" key={i}>
-                      <span className={`games2-frow__ic tile-${f.color}`} aria-hidden="true" />
+                      <span className={`games2-frow__ic tile-${f.color}`} aria-hidden="true">
+                        <GameActivityIcon kind={feedActivityIcons[i % g.feed.length]} />
+                      </span>
                       <div className="games2-frow__body">
                         <h4>{f.title}</h4>
                         <small>{f.sub}</small>
