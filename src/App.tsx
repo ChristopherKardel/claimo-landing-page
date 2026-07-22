@@ -4,6 +4,7 @@ import logo from '../assets/logo.png';
 import playIcon from '../assets/play-icon.png';
 import tasksIcon from '../assets/tasks-icon.png';
 import shopIcon from '../assets/shop-icon.png';
+import watchAdIcon from '../assets/watch-ad.png';
 
 const copy = {
   de: {
@@ -206,9 +207,9 @@ const copy = {
       install: 'Install',
     },
     hero: {
-      line1: 'Play for free.',
-      line2: 'Complete offers.',
-      line3: 'Earn real rewards.',
+      line1: 'Play fun free games.',
+      line2: 'Complete tasks.',
+      line3: 'Earn real cash and rewards.',
       copy1: 'Collect points by playing games and completing offers — ',
       copy2: 'then redeem them for PayPal cash, gift cards and more.',
       storeSmall: 'Coming soon on',
@@ -1036,13 +1037,7 @@ function GameActivityIcon({ kind }: { kind: GameActivityIcon }) {
   }
 
   if (kind === 'video') {
-    // Clapperboard + Play-Dreieck entsprechend dem Werbe-Icon der App.
-    return (
-      <svg className="games2-activity-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M4 9h16v11H4zM4 9V6h16v3M6 6l2 3M11 6l2 3M16 6l2 3" />
-        <path d="m10 12 5 3-5 3v-6Z" />
-      </svg>
-    );
+    return <img className="games2-activity-image" src={watchAdIcon} alt="" />;
   }
 
   return (
@@ -1723,42 +1718,8 @@ export default function App() {
             </div>
             <div className="hero__stats" aria-label={contentLocale === 'de' ? 'Claimo Vorteile' : 'Claimo benefits'}>
               <div><b>EU</b><small>{contentLocale === 'de' ? 'Datenschutz' : 'Data protection'}</small></div>
-              <div><b>{contentLocale === 'de' ? 'ab 5 €' : 'from €5'}</b><small>{contentLocale === 'de' ? 'Auszahlung' : 'Payout'}</small></div>
+              <div><b>{contentLocale === 'de' ? 'ab 5 €' : 'from 5 €'}</b><small>{contentLocale === 'de' ? 'Auszahlung' : 'Payout'}</small></div>
               <div><b>Cash</b><small>{contentLocale === 'de' ? '& Gutscheine' : '& gift cards'}</small></div>
-            </div>
-          </div>
-
-          <div className="hero__visual">
-            <div className="hero__glow hero__glow--one" />
-            <div className="hero__glow hero__glow--two" />
-            <figure className="hero__phone">
-              <img src="/screen1.png" alt="" aria-hidden="true" />
-            </figure>
-            <div className="hero__float hero__float--paypal">
-              <a className="giftcard giftcard--paypal hero__reward-card hero__reward-card--paypal" href="#rewards">
-                <span className="giftcard__logo"><img src="/paypal.png" alt="" aria-hidden="true" /></span>
-                <span className="giftcard__foot">
-                  <span className="giftcard__meta">
-                    <strong>PayPal</strong>
-                  </span>
-                </span>
-                <img className="giftcard__mark" src="/paypal.png" alt="" aria-hidden="true" />
-              </a>
-            </div>
-            <div className="hero__float hero__float--amazon">
-              <a className="giftcard giftcard--amazon hero__reward-card hero__reward-card--amazon" href="#rewards">
-                <span className="giftcard__logo"><img src="/amazon.png" alt="" aria-hidden="true" /></span>
-                <span className="giftcard__foot">
-                  <span className="giftcard__meta">
-                    <strong>Amazon</strong>
-                  </span>
-                </span>
-                <img className="giftcard__mark" src="/amazon.png" alt="" aria-hidden="true" />
-              </a>
-            </div>
-            <div className="hero__gem-burst">
-              <img src={gem} alt="" />
-              <b>+750</b>
             </div>
           </div>
         </section>
