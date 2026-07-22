@@ -1722,6 +1722,28 @@ export default function App() {
               <div><b>Cash</b><small>{contentLocale === 'de' ? '& Gutscheine' : '& gift cards'}</small></div>
             </div>
           </div>
+          <div className="hero__visual">
+            <div className="hero__glow hero__glow--one" />
+            <div className="hero__glow hero__glow--two" />
+            <figure className="hero__phone">
+              <img src="/screen1.png" alt="" />
+            </figure>
+            <div className="hero__float hero__float--paypal">
+              <a className="giftcard giftcard--paypal hero__reward-card hero__reward-card--paypal" href="#rewards">
+                <span className="giftcard__logo"><img src="/paypal.png" alt="" /></span>
+                <span className="giftcard__foot"><span className="giftcard__meta"><strong>PayPal</strong></span></span>
+                <img className="giftcard__mark" src="/paypal.png" alt="" />
+              </a>
+            </div>
+            <div className="hero__float hero__float--amazon">
+              <a className="giftcard giftcard--amazon hero__reward-card hero__reward-card--amazon" href="#rewards">
+                <span className="giftcard__logo"><img src="/amazon.png" alt="" /></span>
+                <span className="giftcard__foot"><span className="giftcard__meta"><strong>Amazon</strong></span></span>
+                <img className="giftcard__mark" src="/amazon.png" alt="" />
+              </a>
+            </div>
+            <div className="hero__gem-burst"><img src={gem} alt="" /><b>+750</b></div>
+          </div>
         </section>
       </main>
 
