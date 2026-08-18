@@ -1463,6 +1463,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     if (event.target.closest('.nav__link')) setState(false);
   });
 
+  document.addEventListener('click', function (event) {
+    if (toggle.getAttribute('aria-expanded') !== 'true') return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    setState(false);
+  });
+
   window.addEventListener('resize', function () {
     if (window.innerWidth > 1024) setState(false);
   });
