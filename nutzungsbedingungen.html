@@ -208,13 +208,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   justify-content:center;
   gap:9rem;
 }
-.header__toggle-bar{
-  display:block;
-  width:100%;
-  height:4rem;
-  border-radius:4rem;
-  background:var(--color-text);
-  transition:transform .3s ease,opacity .3s ease;
+.header__toggle-icon{
+  width:32rem;
+  height:auto;
+  margin:0 auto;
 }
 
 /* ==========================================================================
@@ -707,11 +704,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     text-align:left;
     font-size:32rem;
   }
-  .header__lang{display:none;}
-  .header__toggle{margin-left:auto;display:flex;}
-  .header__toggle.is-open .header__toggle-bar:nth-child(1){transform:translateY(13rem) rotate(45deg);}
-  .header__toggle.is-open .header__toggle-bar:nth-child(2){opacity:0;}
-  .header__toggle.is-open .header__toggle-bar:nth-child(3){transform:translateY(-13rem) rotate(-45deg);}
+  .header__toggle{display:flex;}
 
   /* --- sections reflow --- */
   .hero{height:auto;padding:190rem 60rem 120rem;}
@@ -987,9 +980,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       </div>
 
       <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Navigation öffnen">
-        <span class="header__toggle-bar"></span>
-        <span class="header__toggle-bar"></span>
-        <span class="header__toggle-bar"></span>
+        <img class="header__toggle-icon" src="assets/burger.png" alt="">
       </button>
 
     </div>
@@ -1436,6 +1427,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   nav.addEventListener('click', function (event) {
     if (event.target.closest('.nav__link')) setState(false);
+  });
+
+  document.addEventListener('click', function (event) {
+    if (toggle.getAttribute('aria-expanded') !== 'true') return;
+    if (nav.contains(event.target) || toggle.contains(event.target)) return;
+    setState(false);
   });
 
   window.addEventListener('resize', function () {
