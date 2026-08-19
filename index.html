@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
 /* ==========================================================================
    DESIGN TOKENS
@@ -843,8 +843,18 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 @media (max-width:768px){
   html{font-size:clamp(0.52px,calc(100vw / 760),0.72px);}
 
+  .header{padding:28rem 0;}
   .header__inner{padding:0 40rem;}
   .nav__list{padding:16rem 40rem;}
+  .logo{width:190rem;height:74rem;}
+  .header__toggle{width:72rem;height:56rem;gap:12rem;}
+  .header__toggle-icon{width:42rem;}
+
+  .header__lang{width:170rem;height:48rem;}
+  .lang__icon{width:38rem;height:34.58rem;}
+  .lang__label{width:170rem;font-size:27rem;}
+  .lang__menu{min-width:320rem;padding:20rem;border-radius:20rem;}
+  .lang__option{padding:24rem 20rem;border-radius:14rem;font-size:40rem;}
 
   .hero{padding:170rem 40rem 100rem;}
   .hero__title{font-size:56rem;}
@@ -869,7 +879,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .faq{padding:70rem 40rem 90rem;}
   .faq__title{font-size:52rem;}
   .faq__row{padding:0 30rem;height:auto;min-height:119rem;}
-  .faq__question{width:calc(100% - 50rem);font-size:30rem;}
+  .faq__question{width:calc(100% - 50rem);font-size:32rem;font-weight:500;}
   .faq__chevron{left:auto;right:30rem;top:50%;transform:translateY(-50%);}
   .faq__row[aria-expanded="true"] .faq__chevron{transform:translateY(-50%) rotate(90deg);}
   .faq__panel{display:none;}
@@ -886,6 +896,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   .footer__copyright{margin:0 -40rem;}
   .footer__links{flex-direction:column;}
   .footer__link-group{width:100%;}
+  .footer__brand-text,
+  .footer__mail,
+  .footer__col-title,
+  .footer__link{font-size:30rem;}
+  .footer__promo-text{font-size:26rem;}
+  .footer__copyright p{width:auto;font-size:15rem;white-space:nowrap;}
 }
 
 /* ==========================================================================
@@ -914,16 +930,16 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <header class="header">
     <div class="header__inner">
 
-      <a class="logo" href="#top" aria-label="Claimo Startseite">
+      <a class="logo" href="#top" data-i18n-aria-label="logo_aria" aria-label="Claimo Startseite">
         <img src="assets/logo.png" alt="Claimo Logo">
       </a>
 
-      <nav class="header__nav" id="primary-navigation" aria-label="Hauptnavigation">
+      <nav class="header__nav" id="primary-navigation" data-i18n-aria-label="nav_aria" aria-label="Hauptnavigation">
         <ul class="nav__list">
-          <li class="nav__item nav__item--how"><a class="nav__link" href="#wie-es-funktioniert">Wie es funktioniert</a></li>
-          <li class="nav__item nav__item--play"><a class="nav__link" href="#spielen">Spielen</a></li>
-          <li class="nav__item nav__item--rewards"><a class="nav__link" href="#belohnungen">Belohnungen</a></li>
-          <li class="nav__item nav__item--faq"><a class="nav__link" href="#faq">FAQ</a></li>
+          <li class="nav__item nav__item--how"><a class="nav__link" data-i18n="nav_how" href="#wie-es-funktioniert">Wie es funktioniert</a></li>
+          <li class="nav__item nav__item--play"><a class="nav__link" data-i18n="nav_play" href="#spielen">Spielen</a></li>
+          <li class="nav__item nav__item--rewards"><a class="nav__link" data-i18n="nav_rewards" href="#belohnungen">Belohnungen</a></li>
+          <li class="nav__item nav__item--faq"><a class="nav__link" data-i18n="nav_faq" href="#faq">FAQ</a></li>
         </ul>
       </nav>
 
@@ -932,13 +948,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
           <img class="lang__icon" src="assets/language-icon.png" alt="">
           <span class="lang__label">Deutsch</span>
         </button>
-        <ul class="lang__menu" id="language-menu" role="listbox" aria-label="Sprache auswählen" hidden>
+        <ul class="lang__menu" id="language-menu" role="listbox" data-i18n-aria-label="lang_menu_aria" aria-label="Sprache auswählen" hidden>
           <li role="option" aria-selected="true"><button class="lang__option" type="button" data-lang="de">Deutsch</button></li>
           <li role="option" aria-selected="false"><button class="lang__option" type="button" data-lang="en">English</button></li>
         </ul>
       </div>
 
-      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Navigation öffnen">
+      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-i18n-aria-label="toggle_aria" aria-label="Navigation öffnen">
         <img class="header__toggle-icon" src="assets/burger.png" alt="">
       </button>
 
@@ -953,17 +969,17 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         <div class="hero__content">
           <div class="hero__text">
             <h1 class="hero__title">
-              <span class="hero__title-line">Spiele spielen und</span>
-              <span class="hero__title-line hero__title-line--accent">echtes Geld verdienen</span>
+              <span class="hero__title-line" data-i18n="hero_title_1">Spiele spielen und</span>
+              <span class="hero__title-line hero__title-line--accent" data-i18n="hero_title_2">echtes Geld verdienen</span>
             </h1>
-            <p class="hero__lead">Verdiene echtes Geld mit deinen Lieblingsspielen – kostenlos anmelden, loslegen und ganz einfach auszahlen lassen.</p>
+            <p class="hero__lead" data-i18n="hero_lead">Verdiene echtes Geld mit deinen Lieblingsspielen – kostenlos anmelden, loslegen und ganz einfach auszahlen lassen.</p>
           </div>
           <a class="hero__badge" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
-            <img src="assets/google-play.png" alt="Claimo bei Google Play herunterladen">
+            <img data-i18n-alt="google_play_alt" src="assets/google-play.png" alt="Claimo bei Google Play herunterladen">
           </a>
         </div>
         <div class="hero__media">
-          <img class="hero__phone" src="assets/phone-screenshot.png" alt="Claimo App auf einem Smartphone">
+          <img class="hero__phone" data-i18n-alt="hero_phone_alt" src="assets/phone-screenshot.png" alt="Claimo App auf einem Smartphone">
         </div>
       </div>
     </section>
@@ -973,31 +989,31 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
     <!-- ====================== STEPS ====================== -->
     <section class="steps" id="wie-es-funktioniert">
-      <h2 class="steps__title">So einfach <span class="text-accent">verdienst du</span> mit Claimo</h2>
+      <h2 class="steps__title" data-i18n-html="steps_title">So einfach <span class="text-accent">verdienst du</span> mit Claimo</h2>
 
       <div class="steps__list">
         <article class="step step--1">
-          <img class="step__icon" src="assets/1.png" alt="Symbol: Benutzerkonto anlegen">
-          <h3 class="step__title">1. Jetzt registrieren</h3>
-          <p class="step__text">Erstelle in unter einer Minute dein kostenloses Konto – ganz ohne Kreditkarte.</p>
+          <img class="step__icon" data-i18n-alt="step1_icon_alt" src="assets/1.png" alt="Symbol: Benutzerkonto anlegen">
+          <h3 class="step__title" data-i18n="step1_title">1. Jetzt registrieren</h3>
+          <p class="step__text" data-i18n="step1_text">Erstelle in unter einer Minute dein kostenloses Konto – ganz ohne Kreditkarte.</p>
         </article>
 
         <article class="step step--2">
-          <img class="step__icon" src="assets/2.png" alt="Symbol: Angebot auswählen">
-          <h3 class="step__title">2. Wähle ein Angebot</h3>
-          <p class="step__text">Durchstöbere unzählige Spiele und Apps und wähle dein Lieblingsangebot aus.</p>
+          <img class="step__icon" data-i18n-alt="step2_icon_alt" src="assets/2.png" alt="Symbol: Angebot auswählen">
+          <h3 class="step__title" data-i18n="step2_title">2. Wähle ein Angebot</h3>
+          <p class="step__text" data-i18n="step2_text">Durchstöbere unzählige Spiele und Apps und wähle dein Lieblingsangebot aus.</p>
         </article>
 
         <article class="step step--3">
-          <img class="step__icon" src="assets/3.png" alt="Symbol: Aufgaben erledigen">
-          <h3 class="step__title">3. Aufgaben erledigen</h3>
-          <p class="step__text">Spiele los und erreiche einfache Ziele, um deine Belohnung freizuschalten.</p>
+          <img class="step__icon" data-i18n-alt="step3_icon_alt" src="assets/3.png" alt="Symbol: Aufgaben erledigen">
+          <h3 class="step__title" data-i18n="step3_title">3. Aufgaben erledigen</h3>
+          <p class="step__text" data-i18n="step3_text">Spiele los und erreiche einfache Ziele, um deine Belohnung freizuschalten.</p>
         </article>
 
         <article class="step step--4">
-          <img class="step__icon" src="assets/4.png" alt="Symbol: Auszahlung erhalten">
-          <h3 class="step__title">4. Auszahlung erhalten</h3>
-          <p class="step__text">Lass dir dein Guthaben sofort per PayPal oder Gutschein auszahlen.</p>
+          <img class="step__icon" data-i18n-alt="step4_icon_alt" src="assets/4.png" alt="Symbol: Auszahlung erhalten">
+          <h3 class="step__title" data-i18n="step4_title">4. Auszahlung erhalten</h3>
+          <p class="step__text" data-i18n="step4_text">Lass dir dein Guthaben sofort per PayPal oder Gutschein auszahlen.</p>
         </article>
       </div>
 
@@ -1013,10 +1029,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <div class="showcase__wave" aria-hidden="true"></div>
       <div class="showcase__inner">
         <div class="showcase__body">
-          <h2 class="showcase__title">Spiele, die sich <span class="text-accent">wirklich lohnen</span></h2>
-          <p class="showcase__text">Entdecke eine riesige Auswahl an Handy- und Browserspielen aus allen Genres – von Strategie über Puzzle bis Simulation. Lade deine Favoriten kostenlos herunter und sammle mit jedem erreichten Level bares Guthaben für deine nächste Auszahlung.</p>
+          <h2 class="showcase__title" data-i18n-html="showcase1_title">Spiele, die sich <span class="text-accent">wirklich lohnen</span></h2>
+          <p class="showcase__text" data-i18n="showcase1_text">Entdecke eine riesige Auswahl an Handy- und Browserspielen aus allen Genres – von Strategie über Puzzle bis Simulation. Lade deine Favoriten kostenlos herunter und sammle mit jedem erreichten Level bares Guthaben für deine nächste Auszahlung.</p>
         </div>
-        <img class="showcase__media" src="assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
+        <img class="showcase__media" data-i18n-alt="showcase_media_alt" src="assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
       </div>
     </section>
 
@@ -1024,17 +1040,17 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <section class="showcase showcase--2">
       <div class="showcase__inner">
         <div class="showcase__body">
-          <h2 class="showcase__title">Deine <span class="text-accent">Auszahlung,</span> ganz nach deinem Tempo</h2>
-          <p class="showcase__text">Dein verdientes Guthaben gehört dir – und zwar sofort. Wähle zwischen PayPal, Gutscheinen bekannter Marken oder weiteren Auszahlungsoptionen. Keine versteckten Gebühren, keine langen Wartezeiten, einfach dein Geld, wann du es willst.</p>
+          <h2 class="showcase__title" data-i18n-html="showcase2_title">Deine <span class="text-accent">Auszahlung,</span> ganz nach deinem Tempo</h2>
+          <p class="showcase__text" data-i18n="showcase2_text">Dein verdientes Guthaben gehört dir – und zwar sofort. Wähle zwischen PayPal, Gutscheinen bekannter Marken oder weiteren Auszahlungsoptionen. Keine versteckten Gebühren, keine langen Wartezeiten, einfach dein Geld, wann du es willst.</p>
         </div>
-        <img class="showcase__media" src="assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
+        <img class="showcase__media" data-i18n-alt="showcase_media_alt" src="assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
       </div>
     </section>
 
     <!-- ====================== REWARDS ====================== -->
     <section class="rewards" id="belohnungen">
-      <h2 class="rewards__title">Mit <span class="text-accent">50+ Auszahlmöglichkeiten</span></h2>
-      <p class="rewards__subtitle">Tausche dein gesammeltes Guthaben gegen PayPal-Gutscheine und weitere Prämien</p>
+      <h2 class="rewards__title" data-i18n-html="rewards_title">Mit <span class="text-accent">50+ Auszahlmöglichkeiten</span></h2>
+      <p class="rewards__subtitle" data-i18n="rewards_subtitle">Tausche dein gesammeltes Guthaben gegen PayPal-Gutscheine und weitere Prämien</p>
 
       <div class="rewards__carousel">
         <div class="rewards__track">
@@ -1043,126 +1059,126 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/paypal-logo.png" alt="PayPal Logo">
             </div>
-            <p class="reward-card__title">PayPal Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_paypal">PayPal Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/AMZN-e9f942e4.png" alt="Amazon Logo">
             </div>
-            <p class="reward-card__title">Amazon Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_amazon">Amazon Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Airbnb_Logo_Bélo.svg.png" alt="Airbnb Logo">
             </div>
-            <p class="reward-card__title">Airbnb Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_airbnb">Airbnb Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Apple_logo_black.svg" alt="Apple Logo">
             </div>
-            <p class="reward-card__title">Apple Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_apple">Apple Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/H&amp;M-Logo.svg.png" alt="H&amp;M Logo">
             </div>
-            <p class="reward-card__title">H&amp;M Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_hm">H&amp;M Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Ikea_logo.svg.png" alt="IKEA Logo">
             </div>
-            <p class="reward-card__title">IKEA Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_ikea">IKEA Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Logonetflix.png" alt="Netflix Logo">
             </div>
-            <p class="reward-card__title">Netflix Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_netflix">Netflix Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Uber_logo_2018.png" alt="Uber Logo">
             </div>
-            <p class="reward-card__title">Uber Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_uber">Uber Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/google-play-store-icon-logo-symbol-free-png.png.webp" alt="Google Play Logo">
             </div>
-            <p class="reward-card__title">Google Play Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_googleplay">Google Play Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/paypal-logo.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">PayPal Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_paypal">PayPal Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/AMZN-e9f942e4.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Amazon Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_amazon">Amazon Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Airbnb_Logo_Bélo.svg.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Airbnb Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_airbnb">Airbnb Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Apple_logo_black.svg" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Apple Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_apple">Apple Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/H&amp;M-Logo.svg.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">H&amp;M Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_hm">H&amp;M Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Ikea_logo.svg.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">IKEA Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_ikea">IKEA Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Logonetflix.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Netflix Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_netflix">Netflix Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/Uber_logo_2018.png" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Uber Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_uber">Uber Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
               <img class="reward-card__logo" src="assets/Gutscheinkarten/google-play-store-icon-logo-symbol-free-png.png.webp" alt="" aria-hidden="true">
             </div>
-            <p class="reward-card__title">Google Play Gutschein</p>
+            <p class="reward-card__title" data-i18n="reward_googleplay">Google Play Gutschein</p>
           </article>
 
         </div>
@@ -1171,71 +1187,71 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
     <!-- ====================== FAQ ====================== -->
     <section class="faq" id="faq">
-      <h2 class="faq__title">Häufig gestellte Fragen</h2>
-      <p class="faq__subtitle">Hier findest du Antworten auf die wichtigsten Fragen rund um Claimo</p>
+      <h2 class="faq__title" data-i18n="faq_title">Häufig gestellte Fragen</h2>
+      <p class="faq__subtitle" data-i18n="faq_subtitle">Hier findest du Antworten auf die wichtigsten Fragen rund um Claimo</p>
 
       <div class="faq__columns">
         <div class="faq__accordion">
           <div class="faq__item is-open">
             <button class="faq__row" type="button" aria-expanded="true">
-              <p class="faq__question">Ist Claimo wirklich kostenlos?</p>
+              <p class="faq__question" data-i18n="faq_q1">Ist Claimo wirklich kostenlos?</p>
               <svg class="faq__chevron" viewBox="0 0 18 31" fill="none" aria-hidden="true"><path d="M2 2L16 15.5L2 29" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="faq__answer">
               <div class="faq__answer-inner">
-                <p class="faq__answer-text">Ja, die Nutzung von Claimo ist zu 100&nbsp;% kostenlos. Du zahlst nie etwas für die Registrierung oder die Teilnahme an Spielen und Angeboten. Unsere Provision erhalten wir direkt von unseren Partnern, nicht von dir. So kannst du so viele Spiele ausprobieren, wie du möchtest, ganz ohne Risiko und ohne versteckte Kosten. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben automatisch gutgeschrieben und du kannst es dir jederzeit auszahlen lassen.</p>
+                <p class="faq__answer-text" data-i18n="faq_a1">Ja, die Nutzung von Claimo ist zu 100&nbsp;% kostenlos. Du zahlst nie etwas für die Registrierung oder die Teilnahme an Spielen und Angeboten. Unsere Provision erhalten wir direkt von unseren Partnern, nicht von dir. So kannst du so viele Spiele ausprobieren, wie du möchtest, ganz ohne Risiko und ohne versteckte Kosten. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben automatisch gutgeschrieben und du kannst es dir jederzeit auszahlen lassen.</p>
               </div>
             </div>
           </div>
           <div class="faq__item">
             <button class="faq__row" type="button" aria-expanded="false">
-              <p class="faq__question">Wie schnell erhalte ich meine Auszahlung?</p>
+              <p class="faq__question" data-i18n="faq_q2">Wie schnell erhalte ich meine Auszahlung?</p>
               <svg class="faq__chevron" viewBox="0 0 18 31" fill="none" aria-hidden="true"><path d="M2 2L16 15.5L2 29" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="faq__answer">
               <div class="faq__answer-inner">
-                <p class="faq__answer-text">In der Regel wird deine Auszahlung innerhalb weniger Minuten bearbeitet. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben deinem Konto gutgeschrieben und du kannst es dir jederzeit auszahlen lassen – ganz ohne lange Wartezeiten.</p>
+                <p class="faq__answer-text" data-i18n="faq_a2">In der Regel wird deine Auszahlung innerhalb weniger Minuten bearbeitet. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben deinem Konto gutgeschrieben und du kannst es dir jederzeit auszahlen lassen – ganz ohne lange Wartezeiten.</p>
               </div>
             </div>
           </div>
           <div class="faq__item">
             <button class="faq__row" type="button" aria-expanded="false">
-              <p class="faq__question">Welche Auszahlungsmethoden gibt es?</p>
+              <p class="faq__question" data-i18n="faq_q3">Welche Auszahlungsmethoden gibt es?</p>
               <svg class="faq__chevron" viewBox="0 0 18 31" fill="none" aria-hidden="true"><path d="M2 2L16 15.5L2 29" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="faq__answer">
               <div class="faq__answer-inner">
-                <p class="faq__answer-text">Du kannst dir dein Guthaben bequem per PayPal auszahlen lassen oder gegen Gutscheine bekannter Marken eintauschen. Wir erweitern unser Angebot laufend, damit für jeden die passende Auszahlungsmethode dabei ist.</p>
+                <p class="faq__answer-text" data-i18n="faq_a3">Du kannst dir dein Guthaben bequem per PayPal auszahlen lassen oder gegen Gutscheine bekannter Marken eintauschen. Wir erweitern unser Angebot laufend, damit für jeden die passende Auszahlungsmethode dabei ist.</p>
               </div>
             </div>
           </div>
           <div class="faq__item">
             <button class="faq__row" type="button" aria-expanded="false">
-              <p class="faq__question">Muss ich etwas bezahlen, um zu starten?</p>
+              <p class="faq__question" data-i18n="faq_q4">Muss ich etwas bezahlen, um zu starten?</p>
               <svg class="faq__chevron" viewBox="0 0 18 31" fill="none" aria-hidden="true"><path d="M2 2L16 15.5L2 29" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="faq__answer">
               <div class="faq__answer-inner">
-                <p class="faq__answer-text">Nein, die Registrierung und Nutzung von Claimo sind komplett kostenlos. Du brauchst keine Kreditkarte und zahlst nie einen Cent, um Spiele zu spielen oder Angebote abzuschließen.</p>
+                <p class="faq__answer-text" data-i18n="faq_a4">Nein, die Registrierung und Nutzung von Claimo sind komplett kostenlos. Du brauchst keine Kreditkarte und zahlst nie einen Cent, um Spiele zu spielen oder Angebote abzuschließen.</p>
               </div>
             </div>
           </div>
           <div class="faq__item">
             <button class="faq__row" type="button" aria-expanded="false">
-              <p class="faq__question">Ab welchem Betrag kann ich das Geld auszahlen?</p>
+              <p class="faq__question" data-i18n="faq_q5">Ab welchem Betrag kann ich das Geld auszahlen?</p>
               <svg class="faq__chevron" viewBox="0 0 18 31" fill="none" aria-hidden="true"><path d="M2 2L16 15.5L2 29" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
             <div class="faq__answer">
               <div class="faq__answer-inner">
-                <p class="faq__answer-text">Der Mindestbetrag für eine Auszahlung liegt bei nur wenigen Euro. So kannst du dir dein Guthaben schon nach kurzer Zeit auszahlen lassen, ohne lange auf eine große Summe warten zu müssen.</p>
+                <p class="faq__answer-text" data-i18n="faq_a5">Der Mindestbetrag für eine Auszahlung liegt bei nur wenigen Euro. So kannst du dir dein Guthaben schon nach kurzer Zeit auszahlen lassen, ohne lange auf eine große Summe warten zu müssen.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="faq__panel">
-          <h3 class="faq__panel-title">Ist Claimo wirklich kostenlos?</h3>
-          <p class="faq__panel-text">Ja, die Nutzung von Claimo ist zu 100&nbsp;% kostenlos. Du zahlst nie etwas für die Registrierung oder die Teilnahme an Spielen und Angeboten. Unsere Provision erhalten wir direkt von unseren Partnern, nicht von dir. So kannst du so viele Spiele ausprobieren, wie du möchtest, ganz ohne Risiko und ohne versteckte Kosten. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben automatisch gutgeschrieben und du kannst es dir jederzeit auszahlen lassen.</p>
+          <h3 class="faq__panel-title" data-i18n="faq_q1">Ist Claimo wirklich kostenlos?</h3>
+          <p class="faq__panel-text" data-i18n="faq_a1">Ja, die Nutzung von Claimo ist zu 100&nbsp;% kostenlos. Du zahlst nie etwas für die Registrierung oder die Teilnahme an Spielen und Angeboten. Unsere Provision erhalten wir direkt von unseren Partnern, nicht von dir. So kannst du so viele Spiele ausprobieren, wie du möchtest, ganz ohne Risiko und ohne versteckte Kosten. Sobald du eine Aufgabe abgeschlossen hast, wird dein Guthaben automatisch gutgeschrieben und du kannst es dir jederzeit auszahlen lassen.</p>
         </div>
       </div>
     </section>
@@ -1247,39 +1263,39 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <div class="footer__inner">
 
       <div class="footer__brand">
-        <a class="logo" href="#top" aria-label="Claimo Startseite">
+        <a class="logo" href="#top" data-i18n-aria-label="logo_aria" aria-label="Claimo Startseite">
           <img src="assets/logo.png" alt="Claimo Logo">
         </a>
-        <p class="footer__brand-text">Spielen, verdienen, auszahlen lassen – so einfach geht's mit Claimo.</p>
+        <p class="footer__brand-text" data-i18n="footer_brand_text">Spielen, verdienen, auszahlen lassen – so einfach geht's mit Claimo.</p>
         <a class="footer__mail" href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>
       </div>
 
       <div class="footer__panels">
-        <nav class="footer__links" aria-label="Footer Navigation">
+        <nav class="footer__links" data-i18n-aria-label="footer_nav_aria" aria-label="Footer Navigation">
           <div class="footer__link-group">
-            <p class="footer__col-title">Entdecken</p>
-            <a class="footer__link" href="#wie-es-funktioniert">Wie es funktioniert</a>
-            <a class="footer__link" href="#spielen">Spielen</a>
-            <a class="footer__link" href="#belohnungen">Belohnungen</a>
-            <a class="footer__link" href="#faq">FAQ</a>
+            <p class="footer__col-title" data-i18n="footer_col1_title">Entdecken</p>
+            <a class="footer__link" data-i18n="nav_how" href="#wie-es-funktioniert">Wie es funktioniert</a>
+            <a class="footer__link" data-i18n="nav_play" href="#spielen">Spielen</a>
+            <a class="footer__link" data-i18n="nav_rewards" href="#belohnungen">Belohnungen</a>
+            <a class="footer__link" data-i18n="nav_faq" href="#faq">FAQ</a>
           </div>
           <div class="footer__link-group">
-            <p class="footer__col-title">Rechtliches</p>
-            <a class="footer__link" href="impressum.html">Impressum</a>
-            <a class="footer__link" href="datenschutz.html">Datenschutz</a>
-            <a class="footer__link" href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-            <a class="footer__link" href="widerrufsbelehrung.html">Widerrufsbelehrung</a>
-            <a class="footer__link" href="kontakt.html">Kontakt</a>
+            <p class="footer__col-title" data-i18n="footer_col2_title">Rechtliches</p>
+            <a class="footer__link" data-i18n="footer_link_impressum" href="impressum.html">Impressum</a>
+            <a class="footer__link" data-i18n="footer_link_datenschutz" href="datenschutz.html">Datenschutz</a>
+            <a class="footer__link" data-i18n="footer_link_nutzung" href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+            <a class="footer__link" data-i18n="footer_link_widerruf" href="widerrufsbelehrung.html">Widerrufsbelehrung</a>
+            <a class="footer__link" data-i18n="footer_link_kontakt" href="kontakt.html">Kontakt</a>
           </div>
         </nav>
 
         <div class="footer__promo">
-          <p class="footer__promo-text">Installiere jetzt Claimo und bekomme 500 Gems dazu.</p>
+          <p class="footer__promo-text" data-i18n="footer_promo1">Installiere jetzt Claimo und bekomme 500 Gems dazu.</p>
           <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
-            <img src="assets/google-play.png" alt="Claimo bei Google Play herunterladen">
+            <img data-i18n-alt="google_play_alt" src="assets/google-play.png" alt="Claimo bei Google Play herunterladen">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen Qr Code und bekomme 500 Gems.</p>
-          <img class="footer__qr" src="assets/qr-code.png" alt="QR Code zum Download der Claimo App">
+          <p class="footer__promo-text footer__promo-text--qr" data-i18n="footer_promo2">Oder scanne diesen Qr Code und bekomme 500 Gems.</p>
+          <img class="footer__qr" data-i18n-alt="qr_alt" src="assets/qr-code.png" alt="QR Code zum Download der Claimo App">
         </div>
       </div>
 
@@ -1344,6 +1360,124 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   });
 })();
 
+var TRANSLATIONS = {
+  de: {},
+  en: {
+    logo_aria: 'Claimo homepage',
+    nav_aria: 'Main navigation',
+    lang_menu_aria: 'Select language',
+    toggle_aria: 'Open navigation',
+    footer_nav_aria: 'Footer navigation',
+
+    nav_how: 'How it works',
+    nav_play: 'Play',
+    nav_rewards: 'Rewards',
+    nav_faq: 'FAQ',
+
+    hero_title_1: 'Play games and',
+    hero_title_2: 'earn real money',
+    hero_lead: 'Earn real money with your favorite games – sign up for free, get started, and cash out easily.',
+    google_play_alt: 'Download Claimo on Google Play',
+    hero_phone_alt: 'Claimo app on a smartphone',
+
+    steps_title: 'It’s this easy to <span class="text-accent">earn</span> with Claimo',
+    step1_icon_alt: 'Icon: create account',
+    step1_title: '1. Sign up now',
+    step1_text: 'Create your free account in under a minute – no credit card required.',
+    step2_icon_alt: 'Icon: choose an offer',
+    step2_title: '2. Choose an offer',
+    step2_text: 'Browse countless games and apps and pick your favorite offer.',
+    step3_icon_alt: 'Icon: complete tasks',
+    step3_title: '3. Complete tasks',
+    step3_text: 'Start playing and hit simple goals to unlock your reward.',
+    step4_icon_alt: 'Icon: receive payout',
+    step4_title: '4. Get paid out',
+    step4_text: 'Cash out your balance instantly via PayPal or gift card.',
+
+    showcase1_title: 'Games that <span class="text-accent">really pay off</span>',
+    showcase1_text: 'Discover a huge selection of mobile and browser games across every genre – from strategy to puzzle to simulation. Download your favorites for free and earn real cash for every level you reach toward your next payout.',
+    showcase2_title: 'Your <span class="text-accent">payout,</span> entirely on your schedule',
+    showcase2_text: 'The balance you earn is yours – right away. Choose between PayPal, gift cards from well-known brands, or other payout options. No hidden fees, no long waiting times – just your money, whenever you want it.',
+    showcase_media_alt: 'Claimo app preview',
+
+    rewards_title: 'With <span class="text-accent">50+ payout options</span>',
+    rewards_subtitle: 'Exchange your earned balance for PayPal vouchers and other rewards',
+    reward_paypal: 'PayPal Voucher',
+    reward_amazon: 'Amazon Voucher',
+    reward_airbnb: 'Airbnb Voucher',
+    reward_apple: 'Apple Voucher',
+    reward_hm: 'H&M Voucher',
+    reward_ikea: 'IKEA Voucher',
+    reward_netflix: 'Netflix Voucher',
+    reward_uber: 'Uber Voucher',
+    reward_googleplay: 'Google Play Voucher',
+
+    faq_title: 'Frequently Asked Questions',
+    faq_subtitle: 'Find answers to the most important questions about Claimo here',
+    faq_q1: 'Is Claimo really free?',
+    faq_a1: 'Yes, using Claimo is 100% free. You never pay anything to sign up or to take part in games and offers. We receive our commission directly from our partners, not from you. That means you can try out as many games as you like, completely risk-free and with no hidden costs. As soon as you complete a task, your balance is credited automatically and you can cash it out at any time.',
+    faq_q2: 'How quickly will I receive my payout?',
+    faq_a2: 'Your payout is usually processed within a few minutes. As soon as you complete a task, your balance is credited to your account and you can cash it out at any time – with no long waiting times.',
+    faq_q3: 'What payout methods are available?',
+    faq_a3: 'You can conveniently cash out your balance via PayPal or exchange it for vouchers from well-known brands. We’re constantly expanding our offering so there’s a suitable payout method for everyone.',
+    faq_q4: 'Do I have to pay anything to get started?',
+    faq_a4: 'No, signing up and using Claimo are completely free. You don’t need a credit card and never pay a cent to play games or complete offers.',
+    faq_q5: 'What’s the minimum amount I can cash out?',
+    faq_a5: 'The minimum payout amount is just a few euros. That means you can cash out your balance after a short time, without having to wait for a large sum to build up.',
+
+    footer_brand_text: 'Play, earn, cash out – it’s that easy with Claimo.',
+    footer_col1_title: 'Explore',
+    footer_col2_title: 'Legal',
+    footer_link_impressum: 'Legal Notice',
+    footer_link_datenschutz: 'Privacy Policy',
+    footer_link_nutzung: 'Terms of Use',
+    footer_link_widerruf: 'Right of Withdrawal',
+    footer_link_kontakt: 'Contact',
+    footer_promo1: 'Install Claimo now and get 500 Gems.',
+    footer_promo2: 'Or scan this QR code and get 500 Gems.',
+    qr_alt: 'QR code to download the Claimo app'
+  }
+};
+TRANSLATIONS.de = (function () {
+  var de = {};
+  document.querySelectorAll('[data-i18n]').forEach(function (el) { de[el.getAttribute('data-i18n')] = el.textContent; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) { de[el.getAttribute('data-i18n-html')] = el.innerHTML; });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function (el) { de[el.getAttribute('data-i18n-alt')] = el.alt; });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) { de[el.getAttribute('data-i18n-aria-label')] = el.getAttribute('aria-label'); });
+  return de;
+})();
+
+function setLanguage(lang) {
+  var dict = TRANSLATIONS[lang];
+  if (!dict) return;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] != null) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (dict[key] != null) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-alt');
+    if (dict[key] != null) el.alt = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(function (el) {
+    var key = el.getAttribute('data-i18n-aria-label');
+    if (dict[key] != null) el.setAttribute('aria-label', dict[key]);
+  });
+}
+
+function goToLanguage(lang) {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var last = parts[parts.length - 1];
+  var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
+  var inLangFolder = parts.length >= 2 && (parts[parts.length - 2] === 'de' || parts[parts.length - 2] === 'en');
+  var prefix = inLangFolder ? '../' : '';
+  location.href = prefix + lang + '/' + filename;
+}
+
 (function () {
   var wrap = document.querySelector('.header__lang');
   var toggle = document.querySelector('.lang__toggle');
@@ -1369,12 +1503,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   menu.addEventListener('click', function (event) {
     var option = event.target.closest('.lang__option');
     if (!option) return;
-    label.textContent = option.textContent;
-    menu.querySelectorAll('[role="option"]').forEach(function (item) {
-      item.setAttribute('aria-selected', item.contains(option) ? 'true' : 'false');
-    });
-    closeMenu();
-    toggle.focus();
+    goToLanguage(option.dataset.lang);
   });
 
   document.addEventListener('click', function (event) {

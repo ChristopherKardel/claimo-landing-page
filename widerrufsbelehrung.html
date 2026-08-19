@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
 <style>
 /* ==========================================================================
    DESIGN TOKENS
@@ -1286,6 +1286,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   });
 })();
 
+function goToLanguage(lang) {
+  var parts = location.pathname.split('/').filter(Boolean);
+  var last = parts[parts.length - 1];
+  var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
+  var inLangFolder = parts.length >= 2 && (parts[parts.length - 2] === 'de' || parts[parts.length - 2] === 'en');
+  var prefix = inLangFolder ? '../' : '';
+  location.href = prefix + lang + '/' + filename;
+}
+
 (function () {
   var wrap = document.querySelector('.header__lang');
   var toggle = document.querySelector('.lang__toggle');
@@ -1311,12 +1320,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   menu.addEventListener('click', function (event) {
     var option = event.target.closest('.lang__option');
     if (!option) return;
-    label.textContent = option.textContent;
-    menu.querySelectorAll('[role="option"]').forEach(function (item) {
-      item.setAttribute('aria-selected', item.contains(option) ? 'true' : 'false');
-    });
-    closeMenu();
-    toggle.focus();
+    goToLanguage(option.dataset.lang);
   });
 
   document.addEventListener('click', function (event) {
