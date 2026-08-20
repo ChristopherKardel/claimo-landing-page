@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kontakt – Claimo</title>
-<meta name="description" content="Kontaktiere das Claimo-Team.">
+<title>Contact – Claimo</title>
+<meta name="description" content="Get in touch with the Claimo team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -908,7 +908,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 .legal-main{padding:calc(95.686rem + 90rem) var(--gutter) 180rem;min-height:50vh;background:var(--color-bg);}
 .contact-main{padding:calc(95.686rem + 110rem) var(--gutter) 200rem;min-height:60vh;background:var(--color-bg);}
-.contact-card{width:734rem;max-width:100%;padding:56rem;border-radius:var(--radius-panel);background:var(--color-panel);}
+.contact-card{width:734rem;max-width:100%;margin:0 auto;padding:56rem;border-radius:var(--radius-panel);background:var(--color-panel);}
 .contact-title{font-size:40rem;font-weight:600;color:#ffffff;margin-bottom:36rem;}
 .contact-field{display:block;width:100%;margin-bottom:24rem;}
 .contact-field:last-of-type{margin-bottom:32rem;}
@@ -939,15 +939,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <header class="header">
     <div class="header__inner">
 
-      <a class="logo" href="index.html" aria-label="Claimo Startseite">
+      <a class="logo" href="index.html" aria-label="Claimo Home">
         <img src="assets/logo.png" alt="Claimo Logo">
       </a>
 
-      <nav class="header__nav" id="primary-navigation" aria-label="Hauptnavigation">
+      <nav class="header__nav" id="primary-navigation" aria-label="Main navigation">
         <ul class="nav__list">
-          <li class="nav__item nav__item--how"><a class="nav__link" href="index.html#wie-es-funktioniert">Wie es funktioniert</a></li>
-          <li class="nav__item nav__item--play"><a class="nav__link" href="index.html#spielen">Spielen</a></li>
-          <li class="nav__item nav__item--rewards"><a class="nav__link" href="index.html#belohnungen">Belohnungen</a></li>
+          <li class="nav__item nav__item--how"><a class="nav__link" href="index.html#wie-es-funktioniert">How it works</a></li>
+          <li class="nav__item nav__item--play"><a class="nav__link" href="index.html#spielen">Play</a></li>
+          <li class="nav__item nav__item--rewards"><a class="nav__link" href="index.html#belohnungen">Rewards</a></li>
           <li class="nav__item nav__item--faq"><a class="nav__link" href="index.html#faq">FAQ</a></li>
         </ul>
       </nav>
@@ -955,15 +955,15 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <div class="header__lang">
         <button class="lang__toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">
           <img class="lang__icon" src="assets/language-icon.png" alt="">
-          <span class="lang__label">Deutsch</span>
+          <span class="lang__label">English</span>
         </button>
-        <ul class="lang__menu" id="language-menu" role="listbox" aria-label="Sprache auswählen" hidden>
-          <li role="option" aria-selected="true"><button class="lang__option" type="button" data-lang="de">Deutsch</button></li>
-          <li role="option" aria-selected="false"><button class="lang__option" type="button" data-lang="en">English</button></li>
+        <ul class="lang__menu" id="language-menu" role="listbox" aria-label="Select language" hidden>
+          <li role="option" aria-selected="false"><button class="lang__option" type="button" data-lang="de">Deutsch</button></li>
+          <li role="option" aria-selected="true"><button class="lang__option" type="button" data-lang="en">English</button></li>
         </ul>
       </div>
 
-      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Navigation öffnen">
+      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
         <img class="header__toggle-icon" src="assets/burger.png" alt="">
       </button>
 
@@ -972,11 +972,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <main class="contact-main">
     <form class="contact-card" id="contact-form">
-      <h1 class="contact-title">Kontakt aufnehmen</h1>
+      <h1 class="contact-title">Get in touch</h1>
 
       <input type="hidden" name="access_key" value="f07cd476-16e0-45ce-ac39-bfae0c5366aa">
-      <input type="hidden" name="subject" value="Neue Kontaktanfrage von claimo-app.com">
-      <input type="hidden" name="from_name" value="Claimo Kontaktformular">
+      <input type="hidden" name="subject" value="New contact request from claimo-app.com">
+      <input type="hidden" name="from_name" value="Claimo contact form">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
       <label class="contact-field">
@@ -988,10 +988,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       </label>
 
       <label class="contact-field">
-        <textarea class="contact-textarea" name="message" placeholder="Nachricht" required></textarea>
+        <textarea class="contact-textarea" name="message" placeholder="Message" required></textarea>
       </label>
 
-<button class="contact-submit" type="submit">Absenden</button>
+<button class="contact-submit" type="submit">Send</button>
       <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
     </form>
   </main>
@@ -1001,39 +1001,39 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <div class="footer__inner">
 
       <div class="footer__brand">
-        <a class="logo" href="#top" aria-label="Claimo Startseite">
+        <a class="logo" href="#top" aria-label="Claimo Home">
           <img src="assets/logo.png" alt="Claimo Logo">
         </a>
-        <p class="footer__brand-text">Spielen, verdienen, auszahlen lassen – so einfach geht's mit Claimo.</p>
+        <p class="footer__brand-text">Play, earn, cash out – it's that easy with Claimo.</p>
         <a class="footer__mail" href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>
       </div>
 
       <div class="footer__panels">
-        <nav class="footer__links" aria-label="Footer Navigation">
+        <nav class="footer__links" aria-label="Footer navigation">
           <div class="footer__link-group">
-            <p class="footer__col-title">Entdecken</p>
-            <a class="footer__link" href="index.html#wie-es-funktioniert">Wie es funktioniert</a>
-            <a class="footer__link" href="index.html#spielen">Spielen</a>
-            <a class="footer__link" href="index.html#belohnungen">Belohnungen</a>
+            <p class="footer__col-title">Explore</p>
+            <a class="footer__link" href="index.html#wie-es-funktioniert">How it works</a>
+            <a class="footer__link" href="index.html#spielen">Play</a>
+            <a class="footer__link" href="index.html#belohnungen">Rewards</a>
             <a class="footer__link" href="index.html#faq">FAQ</a>
           </div>
           <div class="footer__link-group">
-            <p class="footer__col-title">Rechtliches</p>
-            <a class="footer__link" href="impressum.html">Impressum</a>
-            <a class="footer__link" href="datenschutz.html">Datenschutz</a>
-            <a class="footer__link" href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
-            <a class="footer__link" href="widerrufsbelehrung.html">Widerrufsbelehrung</a>
-            <a class="footer__link" href="kontakt.html">Kontakt</a>
+            <p class="footer__col-title">Legal</p>
+            <a class="footer__link" href="impressum.html">Legal Notice</a>
+            <a class="footer__link" href="datenschutz.html">Privacy Policy</a>
+            <a class="footer__link" href="nutzungsbedingungen.html">Terms of Use</a>
+            <a class="footer__link" href="widerrufsbelehrung.html">Right of Withdrawal</a>
+            <a class="footer__link" href="kontakt.html">Contact</a>
           </div>
         </nav>
 
         <div class="footer__promo">
-          <p class="footer__promo-text">Installiere jetzt Claimo und bekomme 500 Gems dazu.</p>
+          <p class="footer__promo-text">Install Claimo now and get 500 Gems.</p>
           <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
-            <img src="assets/google-play.png" alt="Claimo bei Google Play herunterladen">
+            <img src="assets/google-play.png" alt="Get Claimo on Google Play">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen Qr Code und bekomme 500 Gems.</p>
-          <img class="footer__qr" src="assets/qr-code.png" alt="QR Code zum Download der Claimo App">
+          <p class="footer__promo-text footer__promo-text--qr">Or scan this QR code and get 500 Gems.</p>
+          <img class="footer__qr" src="assets/qr-code.png" alt="QR code to download the Claimo app">
         </div>
       </div>
 
@@ -1055,7 +1055,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   function setState(open) {
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Navigation schließen' : 'Navigation öffnen');
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     toggle.classList.toggle('is-open', open);
     nav.classList.toggle('is-open', open);
   }
@@ -1190,7 +1190,7 @@ function goToLanguage(lang) {
     status.classList.remove('is-success', 'is-error');
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet …';
+    submitBtn.textContent = 'Sending …';
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -1200,21 +1200,21 @@ function goToLanguage(lang) {
       .then(function (response) { return response.json(); })
       .then(function (data) {
         if (data.success) {
-          status.textContent = 'Danke! Deine Nachricht wurde gesendet.';
+          status.textContent = 'Thanks! Your message has been sent.';
           status.classList.add('is-success');
           form.reset();
         } else {
-          status.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut.';
+          status.textContent = 'Failed to send. Please try again.';
           status.classList.add('is-error');
         }
       })
       .catch(function () {
-        status.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut.';
+        status.textContent = 'Failed to send. Please try again.';
         status.classList.add('is-error');
       })
       .finally(function () {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Absenden';
+        submitBtn.textContent = 'Send';
       });
   });
 })();
