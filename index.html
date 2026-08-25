@@ -471,6 +471,50 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   height:64rem;
   object-fit:contain;
 }
+.reward-card__logo[src$=".avif"]{
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  border-radius:inherit;
+}
+.reward-card__badge:has(.reward-card__logo[src$=".avif"]){
+  left:14rem;
+  top:0;
+  width:362rem;
+  height:100%;
+  overflow:hidden;
+  border-radius:20rem;
+  background:transparent;
+}
+.reward-card:has(.reward-card__logo[src$=".avif"]){
+  background:transparent;
+  box-shadow:none;
+}
+.reward-card:has(.reward-card__logo[src$=".avif"]) .reward-card__title{
+  display:none;
+}
+.reward-card:has(.reward-card__logo[src$="paypal-logo.png"]){
+  overflow:hidden;
+  background:#fff;
+}
+.reward-card__badge:has(.reward-card__logo[src$="paypal-logo.png"]){
+  left:0;
+  top:0;
+  width:100%;
+  height:100%;
+  background:transparent;
+}
+.reward-card__logo[src$="paypal-logo.png"]{
+  left:50%;
+  top:50%;
+  width:230rem;
+  height:180rem;
+  transform:translate(-50%,-50%);
+}
+.reward-card:has(.reward-card__logo[src$="paypal-logo.png"]) .reward-card__title{
+  display:none;
+}
 .reward-card__title{
   position:absolute;
   left:54rem;
@@ -1065,56 +1109,56 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/AMZN-e9f942e4.png" alt="Amazon Logo">
+              <img class="reward-card__logo" src="assets/1756978776-amazon-640w.png.avif" alt="Amazon Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_amazon">Amazon Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Airbnb_Logo_Bélo.svg.png" alt="Airbnb Logo">
+              <img class="reward-card__logo" src="assets/1743081589-airbnb-640w.png.avif" alt="Airbnb Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_airbnb">Airbnb Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Apple_logo_black.svg" alt="Apple Logo">
+              <img class="reward-card__logo" src="assets/1743081828-itunes-640w.png.avif" alt="Apple Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_apple">Apple Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/H&amp;M-Logo.svg.png" alt="H&amp;M Logo">
+              <img class="reward-card__logo" src="assets/1743082095-h-m-640w.png.avif" alt="H&amp;M Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_hm">H&amp;M Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Ikea_logo.svg.png" alt="IKEA Logo">
+              <img class="reward-card__logo" src="assets/1743082394-ikea-640w.png.avif" alt="IKEA Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_ikea">IKEA Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Logonetflix.png" alt="Netflix Logo">
+              <img class="reward-card__logo" src="assets/1743081845-netflix-640w.png.avif" alt="Netflix Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_netflix">Netflix Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Uber_logo_2018.png" alt="Uber Logo">
+              <img class="reward-card__logo" src="assets/1786963764-uber-640w.png.avif" alt="Uber Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_uber">Uber Gutschein</p>
           </article>
 
           <article class="reward-card">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/google-play-store-icon-logo-symbol-free-png.png.webp" alt="Google Play Logo">
+              <img class="reward-card__logo" src="assets/1743081473-google-play-640w.png.avif" alt="Google Play Logo">
             </div>
             <p class="reward-card__title" data-i18n="reward_googleplay">Google Play Gutschein</p>
           </article>
@@ -1128,56 +1172,56 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/AMZN-e9f942e4.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1756978776-amazon-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_amazon">Amazon Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Airbnb_Logo_Bélo.svg.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743081589-airbnb-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_airbnb">Airbnb Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Apple_logo_black.svg" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743081828-itunes-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_apple">Apple Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/H&amp;M-Logo.svg.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743082095-h-m-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_hm">H&amp;M Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Ikea_logo.svg.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743082394-ikea-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_ikea">IKEA Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Logonetflix.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743081845-netflix-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_netflix">Netflix Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/Uber_logo_2018.png" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1786963764-uber-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_uber">Uber Gutschein</p>
           </article>
 
           <article class="reward-card" aria-hidden="true">
             <div class="reward-card__badge">
-              <img class="reward-card__logo" src="assets/Gutscheinkarten/google-play-store-icon-logo-symbol-free-png.png.webp" alt="" aria-hidden="true">
+              <img class="reward-card__logo" src="assets/1743081473-google-play-640w.png.avif" alt="" aria-hidden="true">
             </div>
             <p class="reward-card__title" data-i18n="reward_googleplay">Google Play Gutschein</p>
           </article>
