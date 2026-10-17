@@ -1,3 +1,6 @@
-# AYET-STUDIOS 
+# AdMob: publisher used by the Claimo Android app.
+google.com, pub-4239228238176849, DIRECT, f08c47fec0942fa0
+
+# Existing ayeT entries (preserved).
 ayetstudios.com, AYETSTUDIOS, DIRECT
 ayetstudios.com, PL-24166, DIRECT
