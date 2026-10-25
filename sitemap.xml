@@ -52,7 +52,7 @@
   </url>
   <url>
        <loc>https://claimo-app.com/datenschutz-app.html</loc>
-       <lastmod>2026-08-19T15:55:40+00:00</lastmod>
+       <lastmod>2026-10-15T00:00:00+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
   </url>
@@ -67,5 +67,23 @@
        <lastmod>2026-08-19T15:55:40+00:00</lastmod>
        <changefreq>daily</changefreq>
        <priority>0.6400</priority>
+  </url>
+  <url>
+    <loc>https://claimo-app.com/konto-loeschen.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8000</priority>
+  </url>
+  <url>
+    <loc>https://claimo-app.com/de/konto-loeschen.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8000</priority>
+  </url>
+  <url>
+    <loc>https://claimo-app.com/en/konto-loeschen.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8000</priority>
   </url>
 </urlset>
