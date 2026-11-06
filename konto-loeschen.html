@@ -9,9 +9,7 @@
 <link rel="alternate" hreflang="de" href="https://claimo-app.com/de/konto-loeschen.html">
 <link rel="alternate" hreflang="en" href="https://claimo-app.com/konto-loeschen.html">
 <link rel="alternate" hreflang="x-default" href="https://claimo-app.com/konto-loeschen.html">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/fonts/poppins.css">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/konto-loeschen.css">
 </head>
@@ -59,8 +57,8 @@
       <h1 class="legal-title text-accent">Delete your Claimo account</h1>
     </div>
 
-  <p>Version: 2.0<br>
-    Last updated: 29 October 2026<br>
+  <p>Version: 2.1<br>
+    Last updated: 6 November 2026<br>
     Scope: Claimo accounts, associated app data and erasure requests<br>
     Public version: <a href="https://claimo-app.com/konto-loeschen.html">https://claimo-app.com/konto-loeschen.html</a></p>
 
@@ -77,7 +75,7 @@
 <section aria-labelledby="legal-2">
   <h2 id="legal-2">2. In-app self-service</h2>
 
-  <p>The self-service route is Profile → Settings → “Permanently delete account”. Pending payouts or an account restriction may block that route. Support then considers your request independently of whether the individual matter is already resolved. Only specifically necessary data about an outstanding matter may remain longer, not the entire account wholesale. Admin accounts require a separate authorised review route.</p>
+  <p>The self-service route is Profile → Settings → “Delete account permanently”. Pending payouts or an account restriction may block that route. Support then considers your request independently of whether the individual matter is already resolved. Only specifically necessary data about an outstanding matter may remain longer, not the entire account wholesale. Admin accounts require a separate authorised review route.</p>
 
 </section>
 
@@ -93,9 +91,9 @@
 <section aria-labelledby="consequences-title">
   <h2 id="consequences-title">4. Effect on your account and balance</h2>
 
-  <p>Permanent deletion ends account access. Progress not independently payable, such as XP and streaks, is lost. Uninstalling alone does not erase the account. Deletion does not automatically close your independent Google, Facebook, PayPal or game accounts.</p>
+  <p>Permanent deletion ends account access. Progress such as XP and streaks is lost; in-app self-deletion also immediately deletes your balance and transaction records. Uninstalling alone does not erase the account. Deletion does not automatically close your independent Google, Facebook, PayPal or game accounts.</p>
 
-  <p>Contact support to address remaining balance or outstanding payout claims. Voluntary deletion does not automatically extinguish legally enforceable claims already earned. A prior payout is not a condition for requesting erasure. Preserve any personal records you need before account access ends.</p>
+  <p>Contact support before deletion to address remaining balance or outstanding payout claims. Voluntary deletion does not automatically extinguish legally enforceable claims already earned. A prior payout is not a condition for requesting erasure. Preserve any personal records you need before account access ends.</p>
 
 </section>
 
@@ -112,7 +110,7 @@
   <h2 id="retention-title">6. Limited exceptions</h2>
 
   <ul>
-    <li>Security records: Restricted or higher-risk accounts and payout/reversal cases may leave reduced records of protected identifier hashes, risk reasons and limited counters. They contain no names, account email or IP. Normal retention is 1,095 days after deletion; deletion of an under-16 account has a maximum of 180 days.</li>
+    <li>Security records: Restricted or higher-risk accounts and payout/reversal cases may leave reduced records of protected identifier hashes, risk reasons and limited counters. They contain no names, account email or IP. Normal retention is 1,095 days after deletion; deletion of an under-18 account has a maximum of 180 days.</li>
     <li>One-time device bonuses: A device-bonus record no longer linked to the account may normally remain for 1,095 days after deletion to prevent improper repeated grants.</li>
     <li>Older partner receipts: Partner/transaction identifiers may remain without an internal account link for accounting and duplicate prevention. If still attributable, they remain subject to privacy duties; necessity and erasure criteria must be assessed separately. They must not be used for new advertising or active profiling.</li>
     <li>Statutory documents: Necessary accounting vouchers may normally require eight years, business correspondence six and books ten (section 147 AO and, where applicable, section 257 HGB). Statutory time rules concern the necessary documents, not the whole account.</li>
@@ -183,11 +181,11 @@
         </nav>
 
         <div class="footer__promo">
-          <p class="footer__promo-text">Install Claimo now and get 500 Gems.</p>
+          <p class="footer__promo-text">Install Claimo now.</p>
           <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
             <img src="assets/google-play.png" alt="Get Claimo on Google Play">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Or scan this QR code and get 500 Gems.</p>
+          <p class="footer__promo-text footer__promo-text--qr">Or scan this QR code.</p>
           <img class="footer__qr" src="assets/qr-code.png" alt="QR code to download the Claimo app">
         </div>
       </div>
@@ -195,7 +193,7 @@
     </div>
 
     <div class="footer__copyright">
-      <p>Copyright 2026 All rights reserved Claimo Company</p>
+      <p>© 2026 Claimo. All rights reserved.</p>
     </div>
   </footer>
 
@@ -257,7 +255,8 @@ function goToLanguage(lang) {
   var parts = location.pathname.split('/').filter(Boolean);
   var last = parts[parts.length - 1];
   var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
-  var inLangFolder = parts.length >= 2 && (parts[parts.length - 2] === 'de' || parts[parts.length - 2] === 'en');
+  var folder = filename === last ? parts[parts.length - 2] : last;
+  var inLangFolder = folder === 'de' || folder === 'en';
   var prefix = inLangFolder ? '../' : '';
   location.href = prefix + lang + '/' + filename;
 }

@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Widerrufsbelehrung (App) – Claimo</title>
 <meta name="description" content="Widerrufsbelehrung für die Claimo App.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/poppins.css">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <style>
 /* ==========================================================================
@@ -995,8 +993,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
     </div>
 
-  <p>Version: 2.0<br>
-    Stand: 29. Oktober 2026<br>
+  <p>Version: 2.1<br>
+    Stand: 6. November 2026<br>
     Geltungsbereich: Verbrauchervertrag über die Claimo-App<br>
     Öffentliche Fassung: <a href="https://claimo-app.com/de/widerrufsbelehrung-app.html">https://claimo-app.com/de/widerrufsbelehrung-app.html</a></p>
 
@@ -1030,7 +1028,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <section aria-labelledby="legal-3">
   <h2 id="legal-3">3. Folgen des Widerrufs</h2>
 
-  <p>Bei wirksamem Widerruf wird der Nutzungsvertrag rückabgewickelt und die weitere Nutzung beendet. Alle von dir im Zusammenhang mit diesem Vertrag erhaltenen Geldzahlungen sind unverzüglich, spätestens binnen vierzehn Tagen nach Eingang des Widerrufs, zurückzuzahlen. Die Rückzahlung erfolgt mit demselben Zahlungsmittel, soweit nicht ausdrücklich etwas anderes vereinbart ist, ohne Rückzahlungsentgelt. Da Claimo für Konto und App-Nutzung keine Einzahlung und keinen Kaufpreis verlangt, sind regelmäßig keine solchen Zahlungen zu erstatten.</p>
+  <p>Bei wirksamem Widerruf wird der Nutzungsvertrag rückabgewickelt und die weitere Nutzung beendet. Wir zahlen dir alle Zahlungen, die wir von dir im Zusammenhang mit diesem Vertrag erhalten haben, unverzüglich und spätestens binnen vierzehn Tagen ab dem Tag zurück, an dem die Mitteilung über deinen Widerruf bei uns eingegangen ist. Für die Rückzahlung verwenden wir dasselbe Zahlungsmittel, das du bei der ursprünglichen Transaktion eingesetzt hast, es sei denn, mit dir wurde ausdrücklich etwas anderes vereinbart; in keinem Fall berechnen wir dir wegen dieser Rückzahlung Entgelte. Da Claimo für Konto und App-Nutzung keine Einzahlung und keinen Kaufpreis verlangt, sind regelmäßig keine solchen Zahlungen zu erstatten.</p>
 
   <p>Ein Widerruf führt nicht automatisch zum ersatzlosen Verlust bereits entstandener, rechtlich durchsetzbarer Belohnungsansprüche. Wir klären bereits erbrachte Aktivitäten, vorhandenes Guthaben, offene Auszahlungsanträge und bereits versandte Prämien im Rahmen der gesetzlichen Rückabwicklung. Eine noch nicht ausgeführte Einlösung kann dabei storniert und ihre Reservierung berücksichtigt werden. Bereits extern gezahlte Beträge oder versandte Gutscheine werden nicht allein durch eine technische Kontolöschung automatisch zurückgeholt.</p>
 
@@ -1106,11 +1104,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         </nav>
 
         <div class="footer__promo">
-          <p class="footer__promo-text">Installiere jetzt Claimo und bekomme 500 Gems dazu.</p>
+          <p class="footer__promo-text">Installiere jetzt Claimo.</p>
           <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
             <img src="../assets/google-play.png" alt="Claimo bei Google Play herunterladen">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen Qr Code und bekomme 500 Gems.</p>
+          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen QR-Code.</p>
           <img class="footer__qr" src="../assets/qr-code.png" alt="QR Code zum Download der Claimo App">
         </div>
       </div>
@@ -1118,7 +1116,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
 
     <div class="footer__copyright">
-      <p>Copyright 2026 All rights reserved Claimo Company</p>
+      <p>© 2026 Claimo. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 
@@ -1180,7 +1178,8 @@ function goToLanguage(lang) {
   var parts = location.pathname.split('/').filter(Boolean);
   var last = parts[parts.length - 1];
   var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
-  var inLangFolder = parts.length >= 2 && (parts[parts.length - 2] === 'de' || parts[parts.length - 2] === 'en');
+  var folder = filename === last ? parts[parts.length - 2] : last;
+  var inLangFolder = folder === 'de' || folder === 'en';
   var prefix = inLangFolder ? '../' : '';
   location.href = prefix + lang + '/' + filename;
 }

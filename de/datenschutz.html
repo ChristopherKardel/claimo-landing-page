@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Datenschutz – Claimo</title>
 <meta name="description" content="Datenschutzerklärung von Claimo.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/fonts/poppins.css">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
 <style>
 /* ==========================================================================
@@ -1122,11 +1120,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
         </nav>
 
         <div class="footer__promo">
-          <p class="footer__promo-text">Installiere jetzt Claimo und bekomme 500 Gems dazu.</p>
+          <p class="footer__promo-text">Installiere jetzt Claimo.</p>
           <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
             <img src="../assets/google-play.png" alt="Claimo bei Google Play herunterladen">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen Qr Code und bekomme 500 Gems.</p>
+          <p class="footer__promo-text footer__promo-text--qr">Oder scanne diesen QR-Code.</p>
           <img class="footer__qr" src="../assets/qr-code.png" alt="QR Code zum Download der Claimo App">
         </div>
       </div>
@@ -1134,7 +1132,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
 
     <div class="footer__copyright">
-      <p>Copyright 2026 All rights reserved Claimo Company</p>
+      <p>© 2026 Claimo. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 
@@ -1196,7 +1194,8 @@ function goToLanguage(lang) {
   var parts = location.pathname.split('/').filter(Boolean);
   var last = parts[parts.length - 1];
   var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
-  var inLangFolder = parts.length >= 2 && (parts[parts.length - 2] === 'de' || parts[parts.length - 2] === 'en');
+  var folder = filename === last ? parts[parts.length - 2] : last;
+  var inLangFolder = folder === 'de' || folder === 'en';
   var prefix = inLangFolder ? '../' : '';
   location.href = prefix + lang + '/' + filename;
 }
