@@ -995,7 +995,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
     </div>
 
-  <p>Version: 3.1<br>
+  <p>Version: 3.2<br>
     Last updated: 6 November 2026<br>
     Scope: the mobile Claimo app and associated server services<br>
     Public version: <a href="https://claimo-app.com/datenschutz-app.html">https://claimo-app.com/datenschutz-app.html</a></p>
@@ -1019,7 +1019,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <p>We process account and authentication details, age group, chosen wallet currency, balance and transactions, partner attribution, payout details, settings and security signals. A PayPal recipient address is payment/account identification data; we therefore do not claim to process no payment data at all. Creating a Claimo account does not require a credit card number or banking login details.</p>
 
-  <p>The app does not use GPS location or request contacts, camera or microphone content. A selected profile picture remains local. External offers may independently request additional information. Partners receive a separate random attribution identifier. External offer images and ayeT impression links can contact their servers when an offer list is displayed; see section 9.</p>
+  <p>The app does not use GPS location or request contacts, camera or microphone content. A selected profile picture remains local. External offers may independently request additional information. Partners receive a separate random attribution identifier. External offer images can contact their servers when an offer list is displayed; see section 9.</p>
 
 </section>
 
@@ -1036,9 +1036,13 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 <section aria-labelledby="legal-5">
   <h2 id="legal-5">5. Age and minors</h2>
+
   <p>Claimo is intended exclusively for people aged 18 or over. After registration, we ask for your age using age ranges. We store the confirmed age group 18+, the confirmation time and the question version, not a full date of birth. Earlier declarations of 16–17 are retained to enforce the access restriction; these accounts may no longer use the app. Features remain restricted until required setup is complete. Contact support about an incorrect age classification; your rectification rights remain.</p>
+
   <p>An under-18 declaration triggers a special server-side deletion process for the technical account. Necessary authentication and security steps may already have occurred before the age declaration. A necessary security record concerning suspicious activity may remain for no more than 180 days following such deletion.</p>
+
   <p>The access restriction applies to all offers and payouts. Minors can delete their account through the special server-side deletion process. Support is available to correct an incorrect age classification.</p>
+
 </section>
 
 <section aria-labelledby="legal-6">
@@ -1081,7 +1085,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <p>When requesting the ayeT offer list, our server sends your partner identifier, IP address, device manufacturer/model, operating system/version, platform and app language. A provided gender is included only when personalisation is enabled. ayeT uses IP particularly for country and availability. The provider is ayeT-Studios GmbH, Germany. Privacy information: <a href="https://www.ayetstudios.com/privacy">https://www.ayetstudios.com/privacy</a>.</p>
 
-  <p>Offer artwork, icons, screenshots and preview videos that play automatically without sound in the offer view may load directly from servers specified in the offer, for example ayeT or i.ytimg.com. The relevant server then receives IP and technical connection details. These requests are distinct from ayeT impression links: requesting an impression link associates an offer display with a partner identifier for delivery/performance measurement. Measurement must not simply be treated as necessary image delivery; consent must precede device access wherever required. Turning off Claimo’s own server analytics does not automatically communicate a privacy choice to every partner.</p>
+  <p>Offer artwork, icons, screenshots and preview videos that play automatically without sound in the offer view may load directly from servers specified in the offer, for example ayeT or i.ytimg.com. The relevant server then receives IP and technical connection details. The app does not request the impression links offered by ayeT. Turning off Claimo’s own server analytics does not automatically communicate a privacy choice to every partner.</p>
 
   <p>Starting an offer uses a one-time Claimo link to the partner and then the offer page or store. Claimo records offer attribution and the start time for accounting and bonus eligibility. Games and their measurement providers may process installations, usage and goal completion under their own notices.</p>
 
@@ -1168,6 +1172,10 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
   <p>For support we process sender address, message, attachments, time and history as necessary (Article 6(1)(b) or (f)). Your and our email providers are involved. The app’s email action opens your mail application and does not send without your action.</p>
 
+  <p>When you accept the terms, we store your account ID, the accepted version with its language and checksum, the time, and the version numbers of the withdrawal notice and privacy policy shown to you. This serves to conclude the contract and as evidence (Article 6(1)(b) and (f) GDPR). The privacy policy is information in this context, not consent. We do not store an IP address for this purpose. We send the contract confirmation to your account email through Resend.</p>
+
+  <p>If you use the “Withdraw from contract” function, we process your name, the contract or redemption request concerned, the date the contract was concluded, the email address you enter, your account ID, the app language and the date and time of receipt. This serves to receive your withdrawal and to send the legally required confirmation of receipt (Article 6(1)(c) GDPR in conjunction with section 356a BGB), as well as evidence and abuse prevention; for this we limit the number of statements per account and per target address (Article 6(1)(f) GDPR). We send the confirmation of receipt through Resend, and a copy goes to our support mailbox.</p>
+
   <p>A copied referral code is written to the system clipboard. When sharing, the application you select processes the content under its own rules. Store reviews are handled by Google Play or the App Store. Claimo does not record your complete personal store review as its own profile field. Opening legal links visits the website, whose policy also applies.</p>
 
 </section>
@@ -1185,6 +1193,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <li>Push delivery logs: 180 days; disabled push tokens normally 30 days after disabling. In-app inbox: no more than 90 days or 100 entries. Push registration identifiers: until account deletion.</li>
     <li>Email verification challenges: seven days; linked verification evidence until account deletion.</li>
     <li>Support correspondence: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention.</li>
+    <li>Withdrawal statements made in the app: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention. Deleting an account removes the link to the account, not the statement itself.</li>
+    <li>Records of acceptance of the terms: during the contract and afterwards for as long as they are specifically needed to prove the conclusion of the contract or for statutory duties. They remain with the account ID after an account is deleted.</li>
+    <li>Deletion record where a balance exists: account ID, protected hash of the account email, currency, amount, number of rewards in progress and time, for as long as a claim can be asserted or the record is specifically needed.</li>
   </ul>
 
   <p>You may request account deletion in the app or without login through <a href="mailto:support@claimo-app.com">support@claimo-app.com</a>. Instructions: <a href="https://claimo-app.com/konto-loeschen.html">https://claimo-app.com/konto-loeschen.html</a>. Pending payouts or restricted accounts may block self-service deletion; support still considers your request. A payout is not a prerequisite for requesting deletion. Unnecessary account data must not be retained wholesale simply because one matter remains outstanding.</p>
