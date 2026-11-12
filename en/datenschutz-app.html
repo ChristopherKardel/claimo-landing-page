@@ -994,12 +994,12 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <a class="legal-switch__link is-active" href="datenschutz-app.html">App</a>
     </div>
     </div>
-<p><strong>Version 3.4 – Last updated: 10 November 2026</strong></p>
+<p><strong>Version 3.5 – Last updated: 12 November 2026</strong></p>
 <p>Scope: the mobile Claimo app and associated server services</p>
 
 <section>
   <h2 id="legal-1">1. Controller and contact</h2>
-  <p>The controller is Timothy Kardel, trading as “Claimo”, Rilkestr. 8, 41541 Dormagen Zons, Germany. Privacy contact: <a href="mailto:support@claimo-app.com">support@claimo-app.com</a>. No data protection officer is currently appointed. Provider information: <a href="https://claimo-app.com/impressum-app.html">https://claimo-app.com/impressum-app.html</a>.</p>
+  <p>The controller is Timothy Kardel, trading as “Claimo”, Rilkestr. 8, 41541 Dormagen, Germany. Privacy contact: <a href="mailto:support@claimo-app.com">support@claimo-app.com</a>. No data protection officer is currently appointed. Provider information: <a href="https://claimo-app.com/impressum-app.html">https://claimo-app.com/impressum-app.html</a>.</p>
 </section>
 
 <section>
@@ -1033,13 +1033,14 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <p>Google/Facebook authentication takes place with that provider. Claimo receives a provider identifier and email and, depending on permission, a name or profile-image address. The provider learns that you sign into Claimo. The Google or Meta entities identified in their notices are responsible for the authentication service. Claimo does not transmit your wallet history as part of this login.</p>
   <p>In addition to authentication and password-reset emails, Claimo has its own short-lived email verification code. We process the recipient address, challenge identifier, protected code-verification value, delivery/expiry status, failed attempts and confirmation time. Resend delivers the message. The code currently lasts 15 minutes. Challenge records are pruned after seven days. An account-linked verification record remains until account deletion.</p>
   <p>An unverified address may be corrected under the permitted conditions after a further password check. The password is used for authentication and is not passed to Resend or support. The bases are Article 6(1)(b) and, for abuse prevention, Article 6(1)(f) GDPR. Necessary verification is not advertising email.</p>
+  <p>At registration, including a first sign-in through Google or Facebook, and whenever the account email is changed, our server compares the domain of the address with a list of known disposable and publicly readable mailbox domains. The list contains only domains and no personal data; it is based on information from the mailbox providers concerned and public domain lists and is updated automatically every day. If the domain matches exactly, the registration or change is rejected. An existing, unchanged account email remains usable. Claimo does not create its own record of rejected attempts; connection logs of the authentication service are unaffected. The legal basis is Article 6(1)(f) GDPR; the interest is protecting the rewards service from abuse through short-lived mailboxes or mailboxes readable by third parties.</p>
 </section>
 
 <section>
   <h2 id="legal-7">7. Onboarding, settings and personalisation</h2>
-  <p>Setup records your age group and fixed wallet currency. Gender and favourite game genres are optional. Language and settings are associated with your account. Before login, device language is read locally to suggest a language; IP geolocation is not used for this choice.</p>
+  <p>Setup records your age group and fixed wallet currency. Gender and favourite game genres are optional. In the last step, you may optionally enter a friend code; we check it and assign the referral to your account (sections 8 and 12). Language and settings are associated with your account. Before login, device language is read locally to suggest a language; IP geolocation is not used for this choice.</p>
   <p>The “Matching offers” choice (“Personalized offers” in your profile) is off by default. With consent, genres are used for ranking and a provided gender is sent to ayeT-Studios for offer selection. Genres remain in Claimo’s database. Without enabled personalisation, these fields are not used to select personalised offers. You can turn personalisation off and remove stored personalisation information using the relevant deletion feature.</p>
-  <p>Our usage analytics has its own separate, default-off choice (“Improve the app”; in your profile: “Allow usage analytics”). Email status messages, personalisation and analytics are not the same consent. The final onboarding step records your choices, time and notice version. Settings can subsequently be changed in your profile. A later change to unrelated account details is not evidence of new consent.</p>
+  <p>Our usage analytics has its own separate, default-off choice (“Improve the app”; in your profile: “Allow usage analytics”). Email status messages, personalisation and analytics are not the same consent. When you complete onboarding, we record your choices, their time and the notice version. Settings can subsequently be changed in your profile. A later change to unrelated account details is not evidence of new consent.</p>
 </section>
 
 <section>
@@ -1061,8 +1062,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 </section>
 
 <section>
-  <h2 id="legal-10">10. Paused advertising and diagnostics</h2>
-  <p>Rewarded videos are paused in the current app version and server permissions. Onboarding does not enable them. Historical ad credits and necessary records may remain. Earlier test versions may have used Unity LevelPlay/Unity Ads or Google advertising services; their notices apply to their independent processing. Contact <a href="mailto:support@claimo-app.com">support@claimo-app.com</a> to request information about earlier Claimo consents or associated data.</p>
+  <h2 id="legal-10">10. Advertising and diagnostics</h2>
+  <p>The app contains no advertising SDKs and shows no rewarded videos. The related server-side permissions remain disabled. Historical ad credits and necessary records may remain. Earlier test versions may have used Unity LevelPlay/Unity Ads or Google advertising services; their notices apply to their independent processing. Contact <a href="mailto:support@claimo-app.com">support@claimo-app.com</a> to request information about earlier Claimo consents or associated data.</p>
   <p>Sentry crash reporting and IPinfo network enrichment are prepared but are not currently enabled for normal processing. Before any activation, we will update this policy and obtain any required consent in advance. Previously installed test versions may have different features.</p>
 </section>
 
@@ -1092,8 +1093,8 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <h2 id="legal-14">14. Own usage analytics and product tests</h2>
   <p>Optional usage analytics evaluates app opens, areas, onboarding steps, offer views/clicks and payout dialogs in our database. Events may include user attribution, time, session, platform, app version, offer, displayed reward and test variant. The designated events do not contain account email, names or raw IP.</p>
   <p>The analytics switch controls acceptance of these client events into our own database. Analytics uses an installation identifier, sessions, event queue and sometimes locally stored test variants. Such non-essential local access requires prior consent just as the resulting evaluation does (Article 6(1)(a) GDPR and section 25(1) TDDDG). Local queuing must not be used as a consent-free substitute when analytics is refused.</p>
-  <p>Technical information about the reviewed app version: analytics events are not queued locally while analytics is switched off. However, test variants specified by the server are currently still requested and stored locally even when analytics is switched off; to that extent, there is not yet a complete local access restriction. This information does not give consent for those device accesses; the technical discrepancy must be corrected before the relevant release is approved.</p>
-  <p>Necessary operational data arises separately from account creation, actual offer starts, credits, reversals and payout requests. Limited pseudonymous operational events, direct/referral acquisition, platform, app version, random product-test assignments and the time a test variant was first shown or, as a fallback, not shown support accounting, security and economic evaluation. Where Article 6(1)(f) is used, the right to object in section 23 applies. A test assignment does not automatically authorise additional device access without consent. Individual information may subsequently be converted into aggregated statistics.</p>
+  <p>While analytics is switched off, analytics events are not queued locally and no test variants are requested from the server or stored locally; you then receive the default variant. If you switch analytics off, the app removes locally stored test variants.</p>
+  <p>Necessary operational data arises separately from account creation, actual offer starts, credits, reversals and payout requests. Limited pseudonymous operational events, direct/referral acquisition, platform, app version and random product-test assignments support accounting, security and economic evaluation. We record the time a test variant was first shown or, as a fallback, not shown only while usage analytics is switched on. Where Article 6(1)(f) is used, the right to object in section 23 applies. A test assignment does not automatically authorise additional device access without consent. Individual information may subsequently be converted into aggregated statistics.</p>
 </section>
 
 <section>
@@ -1123,7 +1124,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     <li>Support correspondence: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention.</li>
     <li>Withdrawal statements made in the app: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention. Deleting an account removes the link to the account, not the statement itself.</li>
     <li>Records of acceptance of the terms: during the contract and afterwards for as long as they are specifically needed to prove the conclusion of the contract or for statutory duties. They remain with the account ID after an account is deleted.</li>
-    <li>Deletion record where a balance exists: account ID, protected hash of the account email, currency, amount, number of rewards in progress and time, for as long as a claim can be asserted or the record is specifically needed.</li>
+    <li>Deletion record where a balance exists: account ID, protected hash of the account email, currency, amount, number of rewards in progress and time, for as long as the record is specifically needed to prove your deletion confirmation, a declared waiver or outstanding claims.</li>
   </ul>
   <p>You may request account deletion in the app or without login through <a href="mailto:support@claimo-app.com">support@claimo-app.com</a>. Instructions: <a href="https://claimo-app.com/konto-loeschen.html">https://claimo-app.com/konto-loeschen.html</a>. Pending payouts or restricted accounts may block self-service deletion; support still considers your request. A payout is not a prerequisite for requesting deletion. Unnecessary account data must not be retained wholesale simply because one matter remains outstanding.</p>
   <p>After deletion, restricted or higher-risk accounts and payout/reversal cases may leave a reduced security record: protected hashes of former user/recipient identifiers, a device hash where necessary, risk reasons/level, restriction status and reduced counters. It contains no account email, names or IP addresses and is normally removed 1,095 days after deletion; under-18 deletion has a maximum of 180 days. Orphaned device-bonus records are also normally removed 1,095 days after account deletion.</p>
