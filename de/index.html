@@ -297,7 +297,21 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   align-self:stretch;
   padding:10rem;
 }
-.hero__phone{width:375rem;height:761rem;object-fit:cover;}
+/* Real Android captures retain their aspect ratio inside a CSS device frame. */
+.app-device{
+  box-sizing:border-box;
+  margin:0;
+  padding:8rem;
+  border:2rem solid #606761;
+  border-radius:43rem;
+  background:#151816;
+  box-shadow:0 0 0 2rem #242925,0 24rem 70rem rgba(0,0,0,.4);
+  overflow:hidden;
+  line-height:0;
+}
+.app-device__screen{display:block;width:100%;height:auto;border-radius:33rem;}
+.hero__phone{width:390rem;height:auto;flex:none;}
+.hero__phone .app-device__screen{border-radius:33rem;}
 
 /* ==========================================================================
    BLOCK: divider  (Rectangle 45 25:144 · Rectangle 46 39:2)
@@ -379,7 +393,22 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 .showcase__wave{position:absolute;left:0;top:0;width:100%;height:67rem;background:linear-gradient(to bottom, var(--color-surface), var(--color-bg));}
 .showcase--1{height:917rem;}
 .showcase--2{height:919rem;}
-.showcase__media{position:absolute;width:740rem;height:740rem;object-fit:cover;}
+.showcase__media{
+  position:absolute;
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+  width:740rem;
+  height:740rem;
+  aspect-ratio:1;
+  overflow:hidden;
+  box-sizing:border-box;
+  border:2rem solid rgba(0,224,129,.55);
+  border-radius:42rem;
+  background:radial-gradient(ellipse at 70% 15%,rgba(0,224,129,.12),transparent 66%),linear-gradient(145deg,#1b211d,#101311 65%);
+}
+.showcase__media .app-device{width:64%;margin-top:10%;flex:none;}
+.showcase__media--payouts .app-device{width:68%;margin-top:8%;}
 .showcase--1 .showcase__media{left:var(--gutter);top:92rem;}
 .showcase--2 .showcase__media{left:1030rem;top:91rem;}
 .showcase__body{position:absolute;width:650rem;}
@@ -1021,7 +1050,9 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
           </a>
         </div>
         <div class="hero__media">
-          <img class="hero__phone" data-i18n-alt="hero_phone_alt" src="../assets/phone-screenshot.png" alt="Claimo App auf einem Smartphone">
+          <div class="app-device hero__phone">
+            <img class="app-device__screen" data-i18n-alt="hero_phone_alt" src="../assets/screenshots/games-de.png" width="1344" height="2992" fetchpriority="high" decoding="async" alt="Aktuelle Claimo-Spieleübersicht mit Fortschritt zur nächsten Auszahlung">
+          </div>
         </div>
       </div>
     </section>
@@ -1071,7 +1102,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
           <h2 class="showcase__title" data-i18n-html="showcase1_title">Spiele, die sich <span class="text-accent">wirklich lohnen</span></h2>
           <p class="showcase__text" data-i18n="showcase1_text">Entdecke eine riesige Auswahl an Handy- und Browserspielen aus allen Genres – von Strategie über Puzzle bis Simulation. Lade deine Favoriten kostenlos herunter und sammle für erreichte Spielziele Guthaben für deine nächste Auszahlung.</p>
         </div>
-        <img class="showcase__media" data-i18n-alt="showcase_media_alt" src="../assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
+        <div class="showcase__media showcase__media--games">
+          <div class="app-device">
+            <img class="app-device__screen" data-i18n-alt="showcase_game_alt" src="../assets/screenshots/offer-de.png" width="1344" height="2992" loading="lazy" decoding="async" alt="Aktuelles Claimo-Spielangebot mit Aufgaben, Vergütung und Zeitlimit">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1082,7 +1117,11 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
           <h2 class="showcase__title" data-i18n-html="showcase2_title">Deine <span class="text-accent">Auszahlung,</span> deine Wahl</h2>
           <p class="showcase__text" data-i18n="showcase2_text">Dein verdientes Guthaben gehört dir. Wähle zwischen PayPal, Gutscheinen bekannter Marken oder weiteren Auszahlungsoptionen. Jede Auszahlung prüfen wir vor dem Versand.</p>
         </div>
-        <img class="showcase__media" data-i18n-alt="showcase_media_alt" src="../assets/phone-box-screenshot.png" alt="Claimo App Vorschau">
+        <div class="showcase__media showcase__media--payouts">
+          <div class="app-device">
+            <img class="app-device__screen" data-i18n-alt="showcase_payout_alt" src="../assets/screenshots/payouts-de.png" width="1344" height="2992" loading="lazy" decoding="async" alt="Aktuelle Claimo-Auszahlungsübersicht mit PayPal, Visa und Gutscheinen">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1418,7 +1457,7 @@ var TRANSLATIONS = {
     hero_title_2: 'earn real money',
     hero_lead: 'Earn real money with your favorite games – sign up for free, get started, and cash out easily.',
     google_play_alt: 'Download Claimo on Google Play',
-    hero_phone_alt: 'Claimo app on a smartphone',
+    hero_phone_alt: 'Current Claimo game offers and progress towards the next payout',
 
     steps_title: 'It’s this easy to <span class="text-accent">earn</span> with Claimo',
     step1_icon_alt: 'Icon: create account',
@@ -1438,7 +1477,8 @@ var TRANSLATIONS = {
     showcase1_text: 'Discover a huge selection of mobile and browser games across every genre – from strategy to puzzle to simulation. Download your favorites for free and earn balance toward your next payout for the game goals you reach.',
     showcase2_title: 'Your <span class="text-accent">payout,</span> your choice',
     showcase2_text: 'The balance you earn is yours. Choose between PayPal, gift cards from well-known brands or other payout options. We review every payout before sending it.',
-    showcase_media_alt: 'Claimo app preview',
+    showcase_game_alt: 'Current Claimo game offer with tasks, rewards and time limit',
+    showcase_payout_alt: 'Current Claimo payout options with PayPal, Visa and gift cards',
 
     rewards_title: 'With <span class="text-accent">50+ payout options</span>',
     rewards_subtitle: 'Exchange your earned balance for PayPal payouts and other rewards',
