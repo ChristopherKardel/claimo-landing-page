@@ -994,7 +994,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
       <a class="legal-switch__link is-active" href="datenschutz-app.html">App</a>
     </div>
     </div>
-<p><strong>Version 3.5 – Last updated: 12 November 2026</strong></p>
+<p><strong>Version 3.6 – Last updated: 17 November 2026</strong></p>
 <p>Scope: the mobile Claimo app and associated server services</p>
 
 <section>
@@ -1064,7 +1064,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 <section>
   <h2 id="legal-10">10. Advertising and diagnostics</h2>
   <p>The app contains no advertising SDKs and shows no rewarded videos. The related server-side permissions remain disabled. Historical ad credits and necessary records may remain. Earlier test versions may have used Unity LevelPlay/Unity Ads or Google advertising services; their notices apply to their independent processing. Contact <a href="mailto:support@claimo-app.com">support@claimo-app.com</a> to request information about earlier Claimo consents or associated data.</p>
-  <p>Sentry crash reporting and IPinfo network enrichment are prepared but are not currently enabled for normal processing. Before any activation, we will update this policy and obtain any required consent in advance. Previously installed test versions may have different features.</p>
+  <p>The app contains no crash reporting or diagnostics SDK. IPinfo network enrichment is prepared but is not currently enabled for normal processing. Before any activation, we will update this policy and obtain any required consent in advance. Previously installed test versions may have different features.</p>
 </section>
 
 <section>
@@ -1116,20 +1116,22 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
   <p>Storage is limited to necessary purposes and applicable obligations. The present data model particularly provides for:</p>
   <ul>
     <li>Account, profile, wallet, transactions, linked payout requests and settings: generally for the life of the account, then deletion subject to the limited exceptions below.</li>
+    <li>Records of paid payouts: for each paid payout, the account ID, reward, amount and currency, redemption country, recipient address, request and payment time, delivery reference and, where applicable, the last four characters of a voucher code are kept as an accounting voucher, also after account deletion, until the end of the tenth calendar year after payment; they are then deleted automatically. They cannot be accessed from the app.</li>
     <li>Own raw analytics events, sessions and installation cohorts: normally 180 days; account-related test assignments until account deletion. Processed technical delivery queues are cleared sooner.</li>
     <li>Device links without an outstanding bonus record: after 90 days without further use; attestation logs after 90 days. Short-lived signup reservations and request counters are separately cleared promptly; abuse request counters for no more than seven days.</li>
     <li>Served offer data: normally 180 days; progress snapshots 30 days; started-offer attribution normally until account deletion.</li>
     <li>Push delivery logs: 180 days; disabled push tokens normally 30 days after disabling. In-app inbox: no more than 90 days or 100 entries. Push registration identifiers: until account deletion.</li>
     <li>Email verification challenges: seven days; linked verification evidence until account deletion.</li>
     <li>Support correspondence: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention.</li>
-    <li>Withdrawal statements made in the app: until the matter is resolved and, where necessary, beyond that for specific evidence or statutory retention. Deleting an account removes the link to the account, not the statement itself.</li>
-    <li>Records of acceptance of the terms: during the contract and afterwards for as long as they are specifically needed to prove the conclusion of the contract or for statutory duties. They remain with the account ID after an account is deleted.</li>
-    <li>Deletion record where a balance exists: account ID, protected hash of the account email, currency, amount, number of rewards in progress and time, for as long as the record is specifically needed to prove your deletion confirmation, a declared waiver or outstanding claims.</li>
+    <li>Withdrawal statements made in the app: three years from the end of the calendar year in which they were received, then deleted automatically. Deleting an account removes the link to the account, not the statement itself.</li>
+    <li>Records of acceptance of the terms: during the contract; after account deletion, with the account ID for three more years from the end of the year of deletion, then deleted automatically.</li>
+    <li>Deletion record where a balance exists: account ID, protected hash of the account email, currency, amount, number of rewards in progress and time as evidence of your deletion confirmation, a declared waiver or outstanding claims: three years from the end of the year of deletion, then deleted automatically.</li>
+    <li>Incomplete registrations: an account whose registration was not completed with the declaration on the terms and which has neither transactions nor payout requests is deleted automatically 30 days after it was created.</li>
   </ul>
   <p>You may request account deletion in the app or without login through <a href="mailto:support@claimo-app.com">support@claimo-app.com</a>. Instructions: <a href="https://claimo-app.com/konto-loeschen.html">https://claimo-app.com/konto-loeschen.html</a>. Pending payouts or restricted accounts may block self-service deletion; support still considers your request. A payout is not a prerequisite for requesting deletion. Unnecessary account data must not be retained wholesale simply because one matter remains outstanding.</p>
   <p>After deletion, restricted or higher-risk accounts and payout/reversal cases may leave a reduced security record: protected hashes of former user/recipient identifiers, a device hash where necessary, risk reasons/level, restriction status and reduced counters. It contains no account email, names or IP addresses and is normally removed 1,095 days after deletion; under-18 deletion has a maximum of 180 days. Orphaned device-bonus records are also normally removed 1,095 days after account deletion.</p>
-  <p>Certain older partner receipts may remain without an internal account link as evidence against duplicate crediting or for partner accounting. If they still contain attributable partner/transaction identifiers, they are not categorically described as anonymous. Their continuing necessity and erasure criteria must be assessed separately; they must not be used for new advertising or active profiling. Newer provider records may instead be deleted with the account.</p>
-  <p>Legally required accounting vouchers are generally retained for eight years, business correspondence for six, and books/relevant records for ten, where that classification applies (section 147 AO and, where applicable, section 257 HGB). The start of retention is governed by law, normally the relevant calendar year-end. This concerns required documents, not the entire account. The bases are Article 6(1)(c) and (f) and Article 17(3)(b) and (e) GDPR. Specific legal claims may justify limited additional retention.</p>
+  <p>Credit and reversal notifications from CPX Research, ayeT-Studios and TheoremReach remain without an internal account link after account deletion as evidence against duplicate crediting and for partner accounting. Because they still contain partner and transaction identifiers, we do not describe them as anonymous. They are deleted automatically three years from the end of the calendar year in which they were received and are not used for advertising or profiling. Notifications from other partners are deleted with the account.</p>
+  <p>Legally required accounting vouchers are generally retained for eight years, business correspondence for six, and books/relevant records for ten, where that classification applies (section 147 AO and, where applicable, section 257 HGB). The start of retention is governed by law, normally the relevant calendar year-end. For records of paid payouts, the period stated above applies, ending with the tenth calendar year after payment. This concerns required documents, not the entire account. The bases are Article 6(1)(c) and (f) and Article 17(3)(b) and (e) GDPR. Specific legal claims may justify limited additional retention.</p>
   <p>Erasure with processors and, where applicable, notifying other recipients follow statutory requirements. Independent partners handle their own records under their obligations. Backups may contain data until overwritten in the normal cycle; effective erasures must be reapplied after restoration. When handling your request, we explain any specific remaining data, the reason and duration or erasure criteria.</p>
 </section>
 
