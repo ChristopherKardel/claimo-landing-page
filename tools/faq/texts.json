@@ -1,0 +1,170 @@
+{
+  "de": {
+    "title": "FAQ",
+    "lead": "Keine Antwort dabei? Der Support hilft dir weiter.",
+    "contactLink": "Zur Kontaktseite",
+    "groups": [
+      {
+        "title": "Start",
+        "items": [
+          [
+            "Was ist Claimo?",
+            "Eine Rewards-App für Android. Du erreichst Ziele in Spielen, App-Aufgaben oder Umfragen externer Anbieter und erhältst für bestätigte Ziele Guthaben, das du per PayPal oder als Gutschein einlösen kannst."
+          ],
+          [
+            "Kostet Claimo etwas?",
+            "Nein. Registrierung und Nutzung sind kostenlos, eine Einzahlung ist nie nötig. Externe Angebote können freiwillige Käufe, Abos oder Testphasen enthalten; deren Bedingungen siehst du vor dem Start beim Angebot."
+          ],
+          [
+            "Ab welchem Alter kann ich Claimo nutzen?",
+            "Ausschließlich ab 18 Jahren. Nach der Registrierung bestätigst du deine Volljährigkeit, vorher bleiben die Funktionen gesperrt. Anbieter und Länder können weitere Teilnahmebedingungen haben."
+          ],
+          [
+            "Wann und wo gibt es die App?",
+            "Claimo startet zuerst für Android bei Google Play. Der Store-Eintrag ist noch nicht öffentlich; sobald er online ist, verlinken wir ihn hier."
+          ]
+        ]
+      },
+      {
+        "title": "Guthaben",
+        "items": [
+          [
+            "Wie entsteht mein Guthaben?",
+            "Du erreichst Ziele in einem Angebot. Bestätigt der Anbieter den Abschluss, wird der angezeigte Betrag gutgeschrieben – je nach Angebot mit Verzögerung. Feste Einnahmen oder eine bestimmte Zahl an Angeboten gibt es nicht."
+          ],
+          [
+            "Warum ist ein Teil meines Guthabens geschützt?",
+            "Gutschriften aus Angeboten sind ab Buchung 48 Stunden geschützt und werden danach automatisch freigegeben, sofern kein Prüfgrund besteht. Anbieter können Gutschriften auch später berechtigt stornieren; dann wird der Betrag verrechnet."
+          ],
+          [
+            "Gibt es einen Willkommensbonus?",
+            "Derzeit ja: einmalig 5,00 in deiner Wallet-Währung für berechtigte neue Konten nach abgeschlossenem Onboarding und erfüllten gerätebezogenen Voraussetzungen, nur einmal pro Gerät. Der Bonus ist nicht sofort auszahlbar; es gelten die Auszahlungsregeln."
+          ],
+          [
+            "Welche Währung hat meine Wallet?",
+            "Du wählst bei der Einrichtung einmalig USD, EUR, GBP oder CHF. Die Wahl lässt sich danach nicht ändern, auch nicht über die App-Sprache."
+          ]
+        ]
+      },
+      {
+        "title": "Auszahlung",
+        "items": [
+          [
+            "Ab welchem Betrag kann ich auszahlen?",
+            "Die erste Auszahlung ist ab 20,00 freigegebenem Guthaben in deiner Wallet-Währung möglich, weitere grundsätzlich ab 5,00. Je nach Prämie und Region können die kleinsten verfügbaren Werte höher liegen."
+          ],
+          [
+            "Welche Auszahlungsmethoden gibt es?",
+            "PayPal sowie Gutscheine, zum Beispiel von Amazon, Apple, Google Play, IKEA oder Netflix. Die Auswahl hängt von Land und Wallet-Währung ab. Gutscheincodes kommen nach der Prüfung per E-Mail."
+          ],
+          [
+            "Wie lange dauert eine Auszahlung?",
+            "Jede Auszahlung wird manuell geprüft und ohne unnötige Verzögerung bearbeitet. Eine Auszahlung in Minuten versprechen wir nicht; den Status siehst du in der App."
+          ],
+          [
+            "Fallen Gebühren an?",
+            "Claimo erhebt keine Auszahlungsgebühr. Belohnungen in anderer Währung werden zum Tageskurs mit derzeit 0,5 % Abschlag umgerechnet. PayPal oder Gutscheinanbieter können eigene Gebühren haben."
+          ]
+        ]
+      },
+      {
+        "title": "Konto und Hilfe",
+        "items": [
+          [
+            "Ein Ziel wurde nicht gutgeschrieben – was tun?",
+            "Melde dich mit Angebotsname, Zeitraum und Nachweisen beim Support des Anbieters und/oder bei support@claimo-app.com. Wir prüfen Fehler in unserer Zuordnung und Abrechnung."
+          ],
+          [
+            "Wie lösche ich mein Konto?",
+            "In der App oder per E-Mail an support@claimo-app.com – auch ohne App und Anmeldung. Lass dir verfügbares Guthaben vorher auszahlen. Alle Schritte stehen auf der Seite {deletion}."
+          ]
+        ]
+      }
+    ],
+    "deletionLink": "Konto löschen"
+  },
+  "en": {
+    "title": "FAQ",
+    "lead": "Didn’t find your answer? Our support team is happy to help.",
+    "contactLink": "Go to the contact page",
+    "groups": [
+      {
+        "title": "Getting started",
+        "items": [
+          [
+            "What is Claimo?",
+            "A rewards app for Android. You reach goals in games, app tasks or surveys from external providers and receive balance for confirmed goals, which you can redeem via PayPal or as a gift card."
+          ],
+          [
+            "Does Claimo cost anything?",
+            "No. Signing up and using the app are free, and a deposit is never required. External offers may include optional purchases, subscriptions or trials; you see their conditions on the offer before you start."
+          ],
+          [
+            "How old do I have to be?",
+            "Claimo is for adults only (18+). After signing up you confirm that you are of age; until then the features stay locked. Providers and countries may have additional conditions."
+          ],
+          [
+            "When and where can I get the app?",
+            "Claimo launches first on Android via Google Play. The store listing is not public yet; as soon as it is live, we will link it here."
+          ]
+        ]
+      },
+      {
+        "title": "Balance",
+        "items": [
+          [
+            "How do I earn balance?",
+            "You reach goals in an offer. Once the provider confirms completion, the amount shown is credited – depending on the offer, with a delay. There are no fixed earnings and no guaranteed number of offers."
+          ],
+          [
+            "Why is part of my balance protected?",
+            "Credits from offers are protected for 48 hours from booking and are then released automatically, unless there is a reason to review them. Providers can also reverse credits later for legitimate reasons; the amount is then offset."
+          ],
+          [
+            "Is there a welcome bonus?",
+            "Currently yes: a one-time 5.00 in your wallet currency for eligible new accounts after completed onboarding and satisfied device-based requirements, once per device. The bonus is not immediately payable; the payout rules apply."
+          ],
+          [
+            "Which currency does my wallet use?",
+            "You choose USD, EUR, GBP or CHF once during setup. This choice cannot be changed afterwards, not even by switching the app language."
+          ]
+        ]
+      },
+      {
+        "title": "Payouts",
+        "items": [
+          [
+            "What is the minimum payout?",
+            "Your first payout is possible from 20.00 of available balance in your wallet currency, further payouts generally from 5.00. Depending on the reward and region, the smallest available values may be higher."
+          ],
+          [
+            "Which payout methods are there?",
+            "PayPal and gift cards, for example from Amazon, Apple, Google Play, IKEA or Netflix. The selection depends on your country and wallet currency. Gift card codes arrive by email after the review."
+          ],
+          [
+            "How long does a payout take?",
+            "Every payout is reviewed manually and processed without undue delay. We do not promise payouts within minutes; you can see the status in the app."
+          ],
+          [
+            "Are there any fees?",
+            "Claimo does not charge a payout fee. Rewards in another currency are converted at the daily rate minus a current 0.5% deduction. PayPal or gift card providers may charge their own fees."
+          ]
+        ]
+      },
+      {
+        "title": "Account and help",
+        "items": [
+          [
+            "A goal was not credited – what now?",
+            "Contact the provider’s support and/or support@claimo-app.com with the offer name, time period and evidence. We check for errors in our attribution and accounting."
+          ],
+          [
+            "How do I delete my account?",
+            "In the app or by email to support@claimo-app.com – even without the app or signing in. Cash out any available balance first. All steps are on the {deletion} page."
+          ]
+        ]
+      }
+    ],
+    "deletionLink": "Delete account"
+  }
+}

@@ -1,0 +1,403 @@
+/* ==========================================================================
+   Claimo — navigation, footer and the home page's closing block.
+   Taken over from the new design ("claimo-landing-page ALT VERSION",
+   assets/css/site.css, blocks marked "1:1"). Tokens mirror the app
+   (Rewards-App/src/theme/tokens.ts).
+   The rest of each page still uses its own inline styles, where
+   1rem = 1 Figma px — so everything here is sized in px, and the tokens are
+   scoped to .nav / .footer / .closing so they never collide with the page variables
+   (--gutter, --container …).
+   Fonts are served locally (Website-Datenschutz) — never add a font CDN.
+   ========================================================================== */
+
+@font-face{font-family:'Sora';src:url('../fonts/sora-latin-wght-normal.woff2') format('woff2');font-weight:100 800;font-style:normal;font-display:swap;}
+@font-face{font-family:'Inter';src:url('../fonts/inter-latin-wght-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap;}
+
+/* --nav-h is also used by the page styles to keep content clear of the bar */
+:root{--nav-h:68px;}
+
+html{scroll-padding-top:calc(var(--nav-h) + 24px);}
+
+/* ==========================================================================
+   TOKENS + BASE (scoped)
+   ========================================================================== */
+.nav,
+.footer,
+.closing,
+.skip-link{
+  --background:#090909;
+  --surface:#141414;
+  --surface-raised:#1C1C1C;
+  --surface-overlay:#252525;
+  --hairline:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.1);
+
+  --accent:#00E386;
+  --accent-bright:#39F0AB;
+  --accent-ink:#031109;
+  --accent-depth:#006940;
+
+  --text:#F5F5F5;
+  --text-2:#BDBDBD;
+  --text-muted:#969696;
+
+  --accent-soft:rgba(0,227,134,.12);
+
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:22px;
+  --section-y:clamp(80px,10vw,136px);
+
+  --font-heading:'Sora',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-body:'Inter',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+
+  --container:1200px;
+  --gutter:clamp(16px,4vw,40px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+
+  font-family:var(--font-body);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.6;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* :where() keeps these at element specificity, so the component classes below win */
+:where(.nav,.footer,.closing) img,
+:where(.nav,.footer,.closing) svg{display:block;max-width:100%;}
+:where(.nav,.footer,.closing) img{height:auto;}
+:where(.nav,.footer) ul{margin:0;padding:0;list-style:none;}
+:where(.nav,.footer,.closing) h2{margin:0;font-family:var(--font-heading);font-weight:700;letter-spacing:-.03em;line-height:1.08;text-wrap:balance;}
+.nav :focus-visible,
+.footer :focus-visible,
+.closing :focus-visible,
+.skip-link:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+.closing .accent{color:var(--accent);}
+
+.skip-link{
+  position:absolute;
+  left:16px;
+  top:-60px;
+  z-index:100;
+  padding:10px 16px;
+  border-radius:var(--radius-sm);
+  background:var(--accent);
+  color:var(--accent-ink);
+  font-weight:600;
+  transition:top .2s var(--ease);
+}
+.skip-link:focus{top:12px;}
+
+.nav .container,
+.footer .container,
+.closing.container{
+  width:100%;
+  max-width:calc(var(--container) + 2 * var(--gutter));
+  margin-inline:auto;
+  padding-inline:var(--gutter);
+}
+
+/* Buttons copy the app's start button: green face on a darker "depth" edge. */
+.btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  min-height:50px;
+  padding:0 22px;
+  border-radius:var(--radius-sm);
+  font-family:var(--font-heading);
+  font-size:15px;
+  font-weight:600;
+  line-height:1.6;
+  letter-spacing:-.01em;
+  white-space:nowrap;
+  transition:transform .15s var(--ease),box-shadow .15s var(--ease),background .2s,border-color .2s;
+}
+.btn svg{width:17px;height:17px;flex:none;}
+.btn--primary{
+  background:var(--accent);
+  color:var(--accent-ink);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),0 4px 0 var(--accent-depth);
+}
+.btn--primary:hover{background:var(--accent-bright);transform:translateY(2px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),0 2px 0 var(--accent-depth);}
+.btn--primary:active{transform:translateY(4px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.24),0 0 0 var(--accent-depth);}
+.btn--ghost{
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+}
+.btn--ghost:hover{background:var(--surface-raised);border-color:rgba(255,255,255,.2);}
+.btn--sm{min-height:40px;padding:0 16px;font-size:14px;}
+
+/* Google Play badge — deliberately NOT a link until the listing is public */
+.store{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  min-height:54px;
+  padding:0 20px 0 16px;
+  border-radius:var(--radius-md);
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--text);
+  cursor:default;
+  user-select:none;
+}
+.store__icon{width:22px;height:24px;flex:none;}
+.store__text{display:flex;flex-direction:column;text-align:left;line-height:1.15;}
+.store__text small{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);}
+.store__text strong{font-family:var(--font-heading);font-size:17px;font-weight:600;letter-spacing:-.015em;}
+
+/* ==========================================================================
+   NAVIGATION
+   ========================================================================== */
+.nav{
+  position:fixed;
+  inset:0 0 auto;
+  z-index:50;
+  border-bottom:1px solid transparent;
+  transition:background .3s var(--ease),border-color .3s var(--ease);
+}
+.nav.is-scrolled,
+.nav.is-open{
+  background:rgba(9,9,9,.86);
+  border-bottom-color:var(--hairline);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+}
+html:not(.js) .nav{background:rgba(9,9,9,.94);border-bottom-color:var(--hairline);} /* no-JS fallback */
+.nav__bar{display:flex;align-items:center;gap:28px;height:var(--nav-h);}
+.nav__logo{flex:none;display:block;}
+.nav__logo-img{width:auto;height:26px;}
+.nav__panel{display:flex;align-items:center;}
+.nav__links{display:flex;align-items:center;gap:2px;}
+.nav__link{
+  display:block;
+  padding:8px 12px;
+  border-radius:var(--radius-sm);
+  font-size:14.5px;
+  font-weight:500;
+  color:var(--text-2);
+  transition:color .2s,background .2s;
+}
+.nav__link:hover{color:var(--text);background:var(--surface);}
+.nav__right{display:flex;align-items:center;gap:12px;flex:none;margin-left:auto;}
+
+.lang{
+  display:flex;
+  padding:3px;
+  border:1px solid var(--line);
+  border-radius:999px;
+}
+.lang__opt{
+  min-width:34px;
+  padding:5px 9px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  line-height:1.6;
+  letter-spacing:.06em;
+  text-align:center;
+  color:var(--text-muted);
+  transition:color .2s,background .2s;
+}
+.lang__opt:hover{color:var(--text);}
+.lang__opt[aria-current="true"]{background:var(--surface-overlay);color:var(--text);}
+
+.nav__toggle{
+  display:none;
+  position:relative;
+  width:44px;
+  height:44px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--line);
+}
+.nav__toggle span{
+  position:absolute;
+  left:13px;
+  right:13px;
+  height:1.5px;
+  border-radius:2px;
+  background:var(--text);
+  transition:transform .3s var(--ease),top .3s var(--ease);
+}
+.nav__toggle span:nth-child(1){top:17px;}
+.nav__toggle span:nth-child(2){top:25px;}
+.nav.is-open .nav__toggle span:nth-child(1){top:21px;transform:rotate(45deg);}
+.nav.is-open .nav__toggle span:nth-child(2){top:21px;transform:rotate(-45deg);}
+
+/* ==========================================================================
+   CLOSING CTA (home page, between FAQ and footer)
+   The 1px gap between .cta and .cta::after is the border; the rotating
+   conic gradient behind it is the light beam running around the box.
+   ========================================================================== */
+/* the border-image paints the section background edge to edge, although .closing is a centred container */
+.closing{padding-bottom:var(--section-y);border-image:conic-gradient(var(--background) 0 0) fill 0 / / 0 100vmax;}
+.cta{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(48px,8vw,96px) clamp(24px,5vw,64px);
+  border-radius:28px;
+  text-align:center;
+  isolation:isolate;
+  background:rgba(255,255,255,.1); /* shows through the 1px gap as the resting border */
+}
+.cta::before{
+  content:"";
+  position:absolute;
+  inset:-50%;
+  z-index:-2;
+  background:conic-gradient(from 0deg,transparent 0 300deg,rgba(0,227,134,.9) 340deg,transparent 360deg);
+  animation:beam 7s linear infinite;
+}
+.cta::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  z-index:-1;
+  border-radius:27px;
+  background:radial-gradient(ellipse 70% 90% at 50% 120%,rgba(0,227,134,.24),transparent 60%),#0b0b0b;
+}
+@keyframes beam{to{transform:rotate(360deg);}}
+.cta__mark{width:72px;height:72px;margin:0 auto 30px;border-radius:20px;box-shadow:0 0 0 1px var(--line),0 20px 60px -12px rgba(0,227,134,.35);}
+.cta__title{max-width:760px;margin-inline:auto;font-size:clamp(30px,4.6vw,56px);letter-spacing:-.04em;}
+.cta__text{max-width:520px;margin:18px auto 0;font-size:17px;color:var(--text-2);}
+.cta__actions{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-top:36px;}
+
+/* scroll reveal — only with JS; without it everything is visible */
+.js [data-reveal]{
+  opacity:0;
+  transform:translateY(16px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+  transition-delay:var(--d,0ms);
+}
+.js [data-reveal].is-in{opacity:1;transform:none;}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.footer{
+  position:relative;
+  padding-top:72px;
+  border-top:1px solid var(--hairline);
+  background:linear-gradient(180deg,#0d0d0d,var(--background));
+}
+.footer__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.4fr) repeat(4,minmax(0,1fr));
+  gap:40px 32px;
+}
+.footer__logo{display:inline-block;}
+.footer__logo-img{width:auto;height:30px;}
+.footer__tagline{max-width:300px;margin-top:20px;font-size:14.5px;color:var(--text-2);}
+.footer__mail{display:inline-block;margin-top:18px;font-weight:600;color:var(--accent);}
+.footer__mail:hover{text-decoration:underline;text-underline-offset:4px;}
+.footer__title{margin-bottom:16px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);}
+.footer__links{display:grid;gap:10px;}
+.footer__links a{font-size:14.5px;color:var(--text-2);overflow-wrap:anywhere;transition:color .2s;}
+.footer__links a:hover{color:var(--text);}
+.footer__links a[aria-current="page"]{color:var(--text);}
+.footer__bottom{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px 32px;
+  margin-top:64px;
+  padding-block:26px;
+  border-top:1px solid var(--hairline);
+  font-size:13px;
+  color:var(--text-muted);
+}
+/* page notes (home: bonus conditions, sample data), generated by tools/hero/build.mjs */
+.footer__notes{
+  display:grid;
+  gap:8px;
+  margin-top:56px;
+  padding-top:22px;
+  border-top:1px solid var(--hairline);
+  font-size:12.5px;
+  line-height:1.55;
+  color:var(--text-muted);
+}
+.footer__notes p{max-width:900px;margin:0;}
+.footer__notes sup{line-height:0;margin-right:2px;}
+.footer__notes a{color:var(--text-2);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;}
+.footer__notes a:hover{color:var(--text);text-decoration-color:var(--accent);}
+.footer__notes + .footer__bottom{margin-top:28px;}
+
+.footer__wordmark{
+  display:flex;
+  justify-content:center;
+  height:clamp(70px,15vw,220px);
+  overflow:hidden;
+  pointer-events:none;
+  user-select:none;
+}
+.footer__wordmark-img{
+  width:min(1100px,92%);
+  height:auto;
+  align-self:flex-start;
+  opacity:.06;
+  filter:grayscale(1) brightness(1.6);
+  -webkit-mask-image:linear-gradient(180deg,#000 35%,transparent 95%);
+  mask-image:linear-gradient(180deg,#000 35%,transparent 95%);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (min-width:1600px){
+  .nav,.footer{--container:1280px;}
+}
+
+@media (max-width:1100px){
+  .nav__bar{gap:18px;}
+  .nav__link{padding:8px 9px;font-size:14px;}
+  .footer__grid{grid-template-columns:repeat(4,minmax(0,1fr));}
+  .footer__brand{grid-column:1 / -1;}
+}
+
+@media (max-width:980px){
+  .nav__toggle{display:block;}
+  .nav__bar{position:relative;}
+  .nav__panel{
+    position:absolute;
+    left:var(--gutter);
+    right:var(--gutter);
+    top:calc(100% + 8px);
+    display:block;
+    padding:8px;
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    background:var(--surface);
+    box-shadow:0 30px 60px -20px rgba(0,0,0,.9);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-6px);
+    transition:opacity .2s var(--ease),transform .25s var(--ease),visibility 0s .25s;
+  }
+  .nav.is-open .nav__panel{opacity:1;visibility:visible;transform:none;transition:opacity .2s var(--ease),transform .25s var(--ease);}
+  .nav__links{flex-direction:column;align-items:stretch;gap:0;}
+  .nav__link{padding:14px 14px;font-size:17px;color:var(--text);}
+}
+
+@media (max-width:640px){
+  :root{--nav-h:62px;}
+  .nav .nav__cta{display:none;}
+  .nav__logo-img{height:24px;}
+  .footer{padding-top:56px;}
+  .footer__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 20px;}
+  .footer__grid > nav:last-child{grid-column:1 / -1;}
+  .footer__bottom{flex-direction:column;align-items:flex-start;}
+  .cta__actions{flex-direction:column;align-items:stretch;}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .nav,.nav *,.footer *,.closing *,.skip-link{transition-duration:.01ms !important;}
+  .js [data-reveal]{opacity:1;transform:none;}
+  .cta::before{animation:none;}
+}

@@ -1,0 +1,46 @@
+{
+  "de": {
+    "locale": "de-DE",
+    "lines": [
+      "Spielen.",
+      "Ziele erreichen.",
+      "Auszahlen lassen."
+    ],
+    "lead": "Spiele, App-Aufgaben und Umfragen externer Anbieter. Bestätigte Ziele bringen Guthaben – einlösbar per PayPal oder als Gutschein.",
+    "ctaHow": "So funktioniert’s",
+    "ctaRewards": "Prämien ansehen",
+    "facts": "Kostenlos · Keine Einzahlung · Nur ab 18",
+    "voucherLabel": "Willkommensbonus",
+    "footnote": "Fußnote",
+    "phoneAlt": "Bildschirm „Spielen“ der Claimo-App mit dem Fortschritt zur nächsten Auszahlung und Spielangeboten",
+    "noteTitle": "Reward erhalten",
+    "noteTime": "gerade eben",
+    "noteBody": "Reward erhalten: +{amount} wurden deinem Wallet gutgeschrieben.",
+    "notesLabel": "Hinweise zur Startseite",
+    "bonusNote": "Willkommensbonus: derzeit einmalig 5,00 in deiner Wallet-Währung für berechtigte neue Konten nach abgeschlossenem Onboarding; einmal pro Gerät, gerätebezogene Voraussetzungen. Nicht sofort auszahlbar, erste Auszahlung ab 20,00. Alle Bedingungen: {terms}.",
+    "bonusTerms": "Nutzungsbedingungen der App, Ziffer 6",
+    "screenNote": "App-Ansichten mit Beispieldaten. Angebote und Beträge ändern sich; keine Verdienstgarantie. Spielgrafiken gehören ihren Inhabern."
+  },
+  "en": {
+    "locale": "en-US",
+    "lines": [
+      "Play.",
+      "Reach goals.",
+      "Cash out."
+    ],
+    "lead": "Games, app tasks and surveys from external providers. Confirmed goals earn balance – redeemable via PayPal or as a gift card.",
+    "ctaHow": "How it works",
+    "ctaRewards": "See rewards",
+    "facts": "Free · No deposit · 18+ only",
+    "voucherLabel": "Welcome bonus",
+    "footnote": "Footnote",
+    "phoneAlt": "The “Games” screen of the Claimo app with the progress towards the next payout and game offers",
+    "noteTitle": "Reward received",
+    "noteTime": "just now",
+    "noteBody": "Reward received: +{amount} was added to your wallet.",
+    "notesLabel": "Notes on this page",
+    "bonusNote": "Welcome bonus: currently a one-time 5.00 in your wallet currency for eligible new accounts after completed onboarding; once per device, device-based requirements apply. Not immediately payable, first payout from 20.00. Full terms: {terms}.",
+    "bonusTerms": "App Terms of Use, section 6",
+    "screenNote": "App views with sample data. Offers and amounts change; no earnings guarantee. Game artwork belongs to its owners."
+  }
+}

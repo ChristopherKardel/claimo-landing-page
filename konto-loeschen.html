@@ -12,42 +12,38 @@
 <link rel="stylesheet" href="assets/fonts/poppins.css">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/konto-loeschen.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body id="top">
 <div class="page">
 
-  <!-- ====================== HEADER ====================== -->
-  <header class="header">
-    <div class="header__inner">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-      <a class="logo" href="index.html" aria-label="Claimo Home">
-        <img src="assets/logo.png" alt="Claimo Logo">
+  <!-- ====================== NAVIGATION ====================== -->
+  <header class="nav">
+    <div class="container nav__bar">
+      <a class="nav__logo" href="index.html" aria-label="Claimo – home">
+        <img class="nav__logo-img" src="assets/img/claimo-logo.png" alt="Claimo" width="916" height="242">
       </a>
 
-      <nav class="header__nav" id="primary-navigation" aria-label="Main navigation">
-        <ul class="nav__list">
-          <li class="nav__item nav__item--how"><a class="nav__link" href="index.html#wie-es-funktioniert">How it works</a></li>
-          <li class="nav__item nav__item--play"><a class="nav__link" href="index.html#spielen">Play</a></li>
-          <li class="nav__item nav__item--rewards"><a class="nav__link" href="index.html#belohnungen">Rewards</a></li>
-          <li class="nav__item nav__item--faq"><a class="nav__link" href="index.html#faq">FAQ</a></li>
+      <nav class="nav__panel" id="nav-panel" aria-label="Main navigation">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="index.html#wie-es-funktioniert">How it works</a></li>
+          <li><a class="nav__link" href="index.html#spielen">The app</a></li>
+          <li><a class="nav__link" href="index.html#belohnungen">Rewards</a></li>
+          <li><a class="nav__link" href="index.html#faq">FAQ</a></li>
         </ul>
       </nav>
 
-      <div class="header__lang">
-        <button class="lang__toggle" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="language-menu">
-          <img class="lang__icon" src="assets/language-icon.png" alt="">
-          <span class="lang__label">English</span>
-        </button>
-        <ul class="lang__menu" id="language-menu" role="listbox" aria-label="Select language" hidden>
-          <li role="option" aria-selected="false"><button class="lang__option" type="button" data-lang="de">Deutsch</button></li>
-          <li role="option" aria-selected="true"><button class="lang__option" type="button" data-lang="en">English</button></li>
-        </ul>
+      <div class="nav__right">
+        <div class="lang" role="group" aria-label="Choose language">
+          <a class="lang__opt" href="de/konto-loeschen.html" hreflang="de" lang="de" aria-current="false">DE</a>
+          <a class="lang__opt" href="konto-loeschen.html" hreflang="en" lang="en" aria-current="true">EN</a>
+        </div>
+        <a class="btn btn--primary btn--sm nav__cta" href="index.html#spielen">Explore the app</a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu" data-label-open="Open menu" data-label-close="Close menu"><span></span><span></span></button>
       </div>
-
-      <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
-        <img class="header__toggle-icon" src="assets/burger.png" alt="">
-      </button>
-
     </div>
   </header>
 
@@ -152,89 +148,68 @@
 
   <!-- ====================== FOOTER ====================== -->
   <footer class="footer">
-    <div class="footer__inner">
-
-      <div class="footer__brand">
-        <a class="logo" href="#top" aria-label="Claimo Home">
-          <img src="assets/logo.png" alt="Claimo Logo">
-        </a>
-        <p class="footer__brand-text">Play, earn, cash out – it's that easy with Claimo.</p>
-        <a class="footer__mail" href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>
-      </div>
-
-      <div class="footer__panels">
-        <nav class="footer__links" aria-label="Footer navigation">
-          <div class="footer__link-group">
-            <p class="footer__col-title">Explore</p>
-            <a class="footer__link" href="index.html#wie-es-funktioniert">How it works</a>
-            <a class="footer__link" href="index.html#spielen">Play</a>
-            <a class="footer__link" href="index.html#belohnungen">Rewards</a>
-            <a class="footer__link" href="index.html#faq">FAQ</a>
-          </div>
-          <div class="footer__link-group">
-            <p class="footer__col-title">Legal</p>
-            <a class="footer__link" href="impressum.html">Legal Notice</a>
-            <a class="footer__link" href="datenschutz.html">Privacy Policy</a>
-            <a class="footer__link" href="nutzungsbedingungen.html">Terms of Use</a>
-            <a class="footer__link" href="widerrufsbelehrung.html">Right of Withdrawal</a>
-            <a class="footer__link" href="kontakt.html">Contact</a>
-            <a class="footer__link" href="konto-loeschen.html">Delete account</a>
-          </div>
-        </nav>
-
-        <div class="footer__promo">
-          <p class="footer__promo-text">Install Claimo now.</p>
-          <a class="footer__store" href="https://play.google.com/apps/internaltest/4700775116856000681" target="_blank" rel="noopener">
-            <img src="assets/google-play.png" alt="Get Claimo on Google Play">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="footer__logo" href="index.html" aria-label="Claimo – home">
+            <img class="footer__logo-img" src="assets/img/claimo-logo.png" alt="Claimo" width="916" height="242">
           </a>
-          <p class="footer__promo-text footer__promo-text--qr">Or scan this QR code.</p>
-          <img class="footer__qr" src="assets/qr-code.png" alt="QR code to download the Claimo app">
+          <p class="footer__tagline">Games, tasks and surveys – balance for confirmed goals, redeemable via PayPal or gift card.</p>
+          <a class="footer__mail" href="mailto:contact@claimo-app.com">contact@claimo-app.com</a>
+        </div>
+        <nav aria-label="Explore">
+          <p class="footer__title">Explore</p>
+          <ul class="footer__links">
+            <li><a href="index.html#wie-es-funktioniert">How it works</a></li>
+            <li><a href="index.html#spielen">The app</a></li>
+            <li><a href="index.html#belohnungen">Rewards</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Legal">
+          <p class="footer__title">Legal</p>
+          <ul class="footer__links">
+            <li><a href="impressum.html">Imprint</a></li>
+            <li><a href="datenschutz.html">Privacy</a></li>
+            <li><a href="nutzungsbedingungen.html">Terms of Use</a></li>
+            <li><a href="widerrufsbelehrung.html">Withdrawal</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="App legal">
+          <p class="footer__title">App legal</p>
+          <ul class="footer__links">
+            <li><a href="impressum-app.html">Imprint</a></li>
+            <li><a href="datenschutz-app.html">Privacy</a></li>
+            <li><a href="nutzungsbedingungen-app.html">Terms of Use</a></li>
+            <li><a href="widerrufsbelehrung-app.html">Withdrawal</a></li>
+          </ul>
+        </nav>
+        <nav aria-label="Help">
+          <p class="footer__title">Help</p>
+          <ul class="footer__links">
+            <li><a href="kontakt.html">Contact</a></li>
+            <li><a href="konto-loeschen.html" aria-current="page">Delete account</a></li>
+            <li><a href="mailto:support@claimo-app.com">support@claimo-app.com</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Claimo. All rights reserved.</p>
+        <p>Google Play and the Google Play logo are trademarks of Google LLC.</p>
+        <div class="lang lang--footer" role="group" aria-label="Choose language">
+          <a class="lang__opt" href="de/konto-loeschen.html" hreflang="de" lang="de" aria-current="false">DE</a>
+          <a class="lang__opt" href="konto-loeschen.html" hreflang="en" lang="en" aria-current="true">EN</a>
         </div>
       </div>
-
     </div>
-
-    <div class="footer__copyright">
-      <p>© 2026 Claimo. All rights reserved.</p>
-    </div>
+    <div class="footer__wordmark" aria-hidden="true"><img class="footer__wordmark-img" src="assets/img/claimo-logo.png" alt="Claimo" width="916" height="242"></div>
   </footer>
 
 </div>
 
 <script>
 (function () {
-  var toggle = document.querySelector('.header__toggle');
-  var nav = document.getElementById('primary-navigation');
-  if (!toggle || !nav) return;
-
-  function setState(open) {
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    toggle.classList.toggle('is-open', open);
-    nav.classList.toggle('is-open', open);
-  }
-
-  toggle.addEventListener('click', function () {
-    setState(toggle.getAttribute('aria-expanded') !== 'true');
-  });
-
-  nav.addEventListener('click', function (event) {
-    if (event.target.closest('.nav__link')) setState(false);
-  });
-
-  document.addEventListener('click', function (event) {
-    if (toggle.getAttribute('aria-expanded') !== 'true') return;
-    if (nav.contains(event.target) || toggle.contains(event.target)) return;
-    setState(false);
-  });
-
-  window.addEventListener('resize', function () {
-    if (window.innerWidth > 1024) setState(false);
-  });
-})();
-
-(function () {
-  var header = document.querySelector('.header');
+  var header = document.querySelector('.nav');
   var links = document.querySelectorAll('a[href^="#"]');
 
   links.forEach(function (link) {
@@ -250,56 +225,6 @@
       window.scrollTo({ top: top, behavior: 'smooth' });
       history.pushState(null, '', '#' + id);
     });
-  });
-})();
-
-function goToLanguage(lang) {
-  var parts = location.pathname.split('/').filter(Boolean);
-  var last = parts[parts.length - 1];
-  var filename = last && last.indexOf('.') !== -1 ? last : 'index.html';
-  var folder = filename === last ? parts[parts.length - 2] : last;
-  var inLangFolder = folder === 'de' || folder === 'en';
-  var prefix = inLangFolder ? '../' : '';
-  location.href = prefix + lang + '/' + filename;
-}
-
-(function () {
-  var wrap = document.querySelector('.header__lang');
-  var toggle = document.querySelector('.lang__toggle');
-  var menu = document.querySelector('.lang__menu');
-  var label = document.querySelector('.lang__label');
-  if (!wrap || !toggle || !menu || !label) return;
-
-  function closeMenu() {
-    menu.hidden = true;
-    toggle.setAttribute('aria-expanded', 'false');
-  }
-
-  function openMenu() {
-    menu.hidden = false;
-    toggle.setAttribute('aria-expanded', 'true');
-  }
-
-  toggle.addEventListener('click', function (event) {
-    event.stopPropagation();
-    if (menu.hidden) openMenu(); else closeMenu();
-  });
-
-  menu.addEventListener('click', function (event) {
-    var option = event.target.closest('.lang__option');
-    if (!option) return;
-    goToLanguage(option.dataset.lang);
-  });
-
-  document.addEventListener('click', function (event) {
-    if (!wrap.contains(event.target)) closeMenu();
-  });
-
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && !menu.hidden) {
-      closeMenu();
-      toggle.focus();
-    }
   });
 })();
 
@@ -332,5 +257,6 @@ function goToLanguage(lang) {
   });
 })();
 </script>
+<script src="assets/js/layout.js"></script>
 </body>
 </html>

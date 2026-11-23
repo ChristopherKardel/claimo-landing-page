@@ -1,0 +1,230 @@
+{
+  "de": {
+    "locale": "de-DE",
+    "currency": "EUR",
+    "section": {
+      "title": "So funktioniert <span class=\"ap-accent\">Claimo.</span>",
+      "note": "Nachgebaute App-Ansicht mit Beispieldaten · keine Verdienstgarantie · nur ab 18 · Spielgrafiken und Marken gehören ihren Inhabern."
+    },
+    "steps": [
+      {
+        "tab": "games",
+        "title": "Spiel aussuchen.",
+        "text": "Bestätigte Spielziele bringen Guthaben."
+      },
+      {
+        "tab": "continue",
+        "title": "Dranbleiben.",
+        "text": "Deine Spiele und Ziele auf einen Blick."
+      },
+      {
+        "tab": "tasks",
+        "title": "Für zwischendurch.",
+        "text": "Umfragen und App-Aufgaben."
+      },
+      {
+        "tab": "shop",
+        "title": "Auszahlen.",
+        "text": "PayPal oder Gutschein, ab 20 €.",
+        "hint": "Gutscheine als Platzhalter: Für die Logos der Prämienanbieter haben wir noch keine Nutzungsrechte und warten auf die Freigabe."
+      },
+      {
+        "tab": "profile",
+        "title": "Alles im Blick.",
+        "text": "Guthaben, Verlauf, Auszahlungen."
+      }
+    ],
+    "app": {
+      "nav": {
+        "games": "Spielen",
+        "continue": "Weiter",
+        "tasks": "Aufgaben",
+        "shop": "Auszahlen",
+        "profile": "Profil"
+      },
+      "nextPayout": "Nächste Auszahlung",
+      "playAndEarn": "Spiele und verdiene {amount}",
+      "gamesSection": "Spiele",
+      "left": "{amount} offen",
+      "continuePlaying": "Weiter spielen",
+      "apps": "Apps",
+      "earn": "Verdiene {amount}",
+      "open": "Öffnen",
+      "surveys": "Umfragen",
+      "approx": "ca. {minutes} Minuten",
+      "start": "Starten",
+      "shopTitle": "Auszahlen",
+      "shopHint": "Noch {amount} bis zu deiner ersten Auszahlung.",
+      "groups": [
+        "Alle",
+        "Geld",
+        "Games & Apps",
+        "Shopping",
+        "Freizeit"
+      ],
+      "from": "ab {amount}",
+      "vouchers": {
+        "cash": "Geld-Auszahlung",
+        "prepaid": "Prepaid-Karte",
+        "console": "Konsolen-Guthaben",
+        "appstore": "App-Store-Guthaben",
+        "shopping": "Shopping-Gutschein",
+        "streaming": "Streaming-Gutschein"
+      },
+      "profileName": "Alex",
+      "profileEmail": "alex@beispiel.de",
+      "level": "Level",
+      "menuGroups": [
+        {
+          "label": "Konto",
+          "items": [
+            [
+              "wallet",
+              "Wallet & Transaktionen"
+            ],
+            [
+              "payouts",
+              "Auszahlungen"
+            ]
+          ]
+        },
+        {
+          "label": "App",
+          "items": [
+            [
+              "settings",
+              "Einstellungen"
+            ],
+            [
+              "support",
+              "Support"
+            ]
+          ]
+        },
+        {
+          "label": "Rechtliches",
+          "items": [
+            [
+              "legal",
+              "Rechtliches"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "en": {
+    "locale": "en-US",
+    "currency": "USD",
+    "section": {
+      "title": "How <span class=\"ap-accent\">Claimo</span> works.",
+      "note": "Recreated app view with sample data · no earnings guarantee · 18+ only · game artwork and brands belong to their owners."
+    },
+    "steps": [
+      {
+        "tab": "games",
+        "title": "Pick a game.",
+        "text": "Confirmed game goals earn balance."
+      },
+      {
+        "tab": "continue",
+        "title": "Keep going.",
+        "text": "Your games and goals at a glance."
+      },
+      {
+        "tab": "tasks",
+        "title": "In between.",
+        "text": "Surveys and app tasks."
+      },
+      {
+        "tab": "shop",
+        "title": "Cash out.",
+        "text": "PayPal or gift card, from $20.",
+        "hint": "Gift cards shown as placeholders: we don’t have the rights to use the reward providers’ logos yet and are waiting for permission."
+      },
+      {
+        "tab": "profile",
+        "title": "Everything in view.",
+        "text": "Balance, history, payouts."
+      }
+    ],
+    "app": {
+      "nav": {
+        "games": "Games",
+        "continue": "Continue",
+        "tasks": "Tasks",
+        "shop": "Cash out",
+        "profile": "Profile"
+      },
+      "nextPayout": "Next payout",
+      "playAndEarn": "Play and earn {amount}",
+      "gamesSection": "Games",
+      "left": "{amount} left",
+      "continuePlaying": "Continue playing",
+      "apps": "Apps",
+      "earn": "Earn {amount}",
+      "open": "Open",
+      "surveys": "Surveys",
+      "approx": "approx. {minutes} minutes",
+      "start": "Start",
+      "shopTitle": "Cash out",
+      "shopHint": "{amount} to go until your first payout.",
+      "groups": [
+        "All",
+        "Money",
+        "Games & Apps",
+        "Shopping",
+        "Leisure"
+      ],
+      "from": "from {amount}",
+      "vouchers": {
+        "cash": "Cash payout",
+        "prepaid": "Prepaid card",
+        "console": "Console credit",
+        "appstore": "App store credit",
+        "shopping": "Shopping gift card",
+        "streaming": "Streaming gift card"
+      },
+      "profileName": "Alex",
+      "profileEmail": "alex@example.com",
+      "level": "Level",
+      "menuGroups": [
+        {
+          "label": "Account",
+          "items": [
+            [
+              "wallet",
+              "Wallet & transactions"
+            ],
+            [
+              "payouts",
+              "Payouts"
+            ]
+          ]
+        },
+        {
+          "label": "App",
+          "items": [
+            [
+              "settings",
+              "Settings"
+            ],
+            [
+              "support",
+              "Support"
+            ]
+          ]
+        },
+        {
+          "label": "Legal",
+          "items": [
+            [
+              "legal",
+              "Legal"
+            ]
+          ]
+        }
+      ]
+    }
+  }
+}

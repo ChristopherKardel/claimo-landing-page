@@ -1,0 +1,48 @@
+{
+  "de": {
+    "title": "Auszahlen per <span class=\"rw__accent\">PayPal oder Gutschein.</span>",
+    "lead": "Tausche dein gesammeltes Guthaben gegen PayPal-Auszahlungen und weitere Prämien.",
+    "note": "Abbildungen sind Platzhalter. Welche Prämien verfügbar sind, siehst du in der App.",
+    "listLabel": "Prämien-Kategorien",
+    "groups": {
+      "money": "Geld",
+      "games": "Games & Apps",
+      "shopping": "Shopping",
+      "leisure": "Freizeit"
+    },
+    "items": {
+      "cash": "Geld-Auszahlung",
+      "prepaid": "Prepaid-Karte",
+      "console": "Konsolen-Guthaben",
+      "appstore": "App-Store-Guthaben",
+      "shopping": "Shopping-Gutschein",
+      "fashion": "Mode-Gutschein",
+      "streaming": "Streaming-Gutschein",
+      "rides": "Fahrdienst-Gutschein",
+      "travel": "Reise-Gutschein"
+    }
+  },
+  "en": {
+    "title": "Cash out via <span class=\"rw__accent\">PayPal or gift card.</span>",
+    "lead": "Exchange your earned balance for PayPal payouts and other rewards.",
+    "note": "Images are placeholders. You can see which rewards are available in the app.",
+    "listLabel": "Reward categories",
+    "groups": {
+      "money": "Money",
+      "games": "Games & apps",
+      "shopping": "Shopping",
+      "leisure": "Leisure"
+    },
+    "items": {
+      "cash": "Cash payout",
+      "prepaid": "Prepaid card",
+      "console": "Console credit",
+      "appstore": "App store credit",
+      "shopping": "Shopping gift card",
+      "fashion": "Fashion gift card",
+      "streaming": "Streaming gift card",
+      "rides": "Ride gift card",
+      "travel": "Travel gift card"
+    }
+  }
+}
