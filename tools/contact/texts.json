@@ -1,0 +1,166 @@
+{
+  "de": {
+    "title": "Kontakt & Support – Claimo",
+    "description": "Hilfe zur Claimo-App: Fragen zu Konto, Guthaben, Gutschriften und Auszahlungen. Schreib dem Claimo-Support per Formular oder E-Mail.",
+    "eyebrow": "Hilfe & Kontakt",
+    "heading": "Wie können wir dir helfen?",
+    "lead": "Fragen zu deinem Konto, zu Guthaben oder einer Auszahlung? Schreib uns – wir antworten per <span class=\"nowrap\">E-Mail</span>.",
+    "directTitle": "Direkt erreichen",
+    "mailTitle": "E-Mail an den Support",
+    "mailSub": "Auch mit Screenshots oder Nachweisen im Anhang",
+    "appTitle": "In der App",
+    "appValue": "Profil → Support",
+    "appSub": "Öffnet eine E-Mail an den Support",
+    "tipsTitle": "So geht es schneller",
+    "tips": [
+      "Nutze die E-Mail-Adresse deines Claimo-Kontos, damit wir es zuordnen können.",
+      "Fehlt eine Gutschrift: Nenne Angebot, Zeitraum und Nachweise – und melde dich auch beim Support des Anbieters.",
+      "Schick uns keine Passwörter oder Gutscheincodes. Nach deinem Passwort fragen wir nie."
+    ],
+    "linksTitle": "Schnelle Antworten",
+    "links": [
+      [
+        "Häufige Fragen",
+        "Guthaben, Schutzfrist, Auszahlung",
+        "index.html#faq"
+      ],
+      [
+        "Konto löschen",
+        "In der App oder per E-Mail",
+        "konto-loeschen.html"
+      ],
+      [
+        "Datenschutz der App",
+        "Auskunft, Berichtigung, Löschung",
+        "datenschutz-app.html"
+      ],
+      [
+        "Geschäftliche Anfrage?",
+        "Für Partner, Presse und Kooperationen",
+        "partner.html"
+      ]
+    ],
+    "formTitle": "Nachricht an den Support",
+    "topicLabel": "Worum geht es?",
+    "topicPrefix": "Thema",
+    "topics": [
+      [
+        "Fehlende Gutschrift",
+        "Angebot: \nAbgeschlossen am: \nWas ist passiert: \n"
+      ],
+      [
+        "Auszahlung",
+        "Prämie / Methode: \nAngefragt am: \nFrage: \n"
+      ],
+      [
+        "Konto & Anmeldung",
+        ""
+      ],
+      [
+        "Feedback",
+        ""
+      ],
+      [
+        "Etwas anderes",
+        ""
+      ]
+    ],
+    "fieldName": "Name",
+    "fieldEmail": "E-Mail",
+    "fieldEmailHint": "Am besten die Adresse deines Claimo-Kontos.",
+    "fieldMessage": "Nachricht",
+    "fieldMessagePlaceholder": "Beschreibe kurz dein Anliegen.",
+    "privacy": "Beim Absenden werden Name, E-Mail-Adresse und Nachricht über den Formulardienst Web3Forms an uns übermittelt. Mehr dazu in der {link}.",
+    "privacyLink": "Datenschutzerklärung, Ziffer 4",
+    "submit": "Nachricht senden",
+    "msgSending": "Wird gesendet …",
+    "msgError": "Das hat leider nicht geklappt. Bitte versuche es erneut oder schreib direkt an support@claimo-app.com.",
+    "successTitle": "Nachricht gesendet",
+    "successText": "Danke! Wir melden uns per E-Mail bei {email}.",
+    "successAgain": "Weitere Nachricht schreiben",
+    "formSubject": "Support-Anfrage über claimo-app.com",
+    "formFromName": "Claimo Kontaktformular"
+  },
+  "en": {
+    "title": "Contact & Support – Claimo",
+    "description": "Help with the Claimo app: questions about your account, balance, credits and payouts. Contact Claimo support by form or email.",
+    "eyebrow": "Help & contact",
+    "heading": "How can we help?",
+    "lead": "Questions about your account, your balance or a payout? Write to us – we reply by email.",
+    "directTitle": "Reach us directly",
+    "mailTitle": "Email support",
+    "mailSub": "Screenshots or proof can go in as attachments",
+    "appTitle": "In the app",
+    "appValue": "Profile → Support",
+    "appSub": "Opens an email to support",
+    "tipsTitle": "Get help faster",
+    "tips": [
+      "Use the email address of your Claimo account so we can find it.",
+      "Missing credit: tell us the offer, the time frame and any proof – and contact the provider’s support as well.",
+      "Never send us passwords or voucher codes. We will never ask for your password."
+    ],
+    "linksTitle": "Quick answers",
+    "links": [
+      [
+        "Frequently asked questions",
+        "Balance, holding period, payouts",
+        "index.html#faq"
+      ],
+      [
+        "Delete account",
+        "In the app or by email",
+        "konto-loeschen.html"
+      ],
+      [
+        "App privacy policy",
+        "Access, correction, erasure",
+        "datenschutz-app.html"
+      ],
+      [
+        "Business enquiry?",
+        "For partners, press and collaborations",
+        "partner.html"
+      ]
+    ],
+    "formTitle": "Message support",
+    "topicLabel": "What is it about?",
+    "topicPrefix": "Topic",
+    "topics": [
+      [
+        "Missing credit",
+        "Offer: \nCompleted on: \nWhat happened: \n"
+      ],
+      [
+        "Payout",
+        "Reward / method: \nRequested on: \nQuestion: \n"
+      ],
+      [
+        "Account & sign-in",
+        ""
+      ],
+      [
+        "Feedback",
+        ""
+      ],
+      [
+        "Something else",
+        ""
+      ]
+    ],
+    "fieldName": "Name",
+    "fieldEmail": "Email",
+    "fieldEmailHint": "Ideally the address of your Claimo account.",
+    "fieldMessage": "Message",
+    "fieldMessagePlaceholder": "Briefly describe what you need.",
+    "privacy": "When you send the form, your name, email address and message are transmitted to us via the form service Web3Forms. Details: {link}.",
+    "privacyLink": "privacy policy, section 4",
+    "submit": "Send message",
+    "msgSending": "Sending …",
+    "msgError": "That didn’t work. Please try again or email support@claimo-app.com directly.",
+    "successTitle": "Message sent",
+    "successText": "Thanks! We will reply by email to {email}.",
+    "successAgain": "Write another message",
+    "formSubject": "Support request via claimo-app.com",
+    "formFromName": "Claimo contact form"
+  }
+}

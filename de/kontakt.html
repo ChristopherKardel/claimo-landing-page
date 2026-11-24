@@ -3,681 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kontakt – Claimo</title>
-<meta name="description" content="Kontaktiere das Claimo-Team.">
-<link rel="stylesheet" href="../assets/fonts/poppins.css">
+<title>Kontakt &amp; Support – Claimo</title>
+<meta name="description" content="Hilfe zur Claimo-App: Fragen zu Konto, Guthaben, Gutschriften und Auszahlungen. Schreib dem Claimo-Support per Formular oder E-Mail.">
 <link rel="icon" type="image/png" href="../assets/favicon.png">
-<style>
-/* ==========================================================================
-   DESIGN TOKENS
-   Reference artboard: Figma "Homepage" 25:43 — 1980 x 6275 px
-   Scaling model: 1rem === 1 Figma pixel at a 1980px viewport
-   (html font-size = 100vw / 1980), so every value below is the literal
-   Figma value and the whole page stays 1:1 proportional at any width.
-   ========================================================================== */
-:root{
-  /* colors — verified from Figma */
-  --color-bg:#000000;                 /* Rectangle 1 / 14 / 16 / 29 */
-  --color-surface:#131313;            /* Rectangle 9 / 18 / 40 */
-  --color-text:#ffffff;
-  --color-border:#3a3b3c;             /* Rectangle 18 stroke */
-  --color-accent-start:#00e081;       /* hero gradient from */
-  --color-accent-end:#04d27e;         /* hero gradient to */
-
-  /* colors — NOT retrievable from Figma (see notes at end of file) */
-  --color-card:#1b1b1b;
-  --color-card-badge:#ffffff;
-  --color-row:#1b1b1b;
-  --color-panel:#131313;
-
-  /* type scale */
-  --fs-hero:65rem;
-  --fs-h2-lg:72rem;
-  --fs-h2:64rem;
-  --fs-h2-sm:60rem;
-  --fs-lead:40rem;
-  --fs-step-title:40rem;
-  --fs-body:36rem;
-  --fs-card:32rem;
-  --fs-question:32rem;
-  --fs-step:30rem;
-  --fs-panel-body:30rem;
-  --fs-footer:24rem;
-  --fs-nav:20rem;
-  --fs-small:20rem;
-  --fs-copy:14rem;
-
-  /* line heights */
-  --lh-hero:108rem;
-  --lh-normal:normal;
-
-  /* spacing / layout */
-  --gutter:210rem;
-  --container:1560rem;
-  --space-9:9rem;
-  --space-18:18rem;
-  --space-20:20rem;
-  --space-45:45rem;
-  --rewards-gap:130rem;
-
-  /* radii + shadows */
-  --radius-card:24rem;
-  --radius-badge:20rem;
-  --radius-row:16rem;
-  --radius-panel:32rem;
-  --shadow-card:none;
-}
-
-/* ==========================================================================
-   BASE
-   ========================================================================== */
-*,*::before,*::after{box-sizing:border-box;}
-
-html{
-  font-size:calc(100vw / 1980);   /* 1rem = 1 Figma px */
-  -webkit-text-size-adjust:100%;
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  background:var(--color-bg);
-  color:var(--color-text);
-  font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  font-weight:400;
-  line-height:var(--lh-normal);
-  overflow-x:hidden;
-}
-
-img{display:block;max-width:none;border:0;}
-a{color:inherit;text-decoration:none;}
-p{margin:0;}
-h1,h2,h3{margin:0;font-weight:600;}
-ul{margin:0;padding:0;list-style:none;}
-button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;}
-
-:focus-visible{outline:3rem solid var(--color-accent-start);outline-offset:4rem;}
-
-.page{position:relative;width:100%;overflow:hidden;}
-
-/* ==========================================================================
-   BLOCK: hero  (Rectangle 1 · Frame 23 139:1795)
-   ========================================================================== */
-.hero{
-  position:relative;
-  height:1039rem;
-  padding:76rem var(--gutter) 0;
-  --s: 31px;
-  --c1: #000000;
-  --c2: #0e0e0e;
-  --c:#0000,var(--c1) .5deg 119.5deg,#0000 120deg;
-  --g1:conic-gradient(from  60deg at 56.25% calc(425%/6),var(--c));
-  --g2:conic-gradient(from 180deg at 43.75% calc(425%/6),var(--c));
-  --g3:conic-gradient(from -60deg at 50%   calc(175%/12),var(--c));
-  background:
-    radial-gradient(circle at 75% 52%, transparent 0%, transparent 12%, rgba(0,0,0,.65) 32%),
-    var(--g1),var(--g1) var(--s) calc(1.73*var(--s)),
-    var(--g2),var(--g2) var(--s) calc(1.73*var(--s)),
-    var(--g3) var(--s) 0,var(--g3) 0 calc(1.73*var(--s))
-    var(--c2);
-  background-size:
-    100% 100%,
-    calc(2*var(--s)) calc(3.46*var(--s)),calc(2*var(--s)) calc(3.46*var(--s)),
-    calc(2*var(--s)) calc(3.46*var(--s)),calc(2*var(--s)) calc(3.46*var(--s)),
-    calc(2*var(--s)) calc(3.46*var(--s)),calc(2*var(--s)) calc(3.46*var(--s));
-}
-.hero__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  width:var(--container);
-  height:963rem;
-  margin:0 auto;
-}
-.hero__content{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  gap:var(--space-45);
-  width:787rem;
-  height:963rem;
-  flex:none;
-}
-.hero__text{
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-9);
-  height:430rem;
-}
-.hero__title{
-  height:216rem;
-  font-size:var(--fs-hero);
-  font-weight:700;
-  line-height:var(--lh-hero);
-  word-break:break-word;
-}
-.hero__title-line{display:block;}
-.hero__title-line--accent{
-  background:linear-gradient(90deg,var(--color-accent-start) 0%,var(--color-accent-end) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.text-accent{
-  background:linear-gradient(90deg,var(--color-accent-start) 0%,var(--color-accent-end) 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color:transparent;
-}
-.hero__lead{
-  width:638rem;
-  height:205rem;
-  font-size:var(--fs-body);
-  font-weight:400;
-}
-.hero__badge{display:block;width:222rem;height:65rem;flex:none;}
-.hero__badge img{width:100%;height:100%;}
-.hero__media{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  flex:1 0 0;
-  align-self:stretch;
-  padding:10rem;
-}
-.hero__phone{width:375rem;height:761rem;object-fit:cover;}
-
-/* ==========================================================================
-   BLOCK: divider  (Rectangle 45 25:144 · Rectangle 46 39:2)
-   ========================================================================== */
-.divider{position:relative;height:60rem;background:linear-gradient(to bottom, transparent, var(--color-surface));}
-
-/* ==========================================================================
-   BLOCK: steps  (Rectangle 9 · Frame 32 139:1823)
-   ========================================================================== */
-.steps{
-  position:relative;
-  height:808rem;
-  background:var(--color-surface);
-}
-.steps__title{
-  position:absolute;
-  left:50%;
-  top:51rem;
-  transform:translateX(-50%);
-  width:92%;
-  max-width:none;
-  min-height:93rem;
-  line-height:93rem;
-  font-size:clamp(12px,3.6vw,64rem);
-  font-weight:600;
-  text-align:center;
-  white-space:nowrap;
-}
-.steps__list{
-  position:absolute;
-  left:var(--gutter);
-  top:207rem;
-  display:flex;
-  align-items:center;
-  gap:var(--space-20);
-  width:1559.886rem;
-  height:531.429rem;
-}
-.step{position:relative;width:375rem;height:531.429rem;flex:none;}
-.step__icon{position:absolute;left:96.43rem;top:0;width:182.143rem;height:184.056rem;}
-.step__title{
-  position:absolute;
-  left:0;
-  top:193.56rem;
-  width:100%;
-  font-size:var(--fs-step-title);
-  font-weight:700;
-  text-align:center;
-  word-break:break-word;
-}
-.step__text{
-  position:absolute;
-  left:0;
-  top:334.99rem;
-  width:100%;
-  font-size:var(--fs-step);
-  font-weight:400;
-  text-align:center;
-  word-break:break-word;
-}
-.step--1 .step__icon{left:97.517rem;width:181.037rem;height:181.037rem;}
-.step--1 .step__title{top:201.9rem;}
-.step--1 .step__text{top:339.99rem;}
-.step--3{width:374.886rem;}
-.step--3 .step__icon{left:96.4rem;width:182.087rem;height:184rem;}
-.step--3 .step__title{top:193.5rem;}
-.step--3 .step__text{top:334.89rem;}
-
-.steps__connectors{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;}
-.steps__connector{position:absolute;top:295rem;width:140rem;height:4rem;}
-.steps__connector--1{left:525rem;}
-.steps__connector--2{left:920rem;}
-.steps__connector--3{left:1315rem;}
-
-/* ==========================================================================
-   BLOCK: showcase  (Rectangle 14 / Rectangle 16)
-   ========================================================================== */
-.showcase{position:relative;background:var(--color-bg);}
-.showcase__wave{position:absolute;left:0;top:0;width:100%;height:67rem;background:linear-gradient(to bottom, var(--color-surface), var(--color-bg));}
-.showcase--1{height:917rem;}
-.showcase--2{height:919rem;}
-.showcase__media{position:absolute;width:740rem;height:740rem;object-fit:cover;}
-.showcase--1 .showcase__media{left:var(--gutter);top:92rem;}
-.showcase--2 .showcase__media{left:1030rem;top:91rem;}
-.showcase__body{position:absolute;width:650rem;}
-.showcase--1 .showcase__body{left:1120rem;top:calc(92rem + 370rem);transform:translateY(-50%);}
-.showcase--2 .showcase__body{left:var(--gutter);top:calc(91rem + 370rem);width:740rem;transform:translateY(-50%);}
-.showcase__title{
-  min-height:93rem;
-  line-height:1.25;
-  margin-bottom:24rem;
-  font-size:var(--fs-h2);
-  font-weight:600;
-  word-break:break-word;
-}
-.showcase__text{font-size:var(--fs-body);font-weight:400;word-break:break-word;}
-
-/* ==========================================================================
-   BLOCK: rewards  (Rectangle 18 · card row 73:15 …)
-   ========================================================================== */
-.rewards{
-  position:relative;
-  padding:48rem 0 70rem;
-  background:var(--color-surface);
-  border:0 solid var(--color-border);
-}
-.rewards__title{
-  width:92%;
-  max-width:none;
-  margin:0 auto;
-  font-size:clamp(12px,3.4vw,var(--fs-h2-sm));
-  font-weight:600;
-  text-align:center;
-  white-space:nowrap;
-}
-.rewards__subtitle{
-  width:1340rem;
-  max-width:calc(100% - 80rem);
-  margin:24rem auto 0;
-  font-size:var(--fs-body);
-  font-weight:400;
-  text-align:center;
-}
-.rewards__carousel{
-  width:100%;
-  height:253rem;
-  margin-top:48rem;
-  overflow:hidden;
-}
-.rewards__track{
-  display:flex;
-  align-items:flex-start;
-  gap:var(--rewards-gap);
-  height:100%;
-  width:max-content;
-  animation:rewards-scroll 32s linear infinite;
-}
-@keyframes rewards-scroll{
-  from{transform:translateX(0);}
-  to{transform:translateX(calc(-3510rem - 9 * var(--rewards-gap)));}
-}
-@media (prefers-reduced-motion:reduce){
-  .rewards__track{animation:none;}
-}
-
-.reward-card{
-  position:relative;
-  width:390rem;
-  height:253rem;
-  flex:none;
-  border-radius:var(--radius-card);
-  background:var(--color-card);
-  box-shadow:var(--shadow-card);
-}
-.reward-card__badge{
-  position:absolute;
-  left:140rem;
-  top:35rem;
-  width:110rem;
-  height:110rem;
-  border-radius:var(--radius-badge);
-  background:var(--color-card-badge);
-}
-.reward-card__logo{
-  position:absolute;
-  left:22rem;
-  top:23rem;
-  width:65rem;
-  height:64rem;
-  object-fit:contain;
-}
-.reward-card__title{
-  position:absolute;
-  left:54rem;
-  top:175rem;
-  width:281rem;
-  height:51rem;
-  font-size:var(--fs-card);
-  font-weight:400;
-  text-align:center;
-  white-space:nowrap;
-}
-/* ==========================================================================
-   BLOCK: faq  (Rectangle 29 · Frame 25 139:1810 · Rectangle 35 25:102)
-   ========================================================================== */
-.faq{position:relative;height:1332rem;background:var(--color-bg);}
-.faq__title{
-  position:absolute;
-  left:600rem;
-  top:111rem;
-  width:780rem;
-  height:93rem;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  font-size:var(--fs-h2);
-  font-weight:600;
-  text-align:center;
-}
-.faq__subtitle{
-  position:absolute;
-  left:320rem;
-  top:224rem;
-  width:1340rem;
-  height:51rem;
-  font-size:var(--fs-body);
-  font-weight:400;
-  text-align:center;
-}
-.faq__accordion{
-  position:absolute;
-  z-index:2;
-  left:var(--gutter);
-  top:459rem;
-  width:832rem;
-  height:595rem;
-  border-radius:var(--radius-row);
-  overflow:hidden;
-}
-.faq__item{
-  background:var(--color-row);
-  border-bottom:1rem solid var(--color-border);
-}
-.faq__item:last-child{border-bottom:0;}
-.faq__row{
-  position:relative;
-  display:flex;
-  align-items:center;
-  width:100%;
-  height:119rem;
-  padding:0 42rem;
-  text-align:left;
-  cursor:pointer;
-}
-.faq__question{
-  width:738rem;
-  font-size:var(--fs-question);
-  font-weight:400;
-}
-.faq__answer{display:none;}
-.faq__chevron{
-  position:absolute;
-  left:771rem;
-  top:47.5rem;
-  width:14rem;
-  height:24rem;
-  transition:transform .25s ease;
-}
-.faq__row[aria-expanded="true"] .faq__chevron{
-  transform:rotate(90deg);
-}
-.faq__panel{
-  position:absolute;
-  z-index:1;
-  left:919rem;
-  top:344rem;
-  width:848rem;
-  min-height:825rem;
-  padding:46rem 58rem 46rem 203rem;
-  border-radius:var(--radius-panel);
-  background:var(--color-panel);
-}
-.faq__panel-title{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  min-height:93rem;
-  font-size:var(--fs-h2);
-  font-weight:600;
-}
-.faq__panel-text{
-  margin-top:53rem;
-  font-size:26rem;
-  font-weight:400;
-  word-break:break-word;
-}
-
-/* ==========================================================================
-   TABLET — max-width 1024px
-   ========================================================================== */
-@media (max-width:1024px){
-  html{font-size:clamp(0.62px,calc(100vw / 1500),0.78px);}
-
-  /* --- sections reflow --- */
-  .hero{height:auto;padding:190rem 60rem 120rem;}
-  .hero__inner{flex-direction:column;align-items:center;width:100%;height:auto;gap:80rem;}
-  .hero__content{width:100%;max-width:900rem;height:auto;align-items:center;text-align:center;}
-  .hero__text{width:100%;height:auto;align-items:center;}
-  .hero__title{width:100%;height:auto;line-height:1.2;}
-  .hero__lead{width:100%;height:auto;}
-  .hero__media{width:100%;justify-content:center;padding:0;flex:none;}
-  .hero__phone{width:460rem;height:auto;}
-
-  .divider{height:40rem;}
-
-  .steps{height:auto;padding:80rem 60rem 100rem;}
-  .steps__title,
-  .steps__list{position:static;}
-  .steps__title{left:auto;top:auto;transform:none;width:100%;max-width:none;height:auto;line-height:1.2;margin:0 0 70rem;font-size:var(--fs-h2);white-space:normal;}
-  .steps__list{
-    width:100%;
-    height:auto;
-    display:flex;
-    flex-direction:column;
-  }
-  .step,
-  .step--3{
-    position:relative;
-    width:100%;
-    height:auto;
-    display:grid;
-    grid-template-columns:120rem 1fr;
-    column-gap:32rem;
-    row-gap:16rem;
-    padding-bottom:60rem;
-  }
-  .step:last-child{padding-bottom:0;}
-  .step__icon,
-  .step--1 .step__icon,
-  .step--3 .step__icon{
-    position:static;
-    left:auto;
-    grid-column:1;
-    grid-row:1;
-    width:120rem;
-    height:120rem;
-  }
-  .step__title,
-  .step--1 .step__title,
-  .step--3 .step__title{
-    position:static;
-    top:auto;
-    grid-column:2;
-    grid-row:1;
-    align-self:center;
-    text-align:left;
-  }
-  .step__text,
-  .step--1 .step__text,
-  .step--3 .step__text{
-    position:static;
-    top:auto;
-    grid-column:2;
-    grid-row:2;
-    text-align:left;
-  }
-  .step:not(:last-child)::after{
-    content:"";
-    position:absolute;
-    left:58rem;
-    top:140rem;
-    bottom:0rem;
-    width:4rem;
-    background:var(--color-text);
-  }
-  .steps__connectors{display:none;}
-
-  .showcase,
-  .showcase--1,
-  .showcase--2{height:auto;padding:100rem 60rem;}
-  .showcase__wave{top:0;height:44rem;}
-  .showcase__inner{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:70rem;
-  }
-  .showcase__media,
-  .showcase--1 .showcase__media,
-  .showcase--2 .showcase__media{position:static;left:auto;top:auto;width:100%;max-width:740rem;height:auto;}
-  .showcase__body,
-  .showcase--1 .showcase__body,
-  .showcase--2 .showcase__body{position:static;left:auto;top:auto;width:100%;max-width:900rem;transform:none;}
-  .showcase__title{height:auto;}
-
-  .rewards{height:auto;padding:80rem 0 100rem;}
-  .rewards__title,
-  .rewards__subtitle,
-  .rewards__carousel{position:static;}
-  .rewards__title{left:auto;top:auto;width:100%;height:auto;padding:0 60rem;margin:0 0 30rem;font-size:var(--fs-h2-sm);white-space:normal;}
-  .rewards__subtitle{left:auto;top:auto;width:100%;height:auto;padding:0 60rem;margin:0 0 70rem;}
-  .rewards__carousel{
-    width:100%;
-    height:auto;
-    overflow:hidden;
-  }
-  .rewards__track{--rewards-gap:60rem;padding:0 60rem;height:auto;}
-
-  .faq{height:auto;padding:80rem 60rem 100rem;}
-  .faq__title,
-  .faq__subtitle,
-  .faq__accordion,
-  .faq__panel{position:static;}
-  .faq__title{left:auto;top:auto;width:100%;height:auto;margin:0 0 30rem;}
-  .faq__subtitle{left:auto;top:auto;width:100%;height:auto;margin:0 0 70rem;}
-  .faq__columns{display:flex;flex-direction:column;gap:70rem;}
-  .faq__accordion{left:auto;top:auto;width:100%;height:auto;}
-  .faq__row{padding:0 42rem;}
-  .faq__question{width:calc(100% - 60rem);}
-  .faq__panel{left:auto;top:auto;width:100%;height:auto;padding:60rem;}
-  .faq__panel-title,
-  .faq__panel-text{position:static;left:auto;top:auto;width:100%;height:auto;}
-  .faq__panel-title{margin-bottom:40rem;}
-}
-
-/* ==========================================================================
-   MOBILE — max-width 768px
-   ========================================================================== */
-@media (max-width:768px){
-  html{font-size:clamp(0.52px,calc(100vw / 760),0.72px);}
-
-  .hero{padding:170rem 40rem 100rem;}
-  .hero__title{font-size:56rem;}
-  .hero__lead{font-size:32rem;}
-  .hero__phone{width:100%;max-width:420rem;}
-
-  .steps{padding:70rem 40rem 90rem;}
-  .steps__title{font-size:52rem;}
-  .step__title{font-size:38rem;}
-
-  .showcase,
-  .showcase--1,
-  .showcase--2{padding:90rem 40rem;}
-  .showcase__title{font-size:56rem;}
-  .showcase__text{font-size:34rem;}
-
-  .rewards{padding:70rem 0 90rem;}
-  .rewards__title{font-size:52rem;padding:0 40rem;}
-  .rewards__subtitle{padding:0 40rem;}
-  .rewards__track{--rewards-gap:40rem;padding:0 40rem;}
-
-  .faq{padding:70rem 40rem 90rem;}
-  .faq__title{font-size:52rem;}
-  .faq__row{padding:0 30rem;height:auto;min-height:119rem;}
-  .faq__question{width:calc(100% - 50rem);font-size:30rem;}
-  .faq__chevron{left:auto;right:30rem;top:50%;transform:translateY(-50%);}
-  .faq__row[aria-expanded="true"] .faq__chevron{transform:translateY(-50%) rotate(90deg);}
-  .faq__panel{display:none;}
-  .faq__answer{
-    display:grid;
-    grid-template-rows:0fr;
-    transition:grid-template-rows .3s ease;
-  }
-  .faq__answer-inner{overflow:hidden;}
-  .faq__answer-text{padding:0 30rem 30rem;font-size:28rem;}
-  .faq__item.is-open .faq__answer{grid-template-rows:1fr;}
-}
-
-/* ==========================================================================
-   DESKTOP-ONLY REFINEMENTS — smaller / lighter type for rewards + FAQ
-   ========================================================================== */
-@media (min-width:1025px){
-  .showcase__title{font-size:56rem;}
-  .showcase__text{font-size:32rem;}
-
-  .rewards__title{font-size:clamp(12px,3vw,50rem);font-weight:600;}
-  .rewards__subtitle{font-size:30rem;}
-  .reward-card__title{font-size:26rem;}
-
-  .faq__title{font-size:54rem;font-weight:600;}
-  .faq__subtitle{font-size:30rem;}
-  .faq__question{font-size:26rem;}
-  .faq__panel-title{font-size:50rem;font-weight:600;}
-  .faq__panel-text{font-size:26rem;}
-}
-
-.legal-main{padding:calc(var(--nav-h) + 90rem) var(--gutter) 180rem;min-height:50vh;background:var(--color-bg);}
-.contact-main{padding:calc(var(--nav-h) + 110rem) var(--gutter) 200rem;min-height:60vh;background:var(--color-bg);}
-.contact-card{width:734rem;max-width:100%;margin:0 auto;padding:56rem;border-radius:var(--radius-panel);background:var(--color-panel);}
-.contact-title{font-size:40rem;font-weight:600;color:#ffffff;margin-bottom:36rem;}
-.contact-field{display:block;width:100%;margin-bottom:24rem;}
-.contact-field:last-of-type{margin-bottom:32rem;}
-.contact-input,.contact-textarea{display:block;width:100%;padding:18rem 22rem;border-radius:14rem;border:1rem solid var(--color-border);background:#1b1b1b;color:#ffffff;font-family:inherit;font-size:22rem;font-weight:400;}
-.contact-input:focus,.contact-textarea:focus{outline:2rem solid var(--color-accent-start);border-color:var(--color-accent-start);}
-.contact-textarea{min-height:160rem;resize:vertical;}
-.contact-input::placeholder,.contact-textarea::placeholder{color:#8a8a8a;}
-.contact-submit{display:inline-flex;align-items:center;justify-content:center;padding:16rem 44rem;border-radius:999rem;border:0;background:var(--color-accent-start);color:#04140d;font-weight:600;font-size:22rem;cursor:pointer;transition:background .2s ease;}
-.contact-submit:hover{background:var(--color-accent-end);}
-.contact-submit:disabled{opacity:.6;cursor:not-allowed;}
-.contact-status{margin:20rem 0 0;font-size:20rem;font-weight:600;min-height:24rem;}
-.contact-status.is-success{color:var(--color-accent-start);}
-.contact-status.is-error{color:#ff6b6b;}
-@media (max-width:1024px){
-  .contact-main{padding:calc(var(--nav-h) + 70rem) 60rem 140rem;}
-}
-@media (max-width:768px){
-  .contact-main{padding:calc(var(--nav-h) + 50rem) 40rem 110rem;}
-  .contact-card{padding:40rem 32rem;}
-  .contact-title{font-size:32rem;}
-}
-</style>
+<link rel="stylesheet" href="../assets/css/base.css">
 <link rel="stylesheet" href="../assets/css/layout.css">
+<link rel="stylesheet" href="../assets/css/contact.css">
 <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -712,31 +43,115 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
     </div>
   </header>
 
-  <main id="main" class="contact-main">
-    <form class="contact-card" id="contact-form" method="post" action="https://api.web3forms.com/submit">
-      <h1 class="contact-title">Kontakt aufnehmen</h1>
+  <!-- CONTACT:START -->
+  <!-- ====================== CONTACT (generated by tools/contact/build.mjs) ====================== -->
+  <main id="main" class="contact">
+    <div class="contact__container">
+      <div class="contact__grid">
 
-      <input type="hidden" name="access_key" value="f07cd476-16e0-45ce-ac39-bfae0c5366aa">
-      <input type="hidden" name="subject" value="Neue Kontaktanfrage von claimo-app.com">
-      <input type="hidden" name="from_name" value="Claimo Kontaktformular">
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <header class="contact__intro">
+          <p class="contact__eyebrow">Hilfe & Kontakt</p>
+          <h1 class="contact__title">Wie können wir dir helfen?</h1>
+          <p class="contact__lead">Fragen zu deinem Konto, zu Guthaben oder einer Auszahlung? Schreib uns – wir antworten per <span class="nowrap">E-Mail</span>.</p>
+        </header>
 
-      <label class="contact-field">
-        <input class="contact-input" type="text" name="name" placeholder="Name" required>
-      </label>
+        <div class="contact__main">
+          <form class="contact-form" id="contact-form" method="post" action="https://api.web3forms.com/submit" data-prefix="Thema" data-msg-sending="Wird gesendet …" data-msg-error="Das hat leider nicht geklappt. Bitte versuche es erneut oder schreib direkt an support@claimo-app.com.">
+            <h2 class="contact-form__title">Nachricht an den Support</h2>
 
-      <label class="contact-field">
-        <input class="contact-input" type="email" name="email" placeholder="Email" required>
-      </label>
+            <input type="hidden" name="access_key" value="f07cd476-16e0-45ce-ac39-bfae0c5366aa">
+            <input type="hidden" name="subject" value="Support-Anfrage über claimo-app.com">
+            <input type="hidden" name="from_name" value="Claimo Kontaktformular">
+            <input class="contact-form__botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-      <label class="contact-field">
-        <textarea class="contact-textarea" name="message" placeholder="Nachricht" required></textarea>
-      </label>
+            <fieldset class="topics">
+              <legend class="field__label">Worum geht es?</legend>
+              <div class="topics__list">
+                <button class="topic" type="button" aria-pressed="false" data-topic="Fehlende Gutschrift" data-template="Angebot: &#10;Abgeschlossen am: &#10;Was ist passiert: &#10;">Fehlende Gutschrift</button>
+                <button class="topic" type="button" aria-pressed="false" data-topic="Auszahlung" data-template="Prämie / Methode: &#10;Angefragt am: &#10;Frage: &#10;">Auszahlung</button>
+                <button class="topic" type="button" aria-pressed="false" data-topic="Konto &amp; Anmeldung" data-template="">Konto & Anmeldung</button>
+                <button class="topic" type="button" aria-pressed="false" data-topic="Feedback" data-template="">Feedback</button>
+                <button class="topic" type="button" aria-pressed="false" data-topic="Etwas anderes" data-template="">Etwas anderes</button>
+              </div>
+            </fieldset>
 
-<button class="contact-submit" type="submit">Absenden</button>
-      <p class="contact-status" id="contact-status" role="status" aria-live="polite"></p>
-    </form>
+            <div class="contact-form__row">
+              <label class="field">
+                <span class="field__label">Name</span>
+                <input class="field__input" type="text" name="name" autocomplete="name" required>
+              </label>
+              <label class="field">
+                <span class="field__label">E-Mail</span>
+                <input class="field__input" type="email" name="email" autocomplete="email" required aria-describedby="email-hint">
+                <span class="field__hint" id="email-hint">Am besten die Adresse deines Claimo-Kontos.</span>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field__label">Nachricht</span>
+              <textarea class="field__input" name="message" rows="7" placeholder="Beschreibe kurz dein Anliegen." required></textarea>
+            </label>
+
+            <p class="contact-form__privacy">Beim Absenden werden Name, E-Mail-Adresse und Nachricht über den Formulardienst Web3Forms an uns übermittelt. Mehr dazu in der <a href="datenschutz.html#legal-4">Datenschutzerklärung, Ziffer 4</a>.</p>
+            <button class="btn btn--primary contact-form__submit" type="submit">Nachricht senden</button>
+            <p class="contact-form__status" id="contact-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-done" id="contact-done" tabindex="-1" hidden>
+            <span class="contact-done__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+            <h2 class="contact-done__title">Nachricht gesendet</h2>
+            <p class="contact-done__text">Danke! Wir melden uns per E-Mail bei <strong data-email></strong>.</p>
+            <button class="btn btn--ghost contact-done__again" type="button">Weitere Nachricht schreiben</button>
+          </div>
+        </div>
+
+        <div class="contact__info">
+          <section class="contact__block" aria-labelledby="contact-direct">
+            <h2 class="contact__label" id="contact-direct">Direkt erreichen</h2>
+            <ul class="channels">
+              <li><a class="channel" href="mailto:support@claimo-app.com">
+                <span class="channel__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span>
+                <span class="channel__body"><span class="channel__title">E-Mail an den Support</span><span class="channel__value">support@claimo-app.com</span><span class="channel__sub">Auch mit Screenshots oder Nachweisen im Anhang</span></span>
+                <span class="channel__arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg></span>
+              </a></li>
+              <li><div class="channel channel--static">
+                <span class="channel__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></span>
+                <span class="channel__body"><span class="channel__title">In der App</span><span class="channel__value">Profil → Support</span><span class="channel__sub">Öffnet eine E-Mail an den Support</span></span>
+              </div></li>
+            </ul>
+          </section>
+
+          <section class="contact__block" aria-labelledby="contact-tips">
+            <h2 class="contact__label" id="contact-tips">So geht es schneller</h2>
+            <ul class="tips">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Nutze die E-Mail-Adresse deines Claimo-Kontos, damit wir es zuordnen können.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Fehlt eine Gutschrift: Nenne Angebot, Zeitraum und Nachweise – und melde dich auch beim Support des Anbieters.</span></li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Schick uns keine Passwörter oder Gutscheincodes. Nach deinem Passwort fragen wir nie.</span></li>
+            </ul>
+          </section>
+
+          <section class="contact__block" aria-labelledby="contact-links">
+            <h2 class="contact__label" id="contact-links">Schnelle Antworten</h2>
+            <ul class="quicklinks">
+              <li><a class="quick" href="index.html#faq">
+                <span class="quick__body"><span class="quick__title">Häufige Fragen</span><span class="quick__sub">Guthaben, Schutzfrist, Auszahlung</span></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a></li>
+              <li><a class="quick" href="konto-loeschen.html">
+                <span class="quick__body"><span class="quick__title">Konto löschen</span><span class="quick__sub">In der App oder per E-Mail</span></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a></li>
+              <li><a class="quick" href="datenschutz-app.html">
+                <span class="quick__body"><span class="quick__title">Datenschutz der App</span><span class="quick__sub">Auskunft, Berichtigung, Löschung</span></span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a></li>
+            </ul>
+          </section>
+        </div>
+
+      </div>
+    </div>
   </main>
+  <!-- CONTACT:END -->
 
   <!-- ====================== FOOTER ====================== -->
   <footer class="footer">
@@ -799,99 +214,7 @@ button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:poin
 
 </div>
 
-
-<script>
-(function () {
-  var header = document.querySelector('.nav');
-  var links = document.querySelectorAll('a[href^="#"]');
-
-  links.forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      var id = link.getAttribute('href').slice(1);
-      if (!id) return;
-      var target = document.getElementById(id);
-      if (!target) return;
-
-      event.preventDefault();
-      var headerHeight = header ? header.getBoundingClientRect().height : 0;
-      var top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-      window.scrollTo({ top: top, behavior: 'smooth' });
-      history.pushState(null, '', '#' + id);
-    });
-  });
-})();
-
-(function () {
-  var items = document.querySelectorAll('.faq__item');
-  var panelTitle = document.querySelector('.faq__panel-title');
-  var panelText = document.querySelector('.faq__panel-text');
-  if (!items.length) return;
-
-  var isMobile = window.matchMedia('(max-width: 768px)');
-
-  function setActive(target) {
-    var closable = isMobile.matches;
-    var willOpen = !closable || !target.classList.contains('is-open');
-    items.forEach(function (item) {
-      var open = willOpen && item === target;
-      item.classList.toggle('is-open', open);
-      item.querySelector('.faq__row').setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    if (willOpen && panelTitle && panelText) {
-      panelTitle.textContent = target.querySelector('.faq__question').textContent;
-      panelText.textContent = target.querySelector('.faq__answer-text').textContent;
-    }
-  }
-
-  items.forEach(function (item) {
-    item.querySelector('.faq__row').addEventListener('click', function () {
-      setActive(item);
-    });
-  });
-})();
-
-(function () {
-  var form = document.getElementById('contact-form');
-  var status = document.getElementById('contact-status');
-  var submitBtn = form ? form.querySelector('.contact-submit') : null;
-  if (!form || !status || !submitBtn) return;
-
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
-
-    status.textContent = '';
-    status.classList.remove('is-success', 'is-error');
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Wird gesendet …';
-
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: new FormData(form),
-    })
-      .then(function (response) { return response.json(); })
-      .then(function (data) {
-        if (data.success) {
-          status.textContent = 'Danke! Deine Nachricht wurde gesendet.';
-          status.classList.add('is-success');
-          form.reset();
-        } else {
-          status.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut.';
-          status.classList.add('is-error');
-        }
-      })
-      .catch(function () {
-        status.textContent = 'Senden fehlgeschlagen. Bitte versuche es erneut.';
-        status.classList.add('is-error');
-      })
-      .finally(function () {
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Absenden';
-      });
-  });
-})();
-</script>
 <script src="../assets/js/layout.js"></script>
+<script src="../assets/js/contact.js"></script>
 </body>
 </html>

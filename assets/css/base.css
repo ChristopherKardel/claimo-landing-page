@@ -1,0 +1,13 @@
+/* ==========================================================================
+   Claimo — page reset for pages WITHOUT inline styles (kontakt.html, partner.html).
+   Nav and footer (layout.css) rely on this reset; the older pages define the
+   same rules in their inline <style>. Load before layout.css.
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;background:#090909;color:#F5F5F5;overflow-x:hidden;}
+p,h1,h2,h3,ul,ol,dl,dd,figure,fieldset{margin:0;}
+ul,ol{padding:0;list-style:none;}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;}
+input,textarea{font:inherit;color:inherit;}

@@ -1,0 +1,490 @@
+{
+  "de": {
+    "title": "Für Partner – Claimo",
+    "description": "Claimo ist eine Rewards-App für Android, ausschließlich ab 18. Für Offerwall- und Umfrageanbieter, Spiele- und App-Studios, Prämienpartner und Presse.",
+    "nav": "Für Partner",
+    "screenNote": "Echte App-Ansicht vom 10.11.2026 mit Beispieldaten. Angebote, Beträge und Verfügbarkeit ändern sich. Spielgrafiken und Marken gehören ihren Inhabern.",
+    "hero": {
+      "eyebrow": "Für Partner",
+      "heading": "Mit Claimo zusammen&shy;arbeiten.",
+      "lead": "Claimo ist eine Rewards-App für Android, ausschließlich für Erwachsene. Nutzer erreichen Ziele in Spielen, Apps und Umfragen und lösen ihr Guthaben per PayPal oder Gutschein ein. Wir verarbeiten Bestätigungen serverseitig und zahlen erst nach Schutzfrist und Prüfung aus.",
+      "cta": "Partnerschaft anfragen",
+      "subject": "Partnerschaftsanfrage",
+      "note": "Postback-Format, Signaturen und Rückbuchungen besprechen wir gern direkt.",
+      "keyfacts": [
+        [
+          "Plattform",
+          "Android"
+        ],
+        [
+          "Zielgruppe",
+          "ab 18"
+        ],
+        [
+          "App-Sprachen",
+          "8"
+        ],
+        [
+          "Wallet-Währungen",
+          "4"
+        ]
+      ],
+      "status": "Launch bei Google Play in Vorbereitung"
+    },
+    "audiences": {
+      "eyebrow": "Zusammenarbeit",
+      "title": "Wer zu uns passt.",
+      "mail": "Anfrage senden",
+      "details": "Details",
+      "items": [
+        [
+          "Offerwall- & Umfrage-Netzwerke",
+          "Ihr liefert Angebote per Server-Postback – wir zeigen sie nativ in der App und verarbeiten Gutschriften serverseitig.",
+          "Partnerschaftsanfrage – Offerwall/Umfragen",
+          "abwicklung"
+        ],
+        [
+          "Spiele- & App-Studios",
+          "Euer Spiel als Angebot mit klaren Zielen und Beträgen. Direkte Kampagnen besprechen wir individuell.",
+          "Partnerschaftsanfrage – Spiel/App-Kampagne",
+          "darstellung"
+        ],
+        [
+          "Prämien- & Gutscheinpartner",
+          "Eure Marke als Prämie im Shop der App – dort, wo Nutzer ihr Guthaben einlösen.",
+          "Partnerschaftsanfrage – Prämien/Gutscheine",
+          "praemien"
+        ],
+        [
+          "Presse & Kooperationen",
+          "Fragen zu Claimo, Interviews oder Bildmaterial – wir melden uns per E-Mail.",
+          "Presseanfrage",
+          "presse"
+        ]
+      ]
+    },
+    "show": {
+      "eyebrow": "Darstellung",
+      "title": "So erscheinen eure Angebote.",
+      "lead": "Ein echter Angebotsbildschirm aus der App. Jedes Ziel steht einzeln mit Betrag da – Nutzer sehen vor dem Start, worauf es ankommt.",
+      "marks": [
+        [
+          "Grafik und Titel",
+          "Vorschaubilder, App-Icon und Name in voller Breite."
+        ],
+        [
+          "Kategorie, Frist, Bewertung",
+          "Genre, Zeitlimit und Store-Bewertung auf einen Blick."
+        ],
+        [
+          "Ziele mit Betrag",
+          "Jedes Ziel als eigene Zeile mit der Nutzervergütung."
+        ],
+        [
+          "Start",
+          "Ein klarer Button führt zur Installation."
+        ]
+      ],
+      "alt": "Angebotsdetail in der Claimo-App mit Titelbild, Kategorie, Zeitlimit, einer Liste von Zielen mit Beträgen und dem Button „Installieren“"
+    },
+    "flow": {
+      "eyebrow": "Abwicklung",
+      "title": "Vom Angebot zur Gutschrift.",
+      "lead": "Jede Gutschrift entsteht aus einer Bestätigung des Anbieters und läuft durch dieselben Stationen.",
+      "steps": [
+        [
+          "Start",
+          "Der Angebotsstart wird dem Claimo-Konto über eine Nutzerkennung zugeordnet."
+        ],
+        [
+          "Ziel",
+          "Der Nutzer erreicht ein Ziel in eurer App, eurem Spiel oder eurer Umfrage."
+        ],
+        [
+          "Postback",
+          "Server-zu-Server-Meldung mit Hash-Prüfung; doppelte Meldungen werden erkannt."
+        ],
+        [
+          "Gutschrift",
+          "Der Betrag landet in der Wallet und ist 48 Stunden geschützt."
+        ],
+        [
+          "Freigabe",
+          "Danach auszahlbar; jede Auszahlung wird manuell geprüft."
+        ]
+      ],
+      "note": "Rückbuchungen werden vor und nach der Freigabe verrechnet. Nach einer Stornierung sind Auszahlungen des betroffenen Kontos bis zu einer manuellen Prüfung gesperrt."
+    },
+    "quality": {
+      "title": "Qualität und Schutz",
+      "items": [
+        "Zugang nur nach bestätigter Volljährigkeit",
+        "Abgleich der E-Mail-Domain mit bekannten Wegwerf-Postfächern bei Registrierung und Adressänderung",
+        "Casino- und Glücksspielangebote werden aus dem Angebotsfeed gefiltert",
+        "Manuelle Prüfung jeder Auszahlung vor dem Versand",
+        "Sperre von Auszahlungen nach einer Stornierung bis zur Prüfung",
+        "Gutschriften nur mit gültigem Hash, jede Buchung im Transaktionsverlauf"
+      ],
+      "note": "Diese Maßnahmen begrenzen Missbrauch. Betrugsfreien Traffic können wir nicht garantieren."
+    },
+    "return": {
+      "title": "Was Nutzer wiederkommen lässt",
+      "items": [
+        [
+          "Weiter",
+          "Gestartete Angebote mit ihren offenen Zielen an einem Ort."
+        ],
+        [
+          "Level und XP",
+          "Fortschritt, der in der App dauerhaft sichtbar bleibt."
+        ],
+        [
+          "Daily Streak",
+          "Eine tägliche Serie im Kopfbereich der App."
+        ],
+        [
+          "Push-Nachrichten",
+          "Freiwillig und jederzeit abschaltbar."
+        ]
+      ],
+      "note": "Vor dem Launch veröffentlichen wir keine Nutzer-, Retention- oder Umsatzzahlen."
+    },
+    "rewards": {
+      "eyebrow": "Prämienpartner",
+      "title": "Eure Marke im Prämien-Shop.",
+      "lead": "Im Shop der App lösen Nutzer ihr freigegebenes Guthaben ein – per PayPal oder als Gutschein. Dort trifft eure Marke auf Menschen, die sich ihre Prämie bewusst aussuchen.",
+      "items": [
+        [
+          "Sichtbar im Shop",
+          "Prämien erscheinen als eigene Kacheln, sortiert nach Kategorien wie Games & Apps, Shopping oder Freizeit."
+        ],
+        [
+          "Bewusste Wahl",
+          "Nutzer wählen eine Prämie aktiv aus und lösen dafür ihr eigenes Guthaben ein."
+        ],
+        [
+          "Geprüfte Abwicklung",
+          "Jede Einlösung wird manuell geprüft; Gutscheincodes gehen danach per E-Mail an den Nutzer."
+        ],
+        [
+          "Märkte",
+          "Wallets in USD, EUR, GBP oder CHF, die App in 8 Sprachen."
+        ]
+      ],
+      "note": "Welche Prämien angezeigt werden, hängt von Land und Wallet-Währung ab."
+    },
+    "sheet": {
+      "eyebrow": "Steckbrief",
+      "title": "Claimo auf einen Blick.",
+      "rows": [
+        [
+          "Produkt",
+          "Rewards-App mit Offerwall- und Umfrageangeboten"
+        ],
+        [
+          "Plattform",
+          "Android, Google Play – Launch in Vorbereitung"
+        ],
+        [
+          "Zielgruppe",
+          "Ausschließlich ab 18 Jahren"
+        ],
+        [
+          "App-Sprachen",
+          "Deutsch, Englisch, Spanisch, Französisch, Italienisch, Portugiesisch, Niederländisch, Polnisch"
+        ],
+        [
+          "Wallet-Währungen",
+          "USD, EUR, GBP, CHF"
+        ],
+        [
+          "Formate",
+          "Spiele mit mehreren Zielen, App-Aufgaben, Umfragen"
+        ],
+        [
+          "Integration",
+          "Server-zu-Server-Postbacks mit Hash-Prüfung, Rückbuchungen"
+        ],
+        [
+          "Auszahlung an Nutzer",
+          "PayPal und Gutscheine, nach Schutzfrist und manueller Prüfung"
+        ]
+      ],
+      "note": "Die App-Sprachen sind keine Zusage, dass jedes Angebot in jedem Land verfügbar ist."
+    },
+    "press": {
+      "title": "Presse & Kooperationen",
+      "text": "Für Presseanfragen, Interviews und Kooperationen schreibt uns direkt. Screenshots und Logo stellen wir auf Anfrage bereit.",
+      "cta": "Presseanfrage senden",
+      "subject": "Presseanfrage"
+    },
+    "closing": {
+      "title": "Lasst uns <span class=\"accent\">sprechen.</span>",
+      "text": "Schreibt uns, welche Formate und Märkte ihr abdeckt. Wir antworten per E-Mail."
+    },
+    "teaser": {
+      "eyebrow": "Für Partner",
+      "title": "Eure Angebote, nativ in Claimo.",
+      "lead": "Für Offerwall- und Umfrageanbieter, Studios und Prämienpartner, die ein erwachsenes Android-Publikum erreichen möchten.",
+      "points": [
+        [
+          "Native Darstellung",
+          "Spiele und App-Aufgaben erscheinen als eigene Karten mit Grafik, Bedingungen und jedem Ziel samt Betrag."
+        ],
+        [
+          "Serverseitige Gutschrift",
+          "Postbacks werden per Hash geprüft, doppelte Meldungen erkannt, Rückbuchungen verrechnet."
+        ],
+        [
+          "Auszahlung mit Schutzfrist",
+          "Guthaben ist 48 Stunden geschützt, jede Auszahlung wird manuell geprüft."
+        ]
+      ],
+      "cta": "Zur Partnerseite"
+    }
+  },
+  "en": {
+    "title": "For partners – Claimo",
+    "description": "Claimo is a rewards app for Android, exclusively 18+. For offerwall and survey providers, game and app studios, reward partners and the press.",
+    "nav": "For partners",
+    "screenNote": "Real app screen from 10 Nov 2026 with sample data. Offers, amounts and availability change. Game artwork and brands belong to their owners.",
+    "hero": {
+      "eyebrow": "For partners",
+      "heading": "Work with Claimo.",
+      "lead": "Claimo is a rewards app for Android, exclusively for adults. Users reach goals in games, apps and surveys and redeem their balance via PayPal or gift cards. We process confirmations on the server and pay out only after a protection period and a review.",
+      "cta": "Request a partnership",
+      "subject": "Partnership request",
+      "note": "We are happy to discuss postback formats, signatures and reversals directly.",
+      "keyfacts": [
+        [
+          "Platform",
+          "Android"
+        ],
+        [
+          "Audience",
+          "18+"
+        ],
+        [
+          "App languages",
+          "8"
+        ],
+        [
+          "Wallet currencies",
+          "4"
+        ]
+      ],
+      "status": "Google Play launch in preparation"
+    },
+    "audiences": {
+      "eyebrow": "Working together",
+      "title": "Who we work with.",
+      "mail": "Send a request",
+      "details": "Details",
+      "items": [
+        [
+          "Offerwall & survey networks",
+          "You deliver offers via server postback – we show them natively in the app and process credits on the server.",
+          "Partnership request – offerwall/surveys",
+          "abwicklung"
+        ],
+        [
+          "Game & app studios",
+          "Your game as an offer with clear goals and rewards. We discuss direct campaigns individually.",
+          "Partnership request – game/app campaign",
+          "darstellung"
+        ],
+        [
+          "Reward & gift card partners",
+          "Your brand as a reward in the app’s shop – where users redeem their balance.",
+          "Partnership request – rewards/gift cards",
+          "praemien"
+        ],
+        [
+          "Press & collaborations",
+          "Questions about Claimo, interviews or images – we will reply by email.",
+          "Press enquiry",
+          "presse"
+        ]
+      ]
+    },
+    "show": {
+      "eyebrow": "Presentation",
+      "title": "How your offers appear.",
+      "lead": "A real offer screen from the app. Every goal is listed on its own with its reward – users see what matters before they start.",
+      "marks": [
+        [
+          "Artwork and title",
+          "Preview images, app icon and name at full width."
+        ],
+        [
+          "Category, deadline, rating",
+          "Genre, time limit and store rating at a glance."
+        ],
+        [
+          "Goals with rewards",
+          "Every goal as its own row with the user reward."
+        ],
+        [
+          "Start",
+          "A clear button leads to the installation."
+        ]
+      ],
+      "alt": "Offer details in the Claimo app with title image, category, time limit, a list of goals with rewards and the “Install” button"
+    },
+    "flow": {
+      "eyebrow": "Processing",
+      "title": "From offer to credit.",
+      "lead": "Every credit starts with a confirmation from the provider and passes through the same stations.",
+      "steps": [
+        [
+          "Start",
+          "The offer start is attributed to the Claimo account via a user identifier."
+        ],
+        [
+          "Goal",
+          "The user reaches a goal in your app, game or survey."
+        ],
+        [
+          "Postback",
+          "Server-to-server report with hash verification; duplicate reports are detected."
+        ],
+        [
+          "Credit",
+          "The amount is added to the wallet and protected for 48 hours."
+        ],
+        [
+          "Release",
+          "Payable afterwards; every payout is reviewed manually."
+        ]
+      ],
+      "note": "Reversals are offset both before and after release. After a reversal, payouts from the affected account are locked until a manual review."
+    },
+    "quality": {
+      "title": "Quality and protection",
+      "items": [
+        "Access only after confirming the user is of age",
+        "Email domains checked against known disposable mailboxes at sign-up and on address changes",
+        "Casino and gambling offers are filtered out of the offer feed",
+        "Manual review of every payout before it is sent",
+        "Payouts locked after a reversal until reviewed",
+        "Credits only with a valid hash, every booking in the transaction history"
+      ],
+      "note": "These measures limit misuse. We cannot guarantee fraud-free traffic."
+    },
+    "return": {
+      "title": "What brings users back",
+      "items": [
+        [
+          "Continue",
+          "Started offers with their open goals in one place."
+        ],
+        [
+          "Level and XP",
+          "Progress that stays visible in the app."
+        ],
+        [
+          "Daily streak",
+          "A daily streak in the app header."
+        ],
+        [
+          "Push notifications",
+          "Optional and can be switched off at any time."
+        ]
+      ],
+      "note": "Before launch, we do not publish user, retention or revenue figures."
+    },
+    "rewards": {
+      "eyebrow": "Reward partners",
+      "title": "Your brand in the reward shop.",
+      "lead": "In the app’s shop, users redeem their released balance – via PayPal or as a gift card. That is where your brand meets people who choose their reward deliberately.",
+      "items": [
+        [
+          "Visible in the shop",
+          "Rewards appear as their own tiles, sorted into categories such as Games & Apps, Shopping or Leisure."
+        ],
+        [
+          "A deliberate choice",
+          "Users actively pick a reward and redeem their own balance for it."
+        ],
+        [
+          "Reviewed fulfilment",
+          "Every redemption is reviewed manually; gift card codes are then sent to the user by email."
+        ],
+        [
+          "Markets",
+          "Wallets in USD, EUR, GBP or CHF, the app in 8 languages."
+        ]
+      ],
+      "note": "Which rewards are shown depends on the country and wallet currency."
+    },
+    "sheet": {
+      "eyebrow": "Fact sheet",
+      "title": "Claimo at a glance.",
+      "rows": [
+        [
+          "Product",
+          "Rewards app with offerwall and survey offers"
+        ],
+        [
+          "Platform",
+          "Android, Google Play – launch in preparation"
+        ],
+        [
+          "Audience",
+          "Exclusively 18 and over"
+        ],
+        [
+          "App languages",
+          "German, English, Spanish, French, Italian, Portuguese, Dutch, Polish"
+        ],
+        [
+          "Wallet currencies",
+          "USD, EUR, GBP, CHF"
+        ],
+        [
+          "Formats",
+          "Games with multiple goals, app tasks, surveys"
+        ],
+        [
+          "Integration",
+          "Server-to-server postbacks with hash verification, reversals"
+        ],
+        [
+          "User payouts",
+          "PayPal and gift cards, after the protection period and a manual review"
+        ]
+      ],
+      "note": "The app languages are no promise that every offer is available in every country."
+    },
+    "press": {
+      "title": "Press & collaborations",
+      "text": "For press enquiries, interviews and collaborations, write to us directly. Screenshots and our logo are available on request.",
+      "cta": "Send a press enquiry",
+      "subject": "Press enquiry"
+    },
+    "closing": {
+      "title": "Let’s <span class=\"accent\">talk.</span>",
+      "text": "Tell us which formats and markets you cover. We will reply by email."
+    },
+    "teaser": {
+      "eyebrow": "For partners",
+      "title": "Your offers, native in Claimo.",
+      "lead": "For offerwall and survey providers, studios and reward partners who want to reach an adult Android audience.",
+      "points": [
+        [
+          "Native presentation",
+          "Games and app tasks appear as dedicated cards with artwork, conditions and every goal with its reward."
+        ],
+        [
+          "Server-side crediting",
+          "Postbacks are verified by hash, duplicate reports are detected, reversals are offset."
+        ],
+        [
+          "Payouts after a protection period",
+          "Balance is protected for 48 hours, every payout is reviewed manually."
+        ]
+      ],
+      "cta": "Go to the partner page"
+    }
+  }
+}
